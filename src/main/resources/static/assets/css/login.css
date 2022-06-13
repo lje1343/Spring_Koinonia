@@ -97,6 +97,11 @@ form > div input {
   border: solid 1px #929292;
   border-radius: 4px;
 }
+.inputId input:focus,
+.inputPw input:focus {
+  border-color: #0058a3;
+  border-width: 3px;
+}
 .inputPw {
   margin-top: 44px;
 }
@@ -120,6 +125,10 @@ form > div input {
 }
 .inputPw #pw + button:hover {
   background: #eee;
+}
+.guideMsg {
+  display: none;
+  color: #e00751;
 }
 .goToFindPw > a {
   color: #484848;

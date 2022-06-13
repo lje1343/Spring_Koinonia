@@ -14,8 +14,8 @@
       <div class="container">
         <div class="subArea">
           <div class="goToBackArea">
-            <a href="" class="goToBack">
-              <span>이전페이지이동</span>
+            <a href="#메인페이지" class="goToBack">
+              <span>메인페이지로 이동</span>
               <img src="../../static/images/gotobeforeIcon2.png" />
             </a>
           </div>
@@ -39,13 +39,18 @@
           </div>
         </div>
         <div class="mainArea">
-          <form>
+          <form
+            action="./login.html"
+            method="post"
+            id="form"
+            onsubmit="return dobuleCheck();"
+          >
             <div class="inputId">
               <label for="email">이메일</label>
               <div class="inputWrapper">
                 <input type="text" id="email" name="email" />
               </div>
-              <p class="guideMsg"></p>
+              <p id="emailGuidMsg" class="guideMsg"></p>
             </div>
             <div class="inputPw">
               <label for="pw">비밀번호</label>
@@ -56,7 +61,7 @@
                   <span>비밀번호 표시하기</span>
                 </button>
               </div>
-              <p class="guideMsg"></p>
+              <p id="pwGuidMsg" class="guideMsg"></p>
               <div class="goToFindPw">
                 <a href="#비밀번호 찾기">비밀번호 찾기</a>
               </div>
@@ -68,7 +73,7 @@
               </label>
             </div>
             <div class="btnArea">
-              <button type="button" class="btnL btnStyleB">
+              <button type="submit" class="btnL btnStyleB">
                 가입 완료하기
               </button>
             </div>
@@ -78,7 +83,11 @@
               <p>KOINONIA 계정이 없으신가요? 지금 바로 만들어보세요:</p>
             </div>
             <div class="btnArea">
-              <button type="button" class="btnL btnStyleC">
+              <button
+                type="button"
+                class="btnL btnStyleC"
+                onclick="location.href='./join.html'"
+              >
                 회원 가입하기
               </button>
             </div>
