@@ -1,4 +1,4 @@
-package com.example.teamprojeect.mybatis;
+package com.example.teamproject.mybatis;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 import java.io.IOException;
 
 @Configuration // 설정 관련 클래스
-@MapperScan("com.example.teamprojeect.mapper") // 전달한 패키지에서 @Mapper 스캔
+@MapperScan("com.example.teamproject.mapper") // 전달한 패키지에서 @Mapper 스캔
 @RequiredArgsConstructor
 public class MyBatisConfig {
     // 커넥션 풀 및 MyBatis에 필요한 요소를 메모리에 할당 및 관리, xml과 java연동에 필요한 경로 관리
