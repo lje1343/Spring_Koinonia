@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>비밀번호 찾기</title>
     <!-- css -->
-    <link rel="stylesheet" href="../../static/assets/css/common.css" />
-    <link rel="stylesheet" href="../../static/assets/css/find_pw.css" />
+    <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/find_pw.css}" />
   </head>
   <body>
     <div class="wrapper">
@@ -16,12 +16,12 @@
           <div class="goToBackArea">
             <a href="./login.html" class="goToBack">
               <span>메인페이지로 이동</span>
-              <img src="../../static/images/gotobeforeIcon2.png" />
+              <img th:src="@{/images/gotobeforeIcon2.png}" />
             </a>
           </div>
           <div class="logoArea">
             <a class="logo">
-              <img src="../../static/images/logo.png" />
+              <img th:src="@{/images/logo.png}" />
             </a>
           </div>
           <div class="title">
@@ -74,6 +74,6 @@
       </div>
     </div>
   </body>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="../../static/assets/js/login.js"></script>
+  <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
+  <script th:src="@{/assets/js/find_pw.js}"></script>
 </html>
