@@ -17,18 +17,21 @@ import java.util.Optional;
 public class RequestReplyController {
     private final RequestReplyService requestReplyService;
 
-    // 댓글 작성
+    // 판매 상품 요청 댓글 작성
 
 
-    //    댓글 1개 조회
+    // 판매 상품 요청 댓글 1개 조회
 
 
-    //    댓글 전체 목록 조회
+    // 판매 상품 요청 댓글 전체 목록 조회
 
 
-    //    댓글 삭제
+    // 판매 상품 요청 댓글 삭제
 
 
-    //    댓글 수정
+    // 판매 상품 요청 댓글 수정
+
+
+    // 판매 상품 요청 댓글 개수
 
 }

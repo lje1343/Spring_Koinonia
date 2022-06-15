@@ -28,7 +28,7 @@ public class BoardController {
         return "/board/register";
     }
     @PostMapping("/board/register")
-    public String register(BoardVo boardVo, RedirectAttributes rttr){
+    public String register(BoardVO boardVO, RedirectAttributes rttr){
         log.info("*************");
         log.info("다이어리 등록");
         log.info("*************");
@@ -36,13 +36,29 @@ public class BoardController {
         return new RedirectView("/board/list");
     }
 
-    @GetMapping("/board/list")
-    public String getList(Model model){
+    @GetMapping("/board/modify")
+    public String modify(Long bno){
         log.info("*************");
-        log.info("다이어리 리스트");
+        log.info("다이어리 수정내용 작성/삭제");
         log.info("*************");
-        // 다이어리 리스트
-        return "/board/list";
+        // 다이어리 수정
+        return "/board/modify";
+    }
+    @PostMapping("/board/modify")
+    public String modify(Long bno, RedirectAttributes rttr){
+        log.info("*************");
+        log.info("다이어리 수정");
+        log.info("*************");
+        // 다이어리 수정 완료
+        return new RedirectView("/board/list");
+    }
+    @PostMapping("/board/remove")
+    public String remove(Long bno, RedirectAttributes rttr){
+        log.info("*************");
+        log.info("다이어리 삭제");
+        log.info("*************");
+        // 다이어리 삭제
+        return new RedirectView("/board/list");
     }
 
     @GetMapping("/board/detail")
@@ -53,23 +69,16 @@ public class BoardController {
         // 다이어리 상세
         return "/board/detail";
     }
+    // 무한스크롤 - rest
 
-    @GetMapping("/board/modify")
-    public String modify(Long bno){
+    @GetMapping("/board/list")
+    public String getList(Criteria criteria, Model model){
         log.info("*************");
-        log.info("다이어리 수정");
+        log.info("다이어리 리스트");
         log.info("*************");
-        // 다이어리 수정
-        return "/board/modify";
-    }
-    @PostMapping("/board/modify")
-    public String modify(Long bno, RedirectAttributes rttr){
-        log.info("*************");
-        log.info("다이어리 수정 완료");
-        log.info("*************");
-        // 다이어리 수정 완료
-        return new RedirectView("/board/list");
+        // 다이어리 리스트
+        return "/board/list";
     }
 
-    // 다이어리 좋아요(등록)
+    // 다이어리 좋아요(등록) - Rest
 }

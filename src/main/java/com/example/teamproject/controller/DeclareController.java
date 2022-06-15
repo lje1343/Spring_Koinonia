@@ -34,7 +34,7 @@ public class DeclareController {
         return "/declare/register";
     }
     @PostMapping("/declare/register")
-    public String register(DeclareVo declareVo, RedirectAttributes rttr){
+    public String register(DeclareVO declareVO, RedirectAttributes rttr){
         log.info("*************");
         log.info("신고 등록");
         log.info("*************");

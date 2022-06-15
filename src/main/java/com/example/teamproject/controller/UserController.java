@@ -24,7 +24,7 @@ public class UserController {
         return "/user/join";
     }
     @PostMapping("/join")
-    public String join(UserVo uservo){
+    public String join(UserVO userVO){
         log.info("*************");
         log.info("회원등록");
         log.info("*************");
@@ -32,9 +32,9 @@ public class UserController {
         return "/user/login";
     }
 
-    // 이메일 중복확인
+    // 이메일 중복확인-rest
 
-    // 이름 중복확인
+    // 이름 중복확인-rest
 
     @GetMapping("/login")
     public String goToLogin(){

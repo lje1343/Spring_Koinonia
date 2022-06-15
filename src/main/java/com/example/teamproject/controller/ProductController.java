@@ -26,7 +26,7 @@ public class ProductController {
         return "/product/register";
     }
     @PostMapping("/product/register")
-    public String register(ProductVo productVo, RedirectAttributes rttr){
+    public String register(ProductVO productVO, RedirectAttributes rttr){
         log.info("*************");
         log.info("판매 상품 등록");
         log.info("*************");
@@ -42,6 +42,7 @@ public class ProductController {
         // 상품 리스트
         return "/product/list";
     }
+    // 무한스크롤 - rest
 
     @GetMapping("/product/detail")
     public String read(Long pno, Model model){

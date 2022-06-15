@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequiredArgsConstructor
 public class RequestController {
     private final RequestService requestService;
-    // 요청
+    // 판매 상품 요청
 
     @GetMapping("/request/register")
     public String register(){
@@ -26,7 +26,7 @@ public class RequestController {
         return "/request/register";
     }
     @PostMapping("/request/register")
-    public String register(RequestVo requestVo, RedirectAttributes rttr){
+    public String register(RequestVO requestVO, RedirectAttributes rttr){
         log.info("*************");
         log.info("판매 상품 요청글 등록");
         log.info("*************");
@@ -42,6 +42,7 @@ public class RequestController {
         // 상품 요청 리스트
         return "/request/list";
     }
+    // 무한스크롤 - rest
 
     @GetMapping("/request/detail")
     public String read(Long rno, Model model){

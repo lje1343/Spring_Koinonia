@@ -7,24 +7,26 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class BoardDao {
+public class BoardDAO {
+    private final BoardMapper boardMapper;
+
     // 다이어리 목록
-    public List<BoardVo> getList(){
+    public List<BoardVO> getList(){
 
     };
 
     // 다이어리 등록
-    public void register(BoardVo boardVO){
+    public void register(BoardVO boardVO){
 
     };
 
     // 다이어리 상세보기
-    public BoardVO read(long boardBno){
+    public BoardVO read(Long boardBno){
 
     };
 
     // 다이어리 삭제
-    public boolean remove(long boardBno){
+    public boolean remove(Long boardBno){
 
     };
 
