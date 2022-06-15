@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Slf4j
-@RequestMapping("/wishboard/*")
+@RequestMapping("/boardReply/*")
 @RequiredArgsConstructor
-public class WishboardController {
+public class BoardReplyController {
+    private final BoardReplyService boardReplyService;
 }

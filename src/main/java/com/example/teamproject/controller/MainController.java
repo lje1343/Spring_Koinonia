@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class MainController {
     @GetMapping("/")
-    public String goToMain(){
+    public String goToMain(Model model){
         log.info("*************");
         log.info("메인페이지");
         log.info("*************");
+        // 상품 리스트
+        // 다이어리 리스트
         return "/main/main";
     }
 }
