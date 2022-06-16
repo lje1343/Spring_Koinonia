@@ -1,3 +1,6 @@
+///////////////////////////////////////////////////////////////////////////////////////
+// 동적 페이지 구현
+
 // select
 const selectOpenClose = (li) => {
   let selectBtn = document.querySelector(li + " button.select");
@@ -37,4 +40,48 @@ $(".nationalityArea .optionList").click((e) => {
 // 썸네일
 $("#thum").on("change", function () {
   $("#viewInput").val($("#thum").val());
+});
+///////////////////////////////////////////////////////////////////////////////////////
+// ajax
+
+// 썸네일 유효성 검사
+let regex = new RegExp("(.*?)\.(jpg|png|gif)");
+
+function checkExtension(fileName, fileSize){
+  if(regex.test(fileName)){
+    alert("업로드 할 수 없는 파일의 형식입니다.");
+    return false;
+  }
+
+  if(fileSize >= 5242880){
+    alert("파일 사이즈 초과");
+    return false;
+  }
+
+  return true;
+}
+
+// 썸네일 업로드
+("#uploadBtn").on("click", function(e){
+  let formData = new FormData();
+  let inputFile = $("input[name='uploadFile']");
+  // console.log(inputFile);
+  let files = inputFile[0].files;
+  // console.log(files);
+  for(let i=0; i<files.length; i++){
+    if(!checkExtension(files[i].name, files[i].size)){ return; }
+    formData.append("uploadFile", files[i]);
+  }
+
+  $.ajax({
+    url: "uploadAjaxAction",
+    type: "post",
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function(files){
+      showUploadResult(files);
+    }
+  });
+
 });
