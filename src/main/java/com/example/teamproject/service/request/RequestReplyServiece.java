@@ -1,4 +1,6 @@
-package com.example.teamproject.service;
+package com.example.teamproject.service.request;
 
-public class RequestReplyServiece implements ReplyService{
+import com.example.teamproject.service.ReplyService;
+
+public class RequestReplyServiece implements ReplyService {
 }

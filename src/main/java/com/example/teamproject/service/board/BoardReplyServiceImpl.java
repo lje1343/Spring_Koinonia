@@ -1,5 +1,6 @@
-package com.example.teamproject.service;
+package com.example.teamproject.service.board;
 
+import com.example.teamproject.service.ReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -7,7 +8,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class BoardReplyServiceImpl implements ReplyService{
+public class BoardReplyServiceImpl implements ReplyService {
     private final BoardReplyDAO boardReplyDAO;
 
     // 다이어리 댓글 등록

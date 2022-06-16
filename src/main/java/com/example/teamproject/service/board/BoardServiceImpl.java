@@ -1,5 +1,6 @@
-package com.example.teamproject.service;
+package com.example.teamproject.service.board;
 
+import com.example.teamproject.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -7,7 +8,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class BoardServiceImpl implements BoardService{
+public class BoardServiceImpl implements BoardService {
     private final BoardDAO boardDAO;
 
 //    다이어리 등록

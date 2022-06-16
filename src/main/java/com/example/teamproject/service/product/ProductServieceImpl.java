@@ -1,6 +1,7 @@
-package com.example.teamproject.service;
+package com.example.teamproject.service.product;
 
 import com.example.teamproject.domain.vo.ProductVO;
+import com.example.teamproject.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ProductServieceImpl implements BoardService{
+public class ProductServieceImpl implements BoardService {
     private final ProductDAO productDAO;
 
     // 판매 상품 등록

@@ -1,4 +1,4 @@
-package com.example.teamproject.domain.dao;
+package com.example.teamproject.domain.dao.board;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

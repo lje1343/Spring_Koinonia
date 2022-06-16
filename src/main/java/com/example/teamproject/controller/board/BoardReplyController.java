@@ -1,4 +1,4 @@
-package com.example.teamproject.controller;
+package com.example.teamproject.controller.board;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

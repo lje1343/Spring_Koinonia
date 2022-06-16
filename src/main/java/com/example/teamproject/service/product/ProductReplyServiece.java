@@ -1,4 +1,6 @@
-package com.example.teamproject.service;
+package com.example.teamproject.service.product;
 
-public class ProductReplyServiece implements ReplyService{
+import com.example.teamproject.service.ReplyService;
+
+public class ProductReplyServiece implements ReplyService {
 }

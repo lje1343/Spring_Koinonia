@@ -1,4 +1,4 @@
-package com.example.teamproject.service;
+package com.example.teamproject.service.declare;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

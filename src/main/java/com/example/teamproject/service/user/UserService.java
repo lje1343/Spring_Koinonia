@@ -1,4 +1,4 @@
-package com.example.teamproject.service;
+package com.example.teamproject.service.user;
 
 public class UserService {
 }
