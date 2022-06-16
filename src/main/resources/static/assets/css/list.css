@@ -1,4 +1,4 @@
-/* ST gallery */
+
 #st-gal {margin:auto;padding:0;}
 #st-gal .catbox {color:#555; padding:0 0 5px 0; min-height:35px;}
 #st-gal .catbox .info {min-height:30px; line-height:30px; vertical-align:middle;}
@@ -6,8 +6,7 @@
 #st-gal .thumbs {
 	padding-top: 20px;
 	margin-bottom: 10px;
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
+
 }
 #st-gal .thumbs .none {
 	width: 100%;
@@ -45,6 +44,10 @@
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;	
 }
+#st-gal .thumbnail .image:hover {
+	background-image:url('https://cdn.pixabay.com/photo/2019/10/13/16/20/nice-4546506_960_720.jpg');
+	opacity : 0.5;
+}
 #st-gal .thumbnail .image .no-image {
 	position: absolute;
 	top: 30px;
@@ -67,9 +70,21 @@
 	max-height: 200px;
 }
 #st-gal .thumbnail .info {
-	margin: 5px 0 0;
+	margin: 10px 0 0;
+	margin-bottom: 20px;
 	font-size: 85%;
+	text-align: right;
 }
+
+#st-gal .thumbnail .user_icon{
+	width: 20px;
+	height: 15px;
+	background-image: url("https://cdn2.iconfinder.com/data/icons/people-80/96/Picture1-128.png");
+	background-size: cover;
+	display: inline-block;
+}
+
+
 #st-gal .thumbnail .caption {
 	text-align: left;
 	font-weight: bold;
@@ -110,10 +125,13 @@
 	color: #aaa;
 }
 #st-gal .thumbnail .desc {
-	margin: 5px 0 10px;
+	margin: 5px 0 5px;
 	font-size: 90%;
 	word-break: break-all;
 	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 63px;
+	
 }
 #st-gal .thumbnail .action {
 	text-align: right;
@@ -126,27 +144,17 @@
 	background-color: #ededed;
 	color: #434955;
 }
+#st-gal .right-side {
+    text-align:right;
+}
+
 #st-gal .buttons {margin:0 0 20px; text-align: center;}
-#st-gal .buttons .left-side {float:left; text-align:left;}
-#st-gal .buttons .right-side {float:right; text-align:right;}
-#st-gal .buttons .pagebox {margin: -30px 0 0 0; padding: 0 145px;}
-#st-gal .buttons .pagebox .btn-skip { margin: 0 4px; }
-#st-gal .buttons .pagebox .btn-page { margin: 0 2px; }
 #st-gal .searchbox {text-align:center; padding: 20px 0;}
 #st-gal .searchbox select {display:inline-block; max-width:110px; margin-bottom:5px;}
-#st-gal .searchbox .input-group {margin-bottom:5px;}
 #st-gal .searchbox .input-search {display:inline-block; min-width:190px;}
-
-/** for getPageLinkClassicST() style **/
-#st-list .buttons .pagebox.classic {margin: -22px 0 0 0;}
-#st-list .buttons .pagebox.classic .selected, .pagebox.classic .notselected:hover {padding:0 4px 0 4px;font-family:arial;font-weight:bold;color:#FF5B01;}
-#st-list .buttons .pagebox.classic .notselected {padding:0 4px 0 4px;text-decoration:none;font-family:arial;color:#222;font-weight:bold;}
-#st-list .buttons .pagebox.classic img {padding:0 3px;}
 
 @media (max-width: 991px) { 
 	#st-gal .buttons {margin-bottom: 0;}
-	#st-gal .buttons .pagebox {margin:0; padding: 20px 0;}
-	#st-gal .buttons .pagebox.classic {margin:0; padding: 20px 0;}
 	#st-gal .searchbox {padding-top: 10px;}
 }
 @media (max-width: 768px) { 

@@ -51,91 +51,10 @@
 	padding-top: 0 !important;
 }
 
-
-
-/** Slider **/
-#st-carousel.hero-carousel {
-    top: -123px;
-    margin-bottom: -123px;
-}
-#st-carousel.carousel-contrast .normal {
-    color: white !important;
-}
-#st-carousel .slides {
-	height: 100%;
-}
-#st-carousel .slides .item {
-	height: 100%;
-    overflow: hidden;
-    background-position: center;
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-@media (min-width: 768px) {
-/*@media (min-width: 992px) {*/
-	.carousel-contrast .big, 
-	.carousel-contrast .carousel-blur .normal, 
-	.carousel-blur .carousel-contrast .normal, 
-	.carousel-contrast .carousel-image .normal, 
-	.carousel-image .carousel-contrast .normal {
-		font-size: 34px;
-		line-height: 38px;
-		margin-top: 250px;
-		/***
-		font-size: 42px;
-		line-height: 54px;
-		***/
-	}
-	.carousel-contrast .normal {
-		font-size: 22px;
-		line-height: 22px;
-		/***
-		font-size: 24px;
-		line-height: 30px;
-		***/
-	}
-}
-@media (max-width: 767px) {
-	.carousel-contrast .big, 
-	.carousel-contrast .carousel-blur .normal, 
-	.carousel-blur .carousel-contrast .normal, 
-	.carousel-contrast .carousel-image .normal, 
-	.carousel-image .carousel-contrast .normal {
-		font-size: 26px;
-		line-height: 30px;
-		margin-top: 250px;
-	}
-	.carousel-contrast .normal {
-		font-size: 16px;
-		line-height: 20px;
-	}
-}
-@media (max-width: 480px) {
-	.carousel-contrast .big, 
-	.carousel-contrast .carousel-blur .normal, 
-	.carousel-blur .carousel-contrast .normal, 
-	.carousel-contrast .carousel-image .normal, 
-	.carousel-image .carousel-contrast .normal {
-		font-size: 26px;
-		line-height: 30px;
-		margin-top: 175px;
-	}
-	.carousel-contrast .normal {
-		font-size: 16px;
-		line-height: 20px;
-	}
-}
-
-
-/** Subheader **/
 #main-content-header .title small {
 	line-height: 22px;
 }
 
-/** Sidebar **/
 #st-body .sidebar .panel-shop {
 	border: 0;
 	border-radius: 5px;	
@@ -158,7 +77,6 @@
 #st-body .sidebar .panel-shop .panel-heading .panel-title {
 	font-size: 14px;
 }
-	
 	
 #st-body .sidebar .panel-shop .list-group .list-group-item {
 	font-size: 14px;
@@ -206,34 +124,7 @@
 	min-height: 500px;
 	background-color: #fff;
 }
-.page-header.page-header-with-icon.top {
-	margin-top: 10px;
-}
-.page-header.page-header-with-icon h2 {
-	font-weight: bold;
-}
-#st-body .nav-tabs-bar > li {
-	border-top: 4px solid #e5e5e5;
-}
-/** to theme
-#st-body .nav-tabs-bar > li.active {
-	border-top: 4px solid #7369AF;
-}
-**/
-#st-body .nav-tabs-bar > li > a {
-	color: #555;
-	font-weight: bold;
-	border-left: #e5e5e5 1px solid;
-	border-radius: 0;
-	margin: 0;
-	outline: 0;
-}
-#st-body .nav-tabs-bar > li:last-child > a {
-	border-right: 1px solid #ddd;
-}
-#st-body .nav-tabs-bar > li.active + li > a {
-	border-left-color: transparent;
-}
+
 #st-body .input-group-addon {
     border: 1px solid #eaedf2;
 }
@@ -241,15 +132,6 @@
 
 
 #scroll-to-top { display: block; } 
-
-
-/** Pages **/
-#st-pages .hr {
-	margin: 20px 0 50px;
-	border-color: #ddd;
-	border-top-width: 1px;
-}
-
 
 /** ST Layout framework **/
 #st-body .vtop { vertical-align: top; }
@@ -281,12 +163,7 @@
 	text-overflow: ellipsis; 
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;  	
-	/***
-	display: -webkit-box;
-	overflow: hidden; 
-	text-overflow: ellipsis; 
-	-webkit-box-orient: vertical; 
-	***/
+
 	word-wrap:break-word;
 }
 #st-body .ellipsis-multi.l2 {
@@ -326,30 +203,6 @@
 }
 #st-body img {width: auto;}
 
-/** Table framework **/
-#st-body .st-table {
-	display: table;
-	width: 100%;	
-}
-#st-body .st-table .tr {
-	display: table-row;
-}
-#st-body .st-table .td {
-	display: table-cell;
-	padding: 10px;
-}
-#st-body .st-table.bordered {
-	border-left: 1px solid #eaedf2;
-	border-top: 1px solid #eaedf2;
-}
-#st-body .st-table.bordered .td {
-	border-right: 1px solid #eaedf2;
-	border-bottom: 1px solid #eaedf2;
-}
-
-
-
-/** Font-size framework **/
 #st-body .bold { font-weight: bold; }
 #st-body .italic { font-style: italic; }
 #st-body .st-size1 { font-size: 36px; }
