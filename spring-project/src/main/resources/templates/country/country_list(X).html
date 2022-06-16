@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>나라별 보기</title>
+      <link rel="stylesheet" href="/src/main/resources/static/assets/css/country_list.css">
+      <link rel="stylesheet" href="/src/main/resources/static/assets/css/box.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+      <script src=""></script>
+      <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="/static/assets/css/header.css">
+    <script src="https://kit.fontawesome.com/d1d8464fd3.js" 
+    crossorigin="anonymous"></script>
+   </head>
+   <body>
+    <div class="topbar"></div>
+    <header>
+        <div class="container">
+            <div class="menubar">
+                <a>
+                    <img src="/src/main/resources/static/assets/images/134216_menu_lines_hamburger_icon.png">
+                </a>
+            </div>
+            <div class="logo">
+                <img src=/src/main/resources/static/assets/images/logo.png">
+            </div>
+            <div class="selectbar">
+                <form action="">
+                    <input type="text" placeholder="검색어 입력">
+                </form>
+            </div>
+            <div class="mypage">
+                <ul>
+                    <li class="login">
+                        <a>
+                            <img src="/src/main/resources/static/assets/images/4092564_profile_about_mobile ui_user_icon.png">
+                            <span>Hej! 로그인 또는 가입하기</span>
+                        </a>
+                    </li>
+                    <li class="message"><a><img src="/src/main/resources/static/assets/images/622401_mail_packet_email_envelope_letter_icon.png"></a></li>
+                    <li class="heart"><a><img src="/src/main/resources/static/assets/images/216236_heart_icon.png"></a></li>
+                    <li class="cart"><a><img src="/src/main/resources/static/assets/images/6351908_bag_basket_cart_ecommerce_shop_icon.png"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="menubtn">
+            <a href="">모든 제품</a>
+            <a href="">온라인 쇼룸</a>
+            <a href="">더 낮은 새로운 가격</a>
+        </div>
+    </header>
+    <section class="">
+    <div class="country_list">
+        <h>나라별 보기</h>
+        </div>
+        <div class="menu_bar">
+    <nav>
+        <label for="btn" class="button"> 아시아
+            <span class="fas fa-caret-down"></span>
+        </label>
+        <input type="checkbox" id="btn">
+        <ul class="menu">
+            <li>
+                <label for="btn-1" class="first">동북아시아
+                    <span class="fas fa-caret-down"></span>
+                </label>
+                <input type="checkbox" id="btn-1">
+                <ul>
+                    <li><a href="#">일본</a></li>
+                    <li><a href="#">중국</a></li>
+                    <li><a href="#">러시아</a></li>
+                    <li><a href="#">몽골</a></li>
+                </ul>
+            </li>
+            <li>
+                <label for="btn-2" class="first">동남아시아
+                    <span class="fas fa-caret-down"></span>
+                </label>
+                <input type="checkbox" id="btn-2">
+                <ul>
+                    <li><a href="#">태국</a></li>
+                    <li><a href="#">필리핀</a></li>
+                    <li><a href="#">베트남</a></li>
+                    <li><a href="#">캄보니아</a></li>
+                </ul>
+            </li>
+            <li>
+                <label for="btn-3" class="first">중앙아시아
+                    <span class="fas fa-caret-down"></span>
+                </label>
+                <input type="checkbox" id="btn-3">
+                <ul>
+                    <li><a href="#">아프가니스탄</a></li>
+                    <li><a href="#">우즈베키스탄</a></li>
+                
+                </ul>
+            </li>
+            <li>
+                <label for="btn-4" class="first">서아시아
+                    <span class="fas fa-caret-down"></span>
+                </label>
+                <input type="checkbox" id="btn-4">
+                <ul>
+                    <li><a href="#">이스라엘</a></li>
+                    <li><a href="#">사우디아라비아</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <nav2>
+        <label for="btn2" class="button2"> 유럽
+            <span class="fas fa-caret-down"></span>
+        </label>
+        <input type="checkbox" id="btn2">
+        <ul class="menu">
+            <li>
+                <label for="btn2-1" class="first">동유럽
+                    <span class="fas fa-caret-down"></span>
+                </label>
+                <input type="checkbox" id="btn2-1">
+                <ul>
+                    <li><a href="#">불가리아</a></li>
+                    <li><a href="#">헝가리</a></li>
+                    <li><a href="#">폴란드</a></li>
+                </ul>
+            </li>
+            <li>
+                <label for="btn2-2" class="first">북유럽
+                    <span class="fas fa-caret-down"></span>
+                </label>
+                <input type="checkbox" id="btn2-2">
+                <ul>
+                    <li><a href="#">영국</a></li>
+                    <li><a href="#">스웨덴</a></li>
+                    <li><a href="#">노르웨이</a></li>
+                    <li><a href="#">핀란드</a></li>
+                    <li><a href="#">덴마크</a></li>
+                </ul>
+            </li>
+            <li>
+                <label for="btn2-3" class="first">남유럽
+                    <span class="fas fa-caret-down"></span>
+                </label>
+                <input type="checkbox" id="btn2-3">
+                <ul>
+                    <li><a href="#">스페인</a></li>
+                    <li><a href="#">그리스</a></li>
+                    <li><a href="#">이탈리아</a></li>
+                    <li><a href="#">포르투갈</a></li>
+                
+                </ul>
+            </li>
+            <li>
+                <label for="btn2-4" class="first">서유럽
+                    <span class="fas fa-caret-down"></span>
+                </label>
+                <input type="checkbox" id="btn2-4">
+                <ul>
+                    <li><a href="#">프랑스</a></li>
+                    <li><a href="#">독일</a></li>
+                    <li><a href="#">네덜란드</a></li>
+                    <li><a href="#">벨기에</a></li>
+                    <li><a href="#">스위스</a></li>
+                    <li><a href="#">모나코</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav2>
+
+    <nav3>
+        <label for="btn3" class="button3"> 아메리카
+            <span class="fas fa-caret-down"></span>
+        </label>
+        <input type="checkbox" id="btn3">
+        <ul class="menu">
+            <li>
+                <label for="btn3-1" class="first">북아메리카
+                    <span class="fas fa-caret-down"></span>
+                </label>
+                <input type="checkbox" id="btn3-1">
+                <ul>
+                    <li><a href="#">미국</a></li>
+                    <li><a href="#">캐나다</a></li>
+                    <li><a href="#">멕시코</a></li>
+                    <li><a href="#">쿠바</a></li>
+                </ul>
+            </li>
+            <li>
+                <label for="btn3-2" class="first">남아메리카
+                    <span class="fas fa-caret-down"></span>
+                </label>
+                <input type="checkbox" id="btn3-2">
+                <ul>
+                    <li><a href="#">베네수엘라</a></li>
+                    <li><a href="#">브라질</a></li>
+                    <li><a href="#">아르헨티나</a></li>
+                    <li><a href="#">페루</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav3>
+
+    <nav4>
+        <label for="btn4" class="button4"> 아프리카
+            <span class="fas fa-caret-down"></span>
+        </label>
+        <input type="checkbox" id="btn4">
+        <ul class="menu">
+            <li>
+                <label for="btn3-1" class="first">북아프리카
+                    <span class="fas fa-caret-down"></span>
+                </label>
+                <input type="checkbox" id="btn3-1">
+                <ul>
+                    <li><a href="#">모로코</a></li>
+                    <li><a href="#">이집트</a></li>
+                </ul>
+            </li>
+            <li>
+                <label for="btn3-2" class="first">남아프리카
+                    <span class="fas fa-caret-down"></span>
+                </label>
+                <input type="checkbox" id="btn3-2">
+                <ul>
+                    <li><a href="#">마다가스타르</a></li>
+                    <li><a href="#">케냐</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav4>
+
+    <nav5>
+        <label for="btn4" class="button4" > 오스트레일리아
+            <span class="fas fa-caret-down"></span>
+        </label>
+        <input type="checkbox" id="btn4">
+        <ul class="menu">
+            <li>
+                <label for="btn3-1" class="first" href="#">호주
+                    <span class="fas fa-caret-down"></span>
+                </label>
+                <input type="checkbox" id="btn3-1">
+            </li>
+        </ul>
+    </nav5>
+    </div>
+</section>
+<!-- <script>
+    $('nav .button').click(function(){
+      $('nav .button span').toggleClass("rotate");
+    });
+      $('nav ul li .first').click(function(){
+        $('nav ul li .first span').toggleClass("rotate");
+      });
+      $('nav ul li .second').click(function(){
+        $('nav ul li .second span').toggleClass("rotate");
+      });
+ </script> -->
+<section2>
+    <div class="box">
+      
+        <div class="diary_list">
+          <img src="/static/assets/images/1.jpg" alt="Nothing" width="200" height="200">
+           <img src="/static/assets/images/2.jpg" alt="Nothing" width="200" height="200">
+            <img src="/static/assets/images/3.jpg" alt="Nothing" width="200" height="200">
+             <img src="/static/assets/images/4.jpg" alt="Nothing" width="200" height="200">
+              <img src="/static/assets/images/5.jpg" alt="Nothing" width="200" height="200">>
+              
+        </div>
+  
+          <div class="diary_list">
+          <img src="/static/assets/images/6.jpg" alt="Nothing" width="200" height="200">
+           <img src="/static/assets/images/7.jpg" alt="Nothing" width="200" height="200">
+            <img src="/static/assets/images/8.jpg" alt="Nothing" width="200" height="200">
+            <img src="/static/assets/images/11.jpg" alt="Nothing" width="200" height="200">
+            <img src="/static/assets/images/15.jpg" alt="Nothing" width="200" height="200">
+              
+        </div>
+
+  
+  
+  
+      </div>
+      <div class="btn">
+        <a href="#">More</a>
+      </div>
+
+  
+  
+  
+  
+  
+        </div>
+        </section2>
+        <footer>
+            <div class="footer_container">
+            <div class="footer_wrap">
+                <div class="footer_copyright">
+                    <p>© 2022 Company, Inc. All rights reserved.</p>
+                </div>
+        
+                <div class="footer_use">
+                    <ul class="">
+                    <li class=""><a class=""></a>개인정보처리방침</li>
+                    <li class=""><a href=""></a>쿠키 정책</li>
+                    <li class=""><a href=""></a>쿠키 설정</li>
+                    <li class=""><a href=""></a>웹사이트 이용약관</li>
+                    <li class=""><a href=""></a>Responsible disclosure</li>
+                    </ul>
+                </div>
+            </div>
+        
+                <p> captin corin </p>
+                <p> 고혁배 김지나 나기업 김정관 안요셉 이진성 강승훈</p>
+            <div class="footer_icons">
+                <ul>
+                    <li>
+                        <a href="">
+                            <img src="/src/main/resources/static/assets/images/5279111_network_fb_social media_facebook_facebook logo_icon.png" >
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="/src/main/resources/static/assets/images/1161953_instagram_icon.png" >
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="/src/main/resources/static/assets/images/211929_social_youtube_icon.png" >
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="/src/main/resources/static/assets/images/8679415_kakao_talk_fill_icon.png" >
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </footer>     
+   </body>
+</html>
