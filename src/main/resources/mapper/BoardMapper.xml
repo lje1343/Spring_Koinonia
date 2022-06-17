@@ -23,16 +23,17 @@
 
     <update id="update">
         UPDATE TBL_BOARD
-        SET TITLE = #{title}, CONTENT = #{content},
-            NAME = #{name}, UPDATE_DATE = SYSDATE
+        SET TITLE = #{title}, CONTENT = #{content}, UPDATE_DATE = SYSDATE
         WHERE BNO = #{bno}
     </update>
 
     <update id="updatename">
         UPDATE TBL_BOARD
         SET NAME = #{name}, UPDATE_DATE = SYSDATE
-        WHERE NAME = #{name}
+        WHERE BNO = #{bno}
     </update>
+
+
 
 
 

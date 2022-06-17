@@ -8,9 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface BoardMapper {
     public void insert(BoardVO boardVO);
     public int update(BoardVO boardVO);
-    public int updatename(String name);
     public BoardVO get(Long bno);
-    public void delete(Long bno);
+    public int delete(Long bno);
 
 
 

@@ -47,41 +47,39 @@ private UserMapper userMapper;
 //
 //    }
 
-//    @Test
-//    public void updateTest() {
-//        UserVO userVO = new UserVO();
-//        userVO.setEmail("아이디");
-//        userVO.setPw("수정1");
-//        userVO.setName("수정1");
-//        userVO.setCover("수정1");
-//        userVO.setPhone(1L);
-//
-//        userMapper.update(userVO);
-//    }
+    @Test
+    public void updateTest() {
+        Long unum = 1L;
+        UserVO userVO = userMapper.getInfo(unum);
+        userVO.setName("수정5");
+        userMapper.update(userVO);
+
+    }
 
 //    @Test
 //    public void deleteTest(){
-//        String pw = "비밀번호";
+//        String name = "수정3";
+//        String pw = "비밀번호다";
 //
-//        log.info("삭제 번호 : " + userMapper.delete(pw));
+//        log.info("삭제 번호 : " + userMapper.delete(name,pw));
 //
 //    }
 
-    @Test
-    public void findTest(){
-        String email = "테스트2";
-        String Npw = "성공";
-        int result = userMapper.checkId(email);
-        log.info("반환결과는 : " + result);
-        if(result == 1){
-            UserVO userVO = userMapper.find(email);
-            userVO.setPw(Npw);
-            userMapper.update(userVO);
-            log.info("비밀번호 수정에 성공하였습니다");
-        }else {
-            log.info("비밀번호 수정에 실패하였습니다");
-        }
-    }
+//    @Test
+//    public void findTest(){
+//        String email = "테스트2";
+//        String Npw = "성공";
+//        int result = userMapper.checkId(email);
+//        log.info("반환결과는 : " + result);
+//        if(result == 1){
+//            UserVO userVO = userMapper.find(email);
+//            userVO.setPw(Npw);
+//            userMapper.update(userVO);
+//            log.info("비밀번호 수정에 성공하였습니다");
+//        }else {
+//            log.info("비밀번호 수정에 실패하였습니다");
+//        }
+//    }
 
 
 

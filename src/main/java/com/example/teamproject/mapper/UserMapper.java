@@ -8,9 +8,12 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserMapper {
     public Integer checkId(String email);
     public void insert(UserVO userVO);
+    public int nameupdate(UserVO userVO);
     public UserVO find(String email);
-    public String login(UserVO userVO);
+    public UserVO login(UserVO userVO);
     public int update(UserVO userVO);
-    public int delete(String pw);
+    public Long get(String name);
+    public UserVO getInfo(Long unum);
+    public int delete(String email, String pw);
 
 }
