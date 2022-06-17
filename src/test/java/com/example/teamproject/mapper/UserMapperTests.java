@@ -8,10 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @Slf4j
-public class UserMapperTests {
-    @Autowired
-    private  UserMapper userMapper;
+public class UserMapperTests{
 
+@Autowired
+private UserMapper userMapper;
 
     @Test
     public void insertTest(){
