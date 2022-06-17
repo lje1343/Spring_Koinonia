@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @Slf4j
@@ -47,6 +49,21 @@ public class UserController {
         log.info("비밀번호찾기");
         log.info("*************");
         return "/user/find_pw";
+    }
+
+    @GetMapping("/modify")
+    public String modify(Model model){
+        log.info("*************");
+        log.info("회원정보수정");
+        log.info("*************");
+        return "/user/update";
+    }
+    @PostMapping("/modify")
+    public String modify(RedirectAttributes rttr){
+        log.info("*************");
+        log.info("회원정보수정");
+        log.info("*************");
+        return new RedirectView("/user/mypage");
     }
 
     // 마이페이지

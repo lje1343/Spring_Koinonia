@@ -102,15 +102,23 @@ public class BoardController {
     }
 
     // 카테고리별 상품 목록
-    @GetMapping("/list/{#카테고리}") // #카테고리 변수명 미정
+    @GetMapping("/list/{pcate}") // #카테고리 변수명 미정
     @ResponseBody
-    public List<RequestVO> getList(@PathVariable("#카테고리")String #카테고리){
+    public List<RequestVO> getList(@PathVariable("#카테고리")String pcate){
         return null;
     }
+
     // 무한 스크롤
-    @GetMapping("/list/{#카테고리}/{#페이지번호}")
+    @GetMapping("/list/{#pcate}/{pageNum}")
     @ResponseBody
-    public List<RequestVO> getList(@PathVariable("#카테고리") String #카테고리 @PathVariable("#페이지번호") int #페이지번호){
+    public List<RequestVO> getMoreList(@PathVariable("#카테고리") String pcate, @PathVariable("pageNum") int pageNum){
         return null;
+    }
+
+    // 좋아요 목록에 추가
+    @GetMapping("/wish")
+    @ResponseBody
+    public boolean wish(Long bno){
+        return false;
     }
 }
