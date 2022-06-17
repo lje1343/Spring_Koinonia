@@ -1,5 +1,6 @@
 package com.example.teamproject.service.product;
 
+import com.example.teamproject.domain.dao.product.ProductDAO;
 import com.example.teamproject.domain.vo.ProductVO;
 import com.example.teamproject.service.BoardService;
 import lombok.RequiredArgsConstructor;

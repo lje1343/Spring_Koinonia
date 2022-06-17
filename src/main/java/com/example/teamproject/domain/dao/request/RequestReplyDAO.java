@@ -1,5 +1,6 @@
 package com.example.teamproject.domain.dao.request;
 
+import com.example.teamproject.domain.vo.RequestReplyVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

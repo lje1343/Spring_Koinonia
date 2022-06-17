@@ -1,5 +1,6 @@
 package com.example.teamproject.service.declare;
 
+import com.example.teamproject.domain.dao.declare.DeclareDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

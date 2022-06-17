@@ -1,5 +1,6 @@
 package com.example.teamproject.domain.dao.product;
 
+import com.example.teamproject.domain.vo.ProductVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

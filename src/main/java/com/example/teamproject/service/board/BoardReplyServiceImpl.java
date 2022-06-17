@@ -1,5 +1,6 @@
 package com.example.teamproject.service.board;
 
+import com.example.teamproject.domain.dao.board.BoardReplyDAO;
 import com.example.teamproject.domain.vo.BoardReplyVO;
 import com.example.teamproject.service.ReplyService;
 import lombok.RequiredArgsConstructor;

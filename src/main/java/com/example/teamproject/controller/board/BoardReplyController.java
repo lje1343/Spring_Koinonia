@@ -60,4 +60,5 @@ public class BoardReplyController {
         boardReplyService.modify(boardReplyVO);
         return "댓글 수정 성공";
     }
+
 }

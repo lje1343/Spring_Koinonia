@@ -1,5 +1,6 @@
 package com.example.teamproject.controller.user;
 
+import com.example.teamproject.service.user.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -13,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user/*")
 @RequiredArgsConstructor
 public class UserController {
-    private final UserService UserService;
-    // 회원가입/로그인/비밀번호찾기
+    private final UserServiceImpl userService;
+    // 회원가입/로그인/비밀번호찾기/마이페이지
 
     @GetMapping("/join")
     public String goToJoin(){
@@ -31,10 +32,6 @@ public class UserController {
         // 회원등록
         return "/user/login";
     }
-
-    // 이메일 중복확인-rest
-
-    // 이름 중복확인-rest
 
     @GetMapping("/login")
     public String goToLogin(){

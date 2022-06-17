@@ -1,5 +1,6 @@
 package com.example.teamproject.domain.dao.board;
 
+import com.example.teamproject.domain.vo.WishboardVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

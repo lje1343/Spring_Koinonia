@@ -1,16 +1,15 @@
 package com.example.teamproject.controller.board;
 
+import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.service.board.BoardServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -47,5 +46,9 @@ public class BoardRestController {
         }
     }
 
-    // 다이어리 좋아요
+    // 무한 스크롤
+    @GetMapping("/list/{#카테고리}/{#페이지번호}")
+    public List<BoardVO> getList(@PathVariable("#카테고리")String #카테고리 @PathVariable("#페이지번호") int #페이지번호){
+        return null;
+    }
 }

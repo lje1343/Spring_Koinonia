@@ -1,5 +1,6 @@
 package com.example.teamproject.service.board;
 
+import com.example.teamproject.domain.dao.board.BoardDAO;
 import com.example.teamproject.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

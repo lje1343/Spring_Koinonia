@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
-@RequestMapping("/Request_rest/*")
+@RequestMapping("/request_rest/*")
 @RequiredArgsConstructor
 public class RequestRestController {
     private final RequestServieceImpl requestServiece;

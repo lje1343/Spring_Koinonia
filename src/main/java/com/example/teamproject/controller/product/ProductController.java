@@ -1,5 +1,7 @@
 package com.example.teamproject.controller.product;
 
+import com.example.teamproject.domain.vo.ProductVO;
+import com.example.teamproject.service.product.ProductServieceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -15,7 +17,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/product/*")
 @RequiredArgsConstructor
 public class ProductController {
-    private final ProductService productService;
+    private final ProductServieceImpl productService;
     // 상품
 
     @GetMapping("/product/register")
@@ -42,7 +44,6 @@ public class ProductController {
         // 상품 리스트
         return "/product/list";
     }
-    // 무한스크롤 - rest
 
     @GetMapping("/product/detail")
     public String read(Long pno, Model model){

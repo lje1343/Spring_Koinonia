@@ -1,5 +1,6 @@
 package com.example.teamproject.service.request;
 
+import com.example.teamproject.domain.dao.request.RequestDAO;
 import com.example.teamproject.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class RequestServieceImpl implements BoardService {
-    public final ReguestDAO reguestDAO;
+    public final RequestDAO requestDAO;
 
     // 판매 상품 요청 등록
     public void register(RequestVO requestVO) {

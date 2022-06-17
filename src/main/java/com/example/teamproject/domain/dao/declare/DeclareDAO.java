@@ -1,5 +1,6 @@
 package com.example.teamproject.domain.dao.declare;
 
+import com.example.teamproject.domain.vo.DeclareVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
