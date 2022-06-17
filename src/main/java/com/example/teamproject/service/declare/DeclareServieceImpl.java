@@ -7,8 +7,8 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class DeclareServiece {
-    private final ProductDAO productDAO;
+public class DeclareServieceImpl {
+    private final DeclareDAO productDAO;
 
     // 신고 등록
     public void register(DeclareVO declareVO){
@@ -17,11 +17,11 @@ public class DeclareServiece {
 
     // 신고 당한 횟수 조회
     public int getTotal(String name){
-
+        return 0;
     };
 
     // 회원 1명의 신고 목록 조회
     public List<DeclareVO> getList(String name, Criteria criteria){
-
+        return null;
     };
 }

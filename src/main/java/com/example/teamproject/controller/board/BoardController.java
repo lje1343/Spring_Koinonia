@@ -1,5 +1,7 @@
 package com.example.teamproject.controller.board;
 
+import com.example.teamproject.domain.vo.BoardVO;
+import com.example.teamproject.service.board.BoardServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -15,7 +17,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/board/*")
 @RequiredArgsConstructor
 public class BoardController {
-    private final BoardService boardService;
+    private final BoardServiceImpl boardService;
     // 다이어리
 
     @GetMapping("/board/register")
@@ -67,7 +69,6 @@ public class BoardController {
         // 다이어리 상세
         return "/board/detail";
     }
-    // 무한스크롤 - rest
 
     @GetMapping("/board/list")
     public String getList(Criteria criteria, Model model){
@@ -77,6 +78,4 @@ public class BoardController {
         // 다이어리 리스트
         return "/board/list";
     }
-
-    // 다이어리 좋아요(등록) - Rest
 }

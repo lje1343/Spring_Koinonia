@@ -1,5 +1,6 @@
 package com.example.teamproject.service.board;
 
+import com.example.teamproject.domain.vo.BoardReplyVO;
 import com.example.teamproject.service.ReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,6 @@ public class BoardReplyServiceImpl implements ReplyService {
 
     // 다이어리 댓글 등록
     public void register(BoardReplyVO boardReplyVO) {
-
     }
 
     // 다이어리 댓글 1개 조회

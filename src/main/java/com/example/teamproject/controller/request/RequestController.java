@@ -1,5 +1,7 @@
 package com.example.teamproject.controller.request;
 
+import com.example.teamproject.domain.vo.RequestVO;
+import com.example.teamproject.service.request.RequestServieceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -15,7 +17,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/request/*")
 @RequiredArgsConstructor
 public class RequestController {
-    private final RequestService requestService;
+    private final RequestServieceImpl requestServiece;
     // 판매 상품 요청
 
     @GetMapping("/request/register")
@@ -34,12 +36,12 @@ public class RequestController {
         return new RedirectView("/request/list");
     }
 
+
     @GetMapping("/request/list")
-    public String getList(Model model){
+    public String getList(Criteria criteria, Model model){
         log.info("*************");
         log.info("상품 요청 리스트");
         log.info("*************");
-        // 상품 요청 리스트
         return "/request/list";
     }
     // 무한스크롤 - rest
