@@ -102,16 +102,16 @@ public class BoardController {
     }
 
     // 카테고리별 상품 목록
-    @GetMapping("/list/{pcate}") // #카테고리 변수명 미정
+    @GetMapping("/list/{bcate}") // #카테고리 변수명 미정
     @ResponseBody
-    public List<RequestVO> getList(@PathVariable("#카테고리")String pcate){
+    public List<RequestVO> getList(@PathVariable("bcate")String bcate){
         return null;
     }
 
     // 무한 스크롤
-    @GetMapping("/list/{#pcate}/{pageNum}")
+    @GetMapping("/list/{bcate}/{pageNum}")
     @ResponseBody
-    public List<RequestVO> getMoreList(@PathVariable("#카테고리") String pcate, @PathVariable("pageNum") int pageNum){
+    public List<RequestVO> getMoreList(@PathVariable("bcate") String bcate, @PathVariable("pageNum") int pageNum){
         return null;
     }
 
