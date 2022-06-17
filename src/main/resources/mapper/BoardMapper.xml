@@ -3,6 +3,36 @@
 <mapper namespace="com.example.teamproject.mapper.BoardMapper">
 
 
+    <insert id="insert">
+        <selectKey keyProperty="bno" resultType="long" order="BEFORE">
+            SELECT SEQ_BOARD.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_BOARD
+        (BNO, TITLE, CONTENT,NAME)
+        VALUES(#{bno}, #{title}, #{content}, #{name})
+    </insert>
+
+    <select id="get" resultType="boardVO">
+        SELECT BNO, TITLE, CONTENT, NAME, REGISTER_DATE, UPDATE_DATE
+        FROM TBL_BOARD WHERE BNO = #{bno}
+    </select>
+
+    <delete id="delete">
+        DELETE FROM TBL_BOARD WHERE BNO = #{bno}
+    </delete>
+
+    <update id="update">
+        UPDATE TBL_BOARD
+        SET TITLE = #{title}, CONTENT = #{content},
+            NAME = #{name}, UPDATE_DATE = SYSDATE
+        WHERE BNO = #{bno}
+    </update>
+
+    <update id="updatename">
+        UPDATE TBL_BOARD
+        SET NAME = #{name}, UPDATE_DATE = SYSDATE
+        WHERE NAME = #{name}
+    </update>
 
 
 
