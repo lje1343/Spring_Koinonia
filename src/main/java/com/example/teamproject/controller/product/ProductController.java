@@ -6,11 +6,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -69,5 +69,22 @@ public class ProductController {
         log.info("*************");
         // 다이어리 수정 완료
         return new RedirectView("/product/list");
+    }
+
+    ///////////////////////////////////////////////////
+    // ResponsBody
+
+    // 카테고리별 상품 목록
+    @GetMapping("/list/{#카테고리}") // 변수명 미정
+    @ResponseBody
+    public List<ProductVO> getList(@PathVariable("#카테고리")String #카테고리){
+        return null;
+    }
+
+    // 무한 스크롤
+    @GetMapping("/list/{#카테고리}/{#페이지번호}") // 변수명 미정
+    @ResponseBody
+    public List<ProductVO> getList(@PathVariable("#카테고리") String #카테고리 @PathVariable("#페이지번호") int #페이지번호){
+        return null;
     }
 }

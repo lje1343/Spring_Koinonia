@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class RequestReplyDAO {
-    private final RequestReplyMapper requestReplyMapper;
+    private final RreplyMapper requestReplyMapper;
 
     // 판매 상품 요청 댓글 작성
     public void register(RequestReplyVO requestReplyVO){

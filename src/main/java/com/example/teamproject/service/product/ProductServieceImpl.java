@@ -14,9 +14,7 @@ public class ProductServieceImpl implements BoardService {
     private final ProductDAO productDAO;
 
     // 판매 상품 등록
-    public void register(ProductVO productVO) {
-
-    }
+    public void register(ProductVO productVO) { }
 
     // 판매 상품 수정
     public boolean modify(ProductVO productVO) {

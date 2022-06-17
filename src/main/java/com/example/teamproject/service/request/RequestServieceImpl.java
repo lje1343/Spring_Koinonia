@@ -1,6 +1,7 @@
 package com.example.teamproject.service.request;
 
 import com.example.teamproject.domain.dao.request.RequestDAO;
+import com.example.teamproject.domain.vo.RequestVO;
 import com.example.teamproject.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,9 +14,7 @@ public class RequestServieceImpl implements BoardService {
     public final RequestDAO requestDAO;
 
     // 판매 상품 요청 등록
-    public void register(RequestVO requestVO) {
-
-    }
+    public void register(RequestVO requestVO) { }
 
     // 판매 상품 요청 수정
     public boolean modify(RequestVO requestVO) {

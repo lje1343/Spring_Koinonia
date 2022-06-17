@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class ProductReplyDAO {
-    private final ProductReplyMapper productReplyMapper;
+    private final PreplyMapper productReplyMapper;
 
     // 판매 상품 댓글 작성
     public void register(ProductReplyVO productReplyVO){

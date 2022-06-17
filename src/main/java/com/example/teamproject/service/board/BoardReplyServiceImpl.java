@@ -17,15 +17,15 @@ public class BoardReplyServiceImpl implements ReplyService {
     public void register(BoardReplyVO boardReplyVO) {
     }
 
-    // 다이어리 댓글 1개 조회
     @Override
+    // 다이어리 댓글 1개 조회
     public BoardReplyVO read(Long rno) {
         return null;
     }
 
     // 다이어리 댓글 전체 목록 조회
     @Override
-    public List<ReplyVO> getList(Long bno, Criteria criteria) {
+    public List<BoardReplyVO> getList(Long bno, Criteria criteria) {
         return null;
     }
 

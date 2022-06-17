@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class BoardReplyDAO {
-    private final BoardReplyMapper boardReplyMapper;
+    private final ReplyMapper boardReplyMapper;
 
     // 다이어리 댓글 작성
     public void register(BoardReplyVO boardReplyVO){

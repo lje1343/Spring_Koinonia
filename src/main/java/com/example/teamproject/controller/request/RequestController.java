@@ -6,11 +6,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -70,5 +73,36 @@ public class RequestController {
         log.info("*************");
         // 상품 요청글 수정 완료
         return new RedirectView("/request/list");
+    }
+
+    ///////////////////////////////////////////////////
+    // ResponsBody
+
+    // 상품사진 업로드(상품요청글 작성페이지)
+    @PostMapping("/uploadImg")
+    @ResponseBody
+    public void uploadImg(MultipartFile[] uploadFile) throws IOException {
+        String uploadFolder = "C:/upload";
+        for(MultipartFile file : uploadFile){
+            log.info("--------------------------------");
+            log.info("Upload File Name : " + file.getOriginalFilename());
+            log.info("Upload File Size : " + file.getSize());
+
+            File saveFile = new File(uploadFolder, file.getOriginalFilename());
+            file.transferTo(saveFile);
+        }
+    }
+
+    // 카테고리별 상품 목록
+    @GetMapping("/list/{#카테고리}") // #카테고리 변수명 미정
+    @ResponseBody
+    public List<RequestVO> getList(@PathVariable("#카테고리")String #카테고리){
+        return null;
+    }
+    // 무한 스크롤
+    @GetMapping("/list/{#카테고리}/{#페이지번호}")
+    @ResponseBody
+    public List<RequestVO> getList(@PathVariable("#카테고리") String #카테고리 @PathVariable("#페이지번호") int #페이지번호){
+        return null;
     }
 }

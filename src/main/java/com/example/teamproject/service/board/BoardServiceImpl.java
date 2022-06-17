@@ -1,6 +1,7 @@
 package com.example.teamproject.service.board;
 
 import com.example.teamproject.domain.dao.board.BoardDAO;
+import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,13 +14,9 @@ public class BoardServiceImpl implements BoardService {
     private final BoardDAO boardDAO;
 
 //    다이어리 등록
-    @Override
-    public void register(BoardVO boardVO) {
-
-    }
+    public void register(BoardVO boardVO) { }
 
 //    다이어리 수정
-    @Override
     public boolean modify(BoardVO boardVO) {
         return false;
     }

@@ -1,6 +1,7 @@
 package com.example.teamproject.service.product;
 
 import com.example.teamproject.domain.dao.product.ProductReplyDAO;
+import com.example.teamproject.domain.vo.ProductReplyVO;
 import com.example.teamproject.service.ReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
