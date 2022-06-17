@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 @NoArgsConstructor
-public class pageDTO {
+public class PageDTO {
 
     private Criteria criteria;
 
