@@ -47,14 +47,14 @@ private UserMapper userMapper;
 //
 //    }
 
-    @Test
-    public void updateTest() {
-        Long unum = 1L;
-        UserVO userVO = userMapper.getInfo(unum);
-        userVO.setName("수정1");
-        userMapper.update(userVO);
-
-    }
+//    @Test
+//    public void updateTest() {
+//        Long unum = 1L;
+//        UserVO userVO = userMapper.getInfo(unum);
+//        userVO.setName("수정1");
+//        userMapper.update(userVO);
+//
+//    }
 
 //    @Test
 //    public void deleteTest(){
