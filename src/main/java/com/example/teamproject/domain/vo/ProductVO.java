@@ -7,13 +7,14 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 public class ProductVO {
-    private int pno;
+    private Long pno;
     private String name;
     private String pname;
+    private String pcate;
     private String title;
-    private String pinfo;
+    private String content;
     private String price;
-    private String psold;
+    private Long psold;
     private String registerDate;
     private String updateDate;
 }

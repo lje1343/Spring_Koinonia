@@ -1,8 +1,7 @@
 package com.example.teamproject.mapper;
 
-import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
-import com.example.teamproject.domain.vo.UserVO;
+import com.example.teamproject.domain.vo.ProductVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,52 +9,60 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @Slf4j
-public class BoardMapperTests {
+public class ProductMapperTests {
 
 @Autowired
-private BoardMapper boardMapper;
+private ProductMapper productMapper;
 
 
 //    @Test
 //    public void insertTest() {
-//        BoardVO boardVO = new BoardVO();
-//        boardVO.setTitle("테스트1");
-//        boardVO.setContent("테스트1");
-//        boardVO.setName("수정1");
-//        boardMapper.insert(boardVO);
+//        ProductVO productVO = new ProductVO();
+//        productVO.setName("수정1");
+//        productVO.setPcate("유럽");
+//        productVO.setPname("시계");
+//        productVO.setTitle("테스트1");
+//        productVO.setContent("프랑스가서 사온 시계임 완전멋져!!");
+//        productVO.setPrice("5000원");
+//        productVO.setPsold(1L);
+//        productMapper.insert(productVO);
 //    }
 
 
 
 //    @Test
 //    public void updateTest() {
-//        Long bno = 3L;
-//        BoardVO boardVO = boardMapper.get(bno);
-//        boardVO.setTitle("테스트2");
-//        boardVO.setContent("테스트2");
-//        log.info("반환된 결과값은 : " + boardMapper.update(boardVO));
+//        Long pno = 3L;
+//        ProductVO productVO = productMapper.get(pno);
+//        productVO.setPname("가즈아아아");
+//        productVO.setTitle("테스트2");
+//        productVO.setContent("테스트2");
+//        productVO.setPrice("6만원");
+//        productVO.setPsold(1L);
+//        productVO.setPcate("아프리카 띠까띠까");
+//        log.info("반환된 결과값은 : " + productMapper.update(productVO));
 //    }
 //
 //    @Test
 //    public void deleteTest() {
-//        Long bno = 4L;
-//        log.info("삭제 번호 : " + boardMapper.delete(bno));
+//        Long pno = 3L;
+//        log.info("삭제 번호 : " + productMapper.delete(pno));
 //    }
 
 //    @Test
 //    public void getTest(){
-//        Long bno = 2L;
-//        log.info("2번게시물의 정보입니다" + boardMapper.get(bno));
+//        Long pno = 2L;
+//        log.info("2번게시물의 정보입니다" + productMapper.get(pno));
 //    }
 
 //    @Test
 //    public void getTotalTest(){
-//        log.info("총 갯수는 " + boardMapper.getTotal());
+//        log.info("총 갯수는 " + productMapper.getTotal());
 //    }
 
 //    @Test
 //    public void getListTest(){
-//        boardMapper.getList(new Criteria(1, 10)).stream().map(BoardVO::toString).forEach(log::info);
+//        productMapper.getList(new Criteria(1, 10)).stream().map(ProductVO::toString).forEach(log::info);
 //    }
 
 

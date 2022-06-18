@@ -10,6 +10,5 @@ public class FileVO {
     private String uploadPath;
     private String uuid;
     private boolean image;
-    private Long fileSize;
     private Long bno;
 }
