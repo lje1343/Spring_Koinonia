@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 public class FileVO {
-    private String uuid;
-    private String uploadpath;
     private String fileName;
-    private String image;
-    private int bno;
-    private int fileSize;
+    private String uploadPath;
+    private String uuid;
+    private boolean image;
+    private Long fileSize;
+    private Long bno;
 }
