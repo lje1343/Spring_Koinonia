@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 public class DeclareVO {
-    private int dno;
+    private Long dno;
     private String title;
     private String name;
     private String content;

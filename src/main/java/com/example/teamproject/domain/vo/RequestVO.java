@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 public class RequestVO {
-    private int rno;
+    private Long rno;
     private String name;
     private String title;
     private String content;
