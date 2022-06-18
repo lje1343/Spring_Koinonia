@@ -6,9 +6,12 @@
         <setting name="jdbcTypeForNull" value="NULL" />
     </settings>
     <typeAliases>
+<<<<<<< HEAD
         <typeAlias type="com.example.teamproject.domain.vo.UserVO" alias="UserVO"/>
         <typeAlias type="com.example.teamproject.domain.vo.BoardVO" alias="BoardVO"/>
         <typeAlias type="com.example.teamproject.domain.vo.ProductVO" alias="ProductVO"/>
         <typeAlias type="com.example.teamproject.domain.vo.FileVO" alias="fileVO"/>
+=======
+>>>>>>> master/master
     </typeAliases>
 </configuration>

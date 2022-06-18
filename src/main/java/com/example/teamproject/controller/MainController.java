@@ -1,5 +1,8 @@
 package com.example.teamproject.controller;
 
+import com.example.teamproject.service.board.BoardReplyServiceImpl;
+import com.example.teamproject.service.product.ProductServieceImpl;
+import com.example.teamproject.service.request.RequestServieceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -10,7 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Slf4j
 @RequestMapping("/")
+@RequiredArgsConstructor
 public class MainController {
+    private final BoardReplyServiceImpl boardReplyService;
+    private final ProductServieceImpl productServiece;
+    private final RequestServieceImpl requestServiece;
+
     @GetMapping("/")
     public String goToMain(Model model){
         log.info("*************");
