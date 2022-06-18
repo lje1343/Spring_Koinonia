@@ -27,6 +27,21 @@ input:focus {
   line-height: 1.4285714286;
   font-weight: 700;
 }
+.btnM {
+  width: 150px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  padding: 0 10px !important;
+}
+.btnS {
+  width: 95px;
+  height: 30px;
+  font-size: 13px;
+  line-height: 26px;
+  padding: 0 10px !important;
+}
 /* 버튼 스타일 3개 */
 .btnStyleA {
   color: #fff;
@@ -48,6 +63,10 @@ input:focus {
 .btnStyleB:hover {
   background: #004792;
 }
+.btnStyleB_1 {
+  border-radius: 3px;
+  border: 2px solid #0058a3;
+}
 .btnStyleC {
   color: #111;
   text-align: center;
@@ -57,4 +76,8 @@ input:focus {
 }
 .btnStyleC:hover {
   border-width: 2px;
+}
+.btnStyleC_1 {
+  border-radius: 3px;
+  border-color: #ccc;
 }
