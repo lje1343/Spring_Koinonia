@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <settings>
-        <setting name="cacheEnabled" value="false" />
-        <setting name="jdbcTypeForNull" value="NULL" />
-    </settings>
     <typeAliases>
-<<<<<<< HEAD
         <typeAlias type="com.example.teamproject.domain.vo.UserVO" alias="UserVO"/>
         <typeAlias type="com.example.teamproject.domain.vo.BoardVO" alias="BoardVO"/>
+        <typeAlias type="com.example.teamproject.domain.vo.BoardReplyVO" alias="ReplyVO"/>
         <typeAlias type="com.example.teamproject.domain.vo.ProductVO" alias="ProductVO"/>
         <typeAlias type="com.example.teamproject.domain.vo.FileVO" alias="fileVO"/>
-=======
->>>>>>> master/master
     </typeAliases>
 </configuration>

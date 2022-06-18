@@ -51,7 +51,7 @@ private UserMapper userMapper;
 //    public void updateTest() {
 //        Long unum = 1L;
 //        UserVO userVO = userMapper.getInfo(unum);
-//        userVO.setName("수정1");
+//        userVO.setName("가즈아");
 //        userMapper.update(userVO);
 //
 //    }
