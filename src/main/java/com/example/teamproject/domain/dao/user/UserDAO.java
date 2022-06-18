@@ -47,8 +47,6 @@ public class UserDAO {
         return userMapper.delete(email,pw);
     };
 
-
-    // d
 //    // 회원 리스트
 //    public List<UserVO> getList(){
 //

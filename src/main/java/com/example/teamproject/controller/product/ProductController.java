@@ -20,14 +20,14 @@ public class ProductController {
     private final ProductServieceImpl productService;
     // 상품
 
-    @GetMapping("/product/register")
+    @GetMapping("/register")
     public String register(){
         log.info("*************");
         log.info("판매 상품정보 작성");
         log.info("*************");
         return "/product/register";
     }
-    @PostMapping("/product/register")
+    @PostMapping("/register")
     public String register(ProductVO productVO, RedirectAttributes rttr){
         log.info("*************");
         log.info("판매 상품 등록");
@@ -36,7 +36,7 @@ public class ProductController {
         return new RedirectView("/product/list");
     }
 
-    @GetMapping("/product/list")
+    @GetMapping("/list")
     public String getList(Model model){
         log.info("*************");
         log.info("상품 리스트");
@@ -45,7 +45,7 @@ public class ProductController {
         return "/product/list";
     }
 
-    @GetMapping("/product/detail")
+    @GetMapping("/detail")
     public String read(Long pno, Model model){
         log.info("*************");
         log.info("상품 상세");
@@ -54,7 +54,7 @@ public class ProductController {
         return "/product/detail";
     }
 
-    @GetMapping("/product/modify")
+    @GetMapping("/modify")
     public String modify(Long pno){
         log.info("*************");
         log.info("상품 수정");
@@ -62,7 +62,7 @@ public class ProductController {
         // 상품 수정
         return "/product/modify";
     }
-    @PostMapping("/product/modify")
+    @PostMapping("/modify")
     public String modify(Long pno, RedirectAttributes rttr){
         log.info("*************");
         log.info("상품 수정 완료");

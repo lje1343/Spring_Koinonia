@@ -23,14 +23,14 @@ public class RequestController {
     private final RequestServieceImpl requestServiece;
     // 판매 상품 요청
 
-    @GetMapping("/request/register")
+    @GetMapping("/register")
     public String register(){
         log.info("*************");
         log.info("판매 상품 요청글 작성");
         log.info("*************");
         return "/request/register";
     }
-    @PostMapping("/request/register")
+    @PostMapping("/register")
     public String register(RequestVO requestVO, RedirectAttributes rttr){
         log.info("*************");
         log.info("판매 상품 요청글 등록");
@@ -40,7 +40,7 @@ public class RequestController {
     }
 
 
-    @GetMapping("/request/list")
+    @GetMapping("/list")
     public String getList(Criteria criteria, Model model){
         log.info("*************");
         log.info("상품 요청 리스트");
@@ -49,7 +49,7 @@ public class RequestController {
     }
     // 무한스크롤 - rest
 
-    @GetMapping("/request/detail")
+    @GetMapping("/detail")
     public String read(Long rno, Model model){
         log.info("*************");
         log.info("상품 요청글 상세");
@@ -58,7 +58,7 @@ public class RequestController {
         return "/request/detail";
     }
 
-    @GetMapping("/request/modify")
+    @GetMapping("/modify")
     public String modify(Long rno){
         log.info("*************");
         log.info("상품 요청글 수정");
@@ -66,7 +66,7 @@ public class RequestController {
         // 상품 요청글 수정
         return "/request/modify";
     }
-    @PostMapping("/request/modify")
+    @PostMapping("/modify")
     public String modify(Long rno, RedirectAttributes rttr){
         log.info("*************");
         log.info("상품 요청글 수정 완료");

@@ -24,14 +24,14 @@ public class BoardController {
     private final BoardServiceImpl boardService;
     // 다이어리
 
-    @GetMapping("/board/register")
+    @GetMapping("/register")
     public String register(){
         log.info("*************");
         log.info("다이어리 작성");
         log.info("*************");
         return "/board/register";
     }
-    @PostMapping("/board/register")
+    @PostMapping("/register")
     public String register(BoardVO boardVO, RedirectAttributes rttr){
         log.info("*************");
         log.info("다이어리 등록");
@@ -40,7 +40,7 @@ public class BoardController {
         return new RedirectView("/board/list");
     }
 
-    @GetMapping("/board/modify")
+    @GetMapping("/modify")
     public String modify(Long bno){
         log.info("*************");
         log.info("다이어리 수정내용 작성/삭제");
@@ -48,7 +48,7 @@ public class BoardController {
         // 다이어리 수정
         return "/board/modify";
     }
-    @PostMapping("/board/modify")
+    @PostMapping("/modify")
     public String modify(Long bno, RedirectAttributes rttr){
         log.info("*************");
         log.info("다이어리 수정");
@@ -56,7 +56,7 @@ public class BoardController {
         // 다이어리 수정 완료
         return new RedirectView("/board/list");
     }
-    @PostMapping("/board/remove")
+    @PostMapping("/remove")
     public String remove(Long bno, RedirectAttributes rttr){
         log.info("*************");
         log.info("다이어리 삭제");
@@ -65,7 +65,7 @@ public class BoardController {
         return new RedirectView("/board/list");
     }
 
-    @GetMapping("/board/detail")
+    @GetMapping("/detail")
     public String read(Long bno, Model model){
         log.info("*************");
         log.info("다이어리 상세");
@@ -74,7 +74,7 @@ public class BoardController {
         return "/board/detail";
     }
 
-    @GetMapping("/board/list")
+    @GetMapping("/list")
     public String getList(Criteria criteria, Model model){
         log.info("*************");
         log.info("다이어리 리스트");
