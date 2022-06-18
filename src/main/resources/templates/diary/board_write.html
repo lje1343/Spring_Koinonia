@@ -97,12 +97,14 @@
           </div>
           <div class="writeArea">
             <div id="summernote"></div>
+            <!-- 에디터 이미지 임시 저장-->
+            <input type="hidden" name="tempFolder" id="tempFolder" value="임시폴더명" />
           </div>
           <div class="btnArea">
             <button id="cancleBtn" class="btnM btnStyleC btnStyleC_1">
               취소
             </button>
-            <button type="submit" class="btnM btnStyleB btnStyleB_1">
+            <button type="submit" class="btnM btnStyleB btnStyleB_1" id="uploadBtn">
               확인
             </button>
           </div>
@@ -113,16 +115,4 @@
     <!-- footer end -->
   </body>
   <script src="../../static/assets/js/board_write.js"></script>
-  <script>
-    // summernote create
-    $("#summernote").summernote({
-      tabsize: 2,
-      height: 450, // 에디터 높이
-      minHeight: 450, // 최소 높이
-      maxHeight: 450, // 최대 높이
-      focus: false, // 에디터 로딩후 포커스를 맞출지 여부
-      lang: "ko-KR", // 한글 설정
-      placeholder: "다이어리를 작성해주세요.", //placeholder 설정
-    });
-  </script>
 </html>
