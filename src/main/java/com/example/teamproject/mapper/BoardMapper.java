@@ -10,6 +10,7 @@ public interface BoardMapper {
     public int update(BoardVO boardVO);
     public BoardVO get(Long bno);
     public int delete(Long bno);
+    public int getTotal();
 
 
 

@@ -47,6 +47,13 @@ private BoardMapper boardMapper;
 //        log.info("2번게시물의 정보입니다" + boardMapper.get(bno));
 //    }
 
+//    @Test
+//    public void getTotalTest(){
+//        log.info("총 갯수는 " + boardMapper.getTotal());
+//    }
+
+
+
 
 
 
