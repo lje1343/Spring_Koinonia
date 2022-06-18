@@ -17,13 +17,13 @@
                 <trim prefix="OR">
                     <choose>
                         <when test="type == 'T'.toString()">
-                            (BOARD_TITLE LIKE '%'||#{keyword}||'%')
+                            (TITLE LIKE '%'||#{keyword}||'%')
                         </when>
                         <when test="type == 'C'.toString()">
-                            (BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+                            (CONTENT LIKE '%'||#{keyword}||'%')
                         </when>
                         <when test="type == 'W'.toString()">
-                            (BOARD_WRITER LIKE '%'||#{keyword}||'%')
+                            (NAME LIKE '%'||#{keyword}||'%')
                         </when>
                     </choose>
                 </trim>

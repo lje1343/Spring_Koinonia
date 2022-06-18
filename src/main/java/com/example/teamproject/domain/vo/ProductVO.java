@@ -1,13 +1,19 @@
 package com.example.teamproject.domain.vo;
 
+
+import lombok.Data;
+import org.springframework.stereotype.Component;
+
+@Component
+@Data
 public class ProductVO {
-    private int Pno;
-    private String Name;
-    private String Pname;
-    private String Title;
-    private String Pinfo;
-    private String Price;
-    private String Psold;
-    private String RegisterDate;
-    private String UpdateDate;
+    private int pno;
+    private String name;
+    private String pname;
+    private String title;
+    private String pinfo;
+    private String price;
+    private String psold;
+    private String registerDate;
+    private String updateDate;
 }

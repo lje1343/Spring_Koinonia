@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 public class BoardReplyVO {
-    private int Rno;
-    private int Bno;
-    private String Content;
-    private String Name;
-    private String RegisterDate;
-    private String UpdateDate;
+    private int rno;
+    private int bno;
+    private String content;
+    private String name;
+    private String registerDate;
+    private String updateDate;
 
 }
