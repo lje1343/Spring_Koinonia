@@ -11,7 +11,7 @@
         DELETE FROM TBL_FILE WHERE BNO = #{bno}
     </delete>
 
-    <select id="findByBoardBno" resultType="fileVO">
+    <select id="findBno" resultType="fileVO">
         SELECT UUID, UPLOAD_PATH, FILE_NAME, IMAGE, BNO, FILE_SIZE
         FROM TBL_FILE
         WHERE BNO = #{bno}

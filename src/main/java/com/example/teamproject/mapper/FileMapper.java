@@ -9,7 +9,7 @@ import java.util.List;
     public interface FileMapper {
         public void insert(FileVO fileVO);
         public void delete(Long bno);
-        public List<FileVO> findByBoardBno(Long bno);
+        public List<FileVO> findBno(Long bno);
         public List<FileVO> getOldFiles();
 
     }
