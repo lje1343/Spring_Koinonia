@@ -1,5 +1,5 @@
 
-/** Common & Template patch **/
+
 #wrapper { background-image: none; }
 #st-body { color: #333; word-break: keep-all; }
 #st-body p {color: #333; }
@@ -36,7 +36,7 @@
 #st-body .text-lnl, #st-body .text-lnl a { color: #7369AF; }
 #st-body .text-lnl a::hover, #st-body .text-lnl a::focus, #st-body .text-lnl a::active { color: #665ca4; }
 
-/** Subheader **/
+
 #wrapper { 
 	width: 100%;
 	height: 500px;
@@ -119,7 +119,7 @@
 }
 
 
-/** Content **/
+
 #st-body .content-wrapper {
 	min-height: 500px;
 	background-color: #fff;
@@ -133,7 +133,7 @@
 
 #scroll-to-top { display: block; } 
 
-/** ST Layout framework **/
+
 #st-body .vtop { vertical-align: top; }
 #st-body .vmiddle { vertical-align: middle; }
 #st-body .vbottom { vertical-align: bottom; }

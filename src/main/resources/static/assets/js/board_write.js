@@ -1,3 +1,6 @@
+///////////////////////////////////////////////////////////////////////////////////////
+// 동적 페이지 구현
+
 // select
 const selectOpenClose = (li) => {
   let selectBtn = document.querySelector(li + " button.select");
@@ -38,3 +41,124 @@ $(".nationalityArea .optionList").click((e) => {
 $("#thum").on("change", function () {
   $("#viewInput").val($("#thum").val());
 });
+///////////////////////////////////////////////////////////////////////////////////////
+// ajax
+
+// 썸네일 유효성 검사
+let regex = new RegExp("(.*?)\.(jpg|png|gif|jepg)");
+
+function checkExtension(fileName, fileSize){
+  if(!regex.test(fileName)){
+    alert("업로드 할 수 없는 파일의 형식입니다.");
+    return false;
+  }
+
+  if(fileSize >= 5242880){
+    alert("파일 사이즈 초과");
+    return false;
+  }
+
+  return true;
+}
+
+// 썸네일 업로드
+$("#thum").on("change", function(e){
+  let formData = new FormData();
+  let inputFile = $("input[name='thum']");
+  let files = inputFile[0].files;
+  for(let i=0; i<files.length; i++){
+    if(!checkExtension(files[i].name, files[i].size)){
+      $("#thum").val("");
+      $("#viewInput").val("");
+      return;
+    }
+    formData.append("uploadFile", files[i]);
+  }
+  //
+  // $.ajax({
+  //   url: "uploadAjaxAction",
+  //   type: "post",
+  //   data: formData,
+  //   contentType: false,
+  //   processData: false,
+  //   success: function(files){
+  //     // showUploadResult(files);
+  //   }
+  // });
+});
+
+///////////////////////////////////////////////////////////////////////////////////////
+// 썸머노트
+
+// summernote create
+$("#summernote").summernote({
+  tabsize: 2,
+  height: 450, // 에디터 높이
+  minHeight: 450, // 최소 높이
+  maxHeight: 450, // 최대 높이
+  focus: false, // 에디터 로딩후 포커스를 맞출지 여부
+  lang: "ko-KR", // 한글 설정
+  placeholder: "다이어리를 작성해주세요.", //placeholder 설정
+  callbacks: {
+    onImageUpload: function (files) { //이미지 업로드 처리
+      imageUpload(files, this); // this = $("#summernote")
+    },
+  },
+});
+
+//이미지 등록처리
+function imageUpload(files, editor) {
+  var status = false;
+  var reg = /(.*?)\.(gif|jpg|png|jpeg)$/; //허용할 확장자
+  var formData = new FormData();
+  var fileArr = Array.prototype.slice.call(files);
+  var filename = "";
+  var noImgCnt = 0;
+  fileArr.forEach(function(f){
+    filename = f.name;
+    if(filename.match(reg)) {
+      formData.append('file[]', f);
+    }
+    else{
+      noImgCnt++;
+    }
+  });
+  // formData.append('tempFolder', $('#tempFolder').val());
+
+  if(noImgCnt > 0) {
+    alert("파일은 gif, png, jpg, jpeg 파일만 등록해 주세요.");
+    return;
+  } else {
+    $.ajax({
+      url : "이미지 업로드 처리할 주소",
+      data:formData,
+      cache:false,
+      contentType:false,
+      processData:false,
+      enctype:'multipart/formDataData',
+      type:'POST',
+      success:function(result) {
+        var data = JSON.parse(result); // result = 업로드하고 난 files의 경로
+        for(x = 0; x < data.length; x++) {
+          var img = $('<img>').attr({src:data[x]});
+          $(editor).summernote('insertNode', img[x]); // 썸머노트 컨텐츠에 파라미터로 받은 문자열 추가
+        }
+      }
+    });
+  }
+}
+
+// test용
+$(document).on('click', '#uploadBtn', function (files, editor) {
+  saveContent();
+});
+
+const saveContent = () => {
+  var summernoteContent = $('#summernote').summernote('code'); // 썸머노트 작성내용(html)
+  console.log("summernoteContent : " + summernoteContent);
+}
+
+
+
+
+

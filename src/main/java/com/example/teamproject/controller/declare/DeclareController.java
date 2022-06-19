@@ -25,14 +25,14 @@
 //        return "/declare/declare";
 //    }
 //
-//    @GetMapping("/declare/register")
+//    @GetMapping("/register")
 //    public String register(){
 //        log.info("*************");
 //        log.info("신고 작성");
 //        log.info("*************");
 //        return "/declare/register";
 //    }
-//    @PostMapping("/declare/register")
+//    @PostMapping("/register")
 //    public String register(DeclareVO declareVO, RedirectAttributes rttr){
 //        log.info("*************");
 //        log.info("신고 등록");
@@ -43,7 +43,7 @@
 //
 //    // 이메일로 사용자 신고당한 이력 조회
 //
-////    @GetMapping("/declare/list")
+////    @GetMapping("/list")
 ////    public String getList(Model model){
 ////        log.info("*************");
 ////        log.info("신고 리스트");
@@ -52,7 +52,7 @@
 ////        return "/declare/list";
 ////    }
 //
-////    @GetMapping("/declare/detail")
+////    @GetMapping("/detail")
 ////    public String read(Long dno, Model model){
 ////        log.info("*************");
 ////        log.info("신고 상세");
@@ -61,7 +61,7 @@
 ////        return "/declare/detail";
 ////    }
 //
-////    @GetMapping("/declare/modify")
+////    @GetMapping("/modify")
 ////    public String modify(Long dno){
 ////        log.info("*************");
 ////        log.info("신고 수정");
@@ -69,7 +69,7 @@
 ////        // 신고 수정
 ////        return "/declare/modify";
 ////    }
-////    @PostMapping("/declare/modify")
+////    @PostMapping("/modify")
 ////    public String modify(Long dno, RedirectAttributes rttr){
 ////        log.info("*************");
 ////        log.info("신고 수정 완료");

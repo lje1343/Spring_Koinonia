@@ -1,6 +1,7 @@
 package com.example.teamproject.mapper;
 
 import com.example.teamproject.domain.vo.BoardVO;
+import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -46,6 +47,18 @@ private BoardMapper boardMapper;
 //        Long bno = 2L;
 //        log.info("2번게시물의 정보입니다" + boardMapper.get(bno));
 //    }
+
+//    @Test
+//    public void getTotalTest(){
+//        log.info("총 갯수는 " + boardMapper.getTotal());
+//    }
+
+//    @Test
+//    public void getListTest(){
+//        boardMapper.getList(new Criteria(1, 10)).stream().map(BoardVO::toString).forEach(log::info);
+//    }
+
+
 
 
 

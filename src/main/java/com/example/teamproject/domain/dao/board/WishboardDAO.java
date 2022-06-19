@@ -1,5 +1,6 @@
 //package com.example.teamproject.domain.dao.board;
 //
+//import com.example.teamproject.domain.vo.WishboardVO;
 //import lombok.RequiredArgsConstructor;
 //import org.springframework.stereotype.Repository;
 //
@@ -8,7 +9,7 @@
 //@Repository
 //@RequiredArgsConstructor
 //public class WishboardDAO {
-//    private final WishboardMapper wishboardMapper;
+//    private final WishlistMapper wishboardMapper;
 //
 //    // 좋아요 목록에 추가
 //    public void register(WishboardVO wishboardVO){
