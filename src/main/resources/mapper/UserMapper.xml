@@ -3,7 +3,8 @@
 <mapper namespace="com.example.teamproject.mapper.UserMapper">
 
     <select id="find" resultType="UserVO">
-        SELECT * FROM TBL_USER WHERE EMAIL = #{email}
+        SELECT NAME, PW, COVER, EMAIL, UNUM
+         FROM TBL_USER WHERE EMAIL = #{email}
     </select>
     
     <select id="checkId" resultType="_int">
@@ -26,12 +27,6 @@
         SET  EMAIL = #{email}, PW = #{pw},
              COVER = #{cover}, NAME = #{name}
         WHERE UNUM = #{unum}
-    </update>
-
-    <update id="updatename">
-        UPDATE TBL_BOARD
-        SET NAME = #{name}, UPDATE_DATE = SYSDATE
-        WHERE BNO = #{bno}
     </update>
 
     <select id="get" resultType="long">
