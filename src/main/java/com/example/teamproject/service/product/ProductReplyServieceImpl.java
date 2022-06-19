@@ -15,7 +15,6 @@ public class ProductReplyServieceImpl implements ReplyService {
 
     // 판매 상품 댓글 작성
     public void register(ProductReplyVO productReplyVO) {
-
     }
 
     // 판매 상품 댓글 1개 조회

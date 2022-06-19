@@ -9,6 +9,6 @@ import java.util.List;
 public interface ReplyService {
     public BoardReplyVO read(Long rno);
     public List<BoardReplyVO> getList(Long bno, Criteria criteria);
-    public boolean remove(Long rno);
+    public int remove(Long rno);
     public int getTotal(Long bno);
 }
