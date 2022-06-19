@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service
 public interface BoardService {
-    public boolean remove(Long bno);
+    public int remove(Long bno);
     public BoardVO read(Long bno);
     public List<BoardVO> getList(Criteria criteria);
 }

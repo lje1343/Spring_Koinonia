@@ -13,17 +13,17 @@ public class DeclareDAO {
 
     // 신고 등록
     public void register(DeclareVO declareVO){
-
+        declareMapper.insert(declareVO);
     };
 
     // 신고 당한 횟수 조회
-    public int getTotal(String name){
-
+    public int getTotal(String email){
+        return declareMapper.getTotal(email);
     };
 
     // 회원 1명의 신고 목록 조회
     public List<DeclareVO> getList(String name, Criteria criteria){
-
+        return declareMapper.getList(name, criteria);
     };
 
 //    // 신고 목록

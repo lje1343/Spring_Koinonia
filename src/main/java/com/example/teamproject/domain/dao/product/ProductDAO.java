@@ -12,27 +12,27 @@ public class ProductDAO {
     private final ProductMapper productMapper;
 
     // 판매 상품 목록
-    public List<ProductVO> getList(){
-
+    public List<ProductVO> getList(Criteria criteria){
+        return productMapper.getList(criteria);
     };
 
     // 판매 상품 등록
     public void register(ProductVO productVO){
-
+        return productMapper.insert(productVO);
     };
 
     // 판매 상품 상세보기
     public ProductVO read(Long pno){
-
+        return productMapper.get(pno);
     };
 
     // 판매 상품 삭제
-    public boolean remove(Long pno){
-
+    public int remove(Long pno){
+        return productMapper.delete(pno);
     };
 
     // 판매 상품 수정
-    public boolean modify(ProductVO productVO){
-
+    public int modify(ProductVO productVO){
+        return  productMapper.update(productVO);
     };
 }

@@ -79,4 +79,21 @@ public class UserController {
         // 내가 올린 상품 목록
         return "/user/mypage";
     }
+
+    ///////////////////////////////////////////////////
+    // ResponsBody
+
+    // 이메일 중복확인
+    @PostMapping("/checkEmail")
+    public boolean checkEmail(String email){
+        return false;
+    }
+
+    // 이름 중복확인
+    @PostMapping("/checkId")
+    public boolean checkId(String id){
+        return false;
+    }
+
+    // 이름 수정
 }

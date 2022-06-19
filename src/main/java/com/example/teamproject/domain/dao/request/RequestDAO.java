@@ -12,27 +12,27 @@ public class RequestDAO {
     private final RequestMapper requestMapper;
 
     // 판매 상품 요청 목록
-    public List<RequestVO> getList(){
-
+    public List<RequestVO> getList(Criteria criteria){
+        return requestMapper.getList(criteria);
     };
 
     // 판매 상품 요청 등록
     public void register(RequestVO requestVO){
-
+        return requestMapper.insert(requestVO);
     };
 
     // 판매 상품 요청 상세보기
     public RequestVO read(Long rno){
-
+        return requestMapper.get(rno);
     };
 
     // 판매 상품 요청 삭제
-    public boolean remove(Long rno){
-
+    public int remove(Long rno){
+        return requestMapper.delete(rno);
     };
 
     // 판매 상품 요청 수정
-    public boolean modify(RequestVO requestVO){
-
+    public int modify(RequestVO requestVO){
+        return requestMapper.update(requestVO);
     };
 }

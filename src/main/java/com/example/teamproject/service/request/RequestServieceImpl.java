@@ -14,28 +14,30 @@ public class RequestServieceImpl implements BoardService {
     public final RequestDAO requestDAO;
 
     // 판매 상품 요청 등록
-    public void register(RequestVO requestVO) { }
+    public void register(RequestVO requestVO) {
+        requestDAO.register(requestVO);
+    }
 
     // 판매 상품 요청 수정
-    public boolean modify(RequestVO requestVO) {
-        return false;
+    public int modify(RequestVO requestVO) {
+        return requestDAO.modify(requestVO);
     }
 
     // 판매 상품 요청 삭제
     @Override
-    public boolean remove(Long bno) {
-        return false;
+    public int remove(Long rno) {
+        return requestDAO.remove(rno);
     }
 
     // 판매 상품 요청 상세
     @Override
-    public RequestVO read(Long bno) {
-        return null;
+    public RequestVO read(Long rno) {
+        return requestDAO.read(rno);
     }
 
     // 판매 상품 요청 목록
     @Override
     public List<RequestVO> getList(Criteria criteria) {
-        return null;
+        return requestDAO.getList(criteria);
     }
 }

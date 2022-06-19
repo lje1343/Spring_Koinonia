@@ -99,6 +99,7 @@ public class RequestController {
     public List<RequestVO> getList(@PathVariable("rcate")String rcate){
         return null;
     }
+
     // 무한 스크롤
     @GetMapping("/list/{rcate}/{pageNum}")
     @ResponseBody
