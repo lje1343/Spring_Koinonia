@@ -13,31 +13,31 @@ public class RequestReplyDAO {
 
     // 판매 상품 요청 댓글 작성
     public void register(RequestReplyVO requestReplyVO){
-
+        requestReplyMapper.insert(requestReplyVO);
     };
 
     // 판매 상품 요청 댓글 1개 조회
     public RequestReplyVO read(Long rno){
-
+        return requestReplyMapper.getReply(rno);
     };
 
     // 판매 상품 요청 댓글 전체 목록 조회
     public List<RequestReplyVO> getList(Long rno, Criteria criteria){
-
+        return requestReplyMapper.getList(criteria, rno);
     };
 
     // 판매 상품 요청 댓글 삭제
     public boolean remove(Long rno){
-
+        return  requestReplyMapper.delete(rno);
     };
 
     // 판매 상품 요청 댓글 수정
     public boolean modify(RequestReplyVO requestReplyVO){
-
+        return  requestReplyMapper.update(requestReplyVO);
     };
 
     // 판매 상품 요청 댓글 개수
-    public int getTotal(Long pno){
-
+    public int getTotal(Long rno){
+        return  requestReplyMapper.getTotal(rno);
     };
 }
