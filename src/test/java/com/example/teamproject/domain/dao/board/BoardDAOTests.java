@@ -1,4 +1,4 @@
-package com.example.teamproject.domain.dao;
+package com.example.teamproject.domain.dao.board;
 
 import com.example.teamproject.domain.dao.board.BoardDAO;
 import com.example.teamproject.domain.vo.BoardVO;
@@ -19,7 +19,23 @@ public class BoardDAOTests {
         BoardVO boardVO = new BoardVO();
         boardVO.setTitle("Test");
         boardVO.setContent("Test");
-        boardVO.setName("Tester");
+        boardVO.setName("tester");
         boardDAO.register(boardVO);
+    }
+
+    //
+    @Test
+    public void readTest(){
+        boardDAO.read(3L);
+    }
+
+    @Test
+    public void modifyTest(){
+        BoardVO boardVO = new BoardVO();
+        boardVO.setTitle("Test");
+        boardVO.setBno(3L);
+        boardVO.setContent("test수정");
+        boardVO.setName("tester");
+        boardDAO.modify(boardVO);
     }
 }
