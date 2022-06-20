@@ -22,7 +22,7 @@ a,
   header{
     width: 100%;
 }
-.container{
+.header_container{
   padding: 0 40px 0 40px;
   display: flex;
   justify-content: space-between;

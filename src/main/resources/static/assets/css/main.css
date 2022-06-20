@@ -40,12 +40,19 @@
     background-color: #dfdfdf;
   }
   .logo{
-      background-color: white;
-      width: 90px;
-      height: 36px;
-      margin-left: 40px;
-      margin-top: 32px;
-  }
+    background-color: white;
+    width: 150px;
+    height: 50px;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+  .logo img{
+    width: 120px;
+    height: 80px;
+
+}
+
   .mypage ul{
     display: flex;
     height: 40px;
