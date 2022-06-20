@@ -34,6 +34,7 @@ public class UserController {
         log.info("회원등록");
         log.info("*************");
         // 회원등록
+        userService.register(userVO);
         return "/user/login";
     }
 
