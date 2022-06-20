@@ -18,7 +18,7 @@ public class UserDAO {
     };
 
     // 아이디 조회(중복체크)
-    public int checkId(String email){
+    public int checkEmail(String email){
         return  userMapper.checkId(email);
     }
 

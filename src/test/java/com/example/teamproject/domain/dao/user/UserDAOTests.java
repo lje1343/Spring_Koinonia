@@ -24,6 +24,14 @@ public class UserDAOTests {
         userVO.setCover("테스트입니다.");
         userDAO.register(userVO);
     };
+    // 이메일 중복 확인
+    @Test
+    public void checkEmailTest(){
+        String emailTrue = "testttttttttttttt@aaaaaaaa.com";
+        String emailfalse = "test@test.com";
+        log.info("사용가능한 아이디입니다." + userDAO.checkEmail(emailTrue));
+        log.info("존재하는 아이디입니다." + userDAO.checkEmail(emailfalse));
+    }
 
     // 회원 1명 조회
     @Test
