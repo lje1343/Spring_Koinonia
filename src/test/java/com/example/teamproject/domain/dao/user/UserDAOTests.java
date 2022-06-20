@@ -15,15 +15,15 @@ public class UserDAOTests {
     private UserDAO userDAO;
 
     // 회원등록
-//    @Test
-//    public void registerTest(){
-//        UserVO userVO = new UserVO();
-//        userVO.setEmail("test@test.com");
-//        userVO.setPw("test00");
-//        userVO.setName("tester");
-//        userVO.setCover("테스트입니다.");
-//        userDAO.register(userVO);
-//    };
+    @Test
+    public void registerTest(){
+        UserVO userVO = new UserVO();
+        userVO.setEmail("test@test.com");
+        userVO.setPw("test00");
+        userVO.setName("tester");
+        userVO.setCover("테스트입니다.");
+        userDAO.register(userVO);
+    };
 
     // 회원 1명 조회
     @Test
