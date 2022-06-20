@@ -7,10 +7,14 @@
          FROM TBL_USER WHERE EMAIL = #{email}
     </select>
     
-    <select id="checkId" resultType="_int">
+    <select id="checkEmail" resultType="_int">
         SELECT COUNT(EMAIL) FROM TBL_USER WHERE EMAIL = #{email}
     </select>
-    
+
+    <select id="checkName" resultType="_int">
+        SELECT COUNT(NAME) FROM TBL_USER WHERE NAME = #{name}
+    </select>
+
     <insert id="insert">
         INSERT INTO TBL_USER
         (UNUM, EMAIL, PW, NAME , COVER)

@@ -17,9 +17,17 @@ public class UserServiceImpl {
     // 회원 등록
     public void register(UserVO userVO) {
         userDAO.register(userVO);
+    };
+
+    // 이메일 중복 확인
+    public int checkEmail(String email) {
+        return userDAO.checkEmail(email);
     }
 
-    ;
+    // 이메일 중복 확인
+    public int checkName(String name) {
+        return userDAO.checkName(name);
+    }
 
     // 회원 1명 조회
     public UserVO read(String email) {

@@ -32,4 +32,5 @@ public class UserControllerTests {
             .param("cover", "test입니다.")
         ).andReturn().getFlashMap());
     }
+
 }

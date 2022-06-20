@@ -17,9 +17,14 @@ public class UserDAO {
         userMapper.insert(userVO);
     };
 
-    // 아이디 조회(중복체크)
+    // 이메일 조회(중복체크)
     public int checkEmail(String email){
-        return  userMapper.checkId(email);
+        return  userMapper.checkEmail(email);
+    }
+
+    // 아이디 조회(중복체크)
+    public int checkName(String email){
+        return  userMapper.checkName(email);
     }
 
     // 로그인

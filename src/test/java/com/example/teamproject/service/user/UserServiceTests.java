@@ -12,6 +12,7 @@ public class UserServiceTests {
     @Autowired
     private UserServiceImpl userService;
 
+    // 회원등록
     @Test
     public void registerTest() {
         UserVO userVO = new UserVO();
@@ -20,5 +21,23 @@ public class UserServiceTests {
         userVO.setName("tester2");
         userVO.setCover("테스트입니다.");
         userService.register(userVO);
+    }
+
+    // 이메일 중복 확인
+    @Test
+    public void checkEmailTest(){
+        String emailTrue = "testttttttttttttt@aaaaaaaa.com";
+        String emailFalse = "test@test.com";
+        log.info("사용가능한 아이디입니다." + userService.checkEmail(emailTrue));
+        log.info("존재하는 아이디입니다." + userService.checkEmail(emailFalse));
+    }
+
+    // 이름 중복 확인
+    @Test
+    public void checkNameTest(){
+        String nameTrue = "noName";
+        String nameFalse = "tester3";
+        log.info("사용가능한 이름입니다." + userService.checkName(nameTrue));
+        log.info("존재하는 이름입니다." + userService.checkName(nameFalse));
     }
 }
