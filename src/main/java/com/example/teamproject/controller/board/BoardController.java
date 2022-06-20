@@ -30,7 +30,7 @@ public class BoardController {
         log.info("*************");
         log.info("다이어리 작성");
         log.info("*************");
-        return "/board/register";
+        return "/diary/board_write";
     }
 //    @PostMapping("/register")
 //    public String register(BoardVO boardVO, RedirectAttributes rttr){
@@ -47,7 +47,7 @@ public class BoardController {
         log.info("다이어리 수정내용 작성/삭제");
         log.info("*************");
         // 다이어리 수정
-        return "/board/modify";
+        return "/diary/modify";
     }
 //    @PostMapping("/modify")
 //    public String modify(Long bno, RedirectAttributes rttr){
@@ -72,7 +72,7 @@ public class BoardController {
         log.info("다이어리 상세");
         log.info("*************");
         // 다이어리 상세
-        return "/board/detail";
+        return "/diary/detail";
     }
 
     @GetMapping("/list")
@@ -81,7 +81,7 @@ public class BoardController {
         log.info("다이어리 리스트");
         log.info("*************");
         // 다이어리 리스트
-        return "/board/list";
+        return "/diary/index";
     }
 
     ///////////////////////////////////////////////////

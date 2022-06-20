@@ -29,7 +29,7 @@ public class RequestController {
         log.info("*************");
         log.info("판매 상품 요청글 작성");
         log.info("*************");
-        return "/request/register";
+        return "/request/request_write";
     }
 //    @PostMapping("/register")
 //    public String register(RequestVO requestVO, RedirectAttributes rttr){
@@ -46,7 +46,7 @@ public class RequestController {
         log.info("*************");
         log.info("상품 요청 리스트");
         log.info("*************");
-        return "/request/list";
+        return "/request/request_list";
     }
     // 무한스크롤 - rest
 
