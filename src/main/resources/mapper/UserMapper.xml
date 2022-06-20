@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.teamproject.mapper.UserMapper">
+
+    <select id="find" resultType="UserVO">
+        SELECT NAME, PW, COVER, EMAIL, UNUM
+         FROM TBL_USER WHERE EMAIL = #{email}
+    </select>
+    
+    <select id="checkId" resultType="_int">
+        SELECT COUNT(EMAIL) FROM TBL_USER WHERE EMAIL = #{email}
+    </select>
+    
+    <insert id="insert">
+        INSERT INTO TBL_USER
+        (UNUM, EMAIL, PW, NAME , COVER)
+        VALUES(SEQ_USER.NEXTVAL, #{email}, #{pw}, #{name}, #{cover})
+    </insert>
+    
+    <select id="login" resultType="UserVO">
+     SELECT NAME, PW, COVER, EMAIL, PHONE, UNUM
+     FROM TBL_USER WHERE EMAIL = #{email} AND PW = #{pw}
+    </select>
+
+    <update id="update">
+        UPDATE TBL_USER
+        SET  EMAIL = #{email}, PW = #{pw},
+             COVER = #{cover}, NAME = #{name}
+        WHERE UNUM = #{unum}
+    </update>
+
+    <select id="get" resultType="long">
+        SELECT BNO FROM TBL_BOARD
+        WHERE NAME = #{name}
+    </select>
+
+    <select id="getInfo" resultType="UserVO">
+        SELECT NAME, PW, COVER, EMAIL,UNUM
+        FROM TBL_USER
+        WHERE UNUM = #{unum}
+    </select>
+
+    <delete id="delete">
+        DELETE FROM TBL_USER WHERE EMAIL = #{email} AND PW = #{pw}
+    </delete>
+
+    <update id="nameupdate">
+    UPDATE TBL_USER T1
+    RIGHT JOIN TBL_BOARD T2 ON (T2.NAME = T1.NAME)
+    SET T1.NAME = #{name}, T2.NAME = #{name}
+    WHERE TBL_USER.UNUM = #{unum}
+   </update>
+
+
+
+</mapper>

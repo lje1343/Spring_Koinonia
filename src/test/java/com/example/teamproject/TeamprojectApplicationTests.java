@@ -1,13 +1,13 @@
-package com.example.teamprojeect;
+package com.example.teamproject;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TeamprojeectApplicationTests {
+class TeamprojectApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+	@Test
+	void contextLoads() {
+	}
 
 }
