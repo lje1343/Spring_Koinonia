@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @Slf4j
 @RequestMapping("/user/*")
@@ -41,6 +43,20 @@ public class UserController {
         log.info("*************");
         log.info("로그인");
         log.info("*************");
+        return "/user/login";
+    }
+    @PostMapping("/login")
+    public String login(String email, String pw, HttpSession session){
+        log.info("*************");
+        log.info("로그인");
+        log.info("*************");
+        if(pw == userService.login(email).getPw()){
+            // 로그인 성공
+            session.setAttribute("email", email);
+            session.setAttribute("name", userService.login(email).getName());
+            return "/user/mypage";
+        }
+        // 로그인 실패
         return "/user/login";
     }
 

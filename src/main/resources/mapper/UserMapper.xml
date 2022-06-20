@@ -22,8 +22,8 @@
     </insert>
     
     <select id="login" resultType="UserVO">
-     SELECT NAME, PW, COVER, EMAIL, PHONE, UNUM
-     FROM TBL_USER WHERE EMAIL = #{email} AND PW = #{pw}
+     SELECT NAME, PW, EMAIL
+     FROM TBL_USER WHERE EMAIL = #{email}
     </select>
 
     <update id="update">
@@ -54,7 +54,5 @@
     SET T1.NAME = #{name}, T2.NAME = #{name}
     WHERE TBL_USER.UNUM = #{unum}
    </update>
-
-
-
+    
 </mapper>

@@ -11,7 +11,7 @@ public interface UserMapper {
     public void insert(UserVO userVO);
     public int nameupdate(UserVO userVO);
     public UserVO find(String email);
-    public UserVO login(UserVO userVO);
+    public UserVO login(String email);
     public int update(UserVO userVO);
     public Long get(String name);
     public UserVO getInfo(Long unum);

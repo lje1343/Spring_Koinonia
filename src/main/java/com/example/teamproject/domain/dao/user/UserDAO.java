@@ -3,6 +3,7 @@ package com.example.teamproject.domain.dao.user;
 import com.example.teamproject.domain.vo.UserVO;
 import com.example.teamproject.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,8 +29,8 @@ public class UserDAO {
     }
 
     // 로그인
-    public UserVO login(UserVO userVO){
-        return userMapper.login(userVO);
+    public UserVO login(String email){
+        return userMapper.login(email);
     }
 
     // 회원 1명 조회

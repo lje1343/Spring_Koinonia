@@ -40,4 +40,11 @@ public class UserServiceTests {
         log.info("사용가능한 이름입니다." + userService.checkName(nameTrue));
         log.info("존재하는 이름입니다." + userService.checkName(nameFalse));
     }
+
+    // 비밀번호 조회(로그인)
+    @Test
+    public void loginTest(){
+        String email = "test@test.com";
+        log.info("조회한 비밀번호 : " + userService.login(email).getPw());
+    }
 }

@@ -41,6 +41,13 @@ public class UserDAOTests {
         log.info("존재하는 이름입니다." + userDAO.checkName(nameFalse));
     }
 
+    // 비밀번호 조회(로그인)
+    @Test
+    public void loginTest(){
+        String email = "test@test.com";
+        log.info("조회한 비밀번호 : " + userDAO.login(email).getPw());
+    }
+
     // 회원 1명 조회
     @Test
     public void readTest(){
