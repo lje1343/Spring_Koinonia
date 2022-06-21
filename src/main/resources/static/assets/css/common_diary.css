@@ -48,7 +48,8 @@
     background-size: cover;
 }
 #main-content {
-	padding-top: 0 !important;
+	padding-top: 4rem !important;
+
 }
 
 #main-content-header .title small {
@@ -212,4 +213,6 @@
 #st-body .st-size5 { font-size: 14px; }
 #st-body .st-size6 { font-size: 12px; }
 
-
+.col-sm-offset-2 .col-sm-10 {
+    padding-top: 2rem!important;
+}

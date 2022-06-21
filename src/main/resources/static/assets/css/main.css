@@ -1,0 +1,35 @@
+
+#content{
+    box-sizing: border-box;
+    color: rgb(72,72,72);
+    display: block;
+    font-family: "monospace";
+    font-size: 14px;
+    font-stretch: 100%;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    outline-color: rgb(72,72,72);
+    outline-style: none;
+}
+.gd8{
+    flex-direction: column;
+    display: block;
+    flex-direction: column;
+    margin-bottom: 4rem !important;
+
+
+}
+.p9{
+    column-gap: 20px;
+    display: grid;
+    grid-template-columns: 114px;
+    line-height: 21px;
+    margin-left: 55px;
+    margin-right: 55px;
+    max-width: 1792px;
+    padding-inline-end: 40px;
+    padding-inline-start: 20px;
+    padding-left: 20px;
+    padding-right: 40px;
+}
