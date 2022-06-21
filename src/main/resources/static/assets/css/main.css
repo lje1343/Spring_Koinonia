@@ -1,5 +1,5 @@
 
-* {
+*{
     position: relative;
     box-sizing: border-box;
     margin: 0;
@@ -12,6 +12,10 @@
     word-break: keep-all;
     list-style: none;
   }
+a:link{ color: red; text-decoration: none;}
+a:visited{ color: black; text-decoration: none;}
+a:hover{ color: blue; text-decoration: underline;}
+
   a,
   button {
     cursor: pointer;
@@ -66,10 +70,10 @@
       height: 40px;
       margin-left: 15px;
     }
-    .mypage > ul > li :hover{
-      border-radius: 64px;
-    background-color: #dfdfdf;
-  }
+/*.mypage > ul > li :hover{*/
+/*      border-radius: 64px;*/
+/*    background-color: #dfdfdf;*/
+/*  }*/
   .mypage > ul > .login{
     width: 270px;
 }
@@ -265,7 +269,7 @@ footer {
 }
 
 #content {
-    width: 80%;
+    width: 1170px;
     margin: 0 auto;
     margin-top: 40px;
 }
@@ -293,8 +297,6 @@ footer {
     justify-content: space-between;
     margin-bottom: 40px;
     margin-top: 60px;
-    max-width: 1079px;
- 
 }
 
 .diary_btn{
@@ -409,10 +411,6 @@ button.slick-prev{
 .goods_int{
     margin-bottom: 40px;
     margin-top: 90px;
-}
-
-body {
-    width: 1349px;
 }
 
 .goods_total{

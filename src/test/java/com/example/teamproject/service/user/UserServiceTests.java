@@ -36,7 +36,7 @@ public class UserServiceTests {
     @Test
     public void checkNameTest(){
         String nameTrue = "noName";
-        String nameFalse = "tester3";
+        String nameFalse = "홍길동";
         log.info("사용가능한 이름입니다." + userService.checkName(nameTrue));
         log.info("존재하는 이름입니다." + userService.checkName(nameFalse));
     }
