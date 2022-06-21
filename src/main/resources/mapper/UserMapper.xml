@@ -7,10 +7,14 @@
          FROM TBL_USER WHERE EMAIL = #{email}
     </select>
     
-    <select id="checkId" resultType="_int">
+    <select id="checkEmail" resultType="_int">
         SELECT COUNT(EMAIL) FROM TBL_USER WHERE EMAIL = #{email}
     </select>
-    
+
+    <select id="checkName" resultType="_int">
+        SELECT COUNT(NAME) FROM TBL_USER WHERE NAME = #{name}
+    </select>
+
     <insert id="insert">
         INSERT INTO TBL_USER
         (UNUM, EMAIL, PW, NAME , COVER)
@@ -18,8 +22,8 @@
     </insert>
     
     <select id="login" resultType="UserVO">
-     SELECT NAME, PW, COVER, EMAIL, PHONE, UNUM
-     FROM TBL_USER WHERE EMAIL = #{email} AND PW = #{pw}
+     SELECT NAME, PW, EMAIL
+     FROM TBL_USER WHERE EMAIL = #{email}
     </select>
 
     <update id="update">
@@ -44,7 +48,12 @@
         DELETE FROM TBL_USER WHERE EMAIL = #{email} AND PW = #{pw}
     </delete>
 
-
+    <update id="nameupdate">
+    UPDATE TBL_USER T1
+    RIGHT JOIN TBL_BOARD T2 ON (T2.NAME = T1.NAME)
+    SET T1.NAME = #{name}, T2.NAME = #{name}
+    WHERE TBL_USER.UNUM = #{unum}
+   </update>
 
     <select id="mydiary" resultType="UserDTO">
         SELECT tu.NAME, tb.BNO, tb.TITLE, tb.CONTENT
@@ -62,8 +71,5 @@
        WHERE tu.NAME = tp.NAME
        AND tu.NAME = #{name}
     </select>
-
-
-
 
 </mapper>
