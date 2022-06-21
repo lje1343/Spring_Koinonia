@@ -12,9 +12,18 @@
     word-break: keep-all;
     list-style: none;
   }
-a:link{ color: red; text-decoration: none;}
-a:visited{ color: black; text-decoration: none;}
-a:hover{ color: blue; text-decoration: underline;}
+a:link{
+    color: #000;
+    text-decoration: none;
+}
+a:visited{
+    color: #000; 
+text-decoration: none;
+}
+a:hover{
+    color: #000;
+    text-decoration: none;
+}
 
   a,
   button {
@@ -182,7 +191,9 @@ a:hover{ color: blue; text-decoration: underline;}
     padding-right: 30px;
     font-size: small;
 }
-
+.menubtn > a:hover{
+    text-decoration: underline;
+}
 a:visited{
     color:black
 }

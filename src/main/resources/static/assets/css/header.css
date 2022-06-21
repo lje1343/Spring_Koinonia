@@ -11,6 +11,18 @@
     word-break: keep-all;
     list-style: none;
 }
+a:link{
+    color: #000;
+    text-decoration: none;
+}
+a:visited{
+    color: #000; 
+    text-decoration: none;
+}
+a:hover{
+    color: #000;
+    text-decoration: none;
+}
 a,
   button {
     cursor: pointer;
