@@ -22,7 +22,7 @@
     </insert>
     
     <select id="login" resultType="UserVO">
-     SELECT NAME, PW, EMAIL
+     SELECT NAME, PW, EMAIL, UNUM
      FROM TBL_USER WHERE EMAIL = #{email}
     </select>
 
