@@ -1,6 +1,6 @@
 package com.example.teamproject.controller;
 
-import com.example.teamproject.service.board.BoardReplyServiceImpl;
+import com.example.teamproject.service.board.BoardServiceImpl;
 import com.example.teamproject.service.product.ProductServieceImpl;
 import com.example.teamproject.service.request.RequestServieceImpl;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 @RequiredArgsConstructor
 public class MainController {
-    private final BoardReplyServiceImpl boardReplyService;
+    private final BoardServiceImpl boardService;
     private final ProductServieceImpl productServiece;
     private final RequestServieceImpl requestServiece;
 
