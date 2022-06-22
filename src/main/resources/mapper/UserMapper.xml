@@ -62,7 +62,7 @@
 <!--        AND tu.NAME = #{name}-->
 <!--    </select>-->
 
-<<<<<<< HEAD
+
 
 <!--    <select id="mydiary" resultType="UserDTO">-->
 <!--        SELECT tu.NAME, tb.BNO, tb.TITLE, tb.CONTENT-->
@@ -72,8 +72,7 @@
 <!--    </select>-->
 
 
-=======
->>>>>>> master/master
+
 <!--    <select id="myproduct" resultType="UserDTO">-->
 <!--       SELECT tu.NAME, tp.PNO-->
 <!--       , tp.TITLE, tp.PNAME-->
@@ -83,13 +82,12 @@
 <!--       WHERE tu.NAME = tp.NAME-->
 <!--       AND tu.NAME = #{name}-->
 <!--    </select>-->
-<<<<<<< HEAD
 
 
 
 
 
-=======
->>>>>>> master/master
+
+
 
 </mapper>

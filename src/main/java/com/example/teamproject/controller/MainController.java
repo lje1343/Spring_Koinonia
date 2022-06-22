@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 //package com.example.teamproject.controller;
 //
 //import com.example.teamproject.service.board.BoardReplyServiceImpl;
@@ -30,7 +30,7 @@
 //        return "/main/main";
 //    }
 //}
-=======
+
 package com.example.teamproject.controller;
 
 import com.example.teamproject.service.board.BoardServiceImpl;
@@ -62,4 +62,4 @@ public class MainController {
         return "/main/main";
     }
 }
->>>>>>> master/master
+
