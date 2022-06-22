@@ -22,7 +22,7 @@
     </insert>
     
     <select id="login" resultType="UserVO">
-     SELECT NAME, PW, EMAIL
+     SELECT NAME, PW, EMAIL, UNUM
      FROM TBL_USER WHERE EMAIL = #{email}
     </select>
 
@@ -88,4 +88,9 @@
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 36f4e60e46051ac490944e27f258b5749a0ba62c
 </mapper>
