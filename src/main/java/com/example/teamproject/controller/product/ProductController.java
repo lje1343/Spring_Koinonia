@@ -42,7 +42,7 @@ public class ProductController {
         log.info("상품 리스트");
         log.info("*************");
         // 상품 리스트
-        return "/product/list";
+        return "/product/sell_list";
     }
 
     @GetMapping("/detail")

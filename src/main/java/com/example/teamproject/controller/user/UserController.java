@@ -48,9 +48,11 @@ public class UserController {
     @PostMapping("/login")
     public String login(String email, String pw, HttpSession session){
         log.info("*************");
-        log.info("로그인");
+        log.info("로그인 시도");
         log.info("*************");
-        if(pw == userService.login(email).getPw()){
+        log.info(userService.login(email).getPw());
+        if(pw.equals(userService.login(email).getPw())){
+            log.info("xxx");
             // 로그인 성공
             session.setAttribute("email", email);
             session.setAttribute("name", userService.login(email).getName());
@@ -110,8 +112,12 @@ public class UserController {
     // 이름 중복확인
     @PostMapping("/checkId")
     @ResponseBody
-    public int checkId(@RequestBody String id){
-        return 0;
+    public boolean checkName(@RequestBody String name){
+        log.info(name);
+        if(userService.checkName(name) <= 0){
+            return true;
+        }
+        return false;
     }
 
     // 이름 수정
