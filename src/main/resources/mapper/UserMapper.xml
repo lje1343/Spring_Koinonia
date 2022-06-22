@@ -62,16 +62,6 @@
 <!--        AND tu.NAME = #{name}-->
 <!--    </select>-->
 
-<<<<<<< HEAD
-<!--    <select id="mydiary" resultType="UserDTO">-->
-<!--        SELECT tu.NAME, tb.BNO, tb.TITLE, tb.CONTENT-->
-<!--        FROM TBL_USER tu, TBL_BOARD tb-->
-<!--        WHERE tu.NAME = tb.NAME-->
-<!--        AND tu.NAME = #{name}-->
-<!--    </select>-->
-
-=======
->>>>>>> a4a5d3c3e8545d3086224ea89b54429914d8c6cc
 <!--    <select id="myproduct" resultType="UserDTO">-->
 <!--       SELECT tu.NAME, tp.PNO-->
 <!--       , tp.TITLE, tp.PNAME-->
@@ -81,11 +71,5 @@
 <!--       WHERE tu.NAME = tp.NAME-->
 <!--       AND tu.NAME = #{name}-->
 <!--    </select>-->
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> a4a5d3c3e8545d3086224ea89b54429914d8c6cc
 
 </mapper>
