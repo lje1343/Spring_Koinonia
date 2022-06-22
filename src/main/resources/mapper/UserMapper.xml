@@ -82,15 +82,4 @@
 <!--       WHERE tu.NAME = tp.NAME-->
 <!--       AND tu.NAME = #{name}-->
 <!--    </select>-->
-
-
-
-
-
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 36f4e60e46051ac490944e27f258b5749a0ba62c
 </mapper>
