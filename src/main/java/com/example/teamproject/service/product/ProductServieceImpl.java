@@ -37,5 +37,7 @@ public class ProductServieceImpl{
     public List<ProductVO> getList(Criteria criteria) {
         return productDAO.getList(criteria);
     }
+
+    public int getTotal(){return productDAO.getTotal();}
 }
 

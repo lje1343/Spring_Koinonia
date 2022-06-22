@@ -22,7 +22,7 @@
     </insert>
     
     <select id="login" resultType="UserVO">
-     SELECT NAME, PW, EMAIL
+     SELECT NAME, PW, EMAIL, UNUM
      FROM TBL_USER WHERE EMAIL = #{email}
     </select>
 
@@ -62,6 +62,17 @@
 <!--        AND tu.NAME = #{name}-->
 <!--    </select>-->
 
+
+
+<!--    <select id="mydiary" resultType="UserDTO">-->
+<!--        SELECT tu.NAME, tb.BNO, tb.TITLE, tb.CONTENT-->
+<!--        FROM TBL_USER tu, TBL_BOARD tb-->
+<!--        WHERE tu.NAME = tb.NAME-->
+<!--        AND tu.NAME = #{name}-->
+<!--    </select>-->
+
+
+
 <!--    <select id="myproduct" resultType="UserDTO">-->
 <!--       SELECT tu.NAME, tp.PNO-->
 <!--       , tp.TITLE, tp.PNAME-->
@@ -71,5 +82,12 @@
 <!--       WHERE tu.NAME = tp.NAME-->
 <!--       AND tu.NAME = #{name}-->
 <!--    </select>-->
+
+
+
+
+
+
+
 
 </mapper>
