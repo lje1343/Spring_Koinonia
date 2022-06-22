@@ -11,6 +11,7 @@
     word-wrap: break-word;
     word-break: keep-all;
     list-style: none;
+    font-family: 'Noto Sans KR', sans-serif;
   }
 a:link{
     color: #000;

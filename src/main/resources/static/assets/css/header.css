@@ -131,6 +131,11 @@ a,
    background-color: #cecece;
 }
 
+.btn_menu_open1 > button{
+    font-size: 13px;
+    font-weight: bold;
+}
+
   
 
 .menubar img{
@@ -218,6 +223,10 @@ a:visited{
   width: 200px;
   bottom: 8px;
   left: 40px;
+}
+
+.menu_list {
+    font-weight: bold;
 }
 
 /* 왼쪽 메뉴 */
