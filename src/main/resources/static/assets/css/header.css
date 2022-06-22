@@ -223,6 +223,7 @@ a:visited{
 /* 왼쪽 메뉴 */
 .slide_menu{
     padding: 0 20px;
+    left: 0 !important;
 }
 
 .slide_menu .menu_close, .slide_menu1 .menu_close1{
