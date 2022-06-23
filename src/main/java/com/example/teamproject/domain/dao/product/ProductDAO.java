@@ -38,5 +38,8 @@ public class ProductDAO {
     public int modify(ProductVO productVO){
         return  productMapper.update(productVO);
     };
+
+    //총 게시물 게수
+    public int getTotal(){return productMapper.getTotal();}
 }
 

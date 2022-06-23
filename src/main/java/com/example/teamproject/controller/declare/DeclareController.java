@@ -32,7 +32,7 @@ public class DeclareController {
         log.info("*************");
         log.info("신고 작성");
         log.info("*************");
-        return "/declare/register";
+        return "/declare/board_declare";
     }
 //    @PostMapping("/register")
 //    public String register(DeclareVO declareVO, RedirectAttributes rttr){

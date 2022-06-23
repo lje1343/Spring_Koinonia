@@ -133,6 +133,11 @@ a,
    background-color: #cecece;
 }
 
+.btn_menu_open1 > button{
+    font-size: 13px;
+    font-weight: bold;
+}
+
   
 
 .menubar img{

@@ -1,5 +1,7 @@
 package com.example.teamproject.controller.product;
 
+import com.example.teamproject.domain.vo.Criteria;
+import com.example.teamproject.domain.vo.PageDTO;
 import com.example.teamproject.domain.vo.ProductVO;
 import com.example.teamproject.service.product.ProductServieceImpl;
 import lombok.RequiredArgsConstructor;
@@ -37,11 +39,12 @@ public class ProductController {
 //    }
 
     @GetMapping("/list")
-    public String getList(Model model){
+    public String getList(Criteria criteria, Model model){
         log.info("*************");
         log.info("상품 리스트");
         log.info("*************");
-        // 상품 리스트
+        model.addAttribute("productList", productService.getList(criteria));
+        model.addAttribute("pageDTO", new PageDTO(criteria, productService.getTotal()));
         return "/product/sell_list";
     }
 
