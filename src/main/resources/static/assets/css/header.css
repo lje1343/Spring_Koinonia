@@ -11,14 +11,20 @@
     word-break: keep-all;
     list-style: none;
 }
+
+header img {
+    vertical-align: baseline;
+}
+
 a:link{
     color: #000;
     text-decoration: none;
 }
 a:visited{
-    color: #000; 
+    color: #000 ;
     text-decoration: none;
 }
+
 a:hover{
     color: #000;
     text-decoration: none;
@@ -188,8 +194,6 @@ a,
   transform: translate(-50%,-50%);
 }
 
-
-
 .menubtn{
   width: 100% !important;
   margin-left: 135px;
@@ -207,6 +211,9 @@ a,
   font-size: small;
 }
 
+.menubtn > a:hover{
+    text-decoration: underline !important;
+}
 a:visited{
   color:black
 }

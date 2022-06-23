@@ -86,132 +86,40 @@
             <section class="goods_slide2">
                 <div class="goods_total">
                     <div class="goods1" >
-                        <img src="\upload\s_testfile3.jpg">
+                        <img th:src="${productThumfileUrlList[0]}">
                     </div>
                     <div class="goods_2">
                         <div class="goods2">
-                            <img src="\upload\s_testfile3.jpg" >
+                            <img th:src="${productThumfileUrlList[1]}" >
                         </div>
                         <div class="goods3">
-                            <img src="" >
+                            <img th:src="${productThumfileUrlList[2]}" >
                         </div>
                     </div>
                     <div class="goods_4">
                         <div class="goods4">
-                            <img src="/images/goods9.PNG" >
+                            <img th:src="${productThumfileUrlList[3]}" >
                         </div>
                         <div class="goods5">
-                            <img src="/images/goods10.PNG" >
+                            <img th:src="${productThumfileUrlList[4]}" >
                         </div>
                     </div>
                 </div>
             </section>
             <!--     part 2       -->
             <section class="goods_slide">
-                <th:block th:each="product:${productList}">
-                <!--     sample start      -->
-                <div th:object="${product}">
-                    <a th:href="@{/product/detail}">
-                        <div>
-                            <img src="/images/goods1.PNG">
-                            <div class="goods_name">
-                                <p th:text="*{title}"></p>
+                <th:block th:each="num:${#numbers.sequence(5,14)}">
+                    <div>
+                        <a th:href="@{/product/detail(pno = ${productList[num].pno})}">
+                            <div>
+                                <img th:src="${productThumfileUrlList[num]}">
+                                <div class="goods_name">
+                                    <p th:text="${productList[num].title}"></p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <!--     sample end      -->
+                        </a>
+                    </div>
                 </th:block>
-<!--                <div>-->
-<!--                    <a href="">-->
-<!--                        <div>-->
-<!--                            <img src="/images/goods2.PNG">-->
-<!--                            <div class="goods_name">-->
-<!--                                <p>상품 이름</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <a href="">-->
-<!--                        <div>-->
-<!--                            <img src="/images/goods3.PNG">-->
-<!--                            <div class="goods_name">-->
-<!--                                <p>상품 이름</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <a href="">-->
-<!--                        <div>-->
-<!--                            <img src="/images/goods1.PNG">-->
-<!--                            <div class="goods_name">-->
-<!--                                <p>상품 이름</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <a href="">-->
-<!--                        <div>-->
-<!--                            <img src="/images/goods2.PNG">-->
-<!--                            <div class="goods_name">-->
-<!--                                <p>상품 이름</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <a href="">-->
-<!--                        <div>-->
-<!--                            <img src="/images/goods3.PNG">-->
-<!--                            <div class="goods_name">-->
-<!--                                <p>상품 이름</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <a href="">-->
-<!--                        <div>-->
-<!--                            <img src="/images/goods1.PNG">-->
-<!--                            <div class="goods_name">-->
-<!--                                <p>상품 이름</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <a href="">-->
-<!--                        <div>-->
-<!--                            <img src="/images/goods2.PNG">-->
-<!--                            <div class="goods_name">-->
-<!--                                <p>상품 이름</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <a href="">-->
-<!--                        <div>-->
-<!--                            <img src="/images/goods3.PNG">-->
-<!--                            <div class="goods_name">-->
-<!--                                <p>상품 이름</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <a href="">-->
-<!--                        <div>-->
-<!--                            <img src="/images/goods1.PNG">-->
-<!--                            <div class="goods_name">-->
-<!--                                <p>상품 이름</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </div>-->
             </section>
         <!--   여행 기념품 목록 end     -->
         <!--   koinonia contents 안내 start     -->
@@ -255,7 +163,6 @@
                             <p>수많은 여행자들의 여행 스토리를 들어보자!</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>

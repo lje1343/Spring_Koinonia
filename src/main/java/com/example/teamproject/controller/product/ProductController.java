@@ -54,7 +54,8 @@ public class ProductController {
         log.info("상품 상세");
         log.info("*************");
         // 상품 상세
-        return "/product/detail";
+        model.addAttribute(productService.read(pno));
+        return "/product/sell_deteil";
     }
 
     @GetMapping("/modify")
