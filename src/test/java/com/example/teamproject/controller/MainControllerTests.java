@@ -1,4 +1,4 @@
-package com.example.teamproject.controller.product;
+package com.example.teamproject.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,7 +12,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest
 @Slf4j
-public class ProductControllerTests {
+public class MainControllerTests {
     private MockMvc mockMvc;
 
     @Autowired
@@ -21,5 +21,11 @@ public class ProductControllerTests {
     @BeforeEach
     public void setUp(){
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+    }
+
+    @Test
+    public void goToMain() throws Exception{
+        log.info("상품 목록" + mockMvc.perform(MockMvcRequestBuilders.post("/")
+        ).andReturn().getFlashMap().toString());
     }
 }

@@ -1,0 +1,11 @@
+diff a/src/main/java/com/example/teamproject/controller/MainController.java b/src/main/java/com/example/teamproject/controller/MainController.java	(rejected hunks)
+@@ -63,6 +63,9 @@
+         model.addAttribute("user" ,(String) session.getAttribute("name"));
+         // 상품 리스트
+         // 다이어리 리스트
++//        boardService.getlist();
++        // 상품 리스트
++//        productServiece.getlist();
+         return "/main/main";
+     }
+ }

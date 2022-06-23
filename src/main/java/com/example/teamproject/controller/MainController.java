@@ -33,6 +33,7 @@
 
 package com.example.teamproject.controller;
 
+import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.service.board.BoardServiceImpl;
 import com.example.teamproject.service.product.ProductServieceImpl;
 import com.example.teamproject.service.request.RequestServieceImpl;
@@ -63,6 +64,10 @@ public class MainController {
         model.addAttribute("user" ,(String) session.getAttribute("name"));
         // 상품 리스트
         // 다이어리 리스트
+//        boardService.getlist();
+        // 상품 리스트
+        model.addAttribute("productList", productServiece.getList(new Criteria(1, 15))) ;
+        
         return "/main/main";
     }
 }
