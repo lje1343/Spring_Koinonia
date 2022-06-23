@@ -85,15 +85,15 @@
             <!--     part 1       -->
             <section class="goods_slide2">
                 <div class="goods_total">
-                    <div class="goods1">
-                        <img src="/images/goods11.PNG" >
+                    <div class="goods1" >
+                        <img src="\upload\s_testfile3.jpg">
                     </div>
                     <div class="goods_2">
                         <div class="goods2">
-                            <img src="/images/goods10.PNG" >
+                            <img src="\upload\s_testfile3.jpg" >
                         </div>
                         <div class="goods3">
-                            <img src="/images/goods9.PNG" >
+                            <img src="" >
                         </div>
                     </div>
                     <div class="goods_4">
@@ -299,7 +299,9 @@
 </script>
 <script>
     var user = "[[${user}]]";
-    sessionStorage.setItem("user", user);
+    if(!(user==null || user.length<=0)) {
+        sessionStorage.setItem("user", user); // 유저 이름
+    }
 </script>
 <!-- header,footer -->
 <script src="/assets/js/header.js"></script>

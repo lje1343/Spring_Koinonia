@@ -50,7 +50,6 @@ public class UserController {
         log.info("*************");
         log.info(userService.login(email).getPw());
         if(pw.equals(userService.login(email).getPw())){
-            log.info("xxx");
             // 로그인 성공
             session.setAttribute("email", email);
             session.setAttribute("name", userService.login(email).getName());
@@ -58,6 +57,14 @@ public class UserController {
         }
         // 로그인 실패
         return "/user/login";
+    }
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        log.info("*************");
+        log.info("로그아웃");
+        log.info("*************");
+        session.invalidate(); // 세션 무효화
+        return "/main/main";
     }
 
     @GetMapping("/find_pw")
