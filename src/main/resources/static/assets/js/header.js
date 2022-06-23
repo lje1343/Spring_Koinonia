@@ -19,9 +19,37 @@ $(document).ready(function(){
     });
 });
 
-$("#btnGoToJoin").click(()=>{
-    location.href = '/user/join'
-})
+// 로그인 여부에 따른 header 변경사항
+
+if(!(user==null || user.length<=0)) {
+    $("#islogin").text(user + "!");
+    $("#islogin").attr("style", "font-weight:bold;");
+    $(".header_content").html(
+        "<h2>Hej" +
+        `   <sapn class="header__username" style='color:#ffdb00;'>${user}</sapn>` +
+        "</h2>" +
+        '<a role="button" class="btn btn--small btn--primary-inverse" href="/user/logout" id="header__button"' +
+        'style="display: flex; justify-content: end;">' +
+        '    <span class="btn__inner">로그아웃</span>' +
+        '</a>'
+    );
+    $(".sidebar_tag-content-text").html(
+        '   <h3>KOINONIA 계정</h3>'
+    )
+    $("#btnGoToJoin").click(() => {
+        location.href = '/user/mypage'
+    })
+    $(".slide_menu1 .menu_list").html(
+        '<li><a href="/board/register">내 여행다이어리 작성하러가기</a></li>' +
+        '<li><a href="/product/register">내 여행기념품 판매하러가기</a></li>' +
+        '<li><a href="/request/register">갖고 싶은 여행기념품 요청하기</a></li>' +
+        '<li><a href="/user/logout">로그아웃</a></li>'
+    )
+}else{
+    $("#btnGoToJoin").click(() => {
+        location.href = '/user/join'
+    })
+}
 
 
 
