@@ -1,6 +1,7 @@
 package com.example.teamproject.controller.declare;
 
 import com.example.teamproject.domain.vo.DeclareVO;
+import com.example.teamproject.domain.vo.UserVO;
 import com.example.teamproject.service.declare.DeclareServieceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +35,15 @@ public class DeclareController {
         log.info("*************");
         return "/declare/board_declare";
     }
+    @PostMapping("/register")
+    public String register(DeclareVO declareVO) {
+        log.info("*************");
+        log.info("신고 작성");
+        log.info("*************");
+        declareService.register(declareVO);
+        return "/declare/declare";
+    }
+
 //    @PostMapping("/register")
 //    public String register(DeclareVO declareVO, RedirectAttributes rttr){
 //        log.info("*************");

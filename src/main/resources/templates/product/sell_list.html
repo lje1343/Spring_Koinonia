@@ -1,7 +1,17 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/product/sell_list}">
 <head>
+    <style>
+        .let{
+            margin-top: 1%;
+            margin-bottom: 1%;
+            margin-left: 2%;
+            display: block;
 
+        }
+
+
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -39,8 +49,9 @@
 
 
 
-<main class ="plp-page-container">
+<main class ="plp-page-container" >
     <div class="container__inner">
+<<<<<<< HEAD
         <div class="bar">
             <select onchange="categoryChange(this)">
                 <option>대륙</option>
@@ -56,15 +67,39 @@
                 <option>나라</option>
             </select>
         </div>
+=======
+
+
+        <div clas="wrapper">
+>>>>>>> 9ac49f932196559f0629ddbac6e164e19b29cf47
         <!-- Product -->
-        <div class="container">
+        <div class="container" >
 
-
-
+            <div class ="let" th:object="${pageDTO}">
+                <form action="/product/list" name="cateForm" th:object="${criteria}">
+                    <div class="fields">
+                        <div id="searchWrap">
+                            <select id = land name="type" onchange="categoryChange(this)">
+                                <option value="">대륙</option>
+                                <option value="TCN" th:selected="*{type} == 'TCN'">전체</option>
+                                <option value="P" th:selected="*{type} == 'P'">아시아</option>
+                                <option value="P" th:selected="*{type} == 'P'">유럽</option>
+                                <option value="P" th:selected="*{type} == 'P'">아프리카</option>
+                                <option value="P" th:selected="*{type} == 'P'">남아메리카</option>
+                                <option value="P" th:selected="*{type} == 'P'">남아메리카</option>
+                                <option value="P" th:selected="*{type} == 'P'">북아메리카</option>
+                                <option value="P" th:selected="*{type} == 'P'">오스트레일리아</option>
+                            </select>
+                            <input type="text" id="result" name="keyword" th:value="*{keyword}"  style="display:none;">
+                        </div>
+                    </div>
+                </form>
+            </div>
 
 
             <div class="row isotope-grid">
-                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women" th:each="product : ${productList}">
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women" th:each="product:${productList}"}>
+
                     <div class="block2" th:object="${product}">
                         <div class="block2-pic hov-img0">
                             <img src="/images/aa.jpg" alt="IMG-PRODUCT">
@@ -76,11 +111,11 @@
 
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
-                                <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04  p-b-6">
                                     <p th:text="*{price}"></p>
                                 </a>
 
-                                <span class="stext-105 cl3" >
+                                <span class="stext-105 cl3 js-name-b2"  >
                                     <p th:text="*{pname}"></p>
                                 </span>
 
@@ -96,9 +131,29 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
+            <div class="big-width" style="text-align: center">
+                <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code>&lt;</code></a>
+                <th:block th:each="num:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">
+                    <code th:if="${num == pageDTO.criteria.pageNum}" th:text="${num}"></code>
+                    <a class="changePage" th:href="${num}" th:unless="${num == pageDTO.criteria.pageNum}"><code th:text="${num}"></code></a>
+                </th:block>
+                <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>&gt;</code></a>
+            </div>
+            <div class="small-width" style="text-align: center; height: 27px;">
+                <a class="changePage" th:href="*{criteria.pageNum - 1}" th:if="*{criteria.pageNum > 1}"><code>&lt;</code></a>
+                <code th:text="*{criteria.pageNum}"></code>
+                <a class="changePage" th:href="*{criteria.pageNum + 1}" th:if="*{criteria.pageNum < realEnd}"><code>&gt;</code></a>
             </div>
         </div>
+            <form action="/product/list" name="pageForm" th:object="${criteria}">
+                <input type="hidden" th:field="*{pageNum}">
+                <input type="hidden" th:field="*{amount}">
+                <input type="hidden" th:field="*{type}">
+                <input type="hidden" th:field="*{keyword}">
+            </form>
+        </div>
+    </div>
     </div>
 </main>
 
@@ -107,7 +162,28 @@
 
 <!--===============================================================================================-->
 
-<script>
+
+
+
+<!--  footer start  -->
+<div th:replace="~{/footer/footer :: footerFragment}"></div>
+<!--  footer end  -->
+</body>
+<script src="/assets/js/header.js"></script>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script src="/Vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="/Vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="/Vendor/parallax100/parallax100.js"></script>
+<!--===============================================================================================-->
+<script src="/Vendor/isotope/isotope.pkgd.min.js"></script>
+<!--===============================================================================================-->
+<script src="/Vendor/sweetalert/sweetalert.min.js"></script>
+<script th:inline="javascript">
+    let paging = [[${criteria.listLink}]];
+
     $('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
         e.preventDefault();
     });
@@ -135,35 +211,45 @@
 
 
 
-    function categoryChange(e) {
-        var good_a = ["일본", "중국", "몽골", "러시아"];
-        var good_b = ["영국", "프랑스", "폴란드", "터키", "이탈리아","스페인"];
-        var good_c = ["모로코", "마다가스카르", "콩고"];
-        var good_d = ["아르헨티나","칠레", "에콰도르", "베네수엘라"];
-        var good_e = ["캐나다", "미국", "그린란드", "멕시코", "쿠바"];
-        var good_f = ["호주"];
-        var target = document.getElementById("good");
 
-        if(e.value == "아시아") var d = good_a;
-        else if(e.value == "유럽") var d = good_b;
-        else if(e.value == "아프리카") var d = good_c;
-        else if(e.value == "남아메리카") var d = good_d;
-        else if(e.value == "북아메리카") var d = good_e;
-        else if(e.value == "오스트레일리아") var d = good_f;
 
-        target.options.length = 0;
 
-        for (x in d) {
-            var opt = document.createElement("option");
-            opt.value = d[x];
-            opt.innerHTML = d[x];
-            target.appendChild(opt);
+
+
+    let $cateForm = $(cateForm);
+
+
+    function categoryChange() {
+
+        var land = document.getElementById('land').options[document.getElementById('land').selectedIndex].text;
+        if (land == "대륙") {
+            alert("대륙을 선택해주세요")
+        } else if (land == "전체") {
+            $("#result").val("");
+        } else {
+            $("#result").val(land);
         }
+        cateForm.submit();
     }
 
+
+
+
+
+    $("a.changePage").click(function(e){
+        e.preventDefault();
+        $(pageForm).find("input[name='pageNum']").val($(this).attr("href"));
+        $(pageForm).submit();
+    });
+
+    $("a.goRead").click(function(e){
+        e.preventDefault();
+        location.href = "/product/read" + paging + "&pno="+$(this).attr('href');
+    });
 </script>
 
 
+<<<<<<< HEAD
 <!--  footer start  -->
 <div th:replace="~{/footer/footer :: footerFragment}"></div>
 <!--  footer end  -->
@@ -184,4 +270,6 @@
 <!--===============================================================================================-->
 <script src="/Vendor/sweetalert/sweetalert.min.js"></script>
 
+=======
+>>>>>>> 9ac49f932196559f0629ddbac6e164e19b29cf47
 </html>

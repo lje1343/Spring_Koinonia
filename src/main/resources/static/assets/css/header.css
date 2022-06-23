@@ -20,10 +20,14 @@ a:link{
     color: #000;
     text-decoration: none;
 }
+<<<<<<< HEAD
 a:visited{
     color: #000 ;
     text-decoration: none;
 }
+=======
+
+>>>>>>> 9ac49f932196559f0629ddbac6e164e19b29cf47
 
 a:hover{
     color: #000;
@@ -38,7 +42,7 @@ a,
   }
 
   header{
-    width: 1170px !important;
+    width: 1370px !important;
       margin: 0 auto;
 }
 .container_header{
