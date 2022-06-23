@@ -15,10 +15,8 @@ a:link{
     color: #000;
     text-decoration: none;
 }
-a:visited{
-    color: #000; 
-    text-decoration: none;
-}
+
+
 a:hover{
     color: #000;
     text-decoration: none;
@@ -32,7 +30,7 @@ a,
   }
 
   header{
-    width: 1170px !important;
+    width: 1370px !important;
       margin: 0 auto;
 }
 .container_header{
