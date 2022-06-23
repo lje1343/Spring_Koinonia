@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @Slf4j
 @RequestMapping("/")
@@ -20,10 +22,12 @@ public class MainController {
     private final RequestServieceImpl requestServiece;
 
     @GetMapping("/")
-    public String goToMain(Model model){
+    public String goToMain(HttpSession session, Model model){
         log.info("*************");
         log.info("메인페이지");
         log.info("*************");
+        log.info((String) session.getAttribute("name"));
+        model.addAttribute("user" ,(String) session.getAttribute("name"));
         // 상품 리스트
         // 다이어리 리스트
         return "/main/main";

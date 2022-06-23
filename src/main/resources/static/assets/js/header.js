@@ -22,3 +22,6 @@ $(document).ready(function(){
 $("#btnGoToJoin").click(()=>{
     location.href = '/user/join'
 })
+
+
+

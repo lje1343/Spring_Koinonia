@@ -74,13 +74,14 @@ a,
   background-color: white;
   margin-top: 25px;
   margin-left: 15px;
-    margin-right: 0 !important;
+  margin-right: 0 !important;
+    justify-content: end;
 }
 .mypage > ul > li{
     background-color: white;
     width: 40px;
     height: 40px;
-    margin-left: 15px;
+    margin-left: 0px !important;
   }
 .mypage > ul > li > a:hover{
   border-radius: 64px;
@@ -91,19 +92,20 @@ a,
 }
 
 .mypage > ul > .login{
-  width: 220px !important;
+  width: auto !important;
 }
 
 .login{
     font-weight: bold;
     font-size: medium;
+    width: auto !important;
 }
 
 
 .selectbar{
   width: 600px !important;
   height: 54px;
-  margin-left: 40px;
+  margin-left: 0px !important;
   margin-top: 18px;
   background-color: #dfdfdf;
   border-radius: 54px;
@@ -146,7 +148,8 @@ a,
   height: 24px;
   margin-top: 10px;
   margin-left: 12px;
-  
+  position: relative !important;
+    display: inline-block;
 }
 .mypage  a{
   width: 100%;
@@ -212,14 +215,6 @@ a:visited{
   font-size: larger;
 }
 
-.login > a > span{
-  position: absolute;
-  display: block;
-  width: 200px;
-  bottom: 8px;
-  left: 40px;
-}
-
 /* 왼쪽 메뉴 */
 .slide_menu{
     padding: 0 20px;
@@ -270,4 +265,14 @@ a:visited{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.btn_menu_open1{
+    top:0 !important;
+    left:0 !important;
+    position: relative !important;
+    display: inline-block;
+}
+.btn_menu_open1 > button{
+    transform: translateY(-9px);
+    padding: 0px 14px 14px 4px !important;
 }

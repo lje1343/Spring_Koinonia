@@ -308,7 +308,18 @@
             dots: true
         });
     })
+
 </script>
 <!-- header,footer -->
 <script src="/assets/js/header.js"></script>
+<script>
+    // 로그인 시
+    var user = "[[${user}]]";
+    if(!(user==null || user.length<=0)){
+        $("#islogin").text(user + "!");
+        $("#islogin").attr("style", "font-weight:bold;");
+        $(".header__username").text(user);
+        $("#header__button > .btn__inner").text("로그아웃");
+    }
+</script>
 </html>
