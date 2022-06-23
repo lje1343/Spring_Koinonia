@@ -32,14 +32,6 @@
     <link rel="stylesheet" href="/assets/css/footer.css" />
 
     <title>sell_list</title>
-    <style>
-        .bar{
-            width: 1170px;
-            margin: 0 auto;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 <body>
 
@@ -51,27 +43,7 @@
 
 <main class ="plp-page-container" >
     <div class="container__inner">
-<<<<<<< HEAD
-        <div class="bar">
-            <select onchange="categoryChange(this)">
-                <option>대륙</option>
-                <option value="아시아">아시아</option>
-                <option value="유럽">유럽</option>
-                <option value="아프리카">아프리카</option>
-                <option value="남아메리카">남아메리카</option>
-                <option value="북아메리카">북아메리카</option>
-                <option value="오스트레일리아">오스트레일리아</option>
-            </select>
-
-            <select id="good">
-                <option>나라</option>
-            </select>
-        </div>
-=======
-
-
         <div clas="wrapper">
->>>>>>> 9ac49f932196559f0629ddbac6e164e19b29cf47
         <!-- Product -->
         <div class="container" >
 
@@ -154,7 +126,6 @@
             </form>
         </div>
     </div>
-    </div>
 </main>
 
 
@@ -169,18 +140,6 @@
 <div th:replace="~{/footer/footer :: footerFragment}"></div>
 <!--  footer end  -->
 </body>
-<script src="/assets/js/header.js"></script>
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-
-<script src="/Vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-<script src="/Vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-<script src="/Vendor/parallax100/parallax100.js"></script>
-<!--===============================================================================================-->
-<script src="/Vendor/isotope/isotope.pkgd.min.js"></script>
-<!--===============================================================================================-->
-<script src="/Vendor/sweetalert/sweetalert.min.js"></script>
 <script th:inline="javascript">
     let paging = [[${criteria.listLink}]];
 
@@ -210,14 +169,7 @@
     });
 
 
-
-
-
-
-
-
     let $cateForm = $(cateForm);
-
 
     function categoryChange() {
 
@@ -231,11 +183,6 @@
         }
         cateForm.submit();
     }
-
-
-
-
-
     $("a.changePage").click(function(e){
         e.preventDefault();
         $(pageForm).find("input[name='pageNum']").val($(this).attr("href"));
@@ -248,12 +195,6 @@
     });
 </script>
 
-
-<<<<<<< HEAD
-<!--  footer start  -->
-<div th:replace="~{/footer/footer :: footerFragment}"></div>
-<!--  footer end  -->
-</body>
 <script src="/Vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="/assets/js/header.js"></script>
 
@@ -270,6 +211,4 @@
 <!--===============================================================================================-->
 <script src="/Vendor/sweetalert/sweetalert.min.js"></script>
 
-=======
->>>>>>> 9ac49f932196559f0629ddbac6e164e19b29cf47
 </html>
