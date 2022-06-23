@@ -140,6 +140,18 @@
 <div th:replace="~{/footer/footer :: footerFragment}"></div>
 <!--  footer end  -->
 </body>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/assets/js/header.js"></script>
+
+<script src="/Vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="/Vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="/Vendor/parallax100/parallax100.js"></script>
+<!--===============================================================================================-->
+<script src="/Vendor/isotope/isotope.pkgd.min.js"></script>
+<!--===============================================================================================-->
+<script src="/Vendor/sweetalert/sweetalert.min.js"></script>
 <script th:inline="javascript">
     let paging = [[${criteria.listLink}]];
 
@@ -169,7 +181,14 @@
     });
 
 
+
+
+
+
+
+
     let $cateForm = $(cateForm);
+
 
     function categoryChange() {
 
@@ -183,6 +202,11 @@
         }
         cateForm.submit();
     }
+
+
+
+
+
     $("a.changePage").click(function(e){
         e.preventDefault();
         $(pageForm).find("input[name='pageNum']").val($(this).attr("href"));
@@ -194,21 +218,4 @@
         location.href = "/product/read" + paging + "&pno="+$(this).attr('href');
     });
 </script>
-
-<script src="/Vendor/jquery/jquery-3.2.1.min.js"></script>
-<script src="/assets/js/header.js"></script>
-
-<script src="/Vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-<script src="/Vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-<script src="/Vendor/parallax100/parallax100.js"></script>
-<script>
-    $('.parallax100').parallax100();
-</script>
-<!--===============================================================================================-->
-<script src="/Vendor/isotope/isotope.pkgd.min.js"></script>
-<!--===============================================================================================-->
-<script src="/Vendor/sweetalert/sweetalert.min.js"></script>
-
 </html>
