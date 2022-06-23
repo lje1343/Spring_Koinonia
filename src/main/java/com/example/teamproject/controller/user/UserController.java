@@ -72,7 +72,30 @@ public class UserController {
         log.info("*************");
         log.info("비밀번호찾기");
         log.info("*************");
-        return "/user/find_pw";
+        return "/user/new_pw";
+    }
+    @PostMapping("/find_pw")
+    public String goToFindPw(String email){
+        log.info("*************");
+        log.info("비밀번호찾기");
+        log.info("*************");
+        userService.
+        return "/user/new_pw";
+    }
+
+    @GetMapping("/new_pw")
+    public String goToNewPw(){
+        log.info("*************");
+        log.info("비밀번호재설정");
+        log.info("*************");
+        return "/user/new_pw";
+    }
+    @PostMapping("/new_pw")
+    public String goToNewPw(String newPw){
+        log.info("*************");
+        log.info("비밀번호재설정");
+        log.info("*************");
+        return "/user/new_pw";
     }
 
     @GetMapping("/modify")

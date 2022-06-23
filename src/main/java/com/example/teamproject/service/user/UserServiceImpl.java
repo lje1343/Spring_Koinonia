@@ -51,6 +51,8 @@ public class UserServiceImpl {
 
     ;
 
+    
+
     // 회원 이름 수정
 //    public boolean modifyName(UserVO userVO, BoardVO boardVO) {
 //        if (userDAO.updateName(userVO) + boardDAO.updateName(boardVO) >= 2) {
