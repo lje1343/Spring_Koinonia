@@ -57,8 +57,9 @@ public class MainController {
         log.info("*************");
         log.info("메인페이지");
         log.info("*************");
-        // 상품 리스트
         // 다이어리 리스트
+        boardService.list
+        // 상품 리스트
         return "/main/main";
     }
 }
