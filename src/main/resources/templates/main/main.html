@@ -108,109 +108,110 @@
             </section>
             <!--     part 2       -->
             <section class="goods_slide">
+                <th:block th:each="product:${productList}">
                 <!--     sample start      -->
-                <div>
+                <div th:object="${product}">
                     <a th:href="@{/product/detail}">
                         <div>
                             <img src="/images/goods1.PNG">
                             <div class="goods_name">
-                                <p>상품 이름</p>
+                                <p th:text="*{title}"></p>
                             </div>
                         </div>
                     </a>
                 </div>
                 <!--     sample end      -->
-
-                <div>
-                    <a href="">
-                        <div>
-                            <img src="/images/goods2.PNG">
-                            <div class="goods_name">
-                                <p>상품 이름</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <div>
-                            <img src="/images/goods3.PNG">
-                            <div class="goods_name">
-                                <p>상품 이름</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <div>
-                            <img src="/images/goods1.PNG">
-                            <div class="goods_name">
-                                <p>상품 이름</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <div>
-                            <img src="/images/goods2.PNG">
-                            <div class="goods_name">
-                                <p>상품 이름</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <div>
-                            <img src="/images/goods3.PNG">
-                            <div class="goods_name">
-                                <p>상품 이름</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <div>
-                            <img src="/images/goods1.PNG">
-                            <div class="goods_name">
-                                <p>상품 이름</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <div>
-                            <img src="/images/goods2.PNG">
-                            <div class="goods_name">
-                                <p>상품 이름</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <div>
-                            <img src="/images/goods3.PNG">
-                            <div class="goods_name">
-                                <p>상품 이름</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <div>
-                            <img src="/images/goods1.PNG">
-                            <div class="goods_name">
-                                <p>상품 이름</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                </th:block>
+<!--                <div>-->
+<!--                    <a href="">-->
+<!--                        <div>-->
+<!--                            <img src="/images/goods2.PNG">-->
+<!--                            <div class="goods_name">-->
+<!--                                <p>상품 이름</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <a href="">-->
+<!--                        <div>-->
+<!--                            <img src="/images/goods3.PNG">-->
+<!--                            <div class="goods_name">-->
+<!--                                <p>상품 이름</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <a href="">-->
+<!--                        <div>-->
+<!--                            <img src="/images/goods1.PNG">-->
+<!--                            <div class="goods_name">-->
+<!--                                <p>상품 이름</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <a href="">-->
+<!--                        <div>-->
+<!--                            <img src="/images/goods2.PNG">-->
+<!--                            <div class="goods_name">-->
+<!--                                <p>상품 이름</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <a href="">-->
+<!--                        <div>-->
+<!--                            <img src="/images/goods3.PNG">-->
+<!--                            <div class="goods_name">-->
+<!--                                <p>상품 이름</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <a href="">-->
+<!--                        <div>-->
+<!--                            <img src="/images/goods1.PNG">-->
+<!--                            <div class="goods_name">-->
+<!--                                <p>상품 이름</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <a href="">-->
+<!--                        <div>-->
+<!--                            <img src="/images/goods2.PNG">-->
+<!--                            <div class="goods_name">-->
+<!--                                <p>상품 이름</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <a href="">-->
+<!--                        <div>-->
+<!--                            <img src="/images/goods3.PNG">-->
+<!--                            <div class="goods_name">-->
+<!--                                <p>상품 이름</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <a href="">-->
+<!--                        <div>-->
+<!--                            <img src="/images/goods1.PNG">-->
+<!--                            <div class="goods_name">-->
+<!--                                <p>상품 이름</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
             </section>
         <!--   여행 기념품 목록 end     -->
         <!--   koinonia contents 안내 start     -->

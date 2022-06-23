@@ -67,7 +67,6 @@ public class MainController {
 //        boardService.getlist();
         // 상품 리스트
         model.addAttribute("productList", productServiece.getList(new Criteria(1, 15))) ;
-        
         return "/main/main";
     }
 }
