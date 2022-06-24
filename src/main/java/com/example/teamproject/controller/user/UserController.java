@@ -79,10 +79,15 @@ public class UserController {
         log.info("*************");
         log.info("비밀번호찾기");
         log.info("*************");
+<<<<<<< HEAD
         if(userService.checkEmail(email) <= 0){
             return "/user/new_pw";
         }
         return "/user/find_pw";
+=======
+//        userService.
+        return "/user/new_pw";
+>>>>>>> master
     }
 
     @GetMapping("/new_pw")
