@@ -79,7 +79,7 @@ public class UserController {
         log.info("*************");
         log.info("비밀번호찾기");
         log.info("*************");
-        userService.
+//        userService.
         return "/user/new_pw";
     }
 
