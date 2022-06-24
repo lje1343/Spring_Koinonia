@@ -79,8 +79,10 @@ public class UserController {
         log.info("*************");
         log.info("비밀번호찾기");
         log.info("*************");
-        userService.
-        return "/user/new_pw";
+        if(userService.checkEmail(email) <= 0){
+            return "/user/new_pw";
+        }
+        return "/user/find_pw";
     }
 
     @GetMapping("/new_pw")
@@ -88,6 +90,7 @@ public class UserController {
         log.info("*************");
         log.info("비밀번호재설정");
         log.info("*************");
+
         return "/user/new_pw";
     }
     @PostMapping("/new_pw")
