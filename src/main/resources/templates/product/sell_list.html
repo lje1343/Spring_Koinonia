@@ -75,19 +75,19 @@
                         <div class="block2-pic hov-img0">
                             <img src="/images/aa.jpg" alt="IMG-PRODUCT">
 
-                            <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
+                            <a  class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" th:href="*{pno}" >
+                                보러가기
                             </a>
                         </div>
 
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
-                                <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04  p-b-6">
-                                    <p th:text="*{price}"></p>
+                                <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04  p-b-6" >
+                                    <div th:text="*{price}"></div>
                                 </a>
 
                                 <span class="stext-105 cl3 js-name-b2"  >
-                                    <p th:text="*{pname}"></p>
+                                    <a th:text="*{pname}"></a>
                                 </span>
 
 
@@ -111,7 +111,7 @@
                 </th:block>
                 <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>&gt;</code></a>
             </div>
-            <div class="small-width" style="text-align: center; height: 27px;">
+            <div class="small-width" style="text-align: center; height: 40px;">
                 <a class="changePage" th:href="*{criteria.pageNum - 1}" th:if="*{criteria.pageNum > 1}"><code>&lt;</code></a>
                 <code th:text="*{criteria.pageNum}"></code>
                 <a class="changePage" th:href="*{criteria.pageNum + 1}" th:if="*{criteria.pageNum < realEnd}"><code>&gt;</code></a>
@@ -153,6 +153,10 @@
 <script src="/Vendor/sweetalert/sweetalert.min.js"></script>
 <script th:inline="javascript">
     let paging = [[${criteria.listLink}]];
+    console.log(paging)
+
+
+
 
     $('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
         e.preventDefault();
@@ -161,7 +165,7 @@
     $('.js-addwish-b2').each(function(){
         var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
         $(this).on('click', function(){
-            swal(nameProduct, "is added to wishlist !", "success");
+            swal(nameProduct, "좋아요 !", "success");
 
             $(this).addClass('js-addedwish-b2');
             $(this).off('click');
@@ -212,9 +216,9 @@
         $(pageForm).submit();
     });
 
-    $("a.goRead").click(function(e){
+    $("a.block2-btn").click(function(e){
         e.preventDefault();
-        location.href = "/product/read" + paging + "&pno="+$(this).attr('href');
+        location.href = "/product/detail" + paging + "&pno="+$(this).attr('href');
     });
 </script>
 </html>
