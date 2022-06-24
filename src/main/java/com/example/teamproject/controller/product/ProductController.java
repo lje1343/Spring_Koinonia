@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -23,7 +24,7 @@ public class ProductController {
     // 상품
 
     @GetMapping("/register")
-    public String register(){
+    public String register() {
         log.info("*************");
         log.info("판매 상품정보 작성");
         log.info("*************");
@@ -39,7 +40,7 @@ public class ProductController {
 //    }
 
     @GetMapping("/list")
-    public String getList(Criteria criteria, Model model){
+    public String getList(Criteria criteria, Model model) {
         log.info("*************");
         log.info("상품 리스트");
         log.info("*************");
@@ -49,13 +50,15 @@ public class ProductController {
     }
 
     @GetMapping("/detail")
-    public String read(Long pno, Model model){
+    public String read(Long pno, Model model, Criteria criteria) {
         log.info("*************");
         log.info("상품 상세");
         log.info("*************");
-        // 상품 상세
-        return "/product/detail";
+        log.info(productService.read(pno).toString());
+        model.addAttribute("product", productService.read(pno));
+        return "/product/sell_detail";
     }
+
 
     @GetMapping("/modify")
     public String modify(Long pno){
