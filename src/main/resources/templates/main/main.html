@@ -63,19 +63,15 @@
             </div>
         </div>
         <section class="story_slide">
-            <!--       sample start         -->
-            <div class="story1">
-                <a th:href="@{/board/detail}">
-                    <img src="/images/diary1.PNG">
-                </a>
-            </div>
-            <!--       sample end         -->
-            <div class="story2">
-                <img src="/images/diary2.PNG">
-            </div>
-            <div class="story3">
-                <img src="/images/diary3.PNG">
-            </div>
+            <th:block th:each="idx:${#numbers.sequence(0,5)}">
+                <!--       sample start         -->
+                <div class="story1">
+                    <a th:href="@{/board/detail(bno = ${boardList[idx].bno})}">
+                        <img th:src="${boardThumfileUrlList[idx]}">
+                    </a>
+                </div>
+                <!--       sample end         -->
+            </th:block>
         </section>
         <!--    다이어리 section start   -->
         <!--   여행 기념품 목록 start     -->
@@ -83,7 +79,7 @@
             <h2>여행자 기념품</h2>
         </div>
             <!--     part 1       -->
-            <section class="goods_slide2">
+            <section class="goods_slide2 goods">
                 <div class="goods_total">
                     <div class="goods1" >
                         <img th:src="${productThumfileUrlList[0]}">
@@ -107,7 +103,7 @@
                 </div>
             </section>
             <!--     part 2       -->
-            <section class="goods_slide">
+            <section class="goods_slide goods">
                 <th:block th:each="num:${#numbers.sequence(5,14)}">
                     <div>
                         <a th:href="@{/product/detail(pno = ${productList[num].pno})}">

@@ -1,15 +1,15 @@
 
 package com.example.teamproject.controller;
 
+
 import com.example.teamproject.domain.vo.*;
+import com.example.teamproject.service.board.BoardFileServiceImpl;
 import com.example.teamproject.service.board.BoardServiceImpl;
 import com.example.teamproject.service.product.ProductFileServiceImpl;
 import com.example.teamproject.service.product.ProductServieceImpl;
 import com.example.teamproject.service.request.RequestServieceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +27,7 @@ public class MainController {
     private final BoardServiceImpl boardService;
     private final ProductServieceImpl productServiece;
     private final RequestServieceImpl requestServiece;
-//    private final BoardFileServiceImpl boardFileService;
+    private final BoardFileServiceImpl boardFileService;
     private final ProductFileServiceImpl productFileService;
 
     @GetMapping("/")
@@ -39,25 +39,25 @@ public class MainController {
         log.info((String) session.getAttribute("name"));
         model.addAttribute("user" ,(String) session.getAttribute("name"));
 //         다이어리 리스트
-//        List<BoardVO> boardList = boardService.getList(new Criteria(1, 6));
-//        model.addAttribute("boardList", boardList) ;
+        List<BoardVO> boardList = boardService.getList(new Criteria(1, 6));
+        model.addAttribute("boardList", boardList) ;
 //        썸네일 리스트 공통
         String uploadFolder = "/images/";
 //         다이어리 썸네일 리스트
-//        String boardThumFileName = "";
-//        List<String> boardThumfileUrlList = new ArrayList<>();
-//        for(BoardVO b : boardList){
-//            List<FileVO> boardFileList = boardFileService.getList(b.getBno());
-//            if(!boardFileList.isEmpty()){
-//                boardThumFileName = "s_" + boardFileList.get(0).getFileName();
-//            }else{
-//                boardThumFileName = "no_image.gif";
-//            }
-//            String boardThumfileUrl = uploadFolder + boardThumFileName;
-//            boardThumfileUrlList.add(boardThumfileUrl);
-//            log.info(boardThumfileUrl);
-//        }
-//        model.addAttribute("productThumfileUrlList", boardThumfileUrlList);
+        String boardThumFileName = "";
+        List<String> boardThumfileUrlList = new ArrayList<>();
+        for(BoardVO b : boardList){
+            List<FileVO> boardFileList = boardFileService.getList(b.getBno());
+            if(!boardFileList.isEmpty()){
+                boardThumFileName = "s_" + boardFileList.get(0).getFileName();
+            }else{
+                boardThumFileName = "no_image.gif";
+            }
+            String boardThumfileUrl = uploadFolder + boardThumFileName;
+            boardThumfileUrlList.add(boardThumfileUrl);
+            log.info(boardThumfileUrl);
+        }
+        model.addAttribute("boardThumfileUrlList", boardThumfileUrlList);
 //         상품 리스트
         List<ProductVO> productList = productServiece.getList(new Criteria(1, 15));
         model.addAttribute("productList", productList) ;

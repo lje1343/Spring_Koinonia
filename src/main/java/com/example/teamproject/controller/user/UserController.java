@@ -44,19 +44,19 @@ public class UserController {
         return "/user/login";
     }
     @PostMapping("/login")
-    public String login(String email, String pw, HttpSession session){
+    public String login(String email, String pw, HttpSession session, Model model){
         log.info("*************");
         log.info("로그인 시도");
         log.info("*************");
-        log.info(userService.login(email).getPw());
-        if(pw.equals(userService.login(email).getPw())){
+        if(userService.login(email)==null || !(pw.equals(userService.login(email).getPw()))){
+            // 로그인 실패
+            model.addAttribute("msg", "아이디 혹은 비밀번호가 다릅니다.");
+            return "/user/login";
+        }
             // 로그인 성공
             session.setAttribute("email", email);
             session.setAttribute("name", userService.login(email).getName());
             return "/user/mypage";
-        }
-        // 로그인 실패
-        return "/user/login";
     }
     @GetMapping("/logout")
     public String logout(HttpSession session){
@@ -82,8 +82,10 @@ public class UserController {
         if(userService.checkEmail(email) > 0){
             model.addAttribute("email", email);
             return "/user/new_pw";
+        }else {
+            model.addAttribute("msg", "등록된 회원이 아닙니다.");
+            return "/user/find_pw";
         }
-        return "/user/find_pw";
     }
 
     @GetMapping("/new_pw")
@@ -94,11 +96,12 @@ public class UserController {
         return "/user/new_pw";
     }
     @PostMapping("/new_pw")
-    public String goToNewPw(String pw, String email){
+    public String goToNewPw(String pw, String email, Model model){
         log.info("*************");
         log.info("비밀번호재설정");
         log.info("*************");
         userService.modifyPw(pw, email);
+        model.addAttribute("msg","비밀번호가 재설정되었습니다.");
         return "/user/login";
     }
 
