@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 public class UserController {
     private final UserServiceImpl userService;
     // 회원가입/로그인/비밀번호찾기/마이페이지
-
+//
     @GetMapping("/join")
     public String goToJoin(){
         log.info("*************");
