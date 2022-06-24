@@ -72,22 +72,18 @@ public class UserController {
         log.info("*************");
         log.info("비밀번호찾기");
         log.info("*************");
-        return "/user/new_pw";
+        return "/user/find_pw";
     }
     @PostMapping("/find_pw")
-    public String goToFindPw(String email){
+    public String goToFindPw(String email, Model model){
         log.info("*************");
         log.info("비밀번호찾기");
         log.info("*************");
-<<<<<<< HEAD
-        if(userService.checkEmail(email) <= 0){
+        if(userService.checkEmail(email) > 0){
+            model.addAttribute("email", email);
             return "/user/new_pw";
         }
         return "/user/find_pw";
-=======
-//        userService.
-        return "/user/new_pw";
->>>>>>> master
     }
 
     @GetMapping("/new_pw")
@@ -95,15 +91,15 @@ public class UserController {
         log.info("*************");
         log.info("비밀번호재설정");
         log.info("*************");
-
         return "/user/new_pw";
     }
     @PostMapping("/new_pw")
-    public String goToNewPw(String newPw){
+    public String goToNewPw(String pw, String email){
         log.info("*************");
         log.info("비밀번호재설정");
         log.info("*************");
-        return "/user/new_pw";
+        userService.modifyPw(pw, email);
+        return "/user/login";
     }
 
     @GetMapping("/modify")

@@ -13,7 +13,7 @@ public interface UserMapper {
     public UserVO find(String email);
     public UserVO login(String email);
     public int update(UserVO userVO);
-    public void updatePw(String newPw);
+    public void updatePw(String newPw, String email);
     public Long get(String name);
     public UserVO getInfo(Long unum);
     public int delete(String email, String pw);

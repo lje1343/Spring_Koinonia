@@ -36,7 +36,7 @@
     <update id="updatePw">
         UPDATE TBL_USER
         SET PW = #{newPw}
-        WHERE 
+        WHERE EMAIL = #{email}
     </update>
 
     <select id="get" resultType="long">

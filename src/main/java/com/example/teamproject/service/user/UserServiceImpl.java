@@ -44,7 +44,7 @@ public class UserServiceImpl {
     ;
 
     // 비밀번호 수정
-    public void modifyPw(String newPw) { return; userDAO.modifyPw(newPw);}
+    public void modifyPw(String newPw, String email) { userDAO.modifyPw(newPw, email);}
 
     // 회원 삭제
     public int remove(String email, String pw) {
