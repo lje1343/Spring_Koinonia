@@ -54,15 +54,9 @@ public class ProductController {
         log.info("*************");
         log.info("상품 상세");
         log.info("*************");
-<<<<<<< HEAD
-        // 상품 상세
-        model.addAttribute(productService.read(pno));
-        return "/product/sell_deteil";
-=======
         log.info(productService.read(pno).toString());
         model.addAttribute("product", productService.read(pno));
         return "/product/sell_detail";
->>>>>>> bdc4f3ba55167e045299d40a86f0cc7d398593f3
     }
 
 
