@@ -42,12 +42,12 @@ public class BoardController {
 //    }
 
     @GetMapping("/modify")
-    public String modify(Long bno){
+    public String modify(Long bno, Model model){
         log.info("*************");
         log.info("다이어리 수정내용 작성/삭제");
         log.info("*************");
-        // 다이어리 수정
-        return "/diary/modify";
+        model.addAttribute(boardService.read(bno));
+        return "/diary/board_write";
     }
 //    @PostMapping("/modify")
 //    public String modify(Long bno, RedirectAttributes rttr){

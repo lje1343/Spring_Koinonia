@@ -72,9 +72,4 @@
         SELECT COUNT(BNO) FROM TBL_BOARD
     </select>
 
-
-
-
-
-
 </mapper>

@@ -147,6 +147,10 @@ header{
     padding-right: 30px;
 }
 
+.menubtn > a:hover{
+    text-decoration: underline !important;
+}
+
 a:visited{
     color:black
 }
