@@ -164,7 +164,29 @@
                 },  
             });
         });
-            
-                
 
 })(jQuery);
+
+$("#formBtn").on("click", function(e){
+    e.preventDefault();
+
+    let formSerializeArray = $("#dataForm").serializeArray();
+    let object = {};
+    for (let i = 0; i < formSerializeArray.length; i++){
+        object[formSerializeArray[i]['name']] = formSerializeArray[i]['value'];
+    }
+
+    let json = JSON.stringify(object);
+    console.log(json);
+
+    $.ajax({
+        url: "/productReply/new",
+        type: "post",
+        data: json,
+        contentType: "application/json",
+
+        success: function(str) {
+            alert(str)
+        }
+    });
+})

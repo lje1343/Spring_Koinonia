@@ -22,6 +22,7 @@ public class ProductReplyController {
     // 다이어리 댓글 등록
     @PostMapping(value = "/new", consumes = "application/json", produces = "text/plain; charset=utf-8")
     public ResponseEntity<String> create(@RequestBody ProductReplyVO productReplyVO) throws UnsupportedEncodingException {
+        productReplyVO.setName("aaa");
         log.info("boardReplyVO : " + productReplyVO);
         productReplyService.register(productReplyVO);
         return new ResponseEntity<>(new String("댓글 등록 성공".getBytes(), "UTF-8") , HttpStatus.OK);
