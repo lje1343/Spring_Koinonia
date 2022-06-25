@@ -3,6 +3,7 @@ package com.example.teamproject.controller.product;
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.PageDTO;
 import com.example.teamproject.domain.vo.ProductVO;
+import com.example.teamproject.service.product.ProductFileServiceImpl;
 import com.example.teamproject.service.product.ProductServieceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductServieceImpl productService;
+    private final ProductFileServiceImpl productFileService;
     // 상품
 
     @GetMapping("/register")
@@ -61,12 +63,13 @@ public class ProductController {
 
 
     @GetMapping("/modify")
-    public String modify(Long pno){
+    public String modify(Long pno, Model model){
         log.info("*************");
-        log.info("상품 수정");
+        log.info("다이어리 수정내용 작성/삭제");
         log.info("*************");
-        // 상품 수정
-        return "/product/modify";
+        model.addAttribute("product", productService.read(pno));
+        model.addAttribute("img", productFileService.getList(pno));
+        return "/product/modify_product";
     }
 //    @PostMapping("/modify")
 //    public String modify(Long pno, RedirectAttributes rttr){
