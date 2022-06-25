@@ -2,6 +2,7 @@ package com.example.teamproject.controller.product;
 
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.PageDTO;
+import com.example.teamproject.domain.vo.ProductFileVO;
 import com.example.teamproject.domain.vo.ProductVO;
 import com.example.teamproject.service.product.ProductFileServiceImpl;
 import com.example.teamproject.service.product.ProductServieceImpl;
@@ -10,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -61,37 +63,40 @@ public class ProductController {
         return "/product/sell_detail";
     }
 
-
     @GetMapping("/modify")
     public String modify(Long pno, Model model){
         log.info("*************");
-        log.info("다이어리 수정내용 작성/삭제");
+        log.info("다이어리 수정 내용 작성/삭제");
         log.info("*************");
         model.addAttribute("product", productService.read(pno));
-        model.addAttribute("img", productFileService.getList(pno));
+//        productFileService.getList(pno);
         return "/product/modify_product";
     }
-//    @PostMapping("/modify")
-//    public String modify(Long pno, RedirectAttributes rttr){
-//        log.info("*************");
-//        log.info("상품 수정 완료");
-//        log.info("*************");
-//        // 다이어리 수정 완료
-//        return new RedirectView("/product/list");
-//    }
+    @PostMapping("/modify")
+    public RedirectView modify(ProductVO productVO, Criteria criteria, RedirectAttributes rttr){
+        log.info("*************");
+        log.info("상품 수정 완료");
+        log.info("*************");
+        // 상품 정보 수정
+        if(productService.modify(productVO)==1){
+            rttr.addAttribute("pageNum", criteria.getPageNum());
+            rttr.addAttribute("amout", criteria.getAmount());
+        };
+        return new RedirectView("/product/list");
+    }
 
     ///////////////////////////////////////////////////
     // ResponsBody
 
     // 카테고리별 상품 목록
-    @GetMapping("/list/{pcate}") // 변수명 미정
+    @GetMapping("/list/{pcate}")
     @ResponseBody
     public List<ProductVO> getList(@PathVariable("pcate") String pcate){
         return null;
     }
 
     // 무한 스크롤
-    @GetMapping("/list/{pcate}/{pageNum}") // 변수명 미정
+    @GetMapping("/list/{pcate}/{pageNum}")
     @ResponseBody
     public List<ProductVO> getList(@PathVariable("pcate") String pcate, @PathVariable("pageNum") int pageNum){
         return null;

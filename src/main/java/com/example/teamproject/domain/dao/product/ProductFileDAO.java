@@ -1,10 +1,7 @@
 package com.example.teamproject.domain.dao.product;
 
-import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.ProductFileVO;
-import com.example.teamproject.domain.vo.ProductVO;
 import com.example.teamproject.mapper.ProductFileMapper;
-import com.example.teamproject.mapper.ProductMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -19,5 +16,10 @@ public class ProductFileDAO {
     public List<ProductFileVO> getList(Long pno){
         return productFileMapper.getList(pno);
     };
-
+    public void remove(Long pno){
+        productFileMapper.delete(pno);
+    }
+    public void register(ProductFileVO productFileVO){
+        productFileMapper.insert(productFileVO);
+    }
 }
