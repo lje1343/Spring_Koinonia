@@ -3656,7 +3656,7 @@ box-sizing: inherit;
   margin-right: 100px;
   margin-top: 10px;
   margin-bottom: 10px;
-  
+
   list-style: none; }
 
 .slide_menu .menu_list li a { 
@@ -3676,6 +3676,7 @@ box-sizing: inherit;
   font-weight: bold;
   line-height: 18px;
   color: #3db39e;
+  display: inline-block;
 }
 
 .area_reply .btn_replymore {
@@ -3700,6 +3701,7 @@ box-sizing: inherit;
   position: relative;
   padding: 23px 20px 24px;
   border-bottom: 1px solid #eee;
+  display: flex;
 }
 
 .area_reply .list_reply .img_profile {

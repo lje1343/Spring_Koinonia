@@ -155,12 +155,11 @@
                                         <!-- Review -->
                                         <div class="area_reply ">
                                             <strong class="tit_reply">댓글
-                                                <button type="button" class="btn_reply on"
+                                                <div type="button" class="btn_reply"
                                                         onclick="$.Area.Comment.changeStatus();">
                                                     <span id="commentCount15_0">1</span>
-                                                </button>
+                                                </div>
                                             </strong>
-                                            <!-- 대체텍스트 댓글펼치기/댓글접기 변경 -->
                                             <div id="entry15Comment">
                                                 <ul class="list_reply">
                                                     <li id="comment6468529" class="rp_general">
@@ -182,8 +181,7 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-                                                <form method="post" action="/comment/add/15" onsubmit="return false"
-                                                      style="margin: 0">
+                                                <form id="dataForm" style="margin: 0">
                                                     <fieldset class="fld_reply">
                                                         <legend class="screen_out">댓글쓰기</legend>
                                                         <div class="reply_write ">
@@ -194,7 +192,7 @@
                                                                       tabindex="1"></textarea>
                                                         </div>
                                                         <div class="writer_btn">
-                                                            <button type="submit" class="btn_enter" tabindex="5">입력</button>
+                                                            <button id="formBtn" class="btn_enter" tabindex="5">입력</button>
                                                         </div>
                                                     </fieldset>
                                                 </form>
