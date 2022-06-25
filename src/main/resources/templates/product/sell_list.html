@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/main/main}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/product/sell_list}">
 <head>
     <style>
         .let{
@@ -43,12 +43,9 @@
 
 <main class ="plp-page-container" >
     <div class="container__inner">
-
-
         <div clas="wrapper">
         <!-- Product -->
         <div class="container" >
-
             <div class ="let" th:object="${pageDTO}">
                 <form action="/product/list" name="cateForm" th:object="${criteria}">
                     <div class="fields">
@@ -128,7 +125,6 @@
             </form>
         </div>
     </div>
-    </div>
 </main>
 
 
@@ -143,8 +139,8 @@
 <div th:replace="~{/footer/footer :: footerFragment}"></div>
 <!--  footer end  -->
 </body>
-<script src="/assets/js/header.js"></script>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/assets/js/header.js"></script>
 
 <script src="/Vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
@@ -225,6 +221,4 @@
         location.href = "/product/detail" + paging + "&pno="+$(this).attr('href');
     });
 </script>
-
-
 </html>

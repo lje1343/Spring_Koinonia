@@ -2,8 +2,11 @@ package com.example.teamproject.service.board;
 
 import com.example.teamproject.domain.dao.board.BoardDAO;
 import com.example.teamproject.domain.vo.BoardVO;
+import com.example.teamproject.domain.vo.Criteria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -31,8 +34,8 @@ public class BoardServiceImpl {
     }
 
 //    다이어리 목록
-//    public List<BoardVO> getList(Criteria criteria) {
-//        return boardDAO.getList(criteria);
-//    }
+    public List<BoardVO> getList(Criteria criteria) {
+        return boardDAO.getList(criteria);
+    }
 }
 

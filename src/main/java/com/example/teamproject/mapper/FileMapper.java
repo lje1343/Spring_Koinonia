@@ -11,6 +11,6 @@ import java.util.List;
         public void delete(Long bno);
         public List<FileVO> findBno(Long bno);
         public List<FileVO> getOldFiles();
-
+        public List<FileVO> getList(Long bno);
     }
 
