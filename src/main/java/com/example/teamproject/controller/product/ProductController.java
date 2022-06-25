@@ -6,8 +6,11 @@ import com.example.teamproject.domain.vo.ProductFileVO;
 import com.example.teamproject.domain.vo.ProductVO;
 import com.example.teamproject.service.product.ProductFileServiceImpl;
 import com.example.teamproject.service.product.ProductServieceImpl;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -64,12 +68,20 @@ public class ProductController {
     }
 
     @GetMapping("/modify")
-    public String modify(Long pno, Model model){
+    public String modify(Long pno, Model model) throws JsonProcessingException {
         log.info("*************");
         log.info("다이어리 수정 내용 작성/삭제");
         log.info("*************");
         model.addAttribute("product", productService.read(pno));
-//        productFileService.getList(pno);
+        ArrayList files = new ArrayList();
+        for (ProductFileVO productFileVO : productFileService.getList(pno)) {
+            ObjectMapper mapper = new ObjectMapper();
+            String jsonString = mapper.writeValueAsString(productFileVO);
+            log.info(jsonString);
+            files.add(jsonString);
+        }
+        log.info(files.toString());
+        model.addAttribute("files", files.toString());
         return "/product/modify_product";
     }
     @PostMapping("/modify")

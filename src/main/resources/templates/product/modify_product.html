@@ -239,10 +239,19 @@
             str += "<input type='hidden' name='fileList[" + i + "].image' value='" + $(li).data("image") + "'>"
             str += "<input type='hidden' name='fileList[" + i + "].fileSize' value='" + $(li).data("filesize") + "'>"
         });
-
         $form.append(str).submit();
-
     });
+
+    $(window).on('load', function () {
+        let registeredFiles = "[[${files}]]";
+        console.log(registeredFiles);
+        registeredFiles = registeredFiles.replace(/&quot;/g, '"');
+        console.log(registeredFiles);
+        var arrayFile = JSON.parse("[" + registeredFiles + "]");
+        console.log(arrayFile);
+        console.log(arrayFile[0][0].fileName);
+        showUploadResult(arrayFile[0]);
+    })
   </script>
   <!-- header,footer -->
   <script src="/assets/js/header.js"></script>
