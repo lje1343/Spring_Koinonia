@@ -1,5 +1,6 @@
 package com.example.teamproject.controller.board;
 
+import com.example.teamproject.domain.vo.BoardDTO;
 import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.RequestVO;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -121,5 +123,25 @@ public class BoardController {
     @ResponseBody
     public boolean wish(Long bno){
         return false;
+    }
+
+    //다이어리 페이지 리스트(검색리스트 포함)
+    @PostMapping("/getListBySearch")
+    @ResponseBody
+    public List<BoardDTO> getListBySearch(@RequestBody Criteria criteria){
+//        boardService.getListBySearch(criteria).stream().map(BoardVO::toString).forEach(log::info);
+        return boardService.getListBySearch(criteria);
+    }
+
+    //경로에 저장된 이미지를 가져오는 url
+    @GetMapping("/display")
+    @ResponseBody
+    public byte[] getFile(String fileName) throws IOException{
+        log.info("*************************************");
+        log.info("BoardController : display(get)");
+        log.info("*************************************");
+        log.info(fileName);
+        File file = new File("C:/upload/", fileName);
+        return FileCopyUtils.copyToByteArray(file);
     }
 }
