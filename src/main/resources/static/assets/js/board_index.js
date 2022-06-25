@@ -61,7 +61,8 @@ boardService.getSearchList({
     realEnd = Math.ceil(boardList[0].total / 9.0);
     console.log(realEnd);
     boardList.forEach((board,i) => {
-        filePath = board.uploadPath + "/" + board.uuid + "_" + board.fileName;
+        //이미지 경로 썸네일 이름에 s_ 붙인다는 가정하고 만듬
+        filePath = board.uploadPath + "/s_" + board.uuid + "_" + board.fileName;
         str +=
             "<div class=\"col-md-4 col-sm-4 col-xs-6 col-xs-v12 col-tiny\">" +
             "<div class=\"thumbnail\">" +
