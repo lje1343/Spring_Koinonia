@@ -46,8 +46,8 @@ public class BoardController {
         log.info("*************");
         log.info("다이어리 수정내용 작성/삭제");
         log.info("*************");
-        model.addAttribute(boardService.read(bno));
-        return "/diary/board_write";
+        model.addAttribute("board", boardService.read(bno));
+        return "/diary/modify_board";
     }
 //    @PostMapping("/modify")
 //    public String modify(Long bno, RedirectAttributes rttr){

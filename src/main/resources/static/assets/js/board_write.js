@@ -31,8 +31,9 @@ $(document).on("click", ".nationalityArea button.select", function () {
 });
 window.addEventListener("click", clickBodyEventNationality);
 $(".nationalityArea .optionList").click((e) => {
-  $("#select").val(e.currentTarget.innerText).prop("selected", true);
-  $("#selectBtn").text(e.currentTarget.innerText);
+  let changeVal = e.currentTarget.innerText;
+  $("#select").val(changeVal).prop("selected", true);
+  $("#selectBtn").text(changeVal);
   document.querySelector("#selectBtn").classList.remove("open");
   document.querySelector("#option").classList.remove("openOption");
 });

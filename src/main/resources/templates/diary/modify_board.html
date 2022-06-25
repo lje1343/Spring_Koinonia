@@ -58,16 +58,16 @@
         </div>
       </div>
       <div class="mainArea">
-        <form action="" method="post">
+        <form action="" method="post" th:object="${board}">
           <div class="nationalityArea">
             <div class="selectArea">
-              <select name="select" id="select" hidden>
-                <option value="01">유럽</option>
-                <option value="02">북아메리카</option>
-                <option value="03">남아메리카</option>
-                <option value="04">오세아니아</option>
-                <option value="05">아프리카</option>
-                <option value="00" selected>아시아</option>
+              <select name="select" id="select" th:field="*{bcate}" hidden>
+                <option value="아시아">유럽</option>
+                <option value="북아메리카">북아메리카</option>
+                <option value="남아메리카">남아메리카</option>
+                <option value="오세아니아">오세아니아</option>
+                <option value="아프리카">아프리카</option>
+                <option value="아시아">아시아</option>
               </select>
               <button type="button" id="selectBtn" class="select">
                 여행한 대륙은 어디인가요?
@@ -110,7 +110,7 @@
               취소
             </button>
             <button type="submit" class="btnM btnStyleB btnStyleB_1" id="uploadBtn">
-              확인
+              수정
             </button>
           </div>
         </form>
@@ -123,4 +123,13 @@
   <script src="/assets/js/board_write.js"></script>
   <!-- header,footer -->
   <script src="/assets/js/header.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      $("#selectBtn").text($("#select").val());
+      let content = "[[${board.content}]]";
+      // $(".note-editable.card-block").html(content);
+      $('#summernote').summernote('insertText', content);
+    })
+  </script>
 </html>
