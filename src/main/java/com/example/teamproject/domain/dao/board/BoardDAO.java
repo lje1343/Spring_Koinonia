@@ -1,5 +1,6 @@
 package com.example.teamproject.domain.dao.board;
 
+import com.example.teamproject.domain.vo.BoardDTO;
 import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.mapper.BoardMapper;
@@ -42,5 +43,8 @@ public class BoardDAO {
 //    public  int updateName(BoardVO boardVO){
 //        return boardMapper.updatename(boardVO);
 //    }
+
+    //다이어리 페이지 리스트(검색조건 포함)
+    public List<BoardDTO> getListBySearch(Criteria criteria){ return boardMapper.getListBySearch(criteria); }
 }
 

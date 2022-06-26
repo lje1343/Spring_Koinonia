@@ -206,8 +206,9 @@ $("#reply").on("click", function() {
 
     console.log(paging);
 
-    // $.ajax({
-    //     url: "/productReply/" + pno + ,
-    //
-    // })
+    $.ajax({
+        url: "/productReply/" + pno + 1,
+        type: "get",
+
+    })
 })

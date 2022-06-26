@@ -1,6 +1,7 @@
 package com.example.teamproject.service.board;
 
 import com.example.teamproject.domain.dao.board.BoardDAO;
+import com.example.teamproject.domain.vo.BoardDTO;
 import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
 import lombok.RequiredArgsConstructor;
@@ -37,5 +38,8 @@ public class BoardServiceImpl {
     public List<BoardVO> getList(Criteria criteria) {
         return boardDAO.getList(criteria);
     }
+
+    //다이어리 페이지 리스트(검색조건 포함)
+    public List<BoardDTO> getListBySearch(Criteria criteria){ return boardDAO.getListBySearch(criteria); }
 }
 
