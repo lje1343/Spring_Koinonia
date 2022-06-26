@@ -1,8 +1,10 @@
 package com.example.teamproject.service.product;
 
+import com.example.teamproject.domain.dao.product.PFileDAO;
 import com.example.teamproject.domain.dao.product.ProductDAO;
 import com.example.teamproject.domain.dao.product.ProductFileDAO;
 import com.example.teamproject.domain.vo.Criteria;
+import com.example.teamproject.domain.vo.PFileVO;
 import com.example.teamproject.domain.vo.ProductVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +18,7 @@ import java.util.List;
 public class ProductServieceImpl{
     private final ProductDAO productDAO;
     private final ProductFileDAO productFileDAO;
+    private final PFileDAO pFileDAO;
 
     // 판매 상품 등록
     public void register(ProductVO productVO) {
@@ -55,5 +58,7 @@ public class ProductServieceImpl{
     }
 
     public int getTotal(){return productDAO.getTotal();}
+
+    public List<PFileVO> getOldFiles(){return pFileDAO.getOldFiles();}
 }
 

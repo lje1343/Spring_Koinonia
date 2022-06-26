@@ -2,18 +2,14 @@ package com.example.teamproject.controller.product;
 
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.PageDTO;
-<<<<<<< HEAD
 import com.example.teamproject.domain.vo.ProductFileVO;
 import com.example.teamproject.domain.vo.ProductVO;
 import com.example.teamproject.service.product.ProductFileServiceImpl;
 import com.example.teamproject.service.product.ProductServieceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-=======
 import com.example.teamproject.domain.vo.ProductDTO;
-import com.example.teamproject.domain.vo.ProductVO;
 import com.example.teamproject.service.product.ProductService;
->>>>>>> 8537ee2bff201341253e72108c09067ecd7632a9
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
@@ -23,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +28,8 @@ import java.util.List;
 @RequestMapping("/product/*")
 @RequiredArgsConstructor
 public class ProductController {
-<<<<<<< HEAD
     private final ProductServieceImpl productService;
     private final ProductFileServiceImpl productFileService;
-=======
-    private final ProductService productService;
->>>>>>> 8537ee2bff201341253e72108c09067ecd7632a9
     // 상품
 
     @GetMapping("/register")
@@ -65,7 +56,7 @@ public class ProductController {
         log.info("*************");
         log.info("상품 리스트");
         log.info("*************");
-        ProductDTO productDTO = productService.getOldFiles();
+//        productDTO = productService.getOldFiles();
         model.addAttribute("productList", productService.getList(criteria));
         model.addAttribute("pageDTO", new PageDTO(criteria, productService.getTotal()));
         return "/product/sell_list";
@@ -82,15 +73,11 @@ public class ProductController {
     }
 
     @GetMapping("/modify")
-<<<<<<< HEAD
     public String modify(Long pno, Model model) throws JsonProcessingException {
-=======
-    public String modify(Long pno, Criteria criteria, Model model) {
->>>>>>> 8537ee2bff201341253e72108c09067ecd7632a9
+//    public String modify(Long pno, Criteria criteria, Model model) {
         log.info("*************");
         log.info("다이어리 수정 내용 작성/삭제");
         log.info("*************");
-<<<<<<< HEAD
         model.addAttribute("product", productService.read(pno));
         ArrayList files = new ArrayList();
         for (ProductFileVO productFileVO : productFileService.getList(pno)) {
@@ -115,12 +102,11 @@ public class ProductController {
         };
         return new RedirectView("/product/list");
     }
-=======
-        log.info(criteria.toString());
-        model.addAttribute("product", productService.read(pno));
-        // 상품 수정
-        return "/product/product_modify";
-    }
+//        log.info(criteria.toString());
+//        model.addAttribute("product", productService.read(pno));
+//        // 상품 수정
+//        return "/product/product_modify";
+//    }
 
     @PostMapping("/modisucces")
     public RedirectView modisucces(Long pno, ProductVO productVO, Criteria criteria, RedirectAttributes rttr) {
@@ -135,13 +121,11 @@ public class ProductController {
 
         return new RedirectView("/product/sell_detail");
 }
->>>>>>> 8537ee2bff201341253e72108c09067ecd7632a9
 
     ///////////////////////////////////////////////////
     // ResponsBody
 
     // 카테고리별 상품 목록
-<<<<<<< HEAD
     @GetMapping("/list/{pcate}")
     @ResponseBody
     public List<ProductVO> getList(@PathVariable("pcate") String pcate){
@@ -154,8 +138,5 @@ public class ProductController {
     public List<ProductVO> getList(@PathVariable("pcate") String pcate, @PathVariable("pageNum") int pageNum){
         return null;
     }
-=======
 
-
->>>>>>> 8537ee2bff201341253e72108c09067ecd7632a9
 }
