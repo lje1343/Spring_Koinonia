@@ -1,6 +1,7 @@
 package com.example.teamproject.controller.product;
 
 import com.example.teamproject.domain.vo.BoardReplyVO;
+import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.ProductReplyVO;
 import com.example.teamproject.service.product.ProductReplyServieceImpl;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -36,10 +38,11 @@ public class ProductReplyController {
     }
 
     // 다이어리 댓글 전체 목록 조회
-//    @GetMapping("/list/{bno}/{page}")
-//    public ReplyPageDTO getList(@PathVariable("page") int pageNum, @PathVariable("bno") Long bno){
-//        return new ReplyPageDTO(boardReplyService.getList(new Criteria(pageNum, 10), bno), boardReplyService.getTotal(bno));
-//    }
+    @GetMapping("/list/{pno}/{page}")
+    public List<ProductReplyVO> getList(@PathVariable("page") int pageNum, @PathVariable("pno") Long pno){
+
+        return productReplyService.getList(pno, new Criteria(pageNum, 10));
+    }
 
     // 다이어리 댓글 삭제
     @DeleteMapping("/{rno}")
@@ -61,6 +64,11 @@ public class ProductReplyController {
         productReplyService.modify(productReplyVO);
         return "댓글 수정 성공";
     }
+
     // 판매 상품 댓글 개수
+    @GetMapping("/getTotal/{pno}")
+    public int getTotal(@PathVariable("pno") Long pno){
+        return productReplyService.getTotal(pno);
+    }
 
 }

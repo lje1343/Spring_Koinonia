@@ -190,3 +190,24 @@ $("#formBtn").on("click", function(e){
         }
     });
 })
+
+$("#reply").on("click", function() {
+    let pno = $("#pno").val();
+    $.ajax({
+        url: "/productReply/getTotal/" + pno,
+        type: "get",
+        contentType: "int",
+        success: function (totalNumber) {
+            $("#commentCount15_0").html(totalNumber);
+        }
+    });
+
+    let paging = [[${criteria.listLink}]];
+
+    console.log(paging);
+
+    // $.ajax({
+    //     url: "/productReply/" + pno + ,
+    //
+    // })
+})
