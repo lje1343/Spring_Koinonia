@@ -91,45 +91,6 @@ $("#thum").on("change", function(e){
 ///////////////////////////////////////////////////////////////////////////////////////
 // 썸머노트
 
-function sendFile(file, el) {
-  var form_data = new FormData();
-  form_data.append('file', file);
-  $.ajax({
-  data : form_data,
-      type : "POST",
-      url : '/boardFile/upload',
-      cache : false,
-      contentType : false,
-      enctype : 'multipart/form-data',
-  processData : false,
-      success : function(url) {
-        console.log(url);
-        $('#summernote').summernote('insertImage', url, function ($image) {
-          $image.css('width', $image.width() / 3);
-          console.log("ok");
-        });
-      }
-  });
-}
-
-// summernote create
-$("#summernote").summernote({
-  tabsize: 2,
-  height: 450, // 에디터 높이
-  minHeight: 450, // 최소 높이
-  maxHeight: 450, // 최대 높이
-  focus: false, // 에디터 로딩후 포커스를 맞출지 여부
-  lang: "ko-KR", // 한글 설정
-  placeholder: "다이어리를 작성해주세요.", //placeholder 설정
-  callbacks : {
-    onImageUpload : function(files, editor, welEditable) {
-      for (var i = 0; i < files.length; i++) {
-        sendFile(files[i], this);
-      }
-    }
-  }
-});
-
 //이미지 등록처리
 function imageUpload(files, editor) {
   var status = false;
@@ -177,10 +138,27 @@ $(document).on('click', '#uploadBtn', function (files, editor) {
   saveContent();
 });
 
+
+$(".optionList").click(function (e) {
+  e.preventDefault();
+  $("input[name=bcate]").attr('value', $(this).attr('id'));
+  console.log($("input[name=bcate]").val());
+})
+
+
 const saveContent = () => {
   var summernoteContent = $('#summernote').summernote('code'); // 썸머노트 작성내용(html)
+  $("input[name='content']").val(summernoteContent);
   console.log("summernoteContent : " + summernoteContent);
+  console.log(typeof(summernoteContent));
+
+
+
+  if(confirm("글을 등록하시겠습니까?")) {
+    $("form#registerForm").submit();
+  }
 }
+
 
 
 

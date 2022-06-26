@@ -37,14 +37,13 @@
     </select>
 
 
-
     <insert id="insert">
         <selectKey keyProperty="bno" resultType="long" order="BEFORE">
             SELECT SEQ_BOARD.NEXTVAL FROM DUAL
         </selectKey>
         INSERT INTO TBL_BOARD
-        (BNO, TITLE, CONTENT,NAME)
-        VALUES(#{bno}, #{title}, #{content}, #{name})
+        (BNO, TITLE, CONTENT, NAME)
+        VALUES(SEQ_BOARD.NEXTVAL, #{title}, #{content}, #{name})
     </insert>
 
     <select id="get" resultType="boardVO">
@@ -72,4 +71,32 @@
         SELECT COUNT(BNO) FROM TBL_BOARD
     </select>
 
+    <select id="getListBySearch" resultType="boardDTO">
+        SELECT BNO, TITLE, CONTENT, NAME, TO_CHAR(REGISTER_DATE, 'YYYY.MM.DD') AS REGISTER_DATE , TO_CHAR(UPDATE_DATE, 'YYYY.MM.DD') AS UPDATE_DATE, BCATE,
+        UUID , UPLOAD_PATH , FILE_NAME ,
+        TOTAL
+        FROM(
+        SELECT ROWNUM RN, BNO, TITLE, CONTENT, NAME, REGISTER_DATE, UPDATE_DATE, BCATE,
+        UUID , UPLOAD_PATH , FILE_NAME ,
+        TOTAL
+        FROM(
+        SELECT B.BNO, B.TITLE, B.CONTENT, B.NAME, B.REGISTER_DATE, B.UPDATE_DATE, B.BCATE,
+        F.UUID , F.UPLOAD_PATH , F.FILE_NAME ,
+        COUNT(B.BNO) OVER() AS TOTAL
+        FROM TBL_BOARD B
+        JOIN TBL_FILE F
+        ON B.BNO = F.BNO
+        <where>
+            <if test="type != null and type != ''">
+                B.${type} LIKE '%'||#{keyword}||'%'
+            </if>
+        </where>
+        ORDER BY B.REGISTER_DATE DESC
+        )
+        <![CDATA[
+            WHERE ROWNUM <= #{pageNum} * #{amount}
+            )
+        WHERE RN > (#{pageNum}-1) * #{amount}
+        ]]>
+    </select>
 </mapper>

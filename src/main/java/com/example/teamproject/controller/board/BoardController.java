@@ -1,5 +1,6 @@
 package com.example.teamproject.controller.board;
 
+import com.example.teamproject.domain.vo.BoardDTO;
 import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.RequestVO;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -25,6 +27,7 @@ public class BoardController {
     private final BoardServiceImpl boardService;
     // 다이어리
 
+    // 작성 페이지 이동
     @GetMapping("/register")
     public String register(){
         log.info("*************");
@@ -32,15 +35,17 @@ public class BoardController {
         log.info("*************");
         return "/diary/board_write";
     }
-//    @PostMapping("/register")
-//    public String register(BoardVO boardVO, RedirectAttributes rttr){
-//        log.info("*************");
-//        log.info("다이어리 등록");
-//        log.info("*************");
-//        // 다이어리 등록
-//        return new RedirectView("/board/list");
-//    }
 
+    // 작성 완료
+    @PostMapping("/register")
+    public RedirectView register(BoardVO boardVO, RedirectAttributes rttr) {
+        boardVO.setName("테스트"); // 임시 userName
+        boardService.register(boardVO);
+        rttr.addFlashAttribute("bno", boardVO.getBno());
+        return new RedirectView("/diary/index");
+    }
+
+    // 수정 페이지 이동
     @GetMapping("/modify")
     public String modify(Long bno, Model model){
         log.info("*************");
@@ -50,11 +55,14 @@ public class BoardController {
         return "/diary/modify_board";
     }
     @PostMapping("/modify")
-    public RedirectView modify(Long bno, RedirectAttributes rttr){
+    public RedirectView modify(BoardVO boardVO, Criteria criteria, RedirectAttributes rttr){
         log.info("*************");
         log.info("다이어리 수정");
         log.info("*************");
-        // 다이어리 수정 완료
+        if(boardService.modify(boardVO)==1){
+            rttr.addAttribute("pageNum", criteria.getPageNum());
+            rttr.addAttribute("amount", criteria.getAmount());
+        };
         return new RedirectView("/board/list");
     }
 
@@ -122,5 +130,25 @@ public class BoardController {
     @ResponseBody
     public boolean wish(Long bno){
         return false;
+    }
+
+    //다이어리 페이지 리스트(검색리스트 포함)
+    @PostMapping("/getListBySearch")
+    @ResponseBody
+    public List<BoardDTO> getListBySearch(@RequestBody Criteria criteria){
+//        boardService.getListBySearch(criteria).stream().map(BoardVO::toString).forEach(log::info);
+        return boardService.getListBySearch(criteria);
+    }
+
+    //경로에 저장된 이미지를 가져오는 url
+    @GetMapping("/display")
+    @ResponseBody
+    public byte[] getFile(String fileName) throws IOException{
+        log.info("*************************************");
+        log.info("BoardController : display(get)");
+        log.info("*************************************");
+        log.info(fileName);
+        File file = new File("C:/upload/", fileName);
+        return FileCopyUtils.copyToByteArray(file);
     }
 }

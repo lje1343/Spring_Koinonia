@@ -1,5 +1,6 @@
 package com.example.teamproject.mapper;
 
+import com.example.teamproject.domain.vo.BoardDTO;
 import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.UserVO;
@@ -58,7 +59,13 @@ private BoardMapper boardMapper;
 //        boardMapper.getList(new Criteria(1, 10)).stream().map(BoardVO::toString).forEach(log::info);
 //    }
 
-
+    @Test
+    public void getListBySearchTest(){
+        Criteria criteria = new Criteria(1, 10);
+        criteria.setKeyword("2");
+        criteria.setType("title");
+        boardMapper.getListBySearch(criteria).stream().map(BoardDTO::toString).forEach(log::info);
+    }
 
 
 

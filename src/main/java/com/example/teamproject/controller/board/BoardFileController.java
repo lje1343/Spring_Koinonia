@@ -1,23 +1,26 @@
 package com.example.teamproject.controller.board;
 
-import com.example.teamproject.domain.vo.FileVO;
-import com.example.teamproject.domain.vo.ProductFileVO;
+import com.example.teamproject.domain.vo.BoardFileVO;
 import com.example.teamproject.service.board.BoardServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,33 +35,26 @@ import java.util.UUID;
 public class BoardFileController {
     private final BoardServiceImpl boardService;
 
-    private String getFolder(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-        Date date = new Date();
-        return sdf.format(date);
-    }
-
-    private boolean checkImageType(File file) throws IOException{
-        String contentType = Files.probeContentType(file.toPath());
-        return contentType.startsWith("image");
-    }
-
+    // upload
     @PostMapping("/upload")
     @ResponseBody
-    public String upload(MultipartFile file) throws IOException {
+    public List<BoardFileVO> upload(MultipartFile[] uploadFiles) throws IOException {
         String uploadFolder = "C:/upload";
-
+        ArrayList<BoardFileVO> files = new ArrayList<>();
+log.info("----------------------------------------------------------");
+log.info(uploadFiles.toString());
 //        yyyy/MM/dd 경로 만들기
         File uploadPath = new File(uploadFolder, getFolder());
         if(!uploadPath.exists()){uploadPath.mkdirs();}
 
-            FileVO fileVO = new FileVO();
+        for(MultipartFile file : uploadFiles){
+            BoardFileVO boardFileVO = new BoardFileVO();
             String uploadFileName = file.getOriginalFilename();
 
             UUID uuid = UUID.randomUUID();
-            fileVO.setFileName(uploadFileName);
-            fileVO.setUuid(uuid.toString());
-            fileVO.setUploadPath(getFolder());
+            boardFileVO.setFileName(uploadFileName);
+            boardFileVO.setUuid(uuid.toString());
+            boardFileVO.setUploadPath(getFolder());
 
             uploadFileName = uuid.toString() + "_" + uploadFileName;
 
@@ -66,7 +62,7 @@ public class BoardFileController {
             log.info("Upload File Name : " + uploadFileName);
             log.info("Upload File Size : " + file.getSize());
 
-            fileVO.setFileSize(file.getSize());
+            boardFileVO.setFileSize(file.getSize());
 
             File saveFile = new File(uploadPath, uploadFileName);
             file.transferTo(saveFile);
@@ -75,13 +71,61 @@ public class BoardFileController {
                 FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
                 Thumbnailator.createThumbnail(file.getInputStream(), thumbnail, 100, 100);
                 thumbnail.close();
-                fileVO.setImage(true);
             }
-
-            String fileName = fileVO.getUploadPath() + "/s_" + fileVO.getUuid() + "_"  + fileVO.getFileName();
-            File url = new File("C:/upload/", fileName);
-            log.info(fileName);
-            log.info(url.toString());
-            return url.toString();
+            files.add(boardFileVO);
+        }
+        return files;
     }
+
+
+    @GetMapping("/display")
+    @ResponseBody
+    public byte[] getFile(String fileName) throws IOException{
+        File file = new File("C:/upload/", fileName);
+        return FileCopyUtils.copyToByteArray(file);
+    }
+
+    private boolean checkImageType(File file) throws IOException{
+        String contentType = Files.probeContentType(file.toPath());
+        return contentType.startsWith("image");
+    }
+
+    private String getFolder(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date();
+        return sdf.format(date);
+    }
+
+
+    // download
+    @GetMapping("/download")
+    @ResponseBody
+    public ResponseEntity<Resource> downloadFile(String fileName) throws UnsupportedEncodingException {
+        Resource resource = new FileSystemResource("C:/upload/" + fileName);
+        HttpHeaders header = new HttpHeaders();
+        String name = resource.getFilename();
+        name = name.substring(name.indexOf("_") + 1);
+        header.add("Content-Disposition", "attachment;filename="+ new String(name.getBytes("UTF-8"), "ISO-8859-1"));
+        return new ResponseEntity<>(resource, header, HttpStatus.OK);
+    }
+
+    // delete
+    @PostMapping("/delete")
+    @ResponseBody
+    public void delete(String fileName){
+        File file = new File("C:/upload/", fileName);
+        if(file.exists()){ file.delete(); }
+
+        file = new File("C:/upload/", fileName.replace("s_", ""));
+        if(file.exists()){ file.delete(); }
+    }
+
+//
+//    @GetMapping("/list")
+//    @ResponseBody
+//    public List<BoardFileVO> getList(Long boardBno){
+//        log.info("get file list....... : " + boardBno);
+//        return boardService.getList(boardBno);
+//    }
+
 }
