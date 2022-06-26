@@ -12,6 +12,7 @@ package com.example.teamproject.controller.file;
 
 import com.example.teamproject.domain.vo.PFileVO;
 import com.example.teamproject.service.product.ProductService;
+import com.example.teamproject.service.product.ProductServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
@@ -44,7 +45,7 @@ import java.util.UUID;
 @RequestMapping("/upload/*")
 @RequiredArgsConstructor
 public class PFileController {
-    private final ProductService productService;
+    private final ProductServiceImpl productService;
 
     @PostMapping("/upload")
     @ResponseBody

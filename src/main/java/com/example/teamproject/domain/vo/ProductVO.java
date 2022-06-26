@@ -19,11 +19,8 @@ public class ProductVO {
     private String psold;
     private String registerDate;
     private String updateDate;
-<<<<<<< HEAD
     private List<ProductFileVO> fileList;
-=======
 
 
-    private List<PFileVO> fileList;
->>>>>>> 8537ee2bff201341253e72108c09067ecd7632a9
+//    private List<PFileVO> fileList;
 }

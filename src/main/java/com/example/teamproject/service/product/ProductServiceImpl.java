@@ -33,7 +33,7 @@ public class ProductServiceImpl {
         if(productVO.getFileList() != null) {
             productVO.getFileList().forEach(pFileVO ->  {
                 pFileVO.setPno(productVO.getPno());
-                pFileDAO.register(pFileVO);
+//                pFileDAO.register(pFileVO);
             });
         }
     }
@@ -49,7 +49,7 @@ public class ProductServiceImpl {
         if(productVO.getFileList() != null) {
             productVO.getFileList().forEach(pFileVO -> {
                 pFileVO.setPno(productVO.getPno());
-                pFileDAO.register(pFileVO);
+//                pFileDAO.register(pFileVO);
             });
         }
         return productDAO.modify(productVO);
