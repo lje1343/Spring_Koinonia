@@ -2,8 +2,9 @@ package com.example.teamproject.controller.product;
 
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.PageDTO;
+import com.example.teamproject.domain.vo.ProductDTO;
 import com.example.teamproject.domain.vo.ProductVO;
-import com.example.teamproject.service.product.ProductServieceImpl;
+import com.example.teamproject.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ import java.util.List;
 @RequestMapping("/product/*")
 @RequiredArgsConstructor
 public class ProductController {
-    private final ProductServieceImpl productService;
+    private final ProductService productService;
     // 상품
 
     @GetMapping("/register")
@@ -30,20 +31,24 @@ public class ProductController {
         log.info("*************");
         return "/product/product";
     }
-//    @PostMapping("/register")
-//    public String register(ProductVO productVO, RedirectAttributes rttr){
-//        log.info("*************");
-//        log.info("판매 상품 등록");
-//        log.info("*************");
-//        // 판매 상품 등록
-//        return new RedirectView("/product/list");
-//    }
+
+    @PostMapping("/register")
+    public RedirectView register(ProductVO productVO, RedirectAttributes rttr) {
+        log.info("*************");
+        log.info("판매 상품 등록");
+        log.info("*************");
+        productService.register(productVO);
+        rttr.addFlashAttribute("pno", productVO.getPno());
+
+        return new RedirectView("/product/list");
+    }
 
     @GetMapping("/list")
-    public String getList(Criteria criteria, Model model) {
+    public String getList(Criteria criteria, Model model, Long pno, ProductDTO productDTO) {
         log.info("*************");
         log.info("상품 리스트");
         log.info("*************");
+        ProductDTO productDTO = productService.getOldFiles();
         model.addAttribute("productList", productService.getList(criteria));
         model.addAttribute("pageDTO", new PageDTO(criteria, productService.getTotal()));
         return "/product/sell_list";
@@ -61,36 +66,34 @@ public class ProductController {
 
 
     @GetMapping("/modify")
-    public String modify(Long pno){
+    public String modify(Long pno, Criteria criteria, Model model) {
         log.info("*************");
         log.info("상품 수정");
         log.info("*************");
+        log.info(criteria.toString());
+        model.addAttribute("product", productService.read(pno));
         // 상품 수정
-        return "/product/modify";
+        return "/product/product_modify";
     }
-//    @PostMapping("/modify")
-//    public String modify(Long pno, RedirectAttributes rttr){
-//        log.info("*************");
-//        log.info("상품 수정 완료");
-//        log.info("*************");
-//        // 다이어리 수정 완료
-//        return new RedirectView("/product/list");
-//    }
+
+    @PostMapping("/modisucces")
+    public RedirectView modisucces(Long pno, ProductVO productVO, Criteria criteria, RedirectAttributes rttr) {
+        log.info("*************");
+        log.info("상품 수정 완료");
+        log.info("*************");
+        // 다이어리 수정 완료
+        productService.modify(productVO);
+        rttr.addAttribute("pno", productVO.getPno());
+        rttr.addAttribute("pageNum", criteria.getPageNum());
+        rttr.addAttribute("amount", criteria.getAmount());
+
+        return new RedirectView("/product/sell_detail");
+}
 
     ///////////////////////////////////////////////////
     // ResponsBody
 
     // 카테고리별 상품 목록
-    @GetMapping("/list/{pcate}") // 변수명 미정
-    @ResponseBody
-    public List<ProductVO> getList(@PathVariable("pcate") String pcate){
-        return null;
-    }
 
-    // 무한 스크롤
-    @GetMapping("/list/{pcate}/{pageNum}") // 변수명 미정
-    @ResponseBody
-    public List<ProductVO> getList(@PathVariable("pcate") String pcate, @PathVariable("pageNum") int pageNum){
-        return null;
-    }
+
 }
