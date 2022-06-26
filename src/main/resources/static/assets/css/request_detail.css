@@ -3797,3 +3797,36 @@ box-sizing: inherit;
   color: #fff;
   font-weight: bold;
 }
+
+.area_paging {
+  margin: 30px 0 93px;
+  text-align: center;
+}
+
+.area_paging .inner_paging {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.area_paging .link_page {
+  float: left;
+}
+
+.area_paging .link_page span.selected {
+  border-radius: 3px;
+  background-color: #3db39e;
+  color: #fff;
+  font-weight: bold;
+  padding: 8px 14px 6px;
+}
+
+.changePage{
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.area_paging .link_page span {
+  display: block;
+  padding: 9px 14px 5px;
+  color: #666;
+}

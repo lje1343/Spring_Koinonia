@@ -73,12 +73,12 @@
                         </div>
                     </div>
                 </div>
-			<div class="col-md-6 col-lg-5 p-b-30">
-				<div class="p-r-50 p-t-5 p-lr-0-lg">
-					<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-					</h4>
-					<input type="text" hidden th:field="*{pno}" id="pno"/>
-					<span class="mtext-106 cl2">
+                <div class="col-md-6 col-lg-5 p-b-30">
+                    <div class="p-r-50 p-t-5 p-lr-0-lg">
+                        <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                        </h4>
+                        <input type="hidden" th:field="*{pno}" id="pno"/>
+                        <span class="mtext-106 cl2">
 						<input type="text" readonly th:field="*{title}">
 
 						</span>
@@ -116,11 +116,11 @@
                             <a class="nav-link" data-toggle="tab" href="#reviews" role="tab" id="reply">댓 글</a>
                         </li>
                     </ul>
-				<!-- Tab panes -->
-				<div class="tab-content p-t-43">
-					<!-- - -->
-					<div class="tab-pane fade show active" id="description" role="tabpanel">
-						<div class="how-pos2 p-lr-15-md">
+                    <!-- Tab panes -->
+                    <div class="tab-content p-t-43">
+                        <!-- - -->
+                        <div class="tab-pane fade show active" id="description" role="tabpanel">
+                            <div class="how-pos2 p-lr-15-md">
 							<span class="stext-102 cl6" th:field="*{content}">
 							</span>
                             </div>
@@ -153,22 +153,12 @@
                                             </strong>
                                             <div id="entry15Comment">
                                                 <ul class="list_reply">
-                                                    <li id="comment6468529" class="rp_general">
-                                                        <img src="//i1.daumcdn.net/thumb/C100x100/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&amp;fname=https%3A%2F%2Ftistory4.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac"
-                                                             width="50" height="50" class="img_profile" alt="프로필사진">
-                                                        <span class="reply_content">
-															<span class="tit_nickname"><a href="">왕고냐</a> <span
-                                                                    class="ico_skin ico_secret"></span></span>
-															<span class="txt_reply">잘 보고 갑니다~<br></span>
-															<span class="txt_date">2022.06.25 12:11
-                                                                <a class="aInLi" href="">신고</a></span>
-														</span>
-                                                        <div class="my_edit">
-                                                            <a href="#" class="link_edit">수정/삭제</a>
-                                                            <a href="#" class="link_edit">댓글쓰기</a>
-                                                        </div>
-                                                    </li>
                                                 </ul>
+                                                <div class="area_paging area_paging_list">
+                                                    <span class="inner_paging">
+
+                                                    </span>
+                                                </div>
                                                 <form id="dataForm" style="margin: 0">
                                                     <fieldset class="fld_reply">
                                                         <legend class="screen_out">댓글쓰기</legend>
@@ -191,35 +181,11 @@
                                 </div>
                             </div>
                         </div>
-<!--                        <div class="area_paging area_paging_list">-->
-<!--                            <div class="big-width" style="text-align: center">-->
-<!--                                <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code>&lt;</code></a>-->
-<!--                                <th:block th:each="num:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">-->
-<!--                                    <code th:if="${num == pageDTO.criteria.pageNum}" th:text="${num}"></code>-->
-<!--                                    <a class="changePage" th:href="${num}"-->
-<!--                                       th:unless="${num == pageDTO.criteria.pageNum}"><code th:text="${num}"></code></a>-->
-<!--                                </th:block>-->
-<!--                                <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>&gt;</code></a>-->
-<!--                            </div>-->
-<!--                            <div class="small-width" style="text-align: center; height: 27px;">-->
-<!--                                <a class="changePage" th:href="*{criteria.pageNum - 1}" th:if="*{criteria.pageNum > 1}"><code>&lt;</code></a>-->
-<!--                                <code th:text="*{criteria.pageNum}"></code>-->
-<!--                                <a class="changePage" th:href="*{criteria.pageNum + 1}"-->
-<!--                                   th:if="*{criteria.pageNum < realEnd}"><code>&gt;</code></a>-->
-<!--                            </div>-->
-<!--                            <form action="/board/list" name="pageForm" th:object="${criteria}">-->
-<!--                                <input type="hidden" th:field="*{pageNum}">-->
-<!--                                <input type="hidden" th:field="*{amount}">-->
-<!--                                <input type="hidden" th:field="*{type}">-->
-<!--                                <input type="hidden" th:field="*{keyword}">-->
-<!--                            </form>-->
-<!--                        </div>-->
                     </div>
                 </div>
             </div>
         </div>
-</div>
-</section>
+    </section>
 </div>
 
 

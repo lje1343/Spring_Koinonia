@@ -2,6 +2,7 @@ package com.example.teamproject.controller.product;
 
 import com.example.teamproject.domain.vo.BoardReplyVO;
 import com.example.teamproject.domain.vo.Criteria;
+import com.example.teamproject.domain.vo.PReplyPageDTO;
 import com.example.teamproject.domain.vo.ProductReplyVO;
 import com.example.teamproject.service.product.ProductReplyServieceImpl;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,6 @@ public class ProductReplyController {
     // 다이어리 댓글 등록
     @PostMapping(value = "/new", consumes = "application/json", produces = "text/plain; charset=utf-8")
     public ResponseEntity<String> create(@RequestBody ProductReplyVO productReplyVO) throws UnsupportedEncodingException {
-        productReplyVO.setName("aaa");
         log.info("boardReplyVO : " + productReplyVO);
         productReplyService.register(productReplyVO);
         return new ResponseEntity<>(new String("댓글 등록 성공".getBytes(), "UTF-8") , HttpStatus.OK);
@@ -39,9 +39,8 @@ public class ProductReplyController {
 
     // 다이어리 댓글 전체 목록 조회
     @GetMapping("/list/{pno}/{page}")
-    public List<ProductReplyVO> getList(@PathVariable("page") int pageNum, @PathVariable("pno") Long pno){
-
-        return productReplyService.getList(pno, new Criteria(pageNum, 10));
+    public PReplyPageDTO getList(@PathVariable("page") int pageNum, @PathVariable("pno") Long pno){
+        return new PReplyPageDTO(productReplyService.getList(pno, new Criteria(pageNum, 10)), productReplyService.getTotal(pno));
     }
 
     // 다이어리 댓글 삭제
@@ -63,12 +62,6 @@ public class ProductReplyController {
         productReplyVO.setPrno(replyNumber);
         productReplyService.modify(productReplyVO);
         return "댓글 수정 성공";
-    }
-
-    // 판매 상품 댓글 개수
-    @GetMapping("/getTotal/{pno}")
-    public int getTotal(@PathVariable("pno") Long pno){
-        return productReplyService.getTotal(pno);
     }
 
 }

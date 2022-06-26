@@ -167,6 +167,7 @@
 
 })(jQuery);
 
+// 댓글 페이징 처리
 $("#formBtn").on("click", function(e){
     e.preventDefault();
 
@@ -191,24 +192,75 @@ $("#formBtn").on("click", function(e){
     });
 })
 
+let pageNum = 1;
+let pno = $("#pno").val();
+
 $("#reply").on("click", function() {
-    let pno = $("#pno").val();
-    $.ajax({
-        url: "/productReply/getTotal/" + pno,
-        type: "get",
-        contentType: "int",
-        success: function (totalNumber) {
-            $("#commentCount15_0").html(totalNumber);
+    showList(pageNum);
+})
+
+function getList(param, callback, error) {
+    let page = param.page || 1;
+    $.getJSON("/productReply/list/" + param.pno + "/" + page, function (replyPageDTO) {
+        if (callback) {
+            callback(replyPageDTO.total, replyPageDTO.list);
+        }
+    }).fail(function (xhr, status, er) {
+        if (error) {
+            error(er);
         }
     });
+}
 
-    let paging = [[${criteria.listLink}]];
+function showList(page){
+    getList({pno: pno, page: page}, function(total, list){
+        pageNum = page;
+        let str = "";
 
-    console.log(paging);
+        if(list == null || list.length == 0) {
+            list.replyUL.html("");
+            return;
+        }
 
-    $.ajax({
-        url: "/productReply/" + pno + 1,
-        type: "get",
+        $.each(list, function(i, reply){
+            str += "<li id='comment6468529' class='rp_general'>";
+            str += "<span class='reply_content'>";
+            str += "<span class='tit_nickname'>" + reply.name + "<span class='ico_skin ico_secret'></span></span>";
+            str += "<span class='txt_reply'>" + reply.content + "<br></span>";
+            str += "<span class='txt_date'>"
+            str += reply.registerDate
+            str += "<a class='aInLi' href=''>신고</a></span>"
+            str += "</span><div class='my_edit'>"
+            str += "<a href='#' class='link_edit'>수정/삭제</a>"
+        });
 
-    })
-})
+        $(".list_reply").html(str);
+        showReplyPage(total);
+    });
+}
+
+
+function showReplyPage(total){
+    let endPage = Math.ceil(pageNum / 10.0) * 10;
+    let startPage = endPage - 9;
+    let realEnd = Math.ceil(total / 10.0);
+
+    if(endPage > realEnd){
+        endPage = realEnd;
+    }
+
+    let prev = startPage > 1;
+    let next = endPage * 10 < total;
+    let str = "";
+
+    if(prev){
+        str += "<a class='changePage' href='" + (startPage - 1) + "'><code>&lt;</code></a>"
+    }
+    for(let i = startPage; i <= endPage; i++){
+        str += pageNum == i ? "<a class='link_page'><span class='selected'>" + i + "</span></a>" : "<a class='link_page' onclick='showList(" + i + ")'><span>" + i + "</span></a>";
+    }
+    if(next){
+        str += "<a class='changePage' href='" + (endPage + 1) + "'><code>&gt;</code></a>"
+    }
+    $(".inner_paging").html(str);
+}
