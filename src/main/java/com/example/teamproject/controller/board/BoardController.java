@@ -49,14 +49,15 @@ public class BoardController {
         model.addAttribute("board", boardService.read(bno));
         return "/diary/modify_board";
     }
-//    @PostMapping("/modify")
-//    public String modify(Long bno, RedirectAttributes rttr){
-//        log.info("*************");
-//        log.info("다이어리 수정");
-//        log.info("*************");
-//        // 다이어리 수정 완료
-//        return new RedirectView("/board/list");
-//    }
+    @PostMapping("/modify")
+    public RedirectView modify(Long bno, RedirectAttributes rttr){
+        log.info("*************");
+        log.info("다이어리 수정");
+        log.info("*************");
+        // 다이어리 수정 완료
+        return new RedirectView("/board/list");
+    }
+
 //    @PostMapping("/remove")
 //    public String remove(Long bno, RedirectAttributes rttr){
 //        log.info("*************");

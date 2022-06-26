@@ -14,6 +14,33 @@
     <link rel="stylesheet" href="/assets/css/header.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/request_detail.css">
     <link rel="stylesheet" href="/assets/css/footer.css" />
+      <style>
+          .field{
+              margin-top: 8px;
+          }
+          .field > .uploadResult > ul{
+              display: flex;
+              justify-content: space-evenly;
+              background-color: #eee;
+              border-radius: 0.25rem;
+              padding: 8px;
+          }
+          .field > .uploadResult > ul img{
+              border-radius: 0.25rem;
+          }
+          .field > .uploadResult > ul > li > span{
+              position: absolute;
+              top:50%;
+              right: 50%;
+              transform: translate(-50%, -50%);
+          }
+          .cancelBtn{
+              display: none;
+          }
+          .field > .uploadResult > ul > li:hover .cancelBtn{
+                display: block;
+          }
+      </style>
   </head>
 <body>
     <!--  header start  -->
@@ -164,12 +191,11 @@
         $(files).each(function(i, file){
             str += "<li data-filesize='" + file.fileSize + "' data-filename='" + file.fileName + "' data-uuid='" + file.uuid + "' data-uploadpath='" + file.uploadPath + "' data-image='" + file.image + "'>";
             if(file.image){
-                str += "<a href=\"javascript:showImage(\'" + file.uploadPath + "/" + file.uuid + "_" + file.fileName +"\');\"><img src='/productFile/display?fileName=" + file.uploadPath + "/s_" + file.uuid + "_"  + file.fileName + "' style='width: 300px;'></a>";
+                str += "<a><img src='/productFile/display?fileName=" + file.uploadPath + "/s_" + file.uuid + "_"  + file.fileName + "' style='width: 300px;'></a>";
             }else{
-                str += "<a href='/upload/download?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName + "'><img src='/images/attach.png' style='width: 300px;'></a>";
+                str += "<a href='/productFile/download?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName + "'><img src='/images/attach.png' style='width: 300px;'></a>";
             }
-            str += "<span data-file='" + file.uploadPath + "/s_" + file.uuid + "_" + file.fileName + "' style='cursor: pointer;'>x</span>"
-            str += "<p>" + file.fileName + "</p>"
+            str += "<span data-file='" + file.uploadPath + "/s_" + file.uuid + "_" + file.fileName + "' style='cursor: pointer;'><img class='cancelBtn' src='/images/cancel.png'></span>"
             str += "</li>"
         });
         $uploadResult.append(str);

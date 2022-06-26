@@ -91,6 +91,27 @@ $("#thum").on("change", function(e){
 ///////////////////////////////////////////////////////////////////////////////////////
 // 썸머노트
 
+function sendFile(file, el) {
+  var form_data = new FormData();
+  form_data.append('file', file);
+  $.ajax({
+  data : form_data,
+      type : "POST",
+      url : '/boardFile/upload',
+      cache : false,
+      contentType : false,
+      enctype : 'multipart/form-data',
+  processData : false,
+      success : function(url) {
+        console.log(url);
+        $('#summernote').summernote('insertImage', url, function ($image) {
+          $image.css('width', $image.width() / 3);
+          console.log("ok");
+        });
+      }
+  });
+}
+
 // summernote create
 $("#summernote").summernote({
   tabsize: 2,
@@ -100,11 +121,13 @@ $("#summernote").summernote({
   focus: false, // 에디터 로딩후 포커스를 맞출지 여부
   lang: "ko-KR", // 한글 설정
   placeholder: "다이어리를 작성해주세요.", //placeholder 설정
-  callbacks: {
-    onImageUpload: function (files) { //이미지 업로드 처리
-      imageUpload(files, this); // this = $("#summernote")
-    },
-  },
+  callbacks : {
+    onImageUpload : function(files, editor, welEditable) {
+      for (var i = 0; i < files.length; i++) {
+        sendFile(files[i], this);
+      }
+    }
+  }
 });
 
 //이미지 등록처리
