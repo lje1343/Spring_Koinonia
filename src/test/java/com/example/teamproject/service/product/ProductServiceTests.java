@@ -10,6 +10,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 @Slf4j
 public class ProductServiceTests {
+<<<<<<< HEAD
+//    @Autowired
+//    private ProductServieceImpl productServiece;
+=======
     @Autowired
     private ProductServieceImpl productServiece;
 
@@ -17,4 +21,5 @@ public class ProductServiceTests {
     public void getListTest(){
         productServiece.getList(new Criteria(1, 15)).stream().map(ProductVO::toString).forEach(log::info);
     }
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 }
