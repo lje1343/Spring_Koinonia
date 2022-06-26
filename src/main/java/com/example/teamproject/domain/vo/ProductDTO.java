@@ -1,14 +1,12 @@
 package com.example.teamproject.domain.vo;
 
-
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-
-@Component
 @Data
-public class ProductVO {
+@Component
+public class ProductDTO {
     private Long pno;
     private String name;
     private String pname;
@@ -19,11 +17,13 @@ public class ProductVO {
     private String psold;
     private String registerDate;
     private String updateDate;
-<<<<<<< HEAD
-    private List<ProductFileVO> fileList;
-=======
 
+
+    private PFileVO pFileVO;
 
     private List<PFileVO> fileList;
->>>>>>> 8537ee2bff201341253e72108c09067ecd7632a9
+
+
+
+
 }

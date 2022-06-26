@@ -2,12 +2,18 @@ package com.example.teamproject.controller.product;
 
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.PageDTO;
+<<<<<<< HEAD
 import com.example.teamproject.domain.vo.ProductFileVO;
 import com.example.teamproject.domain.vo.ProductVO;
 import com.example.teamproject.service.product.ProductFileServiceImpl;
 import com.example.teamproject.service.product.ProductServieceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+=======
+import com.example.teamproject.domain.vo.ProductDTO;
+import com.example.teamproject.domain.vo.ProductVO;
+import com.example.teamproject.service.product.ProductService;
+>>>>>>> 8537ee2bff201341253e72108c09067ecd7632a9
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
@@ -27,8 +33,12 @@ import java.util.List;
 @RequestMapping("/product/*")
 @RequiredArgsConstructor
 public class ProductController {
+<<<<<<< HEAD
     private final ProductServieceImpl productService;
     private final ProductFileServiceImpl productFileService;
+=======
+    private final ProductService productService;
+>>>>>>> 8537ee2bff201341253e72108c09067ecd7632a9
     // 상품
 
     @GetMapping("/register")
@@ -38,20 +48,24 @@ public class ProductController {
         log.info("*************");
         return "/product/product";
     }
-//    @PostMapping("/register")
-//    public String register(ProductVO productVO, RedirectAttributes rttr){
-//        log.info("*************");
-//        log.info("판매 상품 등록");
-//        log.info("*************");
-//        // 판매 상품 등록
-//        return new RedirectView("/product/list");
-//    }
+
+    @PostMapping("/register")
+    public RedirectView register(ProductVO productVO, RedirectAttributes rttr) {
+        log.info("*************");
+        log.info("판매 상품 등록");
+        log.info("*************");
+        productService.register(productVO);
+        rttr.addFlashAttribute("pno", productVO.getPno());
+
+        return new RedirectView("/product/list");
+    }
 
     @GetMapping("/list")
-    public String getList(Criteria criteria, Model model) {
+    public String getList(Criteria criteria, Model model, Long pno, ProductDTO productDTO) {
         log.info("*************");
         log.info("상품 리스트");
         log.info("*************");
+        ProductDTO productDTO = productService.getOldFiles();
         model.addAttribute("productList", productService.getList(criteria));
         model.addAttribute("pageDTO", new PageDTO(criteria, productService.getTotal()));
         return "/product/sell_list";
@@ -68,10 +82,15 @@ public class ProductController {
     }
 
     @GetMapping("/modify")
+<<<<<<< HEAD
     public String modify(Long pno, Model model) throws JsonProcessingException {
+=======
+    public String modify(Long pno, Criteria criteria, Model model) {
+>>>>>>> 8537ee2bff201341253e72108c09067ecd7632a9
         log.info("*************");
         log.info("다이어리 수정 내용 작성/삭제");
         log.info("*************");
+<<<<<<< HEAD
         model.addAttribute("product", productService.read(pno));
         ArrayList files = new ArrayList();
         for (ProductFileVO productFileVO : productFileService.getList(pno)) {
@@ -96,11 +115,33 @@ public class ProductController {
         };
         return new RedirectView("/product/list");
     }
+=======
+        log.info(criteria.toString());
+        model.addAttribute("product", productService.read(pno));
+        // 상품 수정
+        return "/product/product_modify";
+    }
+
+    @PostMapping("/modisucces")
+    public RedirectView modisucces(Long pno, ProductVO productVO, Criteria criteria, RedirectAttributes rttr) {
+        log.info("*************");
+        log.info("상품 수정 완료");
+        log.info("*************");
+        // 다이어리 수정 완료
+        productService.modify(productVO);
+        rttr.addAttribute("pno", productVO.getPno());
+        rttr.addAttribute("pageNum", criteria.getPageNum());
+        rttr.addAttribute("amount", criteria.getAmount());
+
+        return new RedirectView("/product/sell_detail");
+}
+>>>>>>> 8537ee2bff201341253e72108c09067ecd7632a9
 
     ///////////////////////////////////////////////////
     // ResponsBody
 
     // 카테고리별 상품 목록
+<<<<<<< HEAD
     @GetMapping("/list/{pcate}")
     @ResponseBody
     public List<ProductVO> getList(@PathVariable("pcate") String pcate){
@@ -113,4 +154,8 @@ public class ProductController {
     public List<ProductVO> getList(@PathVariable("pcate") String pcate, @PathVariable("pageNum") int pageNum){
         return null;
     }
+=======
+
+
+>>>>>>> 8537ee2bff201341253e72108c09067ecd7632a9
 }
