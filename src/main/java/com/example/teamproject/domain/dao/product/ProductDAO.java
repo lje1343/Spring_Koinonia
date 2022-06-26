@@ -19,6 +19,10 @@ public class ProductDAO {
         return productMapper.getList(criteria);
     };
 
+    public List<ProductVO> getListMain(Criteria criteria){
+        return productMapper.getListMain(criteria);
+    };
+
     // 판매 상품 등록
     public void register(ProductVO productVO){
         productMapper.insert(productVO);

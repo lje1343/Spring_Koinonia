@@ -23,7 +23,6 @@
               justify-content: space-evenly;
               background-color: #eee;
               border-radius: 0.25rem;
-              padding: 8px;
           }
           .field > .uploadResult > ul img{
               border-radius: 0.25rem;
@@ -31,11 +30,15 @@
           .field > .uploadResult > ul > li > span{
               position: absolute;
               top:50%;
-              right: 50%;
+              left: 50%;
               transform: translate(-50%, -50%);
+              cursor: pointer;
           }
           .cancelBtn{
               display: none;
+          }
+          .field > .uploadResult > ul > li:hover > a > img{
+              opacity: 0.7;
           }
           .field > .uploadResult > ul > li:hover .cancelBtn{
                 display: block;
@@ -128,7 +131,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 py-2">상품 이미지</label>
                             <div>
-                                <input id="files" type="file" multiple="multiple" name="uploadFiles" class="form-control" >
+                                <input id="files" type="file" multiple="multiple" name="uploadFiles" class="form-control" style="cursor: pointer">
                             </div>
                             <div class="field">
                                 <div class="uploadResult">
@@ -191,7 +194,7 @@
         $(files).each(function(i, file){
             str += "<li data-filesize='" + file.fileSize + "' data-filename='" + file.fileName + "' data-uuid='" + file.uuid + "' data-uploadpath='" + file.uploadPath + "' data-image='" + file.image + "'>";
             if(file.image){
-                str += "<a><img src='/productFile/display?fileName=" + file.uploadPath + "/s_" + file.uuid + "_"  + file.fileName + "' style='width: 300px;'></a>";
+                str += "<a><img src='/productFile/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName + "' style='width: 300px; height: 300px; object-fit: cover'></a>";
             }else{
                 str += "<a href='/productFile/download?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName + "'><img src='/images/attach.png' style='width: 300px;'></a>";
             }
@@ -275,7 +278,7 @@
         console.log(registeredFiles);
         var arrayFile = JSON.parse("[" + registeredFiles + "]");
         console.log(arrayFile);
-        console.log(arrayFile[0][0].fileName);
+        // console.log(arrayFile[0][0].fileName);
         showUploadResult(arrayFile[0]);
     })
   </script>

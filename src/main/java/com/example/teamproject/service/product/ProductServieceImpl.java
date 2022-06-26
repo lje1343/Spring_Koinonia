@@ -50,6 +50,10 @@ public class ProductServieceImpl{
         return productDAO.getList(criteria);
     }
 
+    public List<ProductVO> getListMain(Criteria criteria) {
+        return productDAO.getListMain(criteria);
+    }
+
     public int getTotal(){return productDAO.getTotal();}
 }
 

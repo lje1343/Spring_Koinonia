@@ -39,6 +39,10 @@ public class BoardServiceImpl {
         return boardDAO.getList(criteria);
     }
 
+    public List<BoardVO> getListMain(Criteria criteria) {
+        return boardDAO.getListMain(criteria);
+    }
+
     //다이어리 페이지 리스트(검색조건 포함)
     public List<BoardDTO> getListBySearch(Criteria criteria){ return boardDAO.getListBySearch(criteria); }
 }
