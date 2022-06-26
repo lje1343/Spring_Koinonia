@@ -27,6 +27,7 @@ public class BoardController {
     private final BoardServiceImpl boardService;
     // 다이어리
 
+    // 작성 페이지 이동
     @GetMapping("/register")
     public String register(){
         log.info("*************");
@@ -34,31 +35,37 @@ public class BoardController {
         log.info("*************");
         return "/diary/board_write";
     }
-//    @PostMapping("/register")
-//    public String register(BoardVO boardVO, RedirectAttributes rttr){
-//        log.info("*************");
-//        log.info("다이어리 등록");
-//        log.info("*************");
-//        // 다이어리 등록
-//        return new RedirectView("/board/list");
-//    }
 
+    // 작성 완료
+    @PostMapping("/register")
+    public RedirectView register(BoardVO boardVO, RedirectAttributes rttr) {
+        boardVO.setName("테스트"); // 임시 userName
+        boardService.register(boardVO);
+        rttr.addFlashAttribute("bno", boardVO.getBno());
+        return new RedirectView("/diary/index");
+    }
+
+    // 수정 페이지 이동
     @GetMapping("/modify")
     public String modify(Long bno, Model model){
         log.info("*************");
         log.info("다이어리 수정내용 작성/삭제");
         log.info("*************");
-        model.addAttribute(boardService.read(bno));
-        return "/diary/board_write";
+        bno = 39L; // 임시 다이어리 번호
+        // 다이어리 수정
+        model.addAttribute("diary", boardService.read(bno));
+        return "/diary/board_modify";
     }
-//    @PostMapping("/modify")
-//    public String modify(Long bno, RedirectAttributes rttr){
-//        log.info("*************");
-//        log.info("다이어리 수정");
-//        log.info("*************");
-//        // 다이어리 수정 완료
-//        return new RedirectView("/board/list");
-//    }
+
+    @PostMapping("/modify")
+    public RedirectView modify(Long bno, RedirectAttributes rttr){
+        log.info("*************");
+        log.info("다이어리 수정");
+        log.info("*************");
+        // 다이어리 수정 완료
+        return new RedirectView("/board/list");
+    }
+
 //    @PostMapping("/remove")
 //    public String remove(Long bno, RedirectAttributes rttr){
 //        log.info("*************");
