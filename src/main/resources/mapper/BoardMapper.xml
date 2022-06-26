@@ -43,8 +43,8 @@
             SELECT SEQ_BOARD.NEXTVAL FROM DUAL
         </selectKey>
         INSERT INTO TBL_BOARD
-        (BNO, TITLE, CONTENT,NAME)
-        VALUES(#{bno}, #{title}, #{content}, #{name})
+        (BNO, TITLE, CONTENT, NAME)
+        VALUES(SEQ_BOARD.NEXTVAL, #{title}, #{content}, #{name})
     </insert>
 
     <select id="get" resultType="boardVO">

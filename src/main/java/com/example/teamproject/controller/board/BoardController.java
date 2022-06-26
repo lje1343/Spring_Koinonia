@@ -4,18 +4,33 @@ import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.RequestVO;
 import com.example.teamproject.service.board.BoardServiceImpl;
+import com.google.gson.JsonObject;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.springframework.context.ApplicationContext;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.util.*;
 
 @Controller
 @Slf4j
@@ -32,6 +47,16 @@ public class BoardController {
         log.info("*************");
         return "/diary/board_write";
     }
+
+    // 진행 예정 공연 등록 페이지 이동
+    @PostMapping("/register")
+    public RedirectView register(BoardVO boardVO, RedirectAttributes rttr) {
+        boardVO.setName("테스트");
+        boardService.register(boardVO);
+        rttr.addFlashAttribute("bno", boardVO.getBno());
+        return new RedirectView("/diary/index");
+    }
+    
 //    @PostMapping("/register")
 //    public String register(BoardVO boardVO, RedirectAttributes rttr){
 //        log.info("*************");
@@ -42,12 +67,14 @@ public class BoardController {
 //    }
 
     @GetMapping("/modify")
-    public String modify(Long bno){
+    public String modify(Long bno, Model model){
         log.info("*************");
         log.info("다이어리 수정내용 작성/삭제");
         log.info("*************");
+        bno = 39L;
         // 다이어리 수정
-        return "/diary/modify";
+        model.addAttribute("diary", boardService.read(bno));
+        return "/diary/board_modify";
     }
 //    @PostMapping("/modify")
 //    public String modify(Long bno, RedirectAttributes rttr){
@@ -122,4 +149,85 @@ public class BoardController {
     public boolean wish(Long bno){
         return false;
     }
+//
+//    @ResponseBody
+//    @PostMapping("/fileUpload")
+//    public void fileUpload(MultipartFile file, HttpServletRequest request,
+//                           HttpServletResponse response) throws Exception {
+////        response.setContentType("text/html;charset=utf-8");
+////        PrintWriter out = response.getWriter();
+////        String file_name = file.getOriginalFilename();
+////        String server_file_name = fileDBName(file_name, save_folder);
+////        System.out.println("server file : " + server_file_name);
+////        file.transferTo(new File(save_folder + server_file_name));
+////        out.println("resources/upload"+server_file_name);
+////        out.close();
+//    }
+//
+//    private String fileDBName(String fileName, String saveFolder) {
+//        Calendar c = Calendar.getInstance();
+//        int year = c.get(Calendar.YEAR);
+//        int month = c.get(Calendar.MONTH);
+//        int date = c.get(Calendar.DATE);
+//
+//        String homedir = saveFolder + year + "-" + month + "-" + date;
+//        System.out.println(homedir);
+//        File path1 = new File(homedir);
+//        if (!(path1.exists())) {
+//            path1.mkdir();
+//        }
+//        Random r = new Random();
+//        int random = r.nextInt(100000000);
+//
+//        int index = fileName.lastIndexOf(".");
+//
+//        String fileExtension = fileName.substring(index + 1);
+//        System.out.println("fileExtension = " + fileExtension);
+//
+//        String refileName = "bbs" + year + month + date + random + "." + fileExtension;
+//        System.out.println("refileName = " + refileName);
+//
+//        String fileDBName = "/" + year + "-" + month + "-" + date + "/" + refileName;
+//        System.out.println("fileDBName = " + fileDBName);
+//
+//        return fileDBName;
+//    }
+
+//    @RequestMapping(value="/summer_image.do", produces = "application/json; charset=utf8")
+//    @ResponseBody
+//    public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request ) throws IOException {
+//        JsonObject json = new JsonObject();
+//
+//        String fileRoot = EgovProperties.getProperty("Globals.tempDir");
+//        String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
+//        String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); //파일 확장자
+//
+//        String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
+//        File targetFile = new File(fileRoot + savedFileName);
+//
+//        try {
+//            // 파일 저장
+//            InputStream fileStream = multipartFile.getInputStream();
+//            FileUtils.copyInputStreamToFile(fileStream, targetFile);
+//
+//            // 파일을 열기위하여 common/getImg.do 호출 / 파라미터로 savedFileName 보냄.
+//            json.addProperty("url", "common/getImg.do?savedFileName="+savedFileName);
+//            json.addProperty("responseCode", "success");
+//
+//        } catch (IOException e) {
+//            FileUtils.deleteQuietly(targetFile);
+//            json.addProperty("responseCode", "error");
+//            e.printStackTrace();
+//        }
+//        String jsonvalue = json.toString();
+//
+//        return jsonvalue;
+//    }
+
+//    @PostMapping("/fileUpload")
+//    @ResponseBody
+////    public ResponseEntity<?> summerimage(@RequestParam("file") MultipartFile img, HttpServletRequest request) throws IOException {
+//    public ResponseEntity<?> summerimage(@RequestParam("file") MultipartFile img, HttpServletRequest request) throws IOException {
+//    }
+
 }
