@@ -39,8 +39,6 @@
         ]]>
     </select>
 
-
-
     <insert id="insert">
         <selectKey keyProperty="pno" resultType="long" order="BEFORE">
             SELECT SEQ_PRODUCT.NEXTVAL FROM DUAL

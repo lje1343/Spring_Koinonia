@@ -41,8 +41,10 @@ public class UserServiceImpl {
     public int modify(UserVO userVO) {
         return userDAO.modify(userVO);
     }
-
     ;
+
+    // 비밀번호 수정
+    public void modifyPw(String newPw, String email) { userDAO.modifyPw(newPw, email);}
 
     // 회원 삭제
     public int remove(String email, String pw) {
@@ -50,6 +52,7 @@ public class UserServiceImpl {
     }
 
     ;
+
 
     // 회원 이름 수정
 //    public boolean modifyName(UserVO userVO, BoardVO boardVO) {

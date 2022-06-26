@@ -18,7 +18,7 @@ a:link{
     text-decoration: none;
 }
 a:visited{
-    color: #000; 
+    color: #000;
 text-decoration: none;
 }
 a:hover{
@@ -191,9 +191,6 @@ a:hover{
 .menubtn > a{
     padding-right: 30px;
     font-size: small;
-}
-.menubtn > a:hover{
-    text-decoration: underline;
 }
 a:visited{
     color:black
@@ -501,14 +498,15 @@ button.slick-prev{
     height: 500px !important;
     width: 400px;
     margin-right: 20px;
-
+}
+.story1 img{
+    object-fit: cover;
 }
 
 .story2{
     height: 500px !important;
     width: 400px; 
     margin-right: 20px;
-
 }
 
 .story3{
@@ -526,4 +524,8 @@ width: 555px;
 footer{
     margin-top: 160px;
 
+}
+
+.goods img{
+    object-fit: cover;
 }

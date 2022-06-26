@@ -33,6 +33,12 @@
         WHERE UNUM = #{unum}
     </update>
 
+    <update id="updatePw">
+        UPDATE TBL_USER
+        SET PW = #{newPw}
+        WHERE EMAIL = #{email}
+    </update>
+
     <select id="get" resultType="long">
         SELECT BNO FROM TBL_BOARD
         WHERE NAME = #{name}

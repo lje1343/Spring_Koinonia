@@ -1,6 +1,8 @@
 package com.example.teamproject.domain.dao.board;
 
+import com.example.teamproject.domain.vo.BoardDTO;
 import com.example.teamproject.domain.vo.BoardVO;
+import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -13,8 +15,9 @@ public class BoardDAO {
     private final BoardMapper boardMapper;
 
     // 다이어리 목록
-//    public List<BoardVO> getList(){
-//    };
+    public List<BoardVO> getList(Criteria criteria){
+        return boardMapper.getList(criteria);
+    };
 
     // 다이어리 등록
     public void register(BoardVO boardVO){
@@ -40,5 +43,8 @@ public class BoardDAO {
 //    public  int updateName(BoardVO boardVO){
 //        return boardMapper.updatename(boardVO);
 //    }
+
+    //다이어리 페이지 리스트(검색조건 포함)
+    public List<BoardDTO> getListBySearch(Criteria criteria){ return boardMapper.getListBySearch(criteria); }
 }
 
