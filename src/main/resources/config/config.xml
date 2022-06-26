@@ -11,5 +11,6 @@
         <typeAlias type="com.example.teamproject.domain.vo.RequestVO" alias="RequestVO"/>
         <typeAlias type="com.example.teamproject.domain.vo.RequestReplyVO" alias="RreplyVO"/>
         <typeAlias type="com.example.teamproject.domain.vo.FileVO" alias="fileVO"/>
+        <typeAlias type="com.example.teamproject.domain.vo.PFileVO" alias="PfileVO"/>
     </typeAliases>
 </configuration>

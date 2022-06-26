@@ -34,7 +34,8 @@
 package com.example.teamproject.controller;
 
 import com.example.teamproject.service.board.BoardServiceImpl;
-import com.example.teamproject.service.product.ProductServieceImpl;
+import com.example.teamproject.service.product.ProductService;
+import com.example.teamproject.service.product.ProductServiceImpl;
 import com.example.teamproject.service.request.RequestServieceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -49,7 +50,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class MainController {
     private final BoardServiceImpl boardService;
-    private final ProductServieceImpl productServiece;
+    private final ProductService productServiece;
     private final RequestServieceImpl requestServiece;
 
     @GetMapping("/")

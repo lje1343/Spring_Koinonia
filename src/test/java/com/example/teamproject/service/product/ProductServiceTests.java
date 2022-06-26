@@ -7,6 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 @Slf4j
 public class ProductServiceTests {
-    @Autowired
-    private ProductServieceImpl productServiece;
+//    @Autowired
+//    private ProductServieceImpl productServiece;
 }
