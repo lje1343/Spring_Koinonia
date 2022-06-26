@@ -120,6 +120,7 @@ label {
 }
 .viewthum {
   display: flex;
+  margin-bottom: 13px;
 }
 .viewthum > .viewlabel {
   width: 85px;
