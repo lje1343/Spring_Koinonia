@@ -26,6 +26,7 @@
     <div th:replace="~{/header/header :: headerFragment}"></div>
     <!--  header end  -->
     <main id="content">
+<<<<<<< HEAD
         <section class="teaser">
         <div class="teaser_content">
             <div class="section1">
@@ -51,6 +52,101 @@
             </div>
         </div>
         </section>
+=======
+        <!--   여행 다이어리 작성 안내 start     -->
+        <section class="teaser">
+            <div class="teaser_content">
+                <div class="section1">
+                    <div class="f_teaser">
+                        <h2>여행으로 삶을 바꾸다!</h2>
+                        <p>
+                            Koinonia Familly와 함께하는 여행스토리 나만의 이야기가 아닌 모두의 이야기로!
+                            <br>
+                            작은 변화로 큰 행복을 누려보세요.
+                        </p>
+                    </div>
+                    <div class="diary_btn">
+                        <a th:href="@{/board/register}">다이어리 작성하기</a>
+                    </div>
+                </div>
+                <div class="f_teaser_pt">
+                    <ul>
+                        <li>
+                            <img src="/images/image7.PNG">
+                        </li>
+                        <li>
+                            <img src="/images/image8.PNG">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--   여행 다이어리 작성 안내 end     -->
+        <!--    다이어리 section start   -->
+        <div class="story_st">
+            <h2>여행 다이어리</h2>
+            <div class="diary_btn">
+                <a th:href="@{/board/list}">다이어리 더보기</a>
+            </div>
+        </div>
+        <section class="story_slide">
+            <th:block th:each="idx:${#numbers.sequence(0,5)}">
+                <!--       sample start         -->
+                <div class="story1">
+                    <a th:href="@{/board/detail(bno = ${boardList[idx].bno})}">
+                        <img th:src="${boardThumfileUrlList[idx]}">
+                    </a>
+                </div>
+                <!--       sample end         -->
+            </th:block>
+        </section>
+        <!--    다이어리 section start   -->
+        <!--   여행 기념품 목록 start     -->
+        <div class="goods_int">
+            <h2>여행자 기념품</h2>
+        </div>
+            <!--     part 1       -->
+            <section class="goods_slide2 goods">
+                <div class="goods_total">
+                    <div class="goods1" >
+                        <img th:src="${productThumfileUrlList[0]}">
+                    </div>
+                    <div class="goods_2">
+                        <div class="goods2">
+                            <img th:src="${productThumfileUrlList[1]}" >
+                        </div>
+                        <div class="goods3">
+                            <img th:src="${productThumfileUrlList[2]}" >
+                        </div>
+                    </div>
+                    <div class="goods_4">
+                        <div class="goods4">
+                            <img th:src="${productThumfileUrlList[3]}" >
+                        </div>
+                        <div class="goods5">
+                            <img th:src="${productThumfileUrlList[4]}" >
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--     part 2       -->
+            <section class="goods_slide goods">
+                <th:block th:each="num:${#numbers.sequence(5,14)}">
+                    <div>
+                        <a th:href="@{/product/detail(pno = ${productList[num].pno})}">
+                            <div>
+                                <img th:src="${productThumfileUrlList[num]}">
+                                <div class="goods_name">
+                                    <p th:text="${productList[num].title}"></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </th:block>
+            </section>
+        <!--   여행 기념품 목록 end     -->
+        <!--   koinonia contents 안내 start     -->
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
         <section class="function_slide">
             <div class="function_int">
                 <h2>Koinonia 서비스</h2>
@@ -91,6 +187,7 @@
                             <p>수많은 여행자들의 여행 스토리를 들어보자!</p>
                         </div>
                     </div>
+<<<<<<< HEAD
 
                 </div>
             </div>
@@ -273,6 +370,12 @@
               </div>
         </section>
         <!--    다이어리 section start   -->
+=======
+                </div>
+            </div>
+        </section>
+        <!--   koinonia contents 안내 end     -->
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
     </main>
     <!--  footer start  -->
     <div th:replace="~{/footer/footer :: footerFragment}"></div>
@@ -308,6 +411,16 @@
             dots: true
         });
     })
+<<<<<<< HEAD
+=======
+
+</script>
+<script>
+    var user = "[[${user}]]";
+    if(!(user==null || user.length<=0)) {
+        sessionStorage.setItem("user", user); // 유저 이름
+    }
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 </script>
 <!-- header,footer -->
 <script src="/assets/js/header.js"></script>

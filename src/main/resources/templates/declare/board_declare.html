@@ -29,6 +29,7 @@
 <div th:replace="~{/header/header :: headerFragment}"></div>
 <!--  header end  -->
 
+<<<<<<< HEAD
 <div class="content" style="margin-top: 25px">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label"><b>제목</b></label>
@@ -45,12 +46,43 @@
     <button type="button" class="btn btn-dark">신고작성</button>
     <button type="button" class="btn btn-primary">취  소</button>
 </div>
+=======
+
+<div class="content" style="margin-top: 25px">
+    <form
+            action="/declare/register"
+            method="post">
+        <div class="mb-3">
+            <label class="form-label"><b>제목</b></label>
+            <input type="text" class="form-control" name="title">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><b>가해자 이메일을 입력해주세요</b></label>
+            <input type="email" class="form-control" name="name" placeholder="가해자 이메일을 입력해주세요">
+        </div>
+        <div class="mb-3">
+            <label  class="form-label"><b>피해 내용</b></label>
+            <textarea class="form-control" name="content" rows="10" placeholder="내용을 적어주세요" style="resize: none"></textarea>
+        </div>
+        <button type="submit" id="submit" class="btn btn-dark">신고작성</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='/declare/'">취  소</button>
+    </form>
+</div>
+
+
+
+
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 <!--  footer start  -->
 <div th:replace="~{/footer/footer :: footerFragment}"></div>
 <!--  footer end  -->
 
 <!-- header,footer -->
+<<<<<<< HEAD
 <script src="/assets/js/header.js"></script>
+=======
+<script src="../../static/assets/js/header.js"></script>
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

@@ -91,6 +91,7 @@ $("#thum").on("change", function(e){
 // 썸머노트
 
 // summernote create
+<<<<<<< HEAD
 $("#summernote").summernote({
   tabsize: 2,
   height: 450, // 에디터 높이
@@ -105,6 +106,22 @@ $("#summernote").summernote({
     },
   },
 });
+=======
+// $("#summernote").summernote({
+//   tabsize: 2,
+//   height: 450, // 에디터 높이
+//   minHeight: 450, // 최소 높이
+//   maxHeight: 450, // 최대 높이
+//   focus: false, // 에디터 로딩후 포커스를 맞출지 여부
+//   lang: "ko-KR", // 한글 설정
+//   placeholder: "다이어리를 작성해주세요.", //placeholder 설정
+//   callbacks: {
+//     onImageUpload: function (files) { //이미지 업로드 처리
+//       imageUpload(files, this); // this = $("#summernote")
+//     },
+//   },
+// });
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 
 //이미지 등록처리
 function imageUpload(files, editor) {
@@ -153,9 +170,30 @@ $(document).on('click', '#uploadBtn', function (files, editor) {
   saveContent();
 });
 
+<<<<<<< HEAD
 const saveContent = () => {
   var summernoteContent = $('#summernote').summernote('code'); // 썸머노트 작성내용(html)
   console.log("summernoteContent : " + summernoteContent);
+=======
+
+$(".optionList").click(function (e) {
+  e.preventDefault();
+  $("input[name=bcate]").attr('value', $(this).attr('id'));
+  console.log($("input[name=bcate]").val());
+})
+
+
+const saveContent = () => {
+  var summernoteContent = $('#summernote').summernote('code'); // 썸머노트 작성내용(html)
+  $("input[name='content']").val(summernoteContent);
+  console.log("summernoteContent : " + summernoteContent);
+
+
+
+  if(confirm("글을 등록하시겠습니까?")) {
+    $("form#registerForm").submit();
+  }
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 }
 
 

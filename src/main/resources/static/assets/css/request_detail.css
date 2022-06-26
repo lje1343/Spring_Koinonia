@@ -1,4 +1,5 @@
 /*------------------------------------------------------------------
+<<<<<<< HEAD
 Project:  
 Version:  
 Last change:  
@@ -102,6 +103,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 [ RS PLUGIN ]*/
 
 /*------------------------------------------------------------------
+=======
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 [ Bootstrap ]*/
 .container {max-width: 1380px;}
 
@@ -1529,17 +1532,26 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 button.mfp-arrow-right {
+<<<<<<< HEAD
   background-image: url(../../../../../../../../../../templeates/050 cozastore-mastert수정본/050 cozastore-master/images/icons/icon-next.png);
+=======
+  background-image: url(/static/assets/images/icons/icon-next.png);
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
   background-position: center center;
   background-repeat: no-repeat;
 }
 
 button.mfp-arrow-left {
+<<<<<<< HEAD
   background-image: url(../../../../../../../../../../templeates/050 cozastore-mastert수정본/050 cozastore-master/images/icons/icon-prev.png);
+=======
+  background-image: url(/static/assets/images/icons/icon-prev.png);
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
   background-position: center center;
   background-repeat: no-repeat;
 }
 
+<<<<<<< HEAD
 button.mfp-close {
   width: 75px !important;
   height: 58px !important;
@@ -1557,6 +1569,9 @@ button.mfp-close {
   -moz-transition: all 0.4s;
   transition: all 0.4s;
 }
+=======
+
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 
 /* overlay at start */
 .mfp-fade.mfp-bg {

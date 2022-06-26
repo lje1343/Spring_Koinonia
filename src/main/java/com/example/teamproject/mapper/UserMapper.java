@@ -13,6 +13,10 @@ public interface UserMapper {
     public UserVO find(String email);
     public UserVO login(String email);
     public int update(UserVO userVO);
+<<<<<<< HEAD
+=======
+    public void updatePw(String newPw, String email);
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
     public Long get(String name);
     public UserVO getInfo(Long unum);
     public int delete(String email, String pw);

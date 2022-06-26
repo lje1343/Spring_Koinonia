@@ -43,6 +43,12 @@ public class UserDAO {
         return userMapper.update(userVO);
     };
 
+<<<<<<< HEAD
+=======
+    // 비밀번호 수정
+    public void modifyPw(String newPw, String email) {userMapper.updatePw(newPw, email);}
+
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
     // 회원 이름 수정
     public int updateName(UserVO userVO){
         return userMapper.nameupdate(userVO);

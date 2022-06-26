@@ -47,7 +47,11 @@ a.logo img {
   object-fit: cover;
 }
 .title {
+<<<<<<< HEAD
   margin-top: 70%;
+=======
+  margin-top: 60%;
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
   font-weight: 700;
   font-size: 18px;
   letter-spacing: -0.04rem;

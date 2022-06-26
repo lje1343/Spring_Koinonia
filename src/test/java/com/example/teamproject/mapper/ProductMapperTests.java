@@ -60,6 +60,7 @@ private ProductMapper productMapper;
 //        log.info("총 갯수는 " + productMapper.getTotal());
 //    }
 
+<<<<<<< HEAD
 //    @Test
 //    public void getListTest(){
 //        productMapper.getList(new Criteria(1, 10)).stream().map(ProductVO::toString).forEach(log::info);
@@ -71,6 +72,13 @@ private ProductMapper productMapper;
 
 
     }
+=======
+    @Test
+    public void getListTest(){
+        productMapper.getList(new Criteria(1, 10)).stream().map(ProductVO::toString).forEach(log::info);
+    }
+}
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 
 
 

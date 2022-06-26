@@ -41,9 +41,17 @@ public class UserServiceImpl {
     public int modify(UserVO userVO) {
         return userDAO.modify(userVO);
     }
+<<<<<<< HEAD
 
     ;
 
+=======
+    ;
+
+    // 비밀번호 수정
+    public void modifyPw(String newPw, String email) { userDAO.modifyPw(newPw, email);}
+
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
     // 회원 삭제
     public int remove(String email, String pw) {
         return userDAO.remove(email, pw);
@@ -51,6 +59,10 @@ public class UserServiceImpl {
 
     ;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
     // 회원 이름 수정
 //    public boolean modifyName(UserVO userVO, BoardVO boardVO) {
 //        if (userDAO.updateName(userVO) + boardDAO.updateName(boardVO) >= 2) {

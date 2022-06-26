@@ -19,7 +19,11 @@ public class Criteria {
 
 
     public Criteria() {
+<<<<<<< HEAD
         this(1, 10);
+=======
+        this(1, 12);
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
     }
 
     public Criteria(int pageNum, int amount) {
