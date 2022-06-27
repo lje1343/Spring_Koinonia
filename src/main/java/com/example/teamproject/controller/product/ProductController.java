@@ -85,6 +85,24 @@ public class ProductController {
         log.info("상품 상세");
         log.info("*************");
         log.info(productService.read(pno).toString());
+
+
+//         상품 썸네일 리스트
+        String pRequestUrl = "/productFile/display?fileName=";
+        String productThumFileName = "";
+        List<String> productThumfileUrlList = new ArrayList<>();
+
+        List<ProductFileVO> productFileList = productService.getList(pno);
+        for(int i =0; i<productFileList.size(); i++) {
+            if (!productFileList.isEmpty()) {
+                productThumFileName = pRequestUrl + productFileList.get(i).getUploadPath() + "/" + productFileList.get(i).getUuid() + "_" + productFileList.get(i).getFileName();
+            } else {
+                productThumFileName = "/images/no_image.gif";
+            }
+
+            productThumfileUrlList.add(productThumFileName);
+        }
+        model.addAttribute("productThumfileUrlList", productThumfileUrlList);
         model.addAttribute("product", productService.read(pno));
         return "/product/sell_detail";
     }

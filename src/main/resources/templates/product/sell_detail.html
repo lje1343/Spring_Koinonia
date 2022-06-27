@@ -2,6 +2,29 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/main/main}">
 <head>
+
+    <style>
+
+        .wrap-slick3-dots {
+            width: 11.111111%;
+            visibility: hidden;
+        }
+
+        .col-md-6 > img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            overflow: hidden;
+            border-radius: 30px;
+
+        }
+
+        .mtext {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+    </style>
     <title>Product Detail</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,13 +57,13 @@
                 <div class="col-md-6 col-lg-7 p-b-30">
                     <div class="p-l-25 p-r-30 p-lr-0-lg">
                         <div class="wrap-slick3 flex-sb flex-w">
-                            <div class="wrap-slick3-dots"></div>
+                            <div class="wrap-slick3-dots" type="hidden"></div>
                             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
                             <div class="slick3 gallery-lb">
-                                <div class="item-slick3" data-thumb="/assets/images/product-detail-01.jpg">
+                                <th:block th:each="product, i : ${productThumfileUrlList}">
+                                <div class="item-slick3">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="/assets/images/product-detail-01.jpg" alt="IMG-PRODUCT">
-
+                                        <img th:src="${productThumfileUrlList[0+i.index]}">
                                         <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
                                            href="../../static/assets/images/product-detail-01.jpg">
                                             <i class="fa fa-expand"></i>
@@ -48,27 +71,9 @@
                                     </div>
                                 </div>
 
-                                <div class="item-slick3" data-thumb="/assets/images/product-detail-02.jpg">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="/assets/images/product-detail-02.jpg" alt="IMG-PRODUCT">
+                                </th:block>
 
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                           href="../../static/assets/images/product-detail-02.jpg">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
-                                    </div>
-                                </div>
 
-                                <div class="item-slick3" data-thumb="/assets/images/product-detail-03.jpg">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="/assets/images/product-detail-03.jpg" alt="IMG-PRODUCT">
-
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                           href="/assets/images/product-detail-03.jpg">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -76,21 +81,18 @@
                 <div class="col-md-6 col-lg-5 p-b-30">
                     <div class="p-r-50 p-t-5 p-lr-0-lg">
                         <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                            <input type="text" readonly th:field="*{title}">
                         </h4>
                         <input type="hidden" th:field="*{pno}" id="pno"/>
-                        <span class="mtext-106 cl2">
-						<input type="text" readonly th:field="*{title}">
-
-						</span>
-
-                        <p class="mtext-104 cl3 p-t-23">
+                        <div class="mtext">
                             <input type="text" readonly th:field="*{price}">
-                        </p>
+                        </div>
 
-                        <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10"
-                                style="margin-top:20px; margin-left: 110px;">
-                            쪽지보내기
-                        </button>
+                        <div class="mtext">
+                            <input type="text" readonly th:field="*{content}">
+                        </div>
+
+
 
                     </div>
                 </div>
@@ -121,7 +123,8 @@
                         <!-- - -->
                         <div class="tab-pane fade show active" id="description" role="tabpanel">
                             <div class="how-pos2 p-lr-15-md">
-							<span class="stext-102 cl6" th:field="*{content}">
+							<span class="stext-102 cl6">
+                                <td th:field="*{content}"></td>
 							</span>
                             </div>
                         </div>
@@ -193,6 +196,11 @@
 <div th:replace="~{/footer/footer :: footerFragment}"></div>
 <!--  footer end  -->
 
+
+
+
+</body>
+<script src="/assets/js/header.js"></script>
 <!--===============================================================================================-->
 <script src="/Vendor/jquery/jquery-3.2.1.min.js"></script> <!-- 필요 -->
 <!--===============================================================================================-->
@@ -215,7 +223,4 @@
         });
     });
 </script>
-
-
-</body>
 </html>
