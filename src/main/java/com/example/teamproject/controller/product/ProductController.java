@@ -1,9 +1,6 @@
 package com.example.teamproject.controller.product;
 
-import com.example.teamproject.domain.vo.Criteria;
-import com.example.teamproject.domain.vo.PageDTO;
-import com.example.teamproject.domain.vo.ProductDTO;
-import com.example.teamproject.domain.vo.ProductVO;
+import com.example.teamproject.domain.vo.*;
 import com.example.teamproject.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -48,7 +45,7 @@ public class ProductController {
         log.info("*************");
         log.info("상품 리스트");
         log.info("*************");
-        ProductDTO productDTO = productService.getOldFiles();
+        List<PFileVO> pFileVOS = productService.getOldFiles();
         model.addAttribute("productList", productService.getList(criteria));
         model.addAttribute("pageDTO", new PageDTO(criteria, productService.getTotal()));
         return "/product/sell_list";

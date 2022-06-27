@@ -5,13 +5,9 @@ package com.example.teamproject.controller;
 import com.example.teamproject.domain.vo.*;
 import com.example.teamproject.service.board.BoardFileServiceImpl;
 import com.example.teamproject.service.board.BoardServiceImpl;
-<<<<<<< HEAD
 import com.example.teamproject.service.product.ProductService;
-import com.example.teamproject.service.product.ProductServiceImpl;
-=======
 import com.example.teamproject.service.product.ProductFileServiceImpl;
 import com.example.teamproject.service.product.ProductServieceImpl;
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 import com.example.teamproject.service.request.RequestServieceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

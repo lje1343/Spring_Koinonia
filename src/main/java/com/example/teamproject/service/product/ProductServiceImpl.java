@@ -4,6 +4,7 @@ import com.example.teamproject.domain.dao.product.PFileDAO;
 import com.example.teamproject.domain.dao.product.ProductDAO;
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.PFileVO;
+import com.example.teamproject.domain.vo.ProductDTO;
 import com.example.teamproject.domain.vo.ProductVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<PFileVO> getOldFiles(){return pFileDAO.getOldFiles();}
+
+    @Override
+    public List<ProductDTO> getAll(ProductDTO productDTO) {
+        return null;
+    }
 
     @Override
     public List<PFileVO> getList(Long pno) { return pFileDAO.findByPno(pno); }
