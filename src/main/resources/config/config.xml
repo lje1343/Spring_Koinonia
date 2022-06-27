@@ -11,14 +11,8 @@
         <typeAlias type="com.example.teamproject.domain.vo.RequestVO" alias="RequestVO"/>
         <typeAlias type="com.example.teamproject.domain.vo.RequestReplyVO" alias="RreplyVO"/>
         <typeAlias type="com.example.teamproject.domain.vo.FileVO" alias="fileVO"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
         <typeAlias type="com.example.teamproject.domain.vo.PFileVO" alias="PfileVO"/>
->>>>>>> d13089d406620e5be9aa20706d5e5a3235b67d59
         <typeAlias type="com.example.teamproject.domain.vo.ProductFileVO" alias="ProductFileVO"/>
         <typeAlias type="com.example.teamproject.domain.vo.BoardDTO" alias="boardDTO"/>
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
     </typeAliases>
 </configuration>

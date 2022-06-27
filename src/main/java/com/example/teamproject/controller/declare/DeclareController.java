@@ -2,6 +2,7 @@ package com.example.teamproject.controller.declare;
 
 import com.example.teamproject.domain.vo.DeclareVO;
 
+
 import com.example.teamproject.domain.vo.UserVO;
 
 import com.example.teamproject.service.declare.DeclareServieceImpl;
@@ -48,9 +49,6 @@ public class DeclareController {
 
         return "/declare/declare";
     }
-
-
-
 
 
 //    @PostMapping("/register")

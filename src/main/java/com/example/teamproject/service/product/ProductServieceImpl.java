@@ -38,8 +38,16 @@ public class ProductServieceImpl{
         return productDAO.modify(productVO);
     }
 
+<<<<<<< HEAD
     // 판매 상품 삭제
 
+=======
+
+
+    // 판매 상품 상세
+
+
+>>>>>>> main
     public int remove(Long pno) {
         return productDAO.remove(pno);
     }

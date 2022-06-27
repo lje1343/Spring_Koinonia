@@ -1,5 +1,4 @@
 
-<<<<<<< HEAD
 //package com.example.teamproject.controller;
 //
 //import com.example.teamproject.service.board.BoardReplyServiceImpl;
@@ -35,8 +34,8 @@
 package com.example.teamproject.controller;
 
 import com.example.teamproject.service.board.BoardServiceImpl;
-=======
-package com.example.teamproject.controller;
+
+
 
 
 import com.example.teamproject.domain.vo.*;
@@ -44,7 +43,7 @@ import com.example.teamproject.service.board.BoardFileServiceImpl;
 import com.example.teamproject.service.board.BoardServiceImpl;
 import com.example.teamproject.service.product.ProductService;
 import com.example.teamproject.service.product.ProductFileServiceImpl;
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
 import com.example.teamproject.service.product.ProductServieceImpl;
 import com.example.teamproject.service.request.RequestServieceImpl;
 import lombok.RequiredArgsConstructor;
@@ -56,7 +55,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -117,6 +119,10 @@ public class MainController {
             productThumfileUrlList.add(productThumFileName);
         }
         model.addAttribute("productThumfileUrlList", productThumfileUrlList);
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
         return "/main/main";
     }
 }

@@ -1,7 +1,16 @@
 package com.example.teamproject.service.board;
 
 import com.example.teamproject.domain.dao.board.BoardDAO;
+<<<<<<< HEAD
 
+=======
+
+import com.example.teamproject.domain.vo.BoardVO;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+
+>>>>>>> main
 import com.example.teamproject.domain.vo.BoardDTO;
 import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
@@ -10,6 +19,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 @Service
 @RequiredArgsConstructor
 public class BoardServiceImpl {
@@ -37,6 +50,13 @@ public class BoardServiceImpl {
 
 //    다이어리 목록
 
+<<<<<<< HEAD
+=======
+//    public List<BoardVO> getList(Criteria criteria) {
+//        return boardDAO.getList(criteria);
+//    }
+
+>>>>>>> main
     public List<BoardVO> getList(Criteria criteria) {
         return boardDAO.getList(criteria);
     }

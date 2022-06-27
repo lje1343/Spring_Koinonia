@@ -61,7 +61,9 @@ public class UserController {
             session.setAttribute("email", email);
             session.setAttribute("name", userService.login(email).getName());
             return "/user/mypage";
+
     }
+
     @GetMapping("/logout")
     public String logout(HttpSession session){
         log.info("*************");
@@ -80,6 +82,10 @@ public class UserController {
         return "/user/find_pw";
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
     @PostMapping("/find_pw")
     public String goToFindPw(String email, Model model){
         log.info("*************");

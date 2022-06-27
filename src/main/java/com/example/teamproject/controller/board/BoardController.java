@@ -1,6 +1,8 @@
 package com.example.teamproject.controller.board;
 
+
 import com.example.teamproject.domain.vo.BoardDTO;
+
 import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.RequestVO;
@@ -9,7 +11,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.util.FileCopyUtils;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -31,7 +35,6 @@ public class BoardController {
 
 
     // 작성 페이지 이동
-
     @GetMapping("/register")
     public String register(){
         log.info("*************");
@@ -39,7 +42,37 @@ public class BoardController {
         log.info("*************");
         return "/diary/board_write";
     }
+<<<<<<< HEAD
 
+=======
+
+//    @PostMapping("/register")
+//    public String register(BoardVO boardVO, RedirectAttributes rttr){
+//        log.info("*************");
+//        log.info("다이어리 등록");
+//        log.info("*************");
+//        // 다이어리 등록
+//        return new RedirectView("/board/list");
+//    }
+
+    @GetMapping("/modify")
+    public String modify(Long bno){
+        log.info("*************");
+        log.info("다이어리 수정내용 작성/삭제");
+        log.info("*************");
+        // 다이어리 수정
+        return "/diary/modify";
+    }
+//    @PostMapping("/modify")
+//    public String modify(Long bno, RedirectAttributes rttr){
+//        log.info("*************");
+//        log.info("다이어리 수정");
+//        log.info("*************");
+//        // 다이어리 수정 완료
+//        return new RedirectView("/board/list");
+//    }
+
+>>>>>>> main
 
     // 작성 완료
     @PostMapping("/register")
@@ -71,6 +104,10 @@ public class BoardController {
         return new RedirectView("/board/list");
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 //    @PostMapping("/remove")
 //    public String remove(Long bno, RedirectAttributes rttr){
 //        log.info("*************");
@@ -86,6 +123,15 @@ public class BoardController {
         log.info("다이어리 상세");
         log.info("*************");
         // 다이어리 상세
+        return "/diary/detail";
+    }
+
+    public String read(Long pno, Model model, Criteria criteria) {
+        log.info("*************");
+        log.info("다이어리 상세");
+        log.info("*************");
+        log.info(boardService.read(pno).toString());
+        model.addAttribute("board", boardService.read(pno));
         return "/diary/detail";
     }
 
@@ -157,4 +203,5 @@ public class BoardController {
         File file = new File("C:/upload/", fileName);
         return FileCopyUtils.copyToByteArray(file);
     }
+
 }

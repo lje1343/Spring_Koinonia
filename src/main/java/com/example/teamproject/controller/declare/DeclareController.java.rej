@@ -1,0 +1,9 @@
+diff a/src/main/java/com/example/teamproject/controller/declare/DeclareController.java b/src/main/java/com/example/teamproject/controller/declare/DeclareController.java	(rejected hunks)
+@@ -46,7 +46,6 @@
+         log.info("신고 작성");
+         log.info("*************");
+         declareService.register(declareVO);
+-
+         return "/declare/declare";
+     }
+ 

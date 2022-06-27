@@ -1,7 +1,9 @@
 package com.example.teamproject.mapper;
 
 
+
 import com.example.teamproject.domain.vo.BoardDTO;
+
 
 import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
@@ -60,7 +62,6 @@ private BoardMapper boardMapper;
 //    public void getListTest(){
 //        boardMapper.getList(new Criteria(1, 10)).stream().map(BoardVO::toString).forEach(log::info);
 //    }
-
 
 
     @Test
