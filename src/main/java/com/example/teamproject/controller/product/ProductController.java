@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
-<<<<<<< HEAD
-=======
+
+
 import javax.servlet.http.HttpServletRequest;
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
 import java.util.List;
 
 @Controller
@@ -27,11 +27,8 @@ public class ProductController {
     // 상품
 
     @GetMapping("/register")
-<<<<<<< HEAD
+
     public String register(){
-=======
-    public String register() {
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
         log.info("*************");
         log.info("판매 상품정보 작성");
         log.info("*************");
@@ -47,11 +44,9 @@ public class ProductController {
 //    }
 
     @GetMapping("/list")
-<<<<<<< HEAD
-    public String getList(Criteria criteria, Model model){
-=======
-    public String getList(Criteria criteria, Model model) {
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
+        public String getList(Criteria criteria, Model model) {
+
         log.info("*************");
         log.info("상품 리스트");
         log.info("*************");
@@ -61,7 +56,7 @@ public class ProductController {
     }
 
     @GetMapping("/detail")
-<<<<<<< HEAD
+
     public String read(Long pno, Model model){
         log.info("*************");
         log.info("상품 상세");
@@ -70,7 +65,7 @@ public class ProductController {
         return "/product/detail";
     }
 
-=======
+
     public String read(Long pno, Model model, Criteria criteria) {
         log.info("*************");
         log.info("상품 상세");
@@ -81,7 +76,7 @@ public class ProductController {
     }
 
 
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
     @GetMapping("/modify")
     public String modify(Long pno){
         log.info("*************");

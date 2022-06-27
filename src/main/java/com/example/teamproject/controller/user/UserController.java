@@ -8,11 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-<<<<<<< HEAD
+
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
-=======
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
 
 import javax.servlet.http.HttpSession;
 
@@ -49,15 +48,6 @@ public class UserController {
         return "/user/login";
     }
     @PostMapping("/login")
-<<<<<<< HEAD
-    public String login(String email, String pw, HttpSession session){
-        log.info("*************");
-        log.info("로그인 시도");
-        log.info("*************");
-        log.info(userService.login(email).getPw());
-        if(pw.equals(userService.login(email).getPw())){
-            log.info("xxx");
-=======
     public String login(String email, String pw, HttpSession session, Model model){
         log.info("*************");
         log.info("로그인 시도");
@@ -67,17 +57,12 @@ public class UserController {
             model.addAttribute("msg", "아이디 혹은 비밀번호가 다릅니다.");
             return "/user/login";
         }
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
-            // 로그인 성공
-            session.setAttribute("email", email);
-            session.setAttribute("name", userService.login(email).getName());
-            return "/user/mypage";
-<<<<<<< HEAD
-        }
-        // 로그인 실패
-        return "/user/login";
-=======
+        // 로그인 성공
+        session.setAttribute("email", email);
+        session.setAttribute("name", userService.login(email).getName());
+        return "/user/mypage";
     }
+
     @GetMapping("/logout")
     public String logout(HttpSession session){
         log.info("*************");
@@ -85,7 +70,7 @@ public class UserController {
         log.info("*************");
         session.invalidate(); // 세션 무효화
         return "/main/main";
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
     }
 
     @GetMapping("/find_pw")
@@ -95,8 +80,8 @@ public class UserController {
         log.info("*************");
         return "/user/find_pw";
     }
-<<<<<<< HEAD
-=======
+
+
     @PostMapping("/find_pw")
     public String goToFindPw(String email, Model model){
         log.info("*************");
@@ -127,7 +112,7 @@ public class UserController {
         model.addAttribute("msg","비밀번호가 재설정되었습니다.");
         return "/user/login";
     }
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
 
     @GetMapping("/modify")
     public String modify(Model model){

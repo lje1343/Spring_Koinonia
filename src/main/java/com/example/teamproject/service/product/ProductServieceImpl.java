@@ -23,16 +23,11 @@ public class ProductServieceImpl{
         return productDAO.modify(productVO);
     }
 
-    // 판매 상품 삭제
-<<<<<<< HEAD
-    public int remove(Long bno) {
-        return productDAO.remove(bno);
-    }
+
 
     // 판매 상품 상세
-    public ProductVO read(Long bno) {
-        return productDAO.read(bno);
-=======
+
+
     public int remove(Long pno) {
         return productDAO.remove(pno);
     }
@@ -40,7 +35,7 @@ public class ProductServieceImpl{
     // 판매 상품 상세
     public ProductVO read(Long pno) {
         return productDAO.read(pno);
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
     }
 
     // 판매 상품 목록

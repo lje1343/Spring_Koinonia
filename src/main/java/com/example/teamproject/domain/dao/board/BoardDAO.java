@@ -1,12 +1,12 @@
 package com.example.teamproject.domain.dao.board;
 
-<<<<<<< HEAD
+
 import com.example.teamproject.domain.vo.BoardVO;
-=======
+
 import com.example.teamproject.domain.vo.BoardDTO;
 import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
 import com.example.teamproject.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -19,14 +19,14 @@ public class BoardDAO {
     private final BoardMapper boardMapper;
 
     // 다이어리 목록
-<<<<<<< HEAD
+
 //    public List<BoardVO> getList(){
 //    };
-=======
+
     public List<BoardVO> getList(Criteria criteria){
         return boardMapper.getList(criteria);
     };
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
 
     // 다이어리 등록
     public void register(BoardVO boardVO){
@@ -52,11 +52,11 @@ public class BoardDAO {
 //    public  int updateName(BoardVO boardVO){
 //        return boardMapper.updatename(boardVO);
 //    }
-<<<<<<< HEAD
-=======
+
+
 
     //다이어리 페이지 리스트(검색조건 포함)
     public List<BoardDTO> getListBySearch(Criteria criteria){ return boardMapper.getListBySearch(criteria); }
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
 }
 

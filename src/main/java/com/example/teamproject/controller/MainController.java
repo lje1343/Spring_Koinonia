@@ -1,5 +1,4 @@
 
-<<<<<<< HEAD
 //package com.example.teamproject.controller;
 //
 //import com.example.teamproject.service.board.BoardReplyServiceImpl;
@@ -35,15 +34,15 @@
 package com.example.teamproject.controller;
 
 import com.example.teamproject.service.board.BoardServiceImpl;
-=======
-package com.example.teamproject.controller;
+
+
 
 
 import com.example.teamproject.domain.vo.*;
 import com.example.teamproject.service.board.BoardFileServiceImpl;
 import com.example.teamproject.service.board.BoardServiceImpl;
 import com.example.teamproject.service.product.ProductFileServiceImpl;
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
 import com.example.teamproject.service.product.ProductServieceImpl;
 import com.example.teamproject.service.request.RequestServieceImpl;
 import lombok.RequiredArgsConstructor;
@@ -53,13 +52,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-<<<<<<< HEAD
-=======
+
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
 @Controller
 @Slf4j
 @RequestMapping("/")
@@ -68,16 +66,6 @@ public class MainController {
     private final BoardServiceImpl boardService;
     private final ProductServieceImpl productServiece;
     private final RequestServieceImpl requestServiece;
-<<<<<<< HEAD
-
-    @GetMapping("/")
-    public String goToMain(Model model){
-        log.info("*************");
-        log.info("메인페이지");
-        log.info("*************");
-        // 상품 리스트
-        // 다이어리 리스트
-=======
     private final BoardFileServiceImpl boardFileService;
     private final ProductFileServiceImpl productFileService;
 
@@ -127,7 +115,7 @@ public class MainController {
             log.info(productThumfileUrl);
         }
         model.addAttribute("productThumfileUrlList", productThumfileUrlList);
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
         return "/main/main";
     }
 }
