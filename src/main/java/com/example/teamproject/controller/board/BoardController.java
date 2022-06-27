@@ -44,33 +44,6 @@ public class BoardController {
     }
 
 
-//    @PostMapping("/register")
-//    public String register(BoardVO boardVO, RedirectAttributes rttr){
-//        log.info("*************");
-//        log.info("다이어리 등록");
-//        log.info("*************");
-//        // 다이어리 등록
-//        return new RedirectView("/board/list");
-//    }
-
-    @GetMapping("/modify")
-    public String modify(Long bno){
-        log.info("*************");
-        log.info("다이어리 수정내용 작성/삭제");
-        log.info("*************");
-        // 다이어리 수정
-        return "/diary/modify";
-    }
-//    @PostMapping("/modify")
-//    public String modify(Long bno, RedirectAttributes rttr){
-//        log.info("*************");
-//        log.info("다이어리 수정");
-//        log.info("*************");
-//        // 다이어리 수정 완료
-//        return new RedirectView("/board/list");
-//    }
-
-
 
     // 작성 완료
     @PostMapping("/register")

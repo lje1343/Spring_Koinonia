@@ -40,11 +40,7 @@
         ]]>
     </select>
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
     <insert id="insert">
         <selectKey keyProperty="pno" resultType="long" order="BEFORE">
             SELECT SEQ_PRODUCT.NEXTVAL FROM DUAL
