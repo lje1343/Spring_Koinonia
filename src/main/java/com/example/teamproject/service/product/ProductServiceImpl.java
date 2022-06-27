@@ -4,6 +4,7 @@ import com.example.teamproject.domain.dao.product.PFileDAO;
 import com.example.teamproject.domain.dao.product.ProductDAO;
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.PFileVO;
+import com.example.teamproject.domain.vo.ProductDTO;
 import com.example.teamproject.domain.vo.ProductVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,18 +14,23 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ProductServiceImpl {
+public class ProductServiceImpl implements ProductService{
 
     private final ProductDAO productDAO;
     private final PFileDAO pFileDAO;
 
-//    @Override
+    @Override
     public List<PFileVO> getOldFiles(){return pFileDAO.getOldFiles();}
 
-//    @Override
+    @Override
+    public List<ProductDTO> getAll(ProductDTO productDTO) {
+        return null;
+    }
+
+    @Override
     public List<PFileVO> getList(Long pno) { return pFileDAO.findByPno(pno); }
 
-//    @Override
+    @Override
     @Transactional(rollbackFor = Exception.class)
     public void register(ProductVO productVO) {
         //게시글 추가
@@ -38,11 +44,11 @@ public class ProductServiceImpl {
         }
     }
 
-//    @Override
+    @Override
     public ProductVO read(Long pno) { return productDAO.read(pno); }
 
     @Transactional(rollbackFor = Exception.class)
-//    @Override
+    @Override
     public int modify(ProductVO productVO) {
         pFileDAO.remove(productVO.getPno());
 
@@ -55,17 +61,17 @@ public class ProductServiceImpl {
         return productDAO.modify(productVO);
     }
 
-//    @Override
+    @Override
     public int remove(Long pno) {
         return productDAO.remove(pno);
     }
 
-//    @Override
+    @Override
     public List<ProductVO> getList(Criteria criteria) {
         return productDAO.getList(criteria);
     }
 
-//    @Override
+    @Override
     public int getTotal() { return productDAO.getTotal(); }
 
 

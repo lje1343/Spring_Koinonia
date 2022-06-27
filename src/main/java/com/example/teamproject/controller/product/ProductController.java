@@ -9,6 +9,7 @@ import com.example.teamproject.service.product.ProductServieceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.teamproject.domain.vo.ProductDTO;
+import com.example.teamproject.domain.vo.*;
 import com.example.teamproject.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -56,7 +57,7 @@ public class ProductController {
         log.info("*************");
         log.info("상품 리스트");
         log.info("*************");
-//        productDTO = productService.getOldFiles();
+        List<PFileVO> pFileVOS = productService.getOldFiles();
         model.addAttribute("productList", productService.getList(criteria));
         model.addAttribute("pageDTO", new PageDTO(criteria, productService.getTotal()));
         return "/product/sell_list";
