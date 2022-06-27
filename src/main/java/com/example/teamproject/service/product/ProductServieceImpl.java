@@ -66,5 +66,9 @@ public class ProductServieceImpl{
     public int getTotal(){return productDAO.getTotal();}
 
     public List<ProductFileVO> getOldFiles(){return productFileDAO.getOldFiles();}
+
+    public List<ProductFileVO> getList(Long pno) {
+        return productFileDAO.getList(pno);
+    }
 }
 

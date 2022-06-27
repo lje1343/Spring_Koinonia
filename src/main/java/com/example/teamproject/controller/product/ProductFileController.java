@@ -116,11 +116,11 @@ public class ProductFileController {
         if(file.exists()){ file.delete(); }
     }
 
-//
-//    @GetMapping("/list")
-//    @ResponseBody
-//    public List<PFileVO> getList(Long pno){
-//        log.info("get file list....... : " + pno);
-//        return productServiece.getPList(pno);
-//    }
+
+    @GetMapping("/list")
+    @ResponseBody
+    public List<ProductFileVO> getList(Long pno){
+        log.info("get file list....... : " + pno);
+        return productServiece.getList(pno);
+    }
 }
