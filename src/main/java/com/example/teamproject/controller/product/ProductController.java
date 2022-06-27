@@ -143,19 +143,19 @@ public class ProductController {
 //        return "/product/product_modify";
 //    }
 
-    @PostMapping("/modisucces")
-    public RedirectView modisucces(Long pno, ProductVO productVO, Criteria criteria, RedirectAttributes rttr) {
-        log.info("*************");
-        log.info("상품 수정 완료");
-        log.info("*************");
-        // 다이어리 수정 완료
-        productService.modify(productVO);
-        rttr.addAttribute("pno", productVO.getPno());
-        rttr.addAttribute("pageNum", criteria.getPageNum());
-        rttr.addAttribute("amount", criteria.getAmount());
-
-        return new RedirectView("/product/sell_detail");
-}
+//    @PostMapping("/modisucces")
+//    public RedirectView modisucces(Long pno, ProductVO productVO, Criteria criteria, RedirectAttributes rttr) {
+//        log.info("*************");
+//        log.info("상품 수정 완료");
+//        log.info("*************");
+//        // 다이어리 수정 완료
+//        productService.modify(productVO);
+//        rttr.addAttribute("pno", productVO.getPno());
+//        rttr.addAttribute("pageNum", criteria.getPageNum());
+//        rttr.addAttribute("amount", criteria.getAmount());
+//
+//        return new RedirectView("/product/sell_detail");
+//}
 
     ///////////////////////////////////////////////////
     // ResponsBody
