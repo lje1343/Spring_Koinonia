@@ -1,0 +1,20 @@
+diff a/src/main/java/com/example/teamproject/controller/MainController.java b/src/main/java/com/example/teamproject/controller/MainController.java	(rejected hunks)
+@@ -34,15 +34,15 @@
+ package com.example.teamproject.controller;
+ 
+ import com.example.teamproject.service.board.BoardServiceImpl;
+-=======
+-package com.example.teamproject.controller;
++
++
+ 
+ 
+ import com.example.teamproject.domain.vo.*;
+ import com.example.teamproject.service.board.BoardFileServiceImpl;
+ import com.example.teamproject.service.board.BoardServiceImpl;
+ import com.example.teamproject.service.product.ProductFileServiceImpl;
+->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
++
+ import com.example.teamproject.service.product.ProductServieceImpl;
+ import com.example.teamproject.service.request.RequestServieceImpl;
+ import lombok.RequiredArgsConstructor;

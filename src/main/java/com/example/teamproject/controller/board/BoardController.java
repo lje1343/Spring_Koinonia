@@ -1,9 +1,6 @@
 package com.example.teamproject.controller.board;
 
-<<<<<<< HEAD
-=======
 import com.example.teamproject.domain.vo.BoardDTO;
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.RequestVO;
@@ -12,15 +9,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-<<<<<<< HEAD
-=======
 import org.springframework.util.FileCopyUtils;
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -36,10 +29,9 @@ public class BoardController {
     private final BoardServiceImpl boardService;
     // 다이어리
 
-<<<<<<< HEAD
-=======
+
     // 작성 페이지 이동
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
     @GetMapping("/register")
     public String register(){
         log.info("*************");
@@ -171,8 +163,7 @@ public class BoardController {
     public boolean wish(Long bno){
         return false;
     }
-<<<<<<< HEAD
-=======
+
 
     //다이어리 페이지 리스트(검색리스트 포함)
     @PostMapping("/getListBySearch")
@@ -193,5 +184,4 @@ public class BoardController {
         File file = new File("C:/upload/", fileName);
         return FileCopyUtils.copyToByteArray(file);
     }
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 }

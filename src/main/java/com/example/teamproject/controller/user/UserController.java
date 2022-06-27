@@ -49,15 +49,6 @@ public class UserController {
         return "/user/login";
     }
     @PostMapping("/login")
-<<<<<<< HEAD
-    public String login(String email, String pw, HttpSession session){
-        log.info("*************");
-        log.info("로그인 시도");
-        log.info("*************");
-        log.info(userService.login(email).getPw());
-        if(pw.equals(userService.login(email).getPw())){
-            log.info("xxx");
-=======
     public String login(String email, String pw, HttpSession session, Model model){
         log.info("*************");
         log.info("로그인 시도");
@@ -67,16 +58,10 @@ public class UserController {
             model.addAttribute("msg", "아이디 혹은 비밀번호가 다릅니다.");
             return "/user/login";
         }
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
             // 로그인 성공
             session.setAttribute("email", email);
             session.setAttribute("name", userService.login(email).getName());
             return "/user/mypage";
-<<<<<<< HEAD
-        }
-        // 로그인 실패
-        return "/user/login";
-=======
     }
     @GetMapping("/logout")
     public String logout(HttpSession session){
@@ -85,7 +70,7 @@ public class UserController {
         log.info("*************");
         session.invalidate(); // 세션 무효화
         return "/main/main";
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
     }
 
     @GetMapping("/find_pw")
