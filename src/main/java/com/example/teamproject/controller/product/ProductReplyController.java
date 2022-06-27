@@ -26,6 +26,7 @@ public class ProductReplyController {
     @PostMapping(value = "/new", consumes = "application/json", produces = "text/plain; charset=utf-8")
     public ResponseEntity<String> create(@RequestBody ProductReplyVO productReplyVO) throws UnsupportedEncodingException {
         log.info("boardReplyVO : " + productReplyVO);
+        productReplyVO.setName("test"); // 기본값 로그인시 세션이용해야 받아함;
         productReplyService.register(productReplyVO);
         return new ResponseEntity<>(new String("댓글 등록 성공".getBytes(), "UTF-8") , HttpStatus.OK);
     }

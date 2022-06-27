@@ -8,9 +8,7 @@ import com.example.teamproject.service.product.ProductFileServiceImpl;
 import com.example.teamproject.service.product.ProductServieceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.example.teamproject.domain.vo.ProductDTO;
 import com.example.teamproject.domain.vo.*;
-import com.example.teamproject.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
@@ -55,14 +53,32 @@ public class ProductController {
     }
 
     @GetMapping("/list")
-    public String getList(Criteria criteria, Model model, Long pno, ProductDTO productDTO) {
+    public String getList(Criteria criteria, Model model) {
         log.info("*************");
         log.info("상품 리스트");
         log.info("*************");
-        List<PFileVO> pFileVOS = productService.getOldFiles();
-        model.addAttribute("productList", productService.getList(criteria));
+
+        List<ProductVO> productList = productService.getList(criteria);
+        model.addAttribute("productList", productService.getList(criteria)) ;
+//         상품 썸네일 리스트
+        String pRequestUrl = "/productFile/display?fileName=";
+        String productThumFileName = "";
+        List<String> productThumfileUrlList = new ArrayList<>();
+        for(ProductVO p : productList){
+            List<ProductFileVO> productFileList = productService.getList(p.getPno());
+            if(!productFileList.isEmpty()){
+                productThumFileName =  pRequestUrl + productFileList.get(0).getUploadPath() + "/"  + productFileList.get(0).getUuid() + "_" + productFileList.get(0).getFileName();
+            }else{
+                productThumFileName = "/images/no_image.gif";
+            }
+            productThumfileUrlList.add(productThumFileName);
+        }
+
+
+        model.addAttribute("productThumfileUrlList", productThumfileUrlList);
         model.addAttribute("pageDTO", new PageDTO(criteria, productService.getTotal()));
         return "/product/sell_list";
+
     }
 
     @GetMapping("/detail")

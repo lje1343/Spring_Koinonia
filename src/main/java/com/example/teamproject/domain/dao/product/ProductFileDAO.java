@@ -22,4 +22,5 @@ public class ProductFileDAO {
     public void register(ProductFileVO productFileVO){
         productFileMapper.insert(productFileVO);
     }
+    public List<ProductFileVO> getOldFiles(){return productFileMapper.getOldFiles();}
 }
