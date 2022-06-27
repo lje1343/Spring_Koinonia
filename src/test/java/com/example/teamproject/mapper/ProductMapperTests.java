@@ -43,11 +43,11 @@ private ProductMapper productMapper;
 //        log.info("반환된 결과값은 : " + productMapper.update(productVO));
 //    }
 //
-//    @Test
-//    public void deleteTest() {
-//        Long pno = 3L;
-//        log.info("삭제 번호 : " + productMapper.delete(pno));
-//    }
+    @Test
+    public void deleteTest() {
+        Long pno = 3L;
+        log.info("삭제 번호 : " + productMapper.delete(pno));
+    }
 
 //    @Test
 //    public void getTest(){
