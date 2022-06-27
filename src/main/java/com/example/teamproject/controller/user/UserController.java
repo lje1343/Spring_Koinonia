@@ -8,11 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-<<<<<<< HEAD
+
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
-=======
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
 
 import javax.servlet.http.HttpSession;
 
@@ -80,8 +79,7 @@ public class UserController {
         log.info("*************");
         return "/user/find_pw";
     }
-<<<<<<< HEAD
-=======
+
     @PostMapping("/find_pw")
     public String goToFindPw(String email, Model model){
         log.info("*************");
@@ -112,7 +110,7 @@ public class UserController {
         model.addAttribute("msg","비밀번호가 재설정되었습니다.");
         return "/user/login";
     }
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
 
     @GetMapping("/modify")
     public String modify(Model model){
