@@ -11,4 +11,5 @@ public class FileVO {
     private String uuid;
     private boolean image;
     private Long bno;
+    private Long fileSize;
 }

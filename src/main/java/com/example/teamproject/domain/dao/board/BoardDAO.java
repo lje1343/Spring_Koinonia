@@ -57,6 +57,11 @@ public class BoardDAO {
 
     //다이어리 페이지 리스트(검색조건 포함)
     public List<BoardDTO> getListBySearch(Criteria criteria){ return boardMapper.getListBySearch(criteria); }
+<<<<<<< HEAD
 >>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+=======
+
+    public List<BoardVO> getListMain(Criteria criteria){ return boardMapper.getListMain(criteria); }
+>>>>>>> 87ba7f8e7bf7ff777de0d0a27ca13d7c38ed07f6
 }
 

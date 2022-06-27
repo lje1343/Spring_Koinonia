@@ -31,8 +31,9 @@ $(document).on("click", ".nationalityArea button.select", function () {
 });
 window.addEventListener("click", clickBodyEventNationality);
 $(".nationalityArea .optionList").click((e) => {
-  $("#select").val(e.currentTarget.innerText).prop("selected", true);
-  $("#selectBtn").text(e.currentTarget.innerText);
+  let changeVal = e.currentTarget.innerText;
+  $("#select").val(changeVal).prop("selected", true);
+  $("#selectBtn").text(changeVal);
   document.querySelector("#selectBtn").classList.remove("open");
   document.querySelector("#option").classList.remove("openOption");
 });
@@ -90,6 +91,7 @@ $("#thum").on("change", function(e){
 ///////////////////////////////////////////////////////////////////////////////////////
 // 썸머노트
 
+<<<<<<< HEAD
 // summernote create
 <<<<<<< HEAD
 $("#summernote").summernote({
@@ -123,6 +125,8 @@ $("#summernote").summernote({
 // });
 >>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 
+=======
+>>>>>>> 87ba7f8e7bf7ff777de0d0a27ca13d7c38ed07f6
 //이미지 등록처리
 function imageUpload(files, editor) {
   var status = false;
@@ -187,6 +191,7 @@ const saveContent = () => {
   var summernoteContent = $('#summernote').summernote('code'); // 썸머노트 작성내용(html)
   $("input[name='content']").val(summernoteContent);
   console.log("summernoteContent : " + summernoteContent);
+  console.log(typeof(summernoteContent));
 
 
 
@@ -195,6 +200,7 @@ const saveContent = () => {
   }
 >>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 }
+
 
 
 

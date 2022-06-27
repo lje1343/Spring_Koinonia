@@ -14,14 +14,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 @Slf4j
 public class ProductServiceTests {
-
     @Autowired
     private ProductServieceImpl productServiece;
 <<<<<<< HEAD
 =======
 
     @Test
-    public void getListTest(){
+    public void getListTest() {
         productServiece.getList(new Criteria(1, 15)).stream().map(ProductVO::toString).forEach(log::info);
     }
 <<<<<<< HEAD

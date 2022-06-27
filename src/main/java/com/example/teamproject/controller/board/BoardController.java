@@ -56,18 +56,18 @@ public class BoardController {
         log.info("*************");
         log.info("다이어리 수정내용 작성/삭제");
         log.info("*************");
-        bno = 39L; // 임시 다이어리 번호
-        // 다이어리 수정
-        model.addAttribute("diary", boardService.read(bno));
-        return "/diary/board_modify";
+        model.addAttribute("board", boardService.read(bno));
+        return "/diary/modify_board";
     }
-
     @PostMapping("/modify")
-    public RedirectView modify(Long bno, RedirectAttributes rttr){
+    public RedirectView modify(BoardVO boardVO, Criteria criteria, RedirectAttributes rttr){
         log.info("*************");
         log.info("다이어리 수정");
         log.info("*************");
-        // 다이어리 수정 완료
+        if(boardService.modify(boardVO)==1){
+            rttr.addAttribute("pageNum", criteria.getPageNum());
+            rttr.addAttribute("amount", criteria.getAmount());
+        };
         return new RedirectView("/board/list");
     }
 

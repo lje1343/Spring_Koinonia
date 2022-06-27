@@ -8,4 +8,6 @@ import java.util.List;
 @Mapper
 public interface ProductFileMapper {
     public List<ProductFileVO> getList(Long pno);
+    public int delete(Long pno);
+    public void insert(ProductFileVO productFileVO);
 }

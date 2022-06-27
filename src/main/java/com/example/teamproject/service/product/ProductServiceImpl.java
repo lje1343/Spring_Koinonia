@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl implements ProductService{
 
     private final ProductDAO productDAO;
     private final PFileDAO pFileDAO;
@@ -39,7 +39,7 @@ public class ProductServiceImpl implements ProductService {
         if(productVO.getFileList() != null) {
             productVO.getFileList().forEach(pFileVO ->  {
                 pFileVO.setPno(productVO.getPno());
-                pFileDAO.register(pFileVO);
+//                pFileDAO.register(pFileVO);
             });
         }
     }
@@ -55,7 +55,7 @@ public class ProductServiceImpl implements ProductService {
         if(productVO.getFileList() != null) {
             productVO.getFileList().forEach(pFileVO -> {
                 pFileVO.setPno(productVO.getPno());
-                pFileDAO.register(pFileVO);
+//                pFileDAO.register(pFileVO);
             });
         }
         return productDAO.modify(productVO);

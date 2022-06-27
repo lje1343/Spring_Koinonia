@@ -5,11 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>header</title>
-    <!--  jquery  -->
-    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <title>main</title>
     <!--  css  -->
     <link rel="stylesheet" href="/assets/css/main.css">
+    <!--  jquery  -->
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!--  header,footer  -->
     <link rel="stylesheet" href="/assets/css/header.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/request_detail.css">
@@ -382,6 +382,7 @@
     <!--  footer end  -->
 </body>
 <script>
+    // 슬라이드 생성
     $(function (){
         $('.service_slide').slick({
             infinite: true,
@@ -391,7 +392,6 @@
             dots: true
         });
     })
-
     $(function (){
         $('.goods_slide').slick({
             infinite: true,
@@ -401,7 +401,6 @@
             dots: true
         });
     })
-
     $(function (){
         $('.story_slide').slick({
             infinite: true,
@@ -414,8 +413,7 @@
 <<<<<<< HEAD
 =======
 
-</script>
-<script>
+    // user정보
     var user = "[[${user}]]";
     if(!(user==null || user.length<=0)) {
         sessionStorage.setItem("user", user); // 유저 이름

@@ -1,18 +1,7 @@
-package com.example.teamproject.controller.file;
+package com.example.teamproject.controller.product;
 
-/*
- * 문제점 및 해결방안
- * 1. 동일한 이름으로 파일이 업로드 되었을 때 기존 파일이 사라지는 문제
- * 2. 이미지 파일의 경우 원본 파일의 용량이 클 때 썸네일 이미지로 생성해야 하는 문제
- * 3. 이미지 파일과 일반 파일을 구분해서 다운로드 혹은 페이지에서 조회할 수 있도록 처리해야 하는 문제
- * 4. 첨부파일 공격에 대비하ㅏ기 위한 업로드 파일의 확장자 제한
- *
- * */
-
-
-import com.example.teamproject.domain.vo.PFileVO;
-import com.example.teamproject.service.product.ProductService;
-import com.example.teamproject.service.product.ProductServiceImpl;
+import com.example.teamproject.domain.vo.ProductFileVO;
+import com.example.teamproject.service.product.ProductServieceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
@@ -42,29 +31,40 @@ import java.util.UUID;
 
 @Controller
 @Slf4j
-@RequestMapping("/upload/*")
+@RequestMapping("/productFile/*")
 @RequiredArgsConstructor
-public class PFileController {
-    private final ProductServiceImpl productService;
+public class ProductFileController {
+    private final ProductServieceImpl productServiece;
+
+    private String getFolder(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date();
+        return sdf.format(date);
+    }
+
+    private boolean checkImageType(File file) throws IOException{
+        String contentType = Files.probeContentType(file.toPath());
+        return contentType.startsWith("image");
+    }
 
     @PostMapping("/upload")
     @ResponseBody
-    public List<PFileVO> upload(MultipartFile[] uploadFiles) throws IOException {
+    public List<ProductFileVO> upload(MultipartFile[] uploadFiles) throws IOException {
         String uploadFolder = "C:/upload";
-        ArrayList<PFileVO> files = new ArrayList<>();
+        ArrayList<ProductFileVO> files = new ArrayList<>();
 
 //        yyyy/MM/dd 경로 만들기
-        File uploadPath = new File(uploadFolder, getFolder());
+        File     uploadPath = new File(uploadFolder, getFolder());
         if(!uploadPath.exists()){uploadPath.mkdirs();}
 
         for(MultipartFile file : uploadFiles){
-            PFileVO pFileVO = new PFileVO();
+            ProductFileVO productFileVO = new ProductFileVO();
             String uploadFileName = file.getOriginalFilename();
 
             UUID uuid = UUID.randomUUID();
-            pFileVO.setFileName(uploadFileName);
-            pFileVO.setUuid(uuid.toString());
-            pFileVO.setUploadPath(getFolder());
+            productFileVO.setFileName(uploadFileName);
+            productFileVO.setUuid(uuid.toString());
+            productFileVO.setUploadPath(getFolder());
 
             uploadFileName = uuid.toString() + "_" + uploadFileName;
 
@@ -72,7 +72,7 @@ public class PFileController {
             log.info("Upload File Name : " + uploadFileName);
             log.info("Upload File Size : " + file.getSize());
 
-            pFileVO.setFileSize(file.getSize());
+            productFileVO.setFileSize(file.getSize());
 
             File saveFile = new File(uploadPath, uploadFileName);
             file.transferTo(saveFile);
@@ -81,9 +81,9 @@ public class PFileController {
                 FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
                 Thumbnailator.createThumbnail(file.getInputStream(), thumbnail, 100, 100);
                 thumbnail.close();
-                pFileVO.setImage(true);
+                productFileVO.setImage(true);
             }
-            files.add(pFileVO);
+            files.add(productFileVO);
         }
         return files;
     }
@@ -93,17 +93,6 @@ public class PFileController {
     public byte[] getFile(String fileName) throws IOException{
         File file = new File("C:/upload/", fileName);
         return FileCopyUtils.copyToByteArray(file);
-    }
-
-    private boolean checkImageType(File file) throws IOException{
-        String contentType = Files.probeContentType(file.toPath());
-        return contentType.startsWith("image");
-    }
-
-    private String getFolder(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-        Date date = new Date();
-        return sdf.format(date);
     }
 
     @GetMapping("/download")
@@ -126,25 +115,4 @@ public class PFileController {
         file = new File("C:/upload/", fileName.replace("s_", ""));
         if(file.exists()){ file.delete(); }
     }
-
-    @GetMapping("/list")
-    @ResponseBody
-    public List<PFileVO> getList(Long pno){
-        log.info("get file list....... : " + pno);
-        return productService.getList(pno);
-    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
