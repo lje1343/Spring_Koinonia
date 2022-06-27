@@ -56,23 +56,23 @@ public class ProductController {
         log.info("상품 리스트");
         log.info("*************");
 
-        List<ProductVO> productList = productService.getList(new Criteria(1,12) );
-        model.addAttribute("productList", productList) ;
+        List<ProductVO> productList = productService.getList(criteria);
+        model.addAttribute("productList", productService.getList(criteria)) ;
 //         상품 썸네일 리스트
         String pRequestUrl = "/productFile/display?fileName=";
         String productThumFileName = "";
         List<String> productThumfileUrlList = new ArrayList<>();
         for(ProductVO p : productList){
-            List<ProductFileVO> productFileList = productFileService.getList(p.getPno());
+            List<ProductFileVO> productFileList = productService.getList(p.getPno());
             if(!productFileList.isEmpty()){
                 productThumFileName =  pRequestUrl + productFileList.get(0).getUploadPath() + "/"  + productFileList.get(0).getUuid() + "_" + productFileList.get(0).getFileName();
             }else{
-                productThumFileName = "/images/aa.jpg";
+                productThumFileName = "/images/no_image.gif";
             }
             productThumfileUrlList.add(productThumFileName);
         }
-        log.info(productThumfileUrlList.toString());
-        model.addAttribute("total",productService.getTotal());
+
+
         model.addAttribute("productThumfileUrlList", productThumfileUrlList);
         model.addAttribute("pageDTO", new PageDTO(criteria, productService.getTotal()));
         return "/product/sell_list";
