@@ -86,20 +86,13 @@ public class BoardController {
 //    }
 
     @GetMapping("/detail")
-    public String read(Long bno, Model model){
+    public String diaryDetail(Long bno, Model model, Criteria criteria) {
         log.info("*************");
         log.info("다이어리 상세");
         log.info("*************");
-        // 다이어리 상세
-        return "/diary/detail";
-    }
-
-    public String read(Long pno, Model model, Criteria criteria) {
-        log.info("*************");
-        log.info("다이어리 상세");
-        log.info("*************");
-        log.info(boardService.read(pno).toString());
-        model.addAttribute("board", boardService.read(pno));
+//        bno = 22L;
+        log.info(boardService.diaryDetail(bno).toString());
+        model.addAttribute("board", boardService.diaryDetail(bno));
         return "/diary/detail";
     }
 

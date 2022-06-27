@@ -37,6 +37,7 @@ public class BoardDAO {
     public BoardVO read(Long bno){
         return boardMapper.get(bno);
     };
+    public BoardVO diaryDetail(Long bno) {return boardMapper.diaryDetail(bno); }
 
     // 다이어리 삭제
     public int remove(Long bno){

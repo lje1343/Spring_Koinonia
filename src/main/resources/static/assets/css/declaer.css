@@ -58,10 +58,10 @@
       height: 40px;
       margin-left: 15px;
     }
-    .mypage > ul > li :hover{
-      border-radius: 64px;
-    background-color: #dfdfdf;
-  }
+  /*  .mypage > ul > li :hover{*/
+  /*    border-radius: 64px;*/
+  /*  background-color: #dfdfdf;*/
+  /*}*/
   .mypage > ul > .login{
     width: 270px;
 }
@@ -85,6 +85,10 @@
     margin-top: 12px;
     margin-left: 12px;
     border-radius: 64px
+}
+
+.menu_list{
+    padding-left: 0;
 }
 
 .login > a > img {

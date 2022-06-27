@@ -38,6 +38,14 @@
     </select>
 
 
+    
+    <select id="diaryDetail" resultType="boardVO">
+        SELECT BNO, TITLE, CONTENT, NAME, REGISTER_DATE, UPDATE_DATE
+        FROM TBL_BOARD WHERE BNO = #{bno}
+    </select>
+    
+    
+    
 
     <insert id="insert">
         <selectKey keyProperty="bno" resultType="long" order="BEFORE">

@@ -3907,6 +3907,16 @@ box-sizing: inherit;
   box-sizing: border-box;
 }
 
+.area_reply .diary_reply {
+  width: 1300px;
+  height: 102px;
+  padding: 13px 15px 10px;
+  border: 1px solid #eee;
+  font-size: 12px;
+  resize: none;
+  box-sizing: border-box;
+}
+
 .area_reply .writer_btn {
   position: absolute;
   right: 0;

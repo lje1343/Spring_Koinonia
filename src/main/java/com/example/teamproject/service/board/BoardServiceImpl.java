@@ -30,11 +30,11 @@ public class BoardServiceImpl {
     public int remove(Long bno) {
         return boardDAO.remove(bno);
     }
+    public BoardVO diaryDetail(Long bno) {return boardDAO.diaryDetail(bno); }
 
 //    다이어리 상세
-    public BoardVO read(Long bno) {
-        return boardDAO.read(bno);
-    }
+    public BoardVO read(Long bno) { return boardDAO.read(bno); }
+
 
 //    다이어리 목록
 

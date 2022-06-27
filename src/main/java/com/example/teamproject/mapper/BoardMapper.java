@@ -18,6 +18,7 @@ public interface BoardMapper {
     public BoardVO get(Long bno);
     public int delete(Long bno);
     public int getTotal();
+    public BoardVO diaryDetail(Long bno);
 
 
     //다이어리 페이지 리스트(검색조건 포함)

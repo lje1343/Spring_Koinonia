@@ -82,15 +82,14 @@
                             <div class="header ">
                                 <div class="subject">
                                     <div class="st-table" style="border-bottom: #aaa dotted 1px;">
-                                        <div class="h4 st-font1 bold">늘 꿈꾸던 남프랑스</div>
+                                        <div class="h4 st-font1 bold" th:text="${board.title}"></div>
                                     </div>
                                 </div>
                                 <div class="info">
                                     <div class="common pull-left">
-                                        <i class="glyphicon glyphicon-tint" title="비회원"></i> 안xx님 (비회원) <span
-                                            class="split">|</span>
-                                        <i class="glyphicon glyphicon-ok"></i> 조회 000 <span class="split">|</span>
-                                        <i class="glyphicon glyphicon-time"></i> 20xx.0x.xx 17:28
+                                        <i class="glyphicon glyphicon-tint"></i>  <span th:text="${board.name}"></span>
+                                        <span  class="split">|</span>
+                                        <i class="glyphicon glyphicon-time"></i> <span th:text="${board.registerDate}"></span>
                                     </div>
 
 
@@ -133,35 +132,22 @@
 
 
 
+                    <!-- Review -->
                     <div class="area_reply ">
                         <strong class="tit_reply">댓글
-                            <div type="button" class="btn_reply"
-                                 onclick="$.Area.Comment.changeStatus();">
-                                <span id="commentCount15_0">1</span>
+                            <div type="button" class="btn_reply">
+                                <span id="commentCount15_0"></span>
                             </div>
                         </strong>
                         <div id="entry15Comment">
                             <ul class="list_reply">
-                                <li id="comment6468529" class="rp_general">
-                                    <img src="//i1.daumcdn.net/thumb/C100x100/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&amp;fname=https%3A%2F%2Ftistory4.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac"
-                                         width="50" height="50" class="img_profile" alt="프로필사진">
-                                    <span class="reply_content">
-                                             <span class="tit_nickname"><a
-                                                     href="https://wanggonya.tistory.com"
-                                                     onclick="return openLinkInNewWindow(this)">왕고냐</a> <span
-                                                     class="ico_skin ico_secret"></span></span>
-                                             <span class="txt_reply">잘 보고 갑니다~<br></span>
-                                             <span class="txt_date">2022.06.25 12:11</span>
-
-                                          </span>
-                                    <div class="my_edit">
-                                        <a href="#" class="link_edit">수정/삭제</a>
-                                        <a href="#" class="link_edit">댓글쓰기</a>
-                                    </div>
-                                </li>
                             </ul>
-                            <form method="post" action="/comment/add/15" onsubmit="return false"
-                                  style="margin: 0">
+                            <div class="area_paging area_paging_list">
+                                                    <span class="inner_paging">
+
+                                                    </span>
+                            </div>
+                            <form id="dataForm" style="margin: 0">
                                 <fieldset class="fld_reply">
                                     <legend class="screen_out">댓글쓰기</legend>
                                     <div class="reply_write ">
@@ -172,7 +158,8 @@
                                                   tabindex="1"></textarea>
                                     </div>
                                     <div class="writer_btn">
-                                        <button type="submit" class="btn_enter" tabindex="5">댓글 등록</button>
+                                        <button id="formBtn" class="btn_enter" tabindex="5">입력
+                                        </button>
                                     </div>
                                 </fieldset>
                             </form>
@@ -186,6 +173,8 @@
 
                     </section>
 
+
+
                 </div>
             </div>
         </div>
@@ -198,4 +187,7 @@
 
 
 </body>
+<script>
+    $("#vContent").html("[[${board.content}]]");
+</script>
 </html>

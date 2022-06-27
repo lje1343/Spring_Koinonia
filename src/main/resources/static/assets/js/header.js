@@ -19,11 +19,9 @@ $(document).ready(function(){
     });
 });
 
-<<<<<<< HEAD
-$("#btnGoToJoin").click(()=>{
-    location.href = '/user/join'
-})
-=======
+
+
+
 let name = sessionStorage.getItem("user");
 
 if(!(name==null || name.length<=0)) {
@@ -64,4 +62,4 @@ $(".logout").click(()=>{
 })
 
 
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
+
