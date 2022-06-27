@@ -1,14 +1,14 @@
 package com.example.teamproject.service.product;
 
-import com.example.teamproject.domain.dao.product.PFileDAO;
 import com.example.teamproject.domain.dao.product.ProductDAO;
 import com.example.teamproject.domain.dao.product.ProductFileDAO;
 import com.example.teamproject.domain.vo.Criteria;
-import com.example.teamproject.domain.vo.PFileVO;
+import com.example.teamproject.domain.vo.ProductFileVO;
 import com.example.teamproject.domain.vo.ProductVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,14 +18,20 @@ import java.util.List;
 public class ProductServieceImpl{
     private final ProductDAO productDAO;
     private final ProductFileDAO productFileDAO;
-    private final PFileDAO pFileDAO;
 
-    // 판매 상품 등록
+    @Transactional(rollbackFor = Exception.class)
     public void register(ProductVO productVO) {
         productDAO.register(productVO);
+        if(productVO.getFileList() != null) {
+            productVO.getFileList().forEach(productFileVO ->  {
+                productFileVO.setPno(productVO.getPno());
+                productFileDAO.register(productFileVO);
+            });
+        }
     }
 
     // 판매 상품 수정
+    @Transactional(rollbackFor = Exception.class)
     public int modify(ProductVO productVO) {
         productFileDAO.remove(productVO.getPno());
 
@@ -68,6 +74,10 @@ public class ProductServieceImpl{
 
     public int getTotal(){return productDAO.getTotal();}
 
-    public List<PFileVO> getOldFiles(){return pFileDAO.getOldFiles();}
+    public List<ProductFileVO> getOldFiles(){return productFileDAO.getOldFiles();}
+
+    public List<ProductFileVO> getList(Long pno) {
+        return productFileDAO.getList(pno);
+    }
 }
 

@@ -188,6 +188,8 @@ $("#formBtn").on("click", function(e){
 
         success: function(str) {
             alert(str)
+            $("#content").val(""); // 댓글 등록 성공시 댓글내용 textarea 빈칸으로 초기화
+            showList(1); // 자동으로 추가된 댓글 불러오기
         }
     });
 })
@@ -212,6 +214,8 @@ function getList(param, callback, error) {
     });
 }
 
+
+// 댓글 불러오기 최신순
 function showList(page){
     getList({pno: pno, page: page}, function(total, list){
         pageNum = page;
@@ -231,7 +235,8 @@ function showList(page){
             str += reply.registerDate
             str += "<a class='aInLi' href=''>신고</a></span>"
             str += "</span><div class='my_edit'>"
-            str += "<a href='#' class='link_edit'>수정/삭제</a>"
+            str += "<a href='#' class='link_edit'>수정</a>"
+            str += "<a onclick='delelteReply(" + reply.prno + ")' class='link_edit'>삭제</a>"
         });
 
         $(".list_reply").html(str);
@@ -263,4 +268,17 @@ function showReplyPage(total){
         str += "<a class='changePage' href='" + (endPage + 1) + "'><code>&gt;</code></a>"
     }
     $(".inner_paging").html(str);
+}
+
+function delelteReply(prno) {
+    $.ajax({
+        url: "/productReply/" + prno,
+        type: "delete",
+        contentType: "string",
+        success: function(str) {
+            alert(str);
+            showList(pageNum); // 댓글을 다시 불러와서 삭제된 댓글 화면에서도 지우기(다시 불러오면 값이 지워지니 없어짐)
+        }
+    })
+
 }

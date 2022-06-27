@@ -57,10 +57,10 @@ private UserMapper userMapper;
 
 //    @Test
 //    public void deleteTest(){
-//        String name = "수정3";
-//        String pw = "비밀번호다";
+//        String email = "테스트2";
+//        String pw = "성공";
 //
-//        log.info("삭제 번호 : " + userMapper.delete(name,pw));
+//        log.info("삭제 번호 : " + userMapper.delete(email,pw));
 //
 //    }
 

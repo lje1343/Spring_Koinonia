@@ -41,7 +41,6 @@ import com.example.teamproject.service.board.BoardServiceImpl;
 import com.example.teamproject.domain.vo.*;
 import com.example.teamproject.service.board.BoardFileServiceImpl;
 import com.example.teamproject.service.board.BoardServiceImpl;
-import com.example.teamproject.service.product.ProductService;
 import com.example.teamproject.service.product.ProductFileServiceImpl;
 
 import com.example.teamproject.service.product.ProductServieceImpl;
