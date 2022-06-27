@@ -1,7 +1,6 @@
 package com.example.teamproject.controller.board;
 
 
-
 import com.example.teamproject.domain.vo.BoardDTO;
 
 import com.example.teamproject.domain.vo.BoardVO;
@@ -13,14 +12,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-
 import org.springframework.util.FileCopyUtils;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;

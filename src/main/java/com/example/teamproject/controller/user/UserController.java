@@ -57,10 +57,11 @@ public class UserController {
             model.addAttribute("msg", "아이디 혹은 비밀번호가 다릅니다.");
             return "/user/login";
         }
-        // 로그인 성공
-        session.setAttribute("email", email);
-        session.setAttribute("name", userService.login(email).getName());
-        return "/user/mypage";
+            // 로그인 성공
+            session.setAttribute("email", email);
+            session.setAttribute("name", userService.login(email).getName());
+            return "/user/mypage";
+
     }
 
     @GetMapping("/logout")

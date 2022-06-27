@@ -24,7 +24,7 @@ public class DeclareController {
     // 신고
 
     @GetMapping("/")
-    public String goToDeclare(){
+    public String goToDeclare() {
         log.info("*************");
         log.info("신고");
         log.info("*************");
@@ -32,7 +32,7 @@ public class DeclareController {
     }
 
     @GetMapping("/register")
-    public String register(){
+    public String register() {
         log.info("*************");
         log.info("신고 작성");
         log.info("*************");
@@ -46,8 +46,10 @@ public class DeclareController {
         log.info("신고 작성");
         log.info("*************");
         declareService.register(declareVO);
+
         return "/declare/declare";
     }
+
 
 //    @PostMapping("/register")
 //    public String register(DeclareVO declareVO, RedirectAttributes rttr){

@@ -41,6 +41,7 @@ import com.example.teamproject.service.board.BoardServiceImpl;
 import com.example.teamproject.domain.vo.*;
 import com.example.teamproject.service.board.BoardFileServiceImpl;
 import com.example.teamproject.service.board.BoardServiceImpl;
+import com.example.teamproject.service.product.ProductService;
 import com.example.teamproject.service.product.ProductFileServiceImpl;
 
 import com.example.teamproject.service.product.ProductServieceImpl;
@@ -64,7 +65,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MainController {
     private final BoardServiceImpl boardService;
-    private final ProductServieceImpl productServiece;
+    private final ProductService productServiece;
     private final RequestServieceImpl requestServiece;
     private final BoardFileServiceImpl boardFileService;
     private final ProductFileServiceImpl productFileService;
