@@ -297,7 +297,7 @@
         }
         setTimeout(function(){
             $(".bigPictureWrapper").css("display", "flex").show();
-            $(".bigPicture").html("<img src='/upload/display?fileName=" + filePath + "'>")
+            $(".bigPicture").html("<img src='/productFile/display?fileName=" + filePath + "'>")
                 .animate({width:"100%", height:"100%"}, 1000);
             // 이미지 원본이 보이고 있음.
             check = true;
@@ -346,9 +346,9 @@
         $(files).each(function(i, file){
             str += "<li data-filesize='" + file.fileSize + "' data-filename='" + file.fileName + "' data-uuid='" + file.uuid + "' data-uploadpath='" + file.uploadPath + "' data-image='" + file.image + "'>";
             if(file.image){
-                str += "<a href=\"javascript:showImage(\'" + file.uploadPath + "/" + file.uuid + "_" + file.fileName +"\');\"><img src='/upload/display?fileName=" + file.uploadPath + "/s_" + file.uuid + "_"  + file.fileName + "'></a>";
+                str += "<a href=\"javascript:showImage(\'" + file.uploadPath + "/" + file.uuid + "_" + file.fileName +"\');\"><img src='/productFile/display?fileName=" + file.uploadPath + "/s_" + file.uuid + "_"  + file.fileName + "'></a>";
             }else{
-                str += "<a href='/upload/download?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName + "'><img src='/images/attach.png' width='100'></a>";
+                str += "<a href='/productFile/download?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName + "'><img src='/images/attach.png' width='100'></a>";
             }
             str += "<span data-file='" + file.uploadPath + "/s_" + file.uuid + "_" + file.fileName + "' style='cursor: pointer;'>x</span>"
             str += "<p>" + file.fileName + "</p>"
@@ -373,7 +373,7 @@
         $(this)[0].files = dataTransfer.files;
 
         $.ajax({
-            url: "/upload/upload",
+            url: "/productFile/upload",
             type: "post",
             data: formData,
             contentType: false,
@@ -389,7 +389,7 @@
         let $li = $(this).closest("li");
 
         $.ajax({
-            url: "/upload/delete",
+            url: "/productFile/delete",
             type: "post",
             data: {fileName: $target},
             success: function(){
