@@ -1,6 +1,7 @@
 package com.example.teamproject.service.product;
 
 import com.example.teamproject.domain.dao.product.ProductFileDAO;
+import com.example.teamproject.domain.vo.ProductVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,4 +17,5 @@ public class ProductFileServiceTests {
     public void getListTest() {
         productFileService.getList(23L);
     }
+
 }

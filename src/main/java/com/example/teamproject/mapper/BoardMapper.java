@@ -20,6 +20,8 @@ public interface BoardMapper {
     //다이어리 페이지 리스트(검색조건 포함)
     public List<BoardDTO> getListBySearch(Criteria criteria);
 
+    public List<BoardVO> getListMain(Criteria criteria);
+
 
 
 

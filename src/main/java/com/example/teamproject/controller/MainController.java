@@ -13,10 +13,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,13 +29,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MainController {
     private final BoardServiceImpl boardService;
-    private final ProductService productServiece;
+    private final ProductServieceImpl productServiece;
     private final RequestServieceImpl requestServiece;
     private final BoardFileServiceImpl boardFileService;
     private final ProductFileServiceImpl productFileService;
 
     @GetMapping("/")
-    public String goToMain(HttpSession session, Model model){
+    public String goToMain(HttpSession session, Model model) throws IOException {
         log.info("*************");
         log.info("메인페이지");
         log.info("*************");
@@ -40,41 +43,37 @@ public class MainController {
         log.info((String) session.getAttribute("name"));
         model.addAttribute("user" ,(String) session.getAttribute("name"));
 //         다이어리 리스트
-        List<BoardVO> boardList = boardService.getList(new Criteria(1, 6));
+        List<BoardVO> boardList = boardService.getListMain(new Criteria(1, 6));
         model.addAttribute("boardList", boardList) ;
-//        썸네일 리스트 공통
-        String uploadFolder = "/images/";
 //         다이어리 썸네일 리스트
+        String bRequestUrl = "/boardFile/display?fileName=";
         String boardThumFileName = "";
         List<String> boardThumfileUrlList = new ArrayList<>();
         for(BoardVO b : boardList){
             List<FileVO> boardFileList = boardFileService.getList(b.getBno());
             if(!boardFileList.isEmpty()){
-                boardThumFileName = "s_" + boardFileList.get(0).getFileName();
+                boardThumFileName = bRequestUrl + boardFileList.get(0).getUploadPath() + "/"  + boardFileList.get(0).getUuid() + "_" + boardFileList.get(0).getFileName();
             }else{
-                boardThumFileName = "no_image.gif";
+                boardThumFileName = "/images/no_image.gif";
             }
-            String boardThumfileUrl = uploadFolder + boardThumFileName;
-            boardThumfileUrlList.add(boardThumfileUrl);
-            log.info(boardThumfileUrl);
+            boardThumfileUrlList.add(boardThumFileName);
         }
         model.addAttribute("boardThumfileUrlList", boardThumfileUrlList);
 //         상품 리스트
-        List<ProductVO> productList = productServiece.getList(new Criteria(1, 15));
+        List<ProductVO> productList = productServiece.getListMain(new Criteria(1, 15));
         model.addAttribute("productList", productList) ;
 //         상품 썸네일 리스트
+        String pRequestUrl = "/productFile/display?fileName=";
         String productThumFileName = "";
         List<String> productThumfileUrlList = new ArrayList<>();
         for(ProductVO p : productList){
             List<ProductFileVO> productFileList = productFileService.getList(p.getPno());
             if(!productFileList.isEmpty()){
-                productThumFileName = "s_" + productFileList.get(0).getFileName();
+                productThumFileName =  pRequestUrl + productFileList.get(0).getUploadPath() + "/"  + productFileList.get(0).getUuid() + "_" + productFileList.get(0).getFileName();
             }else{
-                productThumFileName = "no_image.gif";
+                productThumFileName = "/images/no_image.gif";
             }
-            String productThumfileUrl = uploadFolder + productThumFileName;
-            productThumfileUrlList.add(productThumfileUrl);
-            log.info(productThumfileUrl);
+            productThumfileUrlList.add(productThumFileName);
         }
         model.addAttribute("productThumfileUrlList", productThumfileUrlList);
         return "/main/main";

@@ -31,8 +31,9 @@ $(document).on("click", ".nationalityArea button.select", function () {
 });
 window.addEventListener("click", clickBodyEventNationality);
 $(".nationalityArea .optionList").click((e) => {
-  $("#select").val(e.currentTarget.innerText).prop("selected", true);
-  $("#selectBtn").text(e.currentTarget.innerText);
+  let changeVal = e.currentTarget.innerText;
+  $("#select").val(changeVal).prop("selected", true);
+  $("#selectBtn").text(changeVal);
   document.querySelector("#selectBtn").classList.remove("open");
   document.querySelector("#option").classList.remove("openOption");
 });
@@ -89,22 +90,6 @@ $("#thum").on("change", function(e){
 
 ///////////////////////////////////////////////////////////////////////////////////////
 // 썸머노트
-
-// summernote create
-// $("#summernote").summernote({
-//   tabsize: 2,
-//   height: 450, // 에디터 높이
-//   minHeight: 450, // 최소 높이
-//   maxHeight: 450, // 최대 높이
-//   focus: false, // 에디터 로딩후 포커스를 맞출지 여부
-//   lang: "ko-KR", // 한글 설정
-//   placeholder: "다이어리를 작성해주세요.", //placeholder 설정
-//   callbacks: {
-//     onImageUpload: function (files) { //이미지 업로드 처리
-//       imageUpload(files, this); // this = $("#summernote")
-//     },
-//   },
-// });
 
 //이미지 등록처리
 function imageUpload(files, editor) {
@@ -165,6 +150,7 @@ const saveContent = () => {
   var summernoteContent = $('#summernote').summernote('code'); // 썸머노트 작성내용(html)
   $("input[name='content']").val(summernoteContent);
   console.log("summernoteContent : " + summernoteContent);
+  console.log(typeof(summernoteContent));
 
 
 
@@ -172,6 +158,7 @@ const saveContent = () => {
     $("form#registerForm").submit();
   }
 }
+
 
 
 
