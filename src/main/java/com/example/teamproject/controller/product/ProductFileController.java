@@ -115,4 +115,12 @@ public class ProductFileController {
         file = new File("C:/upload/", fileName.replace("s_", ""));
         if(file.exists()){ file.delete(); }
     }
+
+//
+//    @GetMapping("/list")
+//    @ResponseBody
+//    public List<PFileVO> getList(Long pno){
+//        log.info("get file list....... : " + pno);
+//        return productServiece.getPList(pno);
+//    }
 }

@@ -154,7 +154,7 @@
 <script th:inline="javascript">
     let pno = [[${pno}]];
     let paging = [[${criteria.listLink}]];
-    let
+
 
 
 
@@ -201,9 +201,9 @@
         $(files).each(function(i, file){
             str += "<li data-filename='" + file.fileName.substring(file.fileName.indexOf("_") + 1) + "' data-uuid='" + file.uuid + "' data-uploadpath='" + file.uploadPath + "' data-image='" + file.image + "'>";
             if(file.image){
-                str += "<a href=\"javascript:showImage(\'" + file.uploadPath + "/" + file.uuid + "_" + file.fileName +"\');\"><img src='/upload/display?fileName=" + file.uploadPath + "/s_" + file.uuid + "_"  + file.fileName + "'></a>";
+                str += "<a href=\"javascript:showImage(\'" + file.uploadPath + "/" + file.uuid + "_" + file.fileName +"\');\"><img src='/productFile/display?fileName=" + file.uploadPath + "/s_" + file.uuid + "_"  + file.fileName + "'></a>";
             }else{
-                str += "<a href='/upload/download?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName + "'><img src='/images/attach.png' width='100'></a>";
+                str += "<a href='/productFile/download?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName + "'><img src='/images/attach.png' width='100'></a>";
             }
             str += "<p>" + file.fileName.substring(file.fileName.indexOf("_") + 1) + "</p>"
             str += "</li>"
@@ -212,7 +212,7 @@
     }
 
     (function(){
-        $.getJSON("/upload/list", {boardBno: boardBno}, function(list){showUploadResult(list);})
+        $.getJSON("/productFile/list", {boardBno: boardBno}, function(list){showUploadResult(list);})
     })();
 
 

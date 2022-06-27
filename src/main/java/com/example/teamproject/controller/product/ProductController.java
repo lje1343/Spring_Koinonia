@@ -8,9 +8,7 @@ import com.example.teamproject.service.product.ProductFileServiceImpl;
 import com.example.teamproject.service.product.ProductServieceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.example.teamproject.domain.vo.ProductDTO;
 import com.example.teamproject.domain.vo.*;
-import com.example.teamproject.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
@@ -53,11 +51,10 @@ public class ProductController {
     }
 
     @GetMapping("/list")
-    public String getList(Criteria criteria, Model model, Long pno, ProductDTO productDTO) {
+    public String getList(Criteria criteria, Model model, Long pno) {
         log.info("*************");
         log.info("상품 리스트");
         log.info("*************");
-        List<PFileVO> pFileVOS = productService.getOldFiles();
         model.addAttribute("productList", productService.getList(criteria));
         model.addAttribute("pageDTO", new PageDTO(criteria, productService.getTotal()));
         return "/product/sell_list";
