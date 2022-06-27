@@ -1,13 +1,9 @@
 package com.example.teamproject.mapper;
 
 
-<<<<<<< HEAD
 
 import com.example.teamproject.domain.vo.BoardDTO;
-=======
-import com.example.teamproject.domain.vo.BoardDTO;
 
->>>>>>> main
 import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
 import org.apache.ibatis.annotations.Mapper;
@@ -27,15 +23,12 @@ public interface BoardMapper {
     //다이어리 페이지 리스트(검색조건 포함)
     public List<BoardDTO> getListBySearch(Criteria criteria);
 
-<<<<<<< HEAD
-
     public List<BoardVO> getListMain(Criteria criteria);
 
 
 
 
-=======
->>>>>>> main
+
 
 
 }

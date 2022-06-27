@@ -82,10 +82,7 @@ public class UserController {
         return "/user/find_pw";
     }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> main
     @PostMapping("/find_pw")
     public String goToFindPw(String email, Model model){
         log.info("*************");

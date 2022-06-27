@@ -22,11 +22,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
-<<<<<<< HEAD
 
-=======
 import java.util.ArrayList;
->>>>>>> 87ba7f8e7bf7ff777de0d0a27ca13d7c38ed07f6
 import java.util.List;
 
 @Controller
@@ -78,11 +75,7 @@ public class ProductController {
         return "/product/sell_detail";
     }
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 87ba7f8e7bf7ff777de0d0a27ca13d7c38ed07f6
     @GetMapping("/modify")
     public String modify(Long pno, Model model) throws JsonProcessingException {
 //    public String modify(Long pno, Criteria criteria, Model model) {

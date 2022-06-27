@@ -54,11 +54,6 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -119,10 +114,6 @@ public class MainController {
             productThumfileUrlList.add(productThumFileName);
         }
         model.addAttribute("productThumfileUrlList", productThumfileUrlList);
-<<<<<<< HEAD
-=======
-
->>>>>>> main
         return "/main/main";
     }
 }

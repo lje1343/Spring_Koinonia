@@ -18,11 +18,7 @@ a:link{
     text-decoration: none;
 }
 a:visited{
-<<<<<<< HEAD
-    color: #000; 
-=======
     color: #000;
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 text-decoration: none;
 }
 a:hover{
@@ -196,12 +192,10 @@ a:hover{
     padding-right: 30px;
     font-size: small;
 }
-<<<<<<< HEAD
+
 .menubtn > a:hover{
     text-decoration: underline;
 }
-=======
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 a:visited{
     color:black
 }
@@ -508,23 +502,16 @@ button.slick-prev{
     height: 500px !important;
     width: 400px;
     margin-right: 20px;
-<<<<<<< HEAD
 
-=======
 }
 .story1 img{
     object-fit: cover;
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 }
 
 .story2{
     height: 500px !important;
     width: 400px; 
     margin-right: 20px;
-<<<<<<< HEAD
-
-=======
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 }
 
 .story3{
@@ -543,10 +530,7 @@ footer{
     margin-top: 160px;
 
 }
-<<<<<<< HEAD
-=======
 
 .goods img{
     object-fit: cover;
 }
->>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37

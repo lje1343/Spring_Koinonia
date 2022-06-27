@@ -42,9 +42,7 @@ public class BoardController {
         log.info("*************");
         return "/diary/board_write";
     }
-<<<<<<< HEAD
 
-=======
 
 //    @PostMapping("/register")
 //    public String register(BoardVO boardVO, RedirectAttributes rttr){
@@ -72,7 +70,7 @@ public class BoardController {
 //        return new RedirectView("/board/list");
 //    }
 
->>>>>>> main
+
 
     // 작성 완료
     @PostMapping("/register")
@@ -104,10 +102,7 @@ public class BoardController {
         return new RedirectView("/board/list");
     }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> main
 //    @PostMapping("/remove")
 //    public String remove(Long bno, RedirectAttributes rttr){
 //        log.info("*************");
