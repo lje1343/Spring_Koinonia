@@ -152,7 +152,14 @@ const saveContent = () => {
   console.log("summernoteContent : " + summernoteContent);
   console.log(typeof(summernoteContent));
 
+  console.log($(".note-editable img").attr("src").split("=")[1]);
 
+  console.log($(".note-editable img").attr("src").split("=")[1].substr(0, 10));
+  $("#uploadPath").val($(".note-editable img").attr("src").split("=")[1].substr(0, 10));
+  console.log($(".note-editable img").attr("src").split("=")[1].substr(12, 35));
+  $("#uuid").val($(".note-editable img").attr("src").split("=")[1].substr(12, 35));
+  console.log($(".note-editable img").attr("src").split("=")[1].substr(48));
+  $("#fileName").val($(".note-editable img").attr("src").split("=")[1].substr(48));
 
   if(confirm("글을 등록하시겠습니까?")) {
     $("form#registerForm").submit();

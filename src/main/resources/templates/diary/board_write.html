@@ -117,6 +117,9 @@
           <div class="writeArea">
             <div id="summernote" name="editordata"></div>
             <!-- 에디터 이미지 임시 저장-->
+            <input type="hidden" id="fileName" name="fileName">
+            <input type="hidden" id="uuid" name="uuid">
+            <input type="hidden" id="uploadPath" name="uploadPath">
             <input type="hidden" id="content" name="content">
             <input type="hidden" name="tempFolder" id="tempFolder" value="임시폴더명" />
           </div>
@@ -195,5 +198,8 @@
         }
       });
     }
+
+    sessionStorage.getItem("user")
+
   </script>
 </html>

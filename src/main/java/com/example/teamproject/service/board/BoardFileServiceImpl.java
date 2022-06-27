@@ -18,5 +18,7 @@ public class BoardFileServiceImpl {
     public List<FileVO> getList(Long bno) {
         return boardFileDAO.getList(bno);
     }
+
+    public void register(FileVO fileVO){ boardFileDAO.register(fileVO);}
 }
 

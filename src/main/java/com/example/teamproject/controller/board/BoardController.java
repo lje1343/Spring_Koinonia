@@ -1,9 +1,7 @@
 package com.example.teamproject.controller.board;
 
-import com.example.teamproject.domain.vo.BoardDTO;
-import com.example.teamproject.domain.vo.BoardVO;
-import com.example.teamproject.domain.vo.Criteria;
-import com.example.teamproject.domain.vo.RequestVO;
+import com.example.teamproject.domain.vo.*;
+import com.example.teamproject.service.board.BoardFileServiceImpl;
 import com.example.teamproject.service.board.BoardServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -25,11 +24,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardController {
     private final BoardServiceImpl boardService;
+    private final BoardFileServiceImpl boardFileService;
     // 다이어리
 
     // 작성 페이지 이동
     @GetMapping("/register")
-    public String register(){
+    public String register(HttpSession session){
         log.info("*************");
         log.info("다이어리 작성");
         log.info("*************");
@@ -38,11 +38,15 @@ public class BoardController {
 
     // 작성 완료
     @PostMapping("/register")
-    public RedirectView register(BoardVO boardVO, RedirectAttributes rttr) {
-        boardVO.setName("테스트"); // 임시 userName
+    public RedirectView register(BoardVO boardVO, FileVO fileVO, HttpSession session, RedirectAttributes rttr) {
+        boardVO.setName(session.getAttribute("name").toString());
         boardService.register(boardVO);
+        log.info(boardVO.getBno().toString());
+        fileVO.setBno(boardVO.getBno());
+        log.info(fileVO.getBno().toString());
+        boardFileService.register(fileVO);
         rttr.addFlashAttribute("bno", boardVO.getBno());
-        return new RedirectView("/diary/index");
+        return new RedirectView("/board/detail");
     }
 
     // 수정 페이지 이동

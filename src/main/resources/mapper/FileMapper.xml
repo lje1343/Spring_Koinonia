@@ -3,8 +3,8 @@
 <mapper namespace="com.example.teamproject.mapper.FileMapper">
 
     <insert id="insert">
-        INSERT INTO TBL_FILE (UUID, UPLOAD_PATH, FILE_NAME, IMAGE, BNO, FILE_SIZE)
-        VALUES (#{uuid}, #{uploadPath}, #{fileName}, #{image}, #{bno}, #{fileSize})
+        INSERT INTO TBL_FILE (UUID, UPLOAD_PATH, FILE_NAME, BNO)
+        VALUES (#{uuid}, #{uploadPath}, #{fileName}, #{bno})
     </insert>
 
     <delete id="delete">

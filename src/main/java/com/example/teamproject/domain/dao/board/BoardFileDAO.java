@@ -1,6 +1,8 @@
 package com.example.teamproject.domain.dao.board;
 
+import com.example.teamproject.domain.vo.BoardFileVO;
 import com.example.teamproject.domain.vo.FileVO;
+import com.example.teamproject.domain.vo.ProductFileVO;
 import com.example.teamproject.mapper.FileMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -16,5 +18,11 @@ public class BoardFileDAO {
     public List<FileVO> getList(Long bno){
         return boardFileMapper.getList(bno);
     };
+    public void remove(Long bno){
+        boardFileMapper.delete(bno);
+    }
+    public void register(FileVO fileVO){
+        boardFileMapper.insert(fileVO);
+    }
 
 }
