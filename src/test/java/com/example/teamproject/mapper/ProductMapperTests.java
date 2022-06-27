@@ -60,17 +60,11 @@ private ProductMapper productMapper;
 //        log.info("총 갯수는 " + productMapper.getTotal());
 //    }
 
-//    @Test
-//    public void getListTest(){
-//        productMapper.getList(new Criteria(1, 10)).stream().map(ProductVO::toString).forEach(log::info);
-//    }
-
-
-
-
-
-
+    @Test
+    public void getListTest(){
+        productMapper.getList(new Criteria(1, 10)).stream().map(ProductVO::toString).forEach(log::info);
     }
+}
 
 
 

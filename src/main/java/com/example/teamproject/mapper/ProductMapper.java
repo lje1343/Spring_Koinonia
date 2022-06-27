@@ -16,7 +16,7 @@ public interface ProductMapper {
     public ProductVO get(Long pno);
     public int delete(Long pno);
     public int getTotal();
-
+    public List<ProductVO> getListMain(Criteria criteria);
 
 
 

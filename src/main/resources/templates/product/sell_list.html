@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/main/main}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/product/sell_list}">
 <head>
     <style>
         .let{
@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="/assets/css/header.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/request_detail.css">
     <link rel="stylesheet" href="/assets/css/footer.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>sell_list</title>
 </head>
@@ -43,12 +44,9 @@
 
 <main class ="plp-page-container" >
     <div class="container__inner">
-
-
         <div clas="wrapper">
         <!-- Product -->
         <div class="container" >
-
             <div class ="let" th:object="${pageDTO}">
                 <form action="/product/list" name="cateForm" th:object="${criteria}">
                     <div class="fields">
@@ -75,8 +73,7 @@
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women" th:each="product:${productList}"}>
 
                     <div class="block2" th:object="${product}">
-                        <div class="block2-pic hov-img0">
-                            <img src="/images/aa.jpg" alt="IMG-PRODUCT">
+                        <div class="block2-pic hov-img0" >
 
                             <a  class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" th:href="*{pno}" >
                                 보러가기
@@ -128,7 +125,6 @@
             </form>
         </div>
     </div>
-    </div>
 </main>
 
 
@@ -143,8 +139,8 @@
 <div th:replace="~{/footer/footer :: footerFragment}"></div>
 <!--  footer end  -->
 </body>
-<script src="/assets/js/header.js"></script>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/assets/js/header.js"></script>
 
 <script src="/Vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
@@ -156,8 +152,18 @@
 <!--===============================================================================================-->
 <script src="/Vendor/sweetalert/sweetalert.min.js"></script>
 <script th:inline="javascript">
+    let pno = [[${pno}]];
     let paging = [[${criteria.listLink}]];
-    console.log(paging)
+    let
+
+
+
+
+
+    if(pno != null){
+        alert(pno + "번 게시글이 등록되었습니다.");
+    }
+
 
 
 
@@ -190,7 +196,24 @@
 
 
 
+    function showUploadResult(files){
+        let str ="";
+        $(files).each(function(i, file){
+            str += "<li data-filename='" + file.fileName.substring(file.fileName.indexOf("_") + 1) + "' data-uuid='" + file.uuid + "' data-uploadpath='" + file.uploadPath + "' data-image='" + file.image + "'>";
+            if(file.image){
+                str += "<a href=\"javascript:showImage(\'" + file.uploadPath + "/" + file.uuid + "_" + file.fileName +"\');\"><img src='/upload/display?fileName=" + file.uploadPath + "/s_" + file.uuid + "_"  + file.fileName + "'></a>";
+            }else{
+                str += "<a href='/upload/download?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName + "'><img src='/images/attach.png' width='100'></a>";
+            }
+            str += "<p>" + file.fileName.substring(file.fileName.indexOf("_") + 1) + "</p>"
+            str += "</li>"
+        });
+        $uploadResult.html(str);
+    }
 
+    (function(){
+        $.getJSON("/upload/list", {boardBno: boardBno}, function(list){showUploadResult(list);})
+    })();
 
 
 
@@ -225,6 +248,4 @@
         location.href = "/product/detail" + paging + "&pno="+$(this).attr('href');
     });
 </script>
-
-
 </html>

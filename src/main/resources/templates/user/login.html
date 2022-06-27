@@ -65,7 +65,7 @@
                   <div class="inputWrapper">
                     <input type="password" id="pw" name="pw" />
                     <button type="button">
-                      <img src="/images/eye_see.png" alt="" />
+                      <img src="/images/eye_see.png"/>
                       <span>비밀번호 표시하기</span>
                     </button>
                   </div>
@@ -108,4 +108,11 @@
   </body>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/assets/js/login.js"></script>
+  <script>
+    // 로그인 실패
+    var msg = "[[${msg}]]";
+    if(!(msg == null || msg.length <= 0)){
+      alert(msg);
+    }
+  </script>
 </html>

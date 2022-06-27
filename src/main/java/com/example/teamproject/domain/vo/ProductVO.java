@@ -4,6 +4,8 @@ package com.example.teamproject.domain.vo;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Data
 public class ProductVO {
@@ -14,7 +16,11 @@ public class ProductVO {
     private String title;
     private String content;
     private String price;
-    private Long psold;
+    private String psold;
     private String registerDate;
     private String updateDate;
+    private List<ProductFileVO> fileList;
+
+
+//    private List<PFileVO> fileList;
 }
