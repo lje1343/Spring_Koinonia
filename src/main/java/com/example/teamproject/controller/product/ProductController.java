@@ -87,6 +87,24 @@ public class ProductController {
         log.info("상품 상세");
         log.info("*************");
         log.info(productService.read(pno).toString());
+
+
+//         상품 썸네일 리스트
+        String pRequestUrl = "/productFile/display?fileName=";
+        String productThumFileName = "";
+        List<String> productThumfileUrlList = new ArrayList<>();
+
+        List<ProductFileVO> productFileList = productService.getList(pno);
+        for(int i =0; i<productFileList.size(); i++) {
+            if (!productFileList.isEmpty()) {
+                productThumFileName = pRequestUrl + productFileList.get(i).getUploadPath() + "/" + productFileList.get(i).getUuid() + "_" + productFileList.get(i).getFileName();
+            } else {
+                productThumFileName = "/images/no_image.gif";
+            }
+
+            productThumfileUrlList.add(productThumFileName);
+        }
+        model.addAttribute("productThumfileUrlList", productThumfileUrlList);
         model.addAttribute("product", productService.read(pno));
         return "/product/sell_detail";
     }
@@ -128,19 +146,19 @@ public class ProductController {
 //        return "/product/product_modify";
 //    }
 
-    @PostMapping("/modisucces")
-    public RedirectView modisucces(Long pno, ProductVO productVO, Criteria criteria, RedirectAttributes rttr) {
-        log.info("*************");
-        log.info("상품 수정 완료");
-        log.info("*************");
-        // 다이어리 수정 완료
-        productService.modify(productVO);
-        rttr.addAttribute("pno", productVO.getPno());
-        rttr.addAttribute("pageNum", criteria.getPageNum());
-        rttr.addAttribute("amount", criteria.getAmount());
-
-        return new RedirectView("/product/sell_detail");
-}
+//    @PostMapping("/modisucces")
+//    public RedirectView modisucces(Long pno, ProductVO productVO, Criteria criteria, RedirectAttributes rttr) {
+//        log.info("*************");
+//        log.info("상품 수정 완료");
+//        log.info("*************");
+//        // 다이어리 수정 완료
+//        productService.modify(productVO);
+//        rttr.addAttribute("pno", productVO.getPno());
+//        rttr.addAttribute("pageNum", criteria.getPageNum());
+//        rttr.addAttribute("amount", criteria.getAmount());
+//
+//        return new RedirectView("/product/sell_detail");
+//}
 
     ///////////////////////////////////////////////////
     // ResponsBody
