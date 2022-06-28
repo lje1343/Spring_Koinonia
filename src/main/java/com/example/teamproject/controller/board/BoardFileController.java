@@ -60,6 +60,7 @@ log.info(uploadFiles.toString());
 
             log.info("--------------------------------");
             log.info("Upload File Name : " + uploadFileName);
+            log.info("Upload File uuid : " + uuid.toString());
             log.info("Upload File Size : " + file.getSize());
 
             boardFileVO.setFileSize(file.getSize());

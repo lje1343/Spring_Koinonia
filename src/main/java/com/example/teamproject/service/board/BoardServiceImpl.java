@@ -1,10 +1,15 @@
 package com.example.teamproject.service.board;
 
 import com.example.teamproject.domain.dao.board.BoardDAO;
+<<<<<<< HEAD
 
 import com.example.teamproject.domain.vo.BoardDTO;
 import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
+=======
+import com.example.teamproject.domain.dao.board.BoardFileDAO;
+import com.example.teamproject.domain.vo.*;
+>>>>>>> af254b25c29f287a02d1cbecb70c44f179885df1
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardServiceImpl {
     private final BoardDAO boardDAO;
+    private final BoardFileDAO boardFileDAO;
 
 //    다이어리 등록
     public void register(BoardVO boardVO) {

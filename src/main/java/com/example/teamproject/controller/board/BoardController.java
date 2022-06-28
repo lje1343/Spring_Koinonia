@@ -1,11 +1,16 @@
 package com.example.teamproject.controller.board;
 
+<<<<<<< HEAD
 
 import com.example.teamproject.domain.vo.BoardDTO;
 
 import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.RequestVO;
+=======
+import com.example.teamproject.domain.vo.*;
+import com.example.teamproject.service.board.BoardFileServiceImpl;
+>>>>>>> af254b25c29f287a02d1cbecb70c44f179885df1
 import com.example.teamproject.service.board.BoardServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +23,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+<<<<<<< HEAD
+=======
+
+import javax.servlet.http.HttpSession;
+>>>>>>> af254b25c29f287a02d1cbecb70c44f179885df1
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -31,15 +41,19 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardController {
     private final BoardServiceImpl boardService;
+    private final BoardFileServiceImpl boardFileService;
     // 다이어리
 
 
     // 작성 페이지 이동
     @GetMapping("/register")
-    public String register(){
+    public String register(HttpSession session){
         log.info("*************");
         log.info("다이어리 작성");
         log.info("*************");
+        if(session.getAttribute("name")==null){
+            return "/user/login";
+        }
         return "/diary/board_write";
     }
 
@@ -47,11 +61,21 @@ public class BoardController {
 
     // 작성 완료
     @PostMapping("/register")
-    public RedirectView register(BoardVO boardVO, RedirectAttributes rttr) {
-        boardVO.setName("테스트"); // 임시 userName
+    public RedirectView register(BoardVO boardVO, HttpSession session, RedirectAttributes rttr) {
+        // 다이어리 정보 등록
+        boardVO.setName(session.getAttribute("name").toString());
         boardService.register(boardVO);
+        log.info("파일리스트" + boardVO.getFileList());
+        // 다이어리 이미지 정보 등록
+        if(boardVO.getFileList() != null) {
+            boardVO.getFileList().forEach(fileVO -> {
+                fileVO.setBno(boardVO.getBno());
+                boardFileService.register(fileVO);
+            });
+        }
+        // 상세 페이지로 이동
         rttr.addFlashAttribute("bno", boardVO.getBno());
-        return new RedirectView("/diary/index");
+        return new RedirectView("/board/detail");
     }
 
     // 수정 페이지 이동
