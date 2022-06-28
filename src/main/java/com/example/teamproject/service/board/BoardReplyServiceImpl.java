@@ -29,13 +29,13 @@ public class BoardReplyServiceImpl {
     }
 
     // 다이어리 댓글 삭제
-    public int modify(BoardReplyVO boardReplyVO) {
-        return boardReplyDAO.modify(boardReplyVO);
+    public int remove(Long rno) {
+        return boardReplyDAO.remove(rno);
     }
 
     // 다이어리 댓글 수정
-    public int remove(Long rno) {
-        return boardReplyDAO.remove(rno);
+    public int modify(BoardReplyVO boardReplyVO) {
+        return boardReplyDAO.modify(boardReplyVO);
     }
 
     // 다이어리 댓글 개수

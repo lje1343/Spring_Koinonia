@@ -132,6 +132,7 @@
 
 
 
+
                     <!-- Review -->
                     <div class="area_reply ">
                         <strong class="tit_reply">댓글
@@ -151,9 +152,9 @@
                                 <fieldset class="fld_reply">
                                     <legend class="screen_out">댓글쓰기</legend>
                                     <div class="reply_write ">
-                                        <input type="hidden" name="pno" th:value="*{pno}">
-                                        <label for="comment" class="lab_write"></label>
-                                        <textarea id="comment" name="content" class="tf_reply"
+                                        <input type="hidden" name="bno" th:value="*{bno}">
+                                        <label for="content" class="lab_write"></label>
+                                        <textarea id="content" name="content" class="diary_reply"
                                                   placeholder="여러분의 소중한 댓글을 입력해주세요"
                                                   tabindex="1"></textarea>
                                     </div>
@@ -186,8 +187,33 @@
             <script src="/assets/js/header.js"></script>
 
 
+        <!--===============================================================================================-->
+        <script src="/Vendor/jquery/jquery-3.2.1.min.js"></script> <!-- 필요 -->
+        <!--===============================================================================================-->
+        <script src="/Vendor/bootstrap/js/popper.js"></script>            <!--필요 -->
+        <script src="/Vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="/Vendor/slick/slick.min.js"></script>      <!--필요-->
+        <script src="/assets/js/slick-custom-b.js"></script>
+        <!--===============================================================================================-->
+        <script src="/Vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>       <!-- 필요 -->
+        <script>
+            $('.gallery-lb').each(function () { // the containers for all your galleries
+                $(this).magnificPopup({
+                    delegate: 'a', // the selector for gallery item
+                    type: 'image',
+                    gallery: {
+                        enabled: true
+                    },
+                    mainClass: 'mfp-fade'
+                });
+            });
+        </script>
+        <script>
+        $("#vContent").html("[[${board.content}]]");
+    </script>
+    </div>
+</div>
 </body>
-<script>
-    $("#vContent").html("[[${board.content}]]");
-</script>
+
 </html>
