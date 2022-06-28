@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,15 +35,18 @@ public class ProductController {
     // 상품
 
     @GetMapping("/register")
-    public String register() {
+    public String register(HttpSession session) {
         log.info("*************");
         log.info("판매 상품정보 작성");
         log.info("*************");
+        if(session.getAttribute("name")==null){
+            return "/user/login";
+        }
         return "/product/product";
     }
 
     @PostMapping("/register")
-    public RedirectView register(ProductVO productVO, RedirectAttributes rttr) {
+    public RedirectView register(ProductVO productVO,HttpSession session, RedirectAttributes rttr) {
         log.info("*************");
         log.info("판매 상품 등록");
         log.info("*************");
