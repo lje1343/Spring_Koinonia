@@ -76,9 +76,6 @@ public class MainController {
         log.info("*************");
         log.info("메인페이지");
         log.info("*************");
-//        세션정보
-        log.info((String) session.getAttribute("name"));
-        model.addAttribute("user" ,(String) session.getAttribute("name"));
 //         다이어리 리스트
         List<BoardVO> boardList = boardService.getListMain(new Criteria(1, 6));
         model.addAttribute("boardList", boardList) ;

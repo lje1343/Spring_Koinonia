@@ -97,23 +97,7 @@
                                 </div>
                             </div>
 
-                            <div id="vContent" class="content">
-                                <span th:utext="${content}"></span>
-                                <a>
-                                    <img src="/images/menton-g64ddb272f_640.jpg">
-                                </a>
-
-                                <p>3년 전 북유럽을 통해 다녀온 적이 있었다.</p>
-                                <p><br></p>
-                                <p>그때 좋은 추억 정말 즐거웠는데.. 이번엔 드디어 꿈에 그리던 남프랑스로 6박8일 여행이 시작되었다.</p>
-                                <p>결론부터 말하자면 너너너 너~~~무 좋았다.</p>
-                                <p><br></p>
-                                <p>출발 전, 꼼꼼한 준비로 당황하지 않고.</p>
-                                <p>프랑스에 15년 살아온 지인의 풍부한 경험과 지식</p>
-                                <p>꼼꼼하면서도 섬세한 일정과 배려로 아쉽지 않은 여행이 되었다.</p>
-                                <br><br>
-
-
+                            <div id="vContent" class="content" th:utext="${board.content}">
                             </div>
                         </div>
                     </div>
@@ -209,9 +193,8 @@
                     mainClass: 'mfp-fade'
                 });
             });
-        </script>
-        <script>
-        $("#vContent").html("[[${board.content}]]");
+
+
     </script>
     </div>
 </div>

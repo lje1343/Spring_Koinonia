@@ -48,9 +48,6 @@ public class BoardController {
         log.info("*************");
         log.info("다이어리 작성");
         log.info("*************");
-        if(session.getAttribute("name")==null){
-            return "/user/login";
-        }
         return "/diary/board_write";
     }
 
