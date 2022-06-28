@@ -117,7 +117,7 @@
 
                     <!-- Review -->
                     <div class="area_reply ">
-                        <strong class="tit_reply">댓글
+                        <strong class="tit_reply" id="reply">댓글
                             <div type="button" class="btn_reply">
                                 <span id="commentCount15_0"></span>
                             </div>
@@ -134,7 +134,7 @@
                                 <fieldset class="fld_reply">
                                     <legend class="screen_out">댓글쓰기</legend>
                                     <div class="reply_write ">
-                                        <input type="hidden" name="bno" th:value="${board.bno}">
+                                        <input type="hidden" name="bno" id=bno th:value="${board.bno}">
                                         <label for="content" class="lab_write"></label>
                                         <textarea id="content" name="content" class="diary_reply"
                                                   placeholder="여러분의 소중한 댓글을 입력해주세요"
