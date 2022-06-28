@@ -33,18 +33,27 @@ public class BoardController {
         log.info("*************");
         log.info("다이어리 작성");
         log.info("*************");
+        if(session.getAttribute("name")==null){
+            return "/user/login";
+        }
         return "/diary/board_write";
     }
 
     // 작성 완료
     @PostMapping("/register")
-    public RedirectView register(BoardVO boardVO, FileVO fileVO, HttpSession session, RedirectAttributes rttr) {
+    public RedirectView register(BoardVO boardVO, HttpSession session, RedirectAttributes rttr) {
+        // 다이어리 정보 등록
         boardVO.setName(session.getAttribute("name").toString());
         boardService.register(boardVO);
-        log.info(boardVO.getBno().toString());
-        fileVO.setBno(boardVO.getBno());
-        log.info(fileVO.getBno().toString());
-        boardFileService.register(fileVO);
+        log.info("파일리스트" + boardVO.getFileList());
+        // 다이어리 이미지 정보 등록
+        if(boardVO.getFileList() != null) {
+            boardVO.getFileList().forEach(fileVO -> {
+                fileVO.setBno(boardVO.getBno());
+                boardFileService.register(fileVO);
+            });
+        }
+        // 상세 페이지로 이동
         rttr.addFlashAttribute("bno", boardVO.getBno());
         return new RedirectView("/board/detail");
     }

@@ -99,7 +99,7 @@ public class ProductController {
         // 상품 정보 수정
         if(productService.modify(productVO)==1){
             rttr.addAttribute("pageNum", criteria.getPageNum());
-            rttr.addAttribute("amout", criteria.getAmount());
+            rttr.addAttribute("amount", criteria.getAmount());
         };
         return new RedirectView("/product/list");
     }

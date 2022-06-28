@@ -212,6 +212,8 @@ function getList(param, callback, error) {
     });
 }
 
+
+
 function showList(page){
     getList({pno: pno, page: page}, function(total, list){
         pageNum = page;
