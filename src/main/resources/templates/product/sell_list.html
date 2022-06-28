@@ -2,14 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/product/sell_list}">
 <head>
     <style>
-<<<<<<< HEAD
-        .block2-pic > img {
-            width: 150px;
-            height: 250px;
-            object-fit: cover;
-            overflow: hidden;
-            border-radius: 30px;
-=======
         .let > land {
             border-radius:  40px;
         }
@@ -25,19 +17,14 @@
         }
         searcher{
             margin-bottom: 60px;
->>>>>>> a23c36b437ce502e44f019841d1e25d547041c88
         }
 
         .let{
             margin-top: 1%;
             margin-bottom: 1%;
             margin-left: 2%;
-<<<<<<< HEAD
-=======
             border-radius: 30px;
->>>>>>> a23c36b437ce502e44f019841d1e25d547041c88
             display: block;
-
         }
 
 
@@ -75,27 +62,7 @@
 <main class ="plp-page-container" >
     <div class="container__inner">
         <div clas="wrapper">
-<<<<<<< HEAD
-            <!-- Product -->
-            <div class="container" >
-                <div class ="let" th:object="${pageDTO}">
-                    <form action="/product/list" name="cateForm" th:object="${criteria}">
-                        <div class="fields">
-                            <div id="searchWrap">
-                                <select id = land name="type" onchange="categoryChange(this)">
-                                    <option value="">대륙</option>
-                                    <option value="TCN" th:selected="*{type} == 'TCN'">전체</option>
-                                    <option value="P" th:selected="*{type} == 'P'">아시아</option>
-                                    <option value="P" th:selected="*{type} == 'P'">유럽</option>
-                                    <option value="P" th:selected="*{type} == 'P'">아프리카</option>
-                                    <option value="P" th:selected="*{type} == 'P'">남아메리카</option>
-                                    <option value="P" th:selected="*{type} == 'P'">남아메리카</option>
-                                    <option value="P" th:selected="*{type} == 'P'">북아메리카</option>
-                                    <option value="P" th:selected="*{type} == 'P'">오스트레일리아</option>
-                                </select>
-                                <input type="text" id="result" name="keyword" th:value="*{keyword}"  style="display:none;">
-                            </div>
-=======
+
         <!-- Product -->
         <div class="container" >
             <div class ="let" >
@@ -113,10 +80,10 @@
                                 <option value="P" th:selected="*{type} == 'P'">오스트레일리아</option>
                             </select>
                             <input type="text" id="result" name="keyword" th:value="*{keyword}"  style="display:none;">
->>>>>>> a23c36b437ce502e44f019841d1e25d547041c88
                         </div>
                     </form>
                 </div>
+
 
 
                 <div class="row isotope-grid">
@@ -155,7 +122,7 @@
                         </div>
                     </th:block>
                 </div>
-<<<<<<< HEAD
+
                 <div class="big-width" style="text-align: center">
                     <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code>&lt;</code></a>
                     <th:block th:each="num:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">
@@ -168,7 +135,7 @@
                     <a class="changePage" th:href="*{criteria.pageNum - 1}" th:if="*{criteria.pageNum > 1}"><code>&lt;</code></a>
                     <code th:text="*{criteria.pageNum}"></code>
                     <a class="changePage" th:href="*{criteria.pageNum + 1}" th:if="*{criteria.pageNum < realEnd}"><code>&gt;</code></a>
-=======
+
                 </th:block>
             </div>
 
@@ -197,7 +164,7 @@
                             </span>
 
                     </div>
->>>>>>> a23c36b437ce502e44f019841d1e25d547041c88
+
                 </div>
             </div>
             <form action="/product/list" name="pageForm" th:object="${criteria}">
