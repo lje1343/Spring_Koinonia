@@ -79,14 +79,15 @@
         SELECT
         PNO, PNAME, TITLE, CONTENT, NAME, REGISTER_DATE , UPDATE_DATE, PCATE
         FROM (
-            SELECT /*+ INDEX_DESC(TBL_BOARD P_UPD) */
+            SELECT
             ROWNUM, PNO, PNAME, TITLE, CONTENT, NAME, REGISTER_DATE , UPDATE_DATE, PCATE, PRICE, PSOLD
             FROM TBL_PRODUCT
         <![CDATA[
             WHERE REGISTER_DATE <= SYSDATE
-            )
+            ORDER BY UPDATE_DATE DESC
+             )
         WHERE ROWNUM > (#{pageNum}-1) * #{amount} AND ROWNUM <= #{pageNum} * #{amount}
-        ORDER BY UPDATE_DATE DESC
+
         ]]>
     </select>
 
