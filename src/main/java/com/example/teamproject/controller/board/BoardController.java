@@ -22,17 +22,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
-<<<<<<< HEAD
+
 
 import javax.servlet.http.HttpSession;
-
-=======
-<<<<<<< HEAD
-=======
-
-import javax.servlet.http.HttpSession;
->>>>>>> af254b25c29f287a02d1cbecb70c44f179885df1
->>>>>>> master
 import java.io.File;
 import java.io.IOException;
 import java.util.List;

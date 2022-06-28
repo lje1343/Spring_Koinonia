@@ -53,16 +53,8 @@
         </selectKey>
         INSERT INTO TBL_BOARD
         (BNO, TITLE, CONTENT, NAME)
-<<<<<<< HEAD
         VALUES(#{bno}, #{title}, #{content}, #{name})
-=======
-<<<<<<< HEAD
-        VALUES(SEQ_BOARD.NEXTVAL, #{title}, #{content}, #{name})
->>>>>>> master
 
-=======
-        VALUES(#{bno}, #{title}, #{content}, #{name})
->>>>>>> af254b25c29f287a02d1cbecb70c44f179885df1
     </insert>
 
     <select id="get" resultType="boardVO">
