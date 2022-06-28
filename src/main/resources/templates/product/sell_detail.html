@@ -81,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <form>
+                <form action="/product/remove"  name="registerForm" method="get">
                 <div class="col-md-6 col-lg-5 p-b-30">
                     <div class="p-r-50 p-t-5 p-lr-0-lg">
                         <h4 class="mtext-105 cl2 js-name-detail p-b-14">
@@ -99,6 +99,9 @@
 
 
                     </div>
+                    <button type="submit" class="btnM btnStyleB btnStyleB_1" id="uploadBtn">
+                        삭제
+                    </button>
                 </div>
 
             </form>
@@ -111,7 +114,7 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item p-b-10">
-                            <a id="goList" class="nav-link active" data-toggle="tab" role="tab">목록보기</a>
+                            <a  id="goList" class="button small">목록 보기</a>
                         </li>
 
                         <li class="nav-item p-b-10">
@@ -219,6 +222,9 @@
 <!--===============================================================================================-->
 <script src="/Vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>       <!-- 필요 -->
 <script>
+    let pno = [[${pno}]];
+    let paging = [[${criteria.listLink}]];
+
     $('.gallery-lb').each(function () { // the containers for all your galleries
         $(this).magnificPopup({
             delegate: 'a', // the selector for gallery item
@@ -228,6 +234,11 @@
             },
             mainClass: 'mfp-fade'
         });
+    });
+
+    $("a#goList").click(function(e){
+        e.preventDefault();
+        location.href = "/product/list" + paging;
     });
 </script>
 </html>

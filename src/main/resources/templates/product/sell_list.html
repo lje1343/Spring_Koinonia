@@ -2,15 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/product/sell_list}">
 <head>
     <style>
-        let > land {
-            border-radius: 30px;
+        .let > land {
+            border-radius:  40px;
         }
 
         .block2-pic > img {
             width: 100%;
-            height: 250px;
+            height: 350px;
             object-fit: cover;
             overflow: hidden;
+            border-radius: 30px;
 
 
         }
@@ -22,7 +23,7 @@
             margin-top: 1%;
             margin-bottom: 60px;
             margin-left: 2%;
-            border-radius: 20px;
+            border-radius: 30px;
             display: block;
 
         }
@@ -69,13 +70,12 @@
                 <form action="/product/list" name="cateForm" th:object="${criteria}">
                     <div class="fields">
                         <div id="cateWrap">
-                            <select id = land name="type" onchange="categoryChange(this)" style="border: 1px solid #bdc1c6;">
+                            <select id = land name="type" onchange="categoryChange(this)" th:value="*{keyword}" style="border: 1px solid #bdc1c6;">
                                 <option value="">대륙</option>
                                 <option value="TCN" th:selected="*{type} == 'TCN'">전체</option>
                                 <option value="P" th:selected="*{type} == 'P'">아시아</option>
                                 <option value="P" th:selected="*{type} == 'P'">유럽</option>
                                 <option value="P" th:selected="*{type} == 'P'">아프리카</option>
-                                <option value="P" th:selected="*{type} == 'P'">남아메리카</option>
                                 <option value="P" th:selected="*{type} == 'P'">남아메리카</option>
                                 <option value="P" th:selected="*{type} == 'P'">북아메리카</option>
                                 <option value="P" th:selected="*{type} == 'P'">오스트레일리아</option>
@@ -125,14 +125,13 @@
             </div>
 
             <form action="/product/list" name="searchForm" th:object="${criteria}">
-            <div class="buttons">
-
+            <div class="buttons flex">
                 <div class="searchbox py-lg-5" style="border-bottom: solid 1px #cccccc;">
 
                     <div class="input-group input-group-sm" style="width: 70%; margin:0 auto;">
 
                         <div class="select-box">
-                            <select class="search-selector" name="type">
+                            <select class="search-selector" name="type" style="border: 1px solid #bdc1c6;">
                                 <option value="">검색 기준</option>
                                 <option value="TCNP" th:selected="*{type} == 'TCN'">전체</option>
                                 <option value="T" th:selected="*{type} == 'T'">제목</option>
@@ -224,7 +223,7 @@
 
 
     if(pno != null){
-        alert(pno + "번 게시글이 등록되었습니다.");
+        alert(pno + "번 게시글이 정상처리 되었습니다");
     }
 
 
