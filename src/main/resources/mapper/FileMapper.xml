@@ -23,10 +23,12 @@
         WHERE UPLOAD_PATH = TO_CHAR(SYSDATE - 1, 'YYYY/MM/DD')
     </select>
 
+
     <select id="getList" resultType="FileVO">
         SELECT UUID, UPLOAD_PATH, FILE_NAME, IMAGE, BNO, FILE_SIZE
         FROM TBL_FILE
         WHERE BNO = #{bno}
     </select>
+
 
 </mapper>

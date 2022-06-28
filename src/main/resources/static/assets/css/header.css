@@ -12,6 +12,7 @@
     list-style: none;
 }
 
+
 header img {
     vertical-align: baseline;
 }
@@ -25,6 +26,7 @@ a:visited{
     color: #000 ;
     text-decoration: none;
 }
+
 
 a:hover{
     color: #000;
@@ -106,6 +108,7 @@ a,
     font-weight: bold;
     font-size: medium;
     width: auto !important;
+
 }
 
 
@@ -212,9 +215,11 @@ a,
   font-size: small;
 }
 
+
 .menubtn > a:hover{
     text-decoration: underline !important;
 }
+
 a:visited{
   color:black
 }
@@ -227,6 +232,19 @@ a:visited{
 .logo > a{
   font-size: larger;
 }
+
+.login > a > span{
+  position: absolute;
+  display: block;
+  width: 200px;
+  bottom: 8px;
+  left: 40px;
+}
+
+.menu_list {
+    font-weight: bold;
+}
+
 
 /* 왼쪽 메뉴 */
 .slide_menu{
@@ -267,7 +285,8 @@ a:visited{
 .slide_menu .btn_menu_close:hover, .slide_menu1 .btn_menu_close1:hover{
     background-color: rgb(241, 236, 236);
 }
-.slide_menu .btn_menu_close img, .slide_menu1 .btn_menu_close1 img{
+
+.slide_menu .btn_menu_close img, .slide_menu1 .btn_menu_close1 img {
     width: 15px;
     height: 15px;
     object-fit: cover;
@@ -278,6 +297,7 @@ a:visited{
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 .btn_menu_open1{
     top:0 !important;
     left:0 !important;
@@ -301,3 +321,4 @@ a:visited{
     color: #fff !important;
     text-decoration: underline;
 }
+

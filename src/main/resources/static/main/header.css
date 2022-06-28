@@ -147,10 +147,13 @@ header{
     padding-right: 30px;
 }
 
+<<<<<<< HEAD
+=======
 .menubtn > a:hover{
     text-decoration: underline !important;
 }
 
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 a:visited{
     color:black
 }

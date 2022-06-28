@@ -10,6 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
+
+
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -58,7 +62,9 @@ public class UserController {
             session.setAttribute("email", email);
             session.setAttribute("name", userService.login(email).getName());
             return "/user/mypage";
+
     }
+
     @GetMapping("/logout")
     public RedirectView logout(HttpSession session){
         log.info("*************");
@@ -75,6 +81,8 @@ public class UserController {
         log.info("*************");
         return "/user/find_pw";
     }
+
+
     @PostMapping("/find_pw")
     public String goToFindPw(String email, Model model){
         log.info("*************");
@@ -105,6 +113,7 @@ public class UserController {
         model.addAttribute("msg","비밀번호가 재설정되었습니다.");
         return "/user/login";
     }
+
 
     @GetMapping("/modify")
     public String modify(Model model){

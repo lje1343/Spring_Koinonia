@@ -38,6 +38,15 @@
     </select>
 
 
+    
+    <select id="diaryDetail" resultType="boardVO">
+        SELECT BNO, TITLE, CONTENT, NAME, REGISTER_DATE, UPDATE_DATE
+        FROM TBL_BOARD WHERE BNO = #{bno}
+    </select>
+    
+    
+    
+
     <insert id="insert">
         <selectKey keyProperty="bno" resultType="long" order="BEFORE">
             SELECT SEQ_BOARD.NEXTVAL FROM DUAL
@@ -45,6 +54,7 @@
         INSERT INTO TBL_BOARD
         (BNO, TITLE, CONTENT, NAME)
         VALUES(#{bno}, #{title}, #{content}, #{name})
+
     </insert>
 
     <select id="get" resultType="boardVO">
@@ -71,6 +81,7 @@
     <select id="getTotal" resultType="_int">
         SELECT COUNT(BNO) FROM TBL_BOARD
     </select>
+
 
     <select id="getListBySearch" resultType="boardDTO">
         SELECT BNO, TITLE, CONTENT, NAME, TO_CHAR(REGISTER_DATE, 'YYYY.MM.DD') AS REGISTER_DATE , TO_CHAR(UPDATE_DATE, 'YYYY.MM.DD') AS UPDATE_DATE, BCATE,
@@ -101,6 +112,7 @@
         ]]>
     </select>
 
+
     <select id="getListMain" resultType="boardVO">
         SELECT
         BNO, TITLE, CONTENT, NAME, REGISTER_DATE , UPDATE_DATE, BCATE
@@ -115,4 +127,5 @@
         WHERE ROWNUM > (#{pageNum}-1) * #{amount} AND ROWNUM <= #{pageNum} * #{amount}
         ]]>
     </select>
+
 </mapper>

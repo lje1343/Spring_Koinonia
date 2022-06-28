@@ -1,22 +1,36 @@
 package com.example.teamproject.controller.board;
 
+
+import com.example.teamproject.domain.vo.BoardDTO;
+
+import com.example.teamproject.domain.vo.BoardVO;
+import com.example.teamproject.domain.vo.Criteria;
+import com.example.teamproject.domain.vo.RequestVO;
+
 import com.example.teamproject.domain.vo.*;
 import com.example.teamproject.service.board.BoardFileServiceImpl;
+
 import com.example.teamproject.service.board.BoardServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.util.FileCopyUtils;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
+
+
 
 @Controller
 @Slf4j
@@ -26,6 +40,7 @@ public class BoardController {
     private final BoardServiceImpl boardService;
     private final BoardFileServiceImpl boardFileService;
     // 다이어리
+
 
     // 작성 페이지 이동
     @GetMapping("/register")
@@ -38,6 +53,8 @@ public class BoardController {
         }
         return "/diary/board_write";
     }
+
+
 
     // 작성 완료
     @PostMapping("/register")
@@ -79,6 +96,7 @@ public class BoardController {
         return new RedirectView("/board/list");
     }
 
+
 //    @PostMapping("/remove")
 //    public String remove(Long bno, RedirectAttributes rttr){
 //        log.info("*************");
@@ -89,11 +107,13 @@ public class BoardController {
 //    }
 
     @GetMapping("/detail")
-    public String read(Long bno, Model model){
+    public String diaryDetail(Long bno, Model model, Criteria criteria) {
         log.info("*************");
         log.info("다이어리 상세");
         log.info("*************");
-        // 다이어리 상세
+//        bno = 22L;
+        log.info(boardService.diaryDetail(bno).toString());
+        model.addAttribute("board", boardService.diaryDetail(bno));
         return "/diary/detail";
     }
 
@@ -145,6 +165,7 @@ public class BoardController {
         return false;
     }
 
+
     //다이어리 페이지 리스트(검색리스트 포함)
     @PostMapping("/getListBySearch")
     @ResponseBody
@@ -164,4 +185,5 @@ public class BoardController {
         File file = new File("C:/upload/", fileName);
         return FileCopyUtils.copyToByteArray(file);
     }
+
 }
