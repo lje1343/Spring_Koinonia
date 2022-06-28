@@ -19,6 +19,9 @@ $(document).ready(function(){
     });
 });
 
+
+
+
 let name = sessionStorage.getItem("user");
 
 if(!(name==null || name.length<=0)) {
@@ -57,5 +60,6 @@ $(".logout").click(()=>{
     sessionStorage.clear();
     location.href = '/user/logout'
 })
+
 
 

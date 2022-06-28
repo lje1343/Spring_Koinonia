@@ -45,7 +45,7 @@ section.product {
     background-color: #fff;
     padding: 0;
     margin: 0;
-    height: 10;
+    height: 10px;
 }
 .request-list-title {
     padding: 26px;
@@ -75,7 +75,7 @@ button.request_content.request-save-btn {
     padding: 13px;
     margin-block: -19px;
     background-color: #0058ab;
-    border-end-end-radius: -6;
+    border-end-end-radius: -6px;
     border-radius: 38px;
 }
 div#myBtnContainer {
@@ -136,7 +136,7 @@ html,body{
     line-height: 20px;
 }
 .request-content{
-    padding: 89px
+    padding: 89px;
     margin: -18px;
     bottom: -49px;
 }

@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
 import javax.servlet.http.HttpServletRequest;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,6 +108,7 @@ public class ProductController {
         model.addAttribute("product", productService.read(pno));
         return "/product/sell_detail";
     }
+
 
     @GetMapping("/modify")
     public String modify(Long pno, Model model) throws JsonProcessingException {

@@ -1,4 +1,110 @@
 /*------------------------------------------------------------------
+<<<<<<< HEAD
+Project:  
+Version:  
+Last change:  
+Assigned to:  Le Xuan Bach
+Primary use:  Company
+-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+[LAYOUT]
+
+* body
+  + Header / header
+  + Page Content / .page-content .name-page
+        + Section Layouts / section .name-section
+        ...
+  + Footer / footer
+
+-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+[COLOR CODES]
+
+# Text Color      :  
+# Primary Color 01:  
+# Primary Color 02:   
+# Primary Color 03:  
+
+------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+[TYPOGRAPHY]
+
+Body            : 16px/1.6 '', Arial, sans-serif;
+Title           : 18px/1.6 '', Arial, sans-serif;
+Paragrap        : 18px/1.6 '', Arial, sans-serif;
+Input, textarea : 14px/1.6 '', Arial, sans-serif;
+-------------------------------------------------------------------*/
+
+
+
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+/*@font-face {*/
+/*  font-family: Poppins-Regular;*/
+/*  src: url('../fonts/Poppins/Poppins-Regular.ttf'); */
+/*}*/
+
+/*@font-face {*/
+/*  font-family: Poppins-Light;*/
+/*  src: url('../fonts/Poppins/Poppins-Light.ttf'); */
+/*}*/
+
+/*@font-face {*/
+/*  font-family: Poppins-ExtraLight;*/
+/*  src: url('../fonts/Poppins/Poppins-ExtraLight.ttf'); */
+/*}*/
+
+/*@font-face {*/
+/*  font-family: Poppins-Medium;*/
+/*  src: url('../fonts/Poppins/Poppins-Medium.ttf'); */
+/*}*/
+
+/*@font-face {*/
+/*  font-family: Poppins-Italic;*/
+/*  src: url('../fonts/Poppins/Poppins-Italic.ttf'); */
+/*}*/
+
+/*@font-face {*/
+/*  font-family: Poppins-Bold;*/
+/*  src: url('../fonts/Poppins/Poppins-Bold.ttf'); */
+/*}*/
+
+/*@font-face {*/
+/*  font-family: Poppins-SemiBold;*/
+/*  src: url('../fonts/Poppins/Poppins-SemiBold.ttf'); */
+/*}*/
+
+
+/*!*---------------------------------------------*!*/
+/*@font-face {*/
+/*  font-family: PlayfairDisplay-Regular;*/
+/*  src: url('../fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf'); */
+/*}*/
+
+/*@font-face {*/
+/*  font-family: PlayfairDisplay-Bold;*/
+/*  src: url('../fonts/PlayfairDisplay/PlayfairDisplay-Bold.ttf'); */
+/*}*/
+
+/*!*---------------------------------------------*!*/
+/*@font-face {*/
+/*  font-family: Montserrat-Regular;*/
+/*  src: url('../fonts/Montserrat/Montserrat-Regular.ttf'); */
+/*}*/
+
+/*@font-face {*/
+/*  font-family: Montserrat-Bold;*/
+/*  src: url('../fonts/Montserrat/Montserrat-Bold.ttf'); */
+/*}*/
+
+
+/*//////////////////////////////////////////////////////////////////
+[ RS PLUGIN ]*/
+
+/*------------------------------------------------------------------
+=======
+>>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 [ Bootstrap ]*/
 .container {max-width: 1380px;}
 
@@ -1436,6 +1542,26 @@ button.mfp-arrow-left {
   background-position: center center;
   background-repeat: no-repeat;
 }
+
+
+button.mfp-close {
+  width: 75px !important;
+  height: 58px !important;
+  line-height: 44px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  color: transparent !important;
+  background-image: url(/static/assets/images/icons/icon-close.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer !important;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
 
 
 
@@ -3773,6 +3899,16 @@ box-sizing: inherit;
 
 .area_reply .tf_reply {
   width: 659px;
+  height: 102px;
+  padding: 13px 15px 10px;
+  border: 1px solid #eee;
+  font-size: 12px;
+  resize: none;
+  box-sizing: border-box;
+}
+
+.area_reply .diary_reply {
+  width: 1300px;
   height: 102px;
   padding: 13px 15px 10px;
   border: 1px solid #eee;

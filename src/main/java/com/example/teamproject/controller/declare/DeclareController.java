@@ -1,7 +1,10 @@
 package com.example.teamproject.controller.declare;
 
 import com.example.teamproject.domain.vo.DeclareVO;
+
+
 import com.example.teamproject.domain.vo.UserVO;
+
 import com.example.teamproject.service.declare.DeclareServieceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +24,7 @@ public class DeclareController {
     // 신고
 
     @GetMapping("/")
-    public String goToDeclare(){
+    public String goToDeclare() {
         log.info("*************");
         log.info("신고");
         log.info("*************");
@@ -29,12 +32,14 @@ public class DeclareController {
     }
 
     @GetMapping("/register")
-    public String register(){
+    public String register() {
         log.info("*************");
         log.info("신고 작성");
         log.info("*************");
         return "/declare/board_declare";
     }
+
+
     @PostMapping("/register")
     public String register(DeclareVO declareVO) {
         log.info("*************");
@@ -44,14 +49,6 @@ public class DeclareController {
 
         return "/declare/declare";
     }
-
-
-
-
-
-
-
-
 
 
 //    @PostMapping("/register")

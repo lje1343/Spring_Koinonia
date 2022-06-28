@@ -1,6 +1,8 @@
 package com.example.teamproject.controller.board;
 
+import com.example.teamproject.domain.vo.BReplyPageDTO;
 import com.example.teamproject.domain.vo.BoardReplyVO;
+import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.service.board.BoardReplyServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,10 +37,10 @@ public class BoardReplyController {
     }
 
     // 다이어리 댓글 전체 목록 조회
-//    @GetMapping("/list/{bno}/{page}")
-//    public ReplyPageDTO getList(@PathVariable("page") int pageNum, @PathVariable("bno") Long bno){
-//        return new ReplyPageDTO(boardReplyService.getList(new Criteria(pageNum, 10), bno), boardReplyService.getTotal(bno));
-//    }
+    @GetMapping("/list/{bno}/{page}")
+    public BReplyPageDTO getList(@PathVariable("page") int pageNum, @PathVariable("bno") Long bno){
+        return new BReplyPageDTO(boardReplyService.getList(bno, new Criteria(pageNum, 10) ), boardReplyService.getTotal(bno));
+    }
 
     // 다이어리 댓글 삭제
     @DeleteMapping("/{rno}")

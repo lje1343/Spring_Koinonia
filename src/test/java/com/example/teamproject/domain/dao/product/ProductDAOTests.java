@@ -13,10 +13,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 @Slf4j
 public class ProductDAOTests {
     @Autowired
-    private ProductDAO productDAO;
+    private ProductDAO productDAO;{
+    }
+
+
+
+
 
     @Test
     public void getListTest(){
         productDAO.getList(new Criteria(1, 15)).stream().map(ProductVO::toString).forEach(log::info);
     }
+
 }
