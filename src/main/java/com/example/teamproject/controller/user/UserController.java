@@ -71,7 +71,16 @@ public class UserController {
         log.info("로그아웃");
         log.info("*************");
         session.invalidate(); // 세션 무효화
+<<<<<<< HEAD
         return new RedirectView("/");
+=======
+<<<<<<< HEAD
+        return "/main/main";
+
+=======
+        return new RedirectView("/");
+>>>>>>> af254b25c29f287a02d1cbecb70c44f179885df1
+>>>>>>> master
     }
 
     @GetMapping("/find_pw")

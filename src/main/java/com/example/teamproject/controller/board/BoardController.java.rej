@@ -1,0 +1,18 @@
+diff a/src/main/java/com/example/teamproject/controller/board/BoardController.java b/src/main/java/com/example/teamproject/controller/board/BoardController.java	(rejected hunks)
+@@ -1,16 +1,11 @@
+ package com.example.teamproject.controller.board;
+ 
+-<<<<<<< HEAD
+ 
+ import com.example.teamproject.domain.vo.BoardDTO;
+ 
+ import com.example.teamproject.domain.vo.BoardVO;
+ import com.example.teamproject.domain.vo.Criteria;
+ import com.example.teamproject.domain.vo.RequestVO;
+-=======
+-import com.example.teamproject.domain.vo.*;
+-import com.example.teamproject.service.board.BoardFileServiceImpl;
+->>>>>>> af254b25c29f287a02d1cbecb70c44f179885df1
+ import com.example.teamproject.service.board.BoardServiceImpl;
+ import lombok.RequiredArgsConstructor;
+ import lombok.extern.slf4j.Slf4j;
