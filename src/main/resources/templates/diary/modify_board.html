@@ -161,7 +161,6 @@
         callbacks: {
           onImageUpload: function(files, editor, welEditable) {
             sendFile(files, this, welEditable);
-            console.log("dd");
           }
         }
       });
@@ -213,6 +212,7 @@
       e.preventDefault();
       let $form = $("form#modifyForm");
 
+      // db에 썸머노트 컨텐츠 넣기 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       var summernoteContent = $('#summernote').summernote('code'); // 썸머노트 작성내용(html)
       $("input[name='content']").val(summernoteContent);
       console.log("summernoteContent : " + summernoteContent);

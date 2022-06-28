@@ -71,7 +71,7 @@ public class BoardController {
             });
         }
         // 상세 페이지로 이동
-        rttr.addFlashAttribute("bno", boardVO.getBno());
+        rttr.addAttribute("bno", boardVO.getBno());
         return new RedirectView("/board/detail");
     }
 
@@ -111,7 +111,7 @@ public class BoardController {
         log.info("*************");
         log.info("다이어리 상세");
         log.info("*************");
-//        bno = 22L;
+        log.info(bno.toString());
         log.info(boardService.diaryDetail(bno).toString());
         model.addAttribute("board", boardService.diaryDetail(bno));
         return "/diary/detail";

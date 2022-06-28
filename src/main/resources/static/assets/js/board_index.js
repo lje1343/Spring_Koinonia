@@ -77,9 +77,9 @@ boardService.getSearchList({
             board.title +
             "</div>" +
             "</div>" +
-            // "<div class=\"desc\">" +
-            // board.content +
-            // "</div>" +
+            "<div class=\"desc\">" +
+            board.content +
+            "</div>" +
             "<div class=\"info text-right\">" +
             "<i class=\"user_icon\"></i>" + board.name + "&nbsp;&nbsp;&nbsp;<i></i>" + board.updateDate +
             "</div>" +
