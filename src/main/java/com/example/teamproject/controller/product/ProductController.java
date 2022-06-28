@@ -57,16 +57,16 @@ public class ProductController {
         log.info("*************");
 
         List<ProductVO> productList = productService.getList(criteria);
-        model.addAttribute("productList", productService.getList(criteria)) ;
+        model.addAttribute("productList", productService.getList(criteria));
 //         상품 썸네일 리스트
         String pRequestUrl = "/productFile/display?fileName=";
         String productThumFileName = "";
         List<String> productThumfileUrlList = new ArrayList<>();
-        for(ProductVO p : productList){
+        for (ProductVO p : productList) {
             List<ProductFileVO> productFileList = productService.getList(p.getPno());
-            if(!productFileList.isEmpty()){
-                productThumFileName =  pRequestUrl + productFileList.get(0).getUploadPath() + "/"  + productFileList.get(0).getUuid() + "_" + productFileList.get(0).getFileName();
-            }else{
+            if (!productFileList.isEmpty()) {
+                productThumFileName = pRequestUrl + productFileList.get(0).getUploadPath() + "/" + productFileList.get(0).getUuid() + "_" + productFileList.get(0).getFileName();
+            } else {
                 productThumFileName = "/images/no_image.gif";
             }
             productThumfileUrlList.add(productThumFileName);
@@ -93,7 +93,7 @@ public class ProductController {
         List<String> productThumfileUrlList = new ArrayList<>();
 
         List<ProductFileVO> productFileList = productService.getList(pno);
-        for(int i =0; i<productFileList.size(); i++) {
+        for (int i = 0; i < productFileList.size(); i++) {
             if (!productFileList.isEmpty()) {
                 productThumFileName = pRequestUrl + productFileList.get(i).getUploadPath() + "/" + productFileList.get(i).getUuid() + "_" + productFileList.get(i).getFileName();
             } else {
@@ -125,16 +125,18 @@ public class ProductController {
         model.addAttribute("files", files.toString());
         return "/product/modify_product";
     }
+
     @PostMapping("/modify")
-    public RedirectView modify(ProductVO productVO, Criteria criteria, RedirectAttributes rttr){
+    public RedirectView modify(ProductVO productVO, Criteria criteria, RedirectAttributes rttr) {
         log.info("*************");
         log.info("상품 수정 완료");
         log.info("*************");
         // 상품 정보 수정
-        if(productService.modify(productVO)==1){
+        if (productService.modify(productVO) == 1) {
             rttr.addAttribute("pageNum", criteria.getPageNum());
             rttr.addAttribute("amout", criteria.getAmount());
-        };
+        }
+        ;
         return new RedirectView("/product/list");
     }
 //        log.info(criteria.toString());
@@ -142,6 +144,21 @@ public class ProductController {
 //        // 상품 수정
 //        return "/product/product_modify";
 //    }
+
+    // 카테고리별 상품 목록
+    @GetMapping("/remove")
+
+    public RedirectView remove(Long pno, RedirectAttributes rttr) {
+        log.info("삭제 번호 : " + pno);
+        productService.remove(pno);
+
+        rttr.addFlashAttribute("pno", pno);
+        return new RedirectView("/product/list");
+    }
+
+
+
+
 
 //    @PostMapping("/modisucces")
 //    public RedirectView modisucces(Long pno, ProductVO productVO, Criteria criteria, RedirectAttributes rttr) {
