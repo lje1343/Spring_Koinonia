@@ -134,10 +134,10 @@
           });
 
 
-        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-          var nameTab = $(e.target).attr('href'); 
-          $(nameTab).find('.slick2').slick('reinit');          
-        });      
+        // $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        //   var nameTab = $(e.target).attr('href');
+        //   $(nameTab).find('.slick2').slick('reinit');
+        // });
         
         /*==================================================================
         [ Slick3 ]*/
@@ -237,7 +237,7 @@ function showList(page){
             str += reply.registerDate
             // str += "<a class='aInLi' href=''>신고</a></span>"
             str += "</span><div class='my_edit'>"
-            str += "<a href='#' class='link_edit'>수정</a>"
+            // str += "<a href='#' class='link_edit'>수정</a>"
             str += "<a onclick='delelteReply(" + reply.prno + ")' class='link_edit'>삭제</a>"
         });
 
