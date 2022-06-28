@@ -39,7 +39,6 @@
                         -moz-background-size: cover;
                         -o-background-size: cover;
                         background-size: cover;
-                        height: 400px;
                         background-image: url('http://linkandleave.com/files/2017/02/23/6e006508201242416d4d62cc6e260ac3143147.jpg');
                     }
 
@@ -87,7 +86,7 @@
                                 </div>
                                 <div class="info">
                                     <div class="common pull-left">
-                                        <i class="glyphicon glyphicon-tint"></i>  <span th:text="${board.name}"></span>
+                                        <i class="glyphicon glyphicon-tint"></i>  <span id="name" th:text="${board.name}"></span>
                                         <span  class="split">|</span>
                                         <i class="glyphicon glyphicon-time"></i> <span th:text="${board.registerDate}"></span>
                                     </div>
@@ -103,15 +102,13 @@
                     </div>
 
                     <div class="action clearfix">
-                        <a href="/?r=home&amp;c=help/review" class="btn btn-default btn-sm">목록으로</a>
+                        <a th:href="@{/board/list}" class="btn btn-default btn-sm">목록으로</a>
 
-                        <div class="right_1">
-                            <a href="/?r=home&amp;c=help/review&amp;mod=write&amp;uid=1258"
+                        <div class="right_1" style="display: none" id="userBtn">
+                            <a th:href="@{/board/modify(bno=${board.bno})}"
                                class="btn btn-default btn-sm">수정</a>
-                            <a href="/?r=home&amp;c=help/review&amp;a=delete&amp;uid=1258" target="_action_frame_stbbs"
+                            <a th:href="@{/board/remove(bno=${board.bno})}" target="_action_frame_stbbs"
                                class="btn btn-default btn-sm" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a>
-
-
                         </div>
                     </div>
 
@@ -137,7 +134,7 @@
                                 <fieldset class="fld_reply">
                                     <legend class="screen_out">댓글쓰기</legend>
                                     <div class="reply_write ">
-                                        <input type="hidden" name="bno" th:value="*{bno}">
+                                        <input type="hidden" name="bno" th:value="${board.bno}">
                                         <label for="content" class="lab_write"></label>
                                         <textarea id="content" name="content" class="diary_reply"
                                                   placeholder="여러분의 소중한 댓글을 입력해주세요"
@@ -151,19 +148,12 @@
                             </form>
                         </div>
                     </div>
-
-
-                        <script type="text/javascript">
-
-                        </script>
-
                     </section>
-
-
-
                 </div>
             </div>
         </div>
+    </div>
+</div>
             <!--  footer start  -->
             <div th:replace="~{/footer/footer :: footerFragment}"></div>
             <!--  footer end  -->
@@ -194,10 +184,10 @@
                 });
             });
 
-
-    </script>
-    </div>
-</div>
+            if(sessionStorage.getItem("user")==$("#name").text()){
+                $("#userBtn").attr("style", "display:block;");
+            }
+        </script>
 </body>
 
 </html>

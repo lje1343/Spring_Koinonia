@@ -94,14 +94,17 @@ public class BoardController {
     }
 
 
-//    @PostMapping("/remove")
-//    public String remove(Long bno, RedirectAttributes rttr){
-//        log.info("*************");
-//        log.info("다이어리 삭제");
-//        log.info("*************");
-//        // 다이어리 삭제
-//        return new RedirectView("/board/list");
-//    }
+    @GetMapping("/remove")
+    public RedirectView remove(Long bno, Criteria criteria, RedirectAttributes rttr){
+        log.info("*************");
+        log.info("다이어리 삭제");
+        log.info("*************");
+        if(boardService.remove(bno)==1){
+            rttr.addAttribute("pageNum", criteria.getPageNum());
+            rttr.addAttribute("amount", criteria.getAmount());
+        };
+        return new RedirectView("/board/list");
+    }
 
     @GetMapping("/detail")
     public String diaryDetail(Long bno, Model model, Criteria criteria) {
