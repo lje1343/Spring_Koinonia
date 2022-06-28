@@ -8,9 +8,7 @@ import com.example.teamproject.service.product.ProductFileServiceImpl;
 import com.example.teamproject.service.product.ProductServieceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.example.teamproject.domain.vo.ProductDTO;
 import com.example.teamproject.domain.vo.*;
-import com.example.teamproject.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
@@ -53,14 +51,32 @@ public class ProductController {
     }
 
     @GetMapping("/list")
-    public String getList(Criteria criteria, Model model, Long pno, ProductDTO productDTO) {
+    public String getList(Criteria criteria, Model model) {
         log.info("*************");
         log.info("상품 리스트");
         log.info("*************");
-        List<PFileVO> pFileVOS = productService.getOldFiles();
+
+        List<ProductVO> productList = productService.getList(criteria);
         model.addAttribute("productList", productService.getList(criteria));
+//         상품 썸네일 리스트
+        String pRequestUrl = "/productFile/display?fileName=";
+        String productThumFileName = "";
+        List<String> productThumfileUrlList = new ArrayList<>();
+        for (ProductVO p : productList) {
+            List<ProductFileVO> productFileList = productService.getList(p.getPno());
+            if (!productFileList.isEmpty()) {
+                productThumFileName = pRequestUrl + productFileList.get(0).getUploadPath() + "/" + productFileList.get(0).getUuid() + "_" + productFileList.get(0).getFileName();
+            } else {
+                productThumFileName = "/images/no_image.gif";
+            }
+            productThumfileUrlList.add(productThumFileName);
+        }
+
+
+        model.addAttribute("productThumfileUrlList", productThumfileUrlList);
         model.addAttribute("pageDTO", new PageDTO(criteria, productService.getTotal()));
         return "/product/sell_list";
+
     }
 
     @GetMapping("/detail")
@@ -69,6 +85,24 @@ public class ProductController {
         log.info("상품 상세");
         log.info("*************");
         log.info(productService.read(pno).toString());
+
+
+//         상품 썸네일 리스트
+        String pRequestUrl = "/productFile/display?fileName=";
+        String productThumFileName = "";
+        List<String> productThumfileUrlList = new ArrayList<>();
+
+        List<ProductFileVO> productFileList = productService.getList(pno);
+        for (int i = 0; i < productFileList.size(); i++) {
+            if (!productFileList.isEmpty()) {
+                productThumFileName = pRequestUrl + productFileList.get(i).getUploadPath() + "/" + productFileList.get(i).getUuid() + "_" + productFileList.get(i).getFileName();
+            } else {
+                productThumFileName = "/images/no_image.gif";
+            }
+
+            productThumfileUrlList.add(productThumFileName);
+        }
+        model.addAttribute("productThumfileUrlList", productThumfileUrlList);
         model.addAttribute("product", productService.read(pno));
         return "/product/sell_detail";
     }
@@ -91,13 +125,14 @@ public class ProductController {
         model.addAttribute("files", files.toString());
         return "/product/modify_product";
     }
+
     @PostMapping("/modify")
-    public RedirectView modify(ProductVO productVO, Criteria criteria, RedirectAttributes rttr){
+    public RedirectView modify(ProductVO productVO, Criteria criteria, RedirectAttributes rttr) {
         log.info("*************");
         log.info("상품 수정 완료");
         log.info("*************");
         // 상품 정보 수정
-        if(productService.modify(productVO)==1){
+        if (productService.modify(productVO) == 1) {
             rttr.addAttribute("pageNum", criteria.getPageNum());
             rttr.addAttribute("amount", criteria.getAmount());
         };
@@ -109,19 +144,34 @@ public class ProductController {
 //        return "/product/product_modify";
 //    }
 
-    @PostMapping("/modisucces")
-    public RedirectView modisucces(Long pno, ProductVO productVO, Criteria criteria, RedirectAttributes rttr) {
-        log.info("*************");
-        log.info("상품 수정 완료");
-        log.info("*************");
-        // 다이어리 수정 완료
-        productService.modify(productVO);
-        rttr.addAttribute("pno", productVO.getPno());
-        rttr.addAttribute("pageNum", criteria.getPageNum());
-        rttr.addAttribute("amount", criteria.getAmount());
+    // 카테고리별 상품 목록
+    @GetMapping("/remove")
 
-        return new RedirectView("/product/sell_detail");
-}
+    public RedirectView remove(Long pno, RedirectAttributes rttr) {
+        log.info("삭제 번호 : " + pno);
+        productService.remove(pno);
+
+        rttr.addFlashAttribute("pno", pno);
+        return new RedirectView("/product/list");
+    }
+
+
+
+
+
+//    @PostMapping("/modisucces")
+//    public RedirectView modisucces(Long pno, ProductVO productVO, Criteria criteria, RedirectAttributes rttr) {
+//        log.info("*************");
+//        log.info("상품 수정 완료");
+//        log.info("*************");
+//        // 다이어리 수정 완료
+//        productService.modify(productVO);
+//        rttr.addAttribute("pno", productVO.getPno());
+//        rttr.addAttribute("pageNum", criteria.getPageNum());
+//        rttr.addAttribute("amount", criteria.getAmount());
+//
+//        return new RedirectView("/product/sell_detail");
+//}
 
     ///////////////////////////////////////////////////
     // ResponsBody

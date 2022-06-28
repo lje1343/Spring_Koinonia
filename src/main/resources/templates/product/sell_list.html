@@ -2,13 +2,32 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/product/sell_list}">
 <head>
     <style>
+        .let > land {
+            border-radius:  40px;
+        }
+
+        .block2-pic > img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            overflow: hidden;
+            border-radius: 30px;
+
+
+        }
+        searcher{
+            margin-bottom: 60px;
+        }
+
         .let{
             margin-top: 1%;
-            margin-bottom: 1%;
+            margin-bottom: 60px;
             margin-left: 2%;
+            border-radius: 30px;
             display: block;
 
         }
+
 
 
     </style>
@@ -47,17 +66,16 @@
         <div clas="wrapper">
         <!-- Product -->
         <div class="container" >
-            <div class ="let" th:object="${pageDTO}">
+            <div class ="let" >
                 <form action="/product/list" name="cateForm" th:object="${criteria}">
                     <div class="fields">
-                        <div id="searchWrap">
-                            <select id = land name="type" onchange="categoryChange(this)">
+                        <div id="cateWrap">
+                            <select id = land name="type" onchange="categoryChange(this)" th:value="*{keyword}" style="border: 1px solid #bdc1c6;">
                                 <option value="">대륙</option>
                                 <option value="TCN" th:selected="*{type} == 'TCN'">전체</option>
                                 <option value="P" th:selected="*{type} == 'P'">아시아</option>
                                 <option value="P" th:selected="*{type} == 'P'">유럽</option>
                                 <option value="P" th:selected="*{type} == 'P'">아프리카</option>
-                                <option value="P" th:selected="*{type} == 'P'">남아메리카</option>
                                 <option value="P" th:selected="*{type} == 'P'">남아메리카</option>
                                 <option value="P" th:selected="*{type} == 'P'">북아메리카</option>
                                 <option value="P" th:selected="*{type} == 'P'">오스트레일리아</option>
@@ -70,12 +88,13 @@
 
 
             <div class="row isotope-grid">
-                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women" th:each="product:${productList}"}>
+                <th:block th:each="product, i : ${productList}">
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 
-                    <div class="block2" th:object="${product}">
-                        <div class="block2-pic hov-img0" >
-
-                            <a  class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" th:href="*{pno}" >
+                    <div class="block2" style="boder-radius: 30px;">
+                        <div class="block2-pic hov-img0"   >
+                            <img th:src="${productThumfileUrlList[0+i.index]}" >
+                            <a  class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" th:href="${product.pno}">
                                 보러가기
                             </a>
                         </div>
@@ -83,11 +102,11 @@
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
                                 <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04  p-b-6" >
-                                    <div th:text="*{price}"></div>
+                                    <div th:text="${product.pname}"></div>
                                 </a>
 
                                 <span class="stext-105 cl3 js-name-b2"  >
-                                    <a th:text="*{pname}"></a>
+                                    <a th:text="${product.price}"></a>
                                 </span>
 
 
@@ -102,8 +121,40 @@
                         </div>
                     </div>
                 </div>
+                </th:block>
             </div>
-            <div class="big-width" style="text-align: center">
+
+            <form action="/product/list" name="searchForm" th:object="${criteria}">
+            <div class="buttons flex">
+                <div class="searchbox py-lg-5" style="border-bottom: solid 1px #cccccc;">
+
+                    <div class="input-group input-group-sm" style="width: 70%; margin:0 auto;">
+
+                        <div class="select-box">
+                            <select class="search-selector" name="type" style="border: 1px solid #bdc1c6;">
+                                <option value="">검색 기준</option>
+                                <option value="TCNP" th:selected="*{type} == 'TCN'">전체</option>
+                                <option value="T" th:selected="*{type} == 'T'">제목</option>
+                                <option value="C" th:selected="*{type} == 'C'">내용</option>
+                                <option value="N" th:selected="*{type} == 'N'">작성자</option>
+                                <option value="P" th:selected="*{type} == 'N'">카테고리</option>
+                                <option value="TC" th:selected="*{type} == 'TC'">제목 또는 내용</option>
+                                <option value="TN" th:selected="*{type} == 'TN'">제목 또는 작성자</option>
+                                <option value="CN" th:selected="*{type} == 'CN'">내용 또는 작성자</option>
+                            </select>
+                        </div>
+                        <input type="text" name="keyword" value="" class="form-control input-search temp-margin" placeholder="검색어" size="10">
+                        <span class="input-group-btn">
+                                <button type="submit" class="btn btn-primary search-btn" title="검색">검색</button>
+                            </span>
+
+                    </div>
+                </div>
+        </div>
+            </form>
+            </div>
+           <th:block th:object="${pageDTO}">
+            <div class="big-width" style="text-align: center" >
                 <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code>&lt;</code></a>
                 <th:block th:each="num:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">
                     <code th:if="${num == pageDTO.criteria.pageNum}" th:text="${num}"></code>
@@ -116,7 +167,9 @@
                 <code th:text="*{criteria.pageNum}"></code>
                 <a class="changePage" th:href="*{criteria.pageNum + 1}" th:if="*{criteria.pageNum < realEnd}"><code>&gt;</code></a>
             </div>
+           </th:block>
         </div>
+
             <form action="/product/list" name="pageForm" th:object="${criteria}">
                 <input type="hidden" th:field="*{pageNum}">
                 <input type="hidden" th:field="*{amount}">
@@ -124,7 +177,6 @@
                 <input type="hidden" th:field="*{keyword}">
             </form>
         </div>
-    </div>
 </main>
 
 
@@ -154,14 +206,24 @@
 <script th:inline="javascript">
     let pno = [[${pno}]];
     let paging = [[${criteria.listLink}]];
-    let
+    let $cateForm = $(cateForm);
 
 
+    $("a.changePage").click(function(e){
+        e.preventDefault();
+        $(pageForm).find("input[name='pageNum']").val($(this).attr("href"));
+        $(pageForm).submit();
+    });
+
+    $("a.block2-btn").click(function(e){
+        e.preventDefault();
+        location.href = "/product/detail" + paging + "&pno="+$(this).attr('href');
+    });
 
 
 
     if(pno != null){
-        alert(pno + "번 게시글이 등록되었습니다.");
+        alert(pno + "번 게시글이 정상처리 되었습니다");
     }
 
 
@@ -194,32 +256,6 @@
     });
 
 
-
-
-    function showUploadResult(files){
-        let str ="";
-        $(files).each(function(i, file){
-            str += "<li data-filename='" + file.fileName.substring(file.fileName.indexOf("_") + 1) + "' data-uuid='" + file.uuid + "' data-uploadpath='" + file.uploadPath + "' data-image='" + file.image + "'>";
-            if(file.image){
-                str += "<a href=\"javascript:showImage(\'" + file.uploadPath + "/" + file.uuid + "_" + file.fileName +"\');\"><img src='/upload/display?fileName=" + file.uploadPath + "/s_" + file.uuid + "_"  + file.fileName + "'></a>";
-            }else{
-                str += "<a href='/upload/download?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName + "'><img src='/images/attach.png' width='100'></a>";
-            }
-            str += "<p>" + file.fileName.substring(file.fileName.indexOf("_") + 1) + "</p>"
-            str += "</li>"
-        });
-        $uploadResult.html(str);
-    }
-
-    (function(){
-        $.getJSON("/upload/list", {boardBno: boardBno}, function(list){showUploadResult(list);})
-    })();
-
-
-
-    let $cateForm = $(cateForm);
-
-
     function categoryChange() {
 
         var land = document.getElementById('land').options[document.getElementById('land').selectedIndex].text;
@@ -233,19 +269,34 @@
         cateForm.submit();
     }
 
-
-
-
-
-    $("a.changePage").click(function(e){
+    $("input[name='keyword']").onclick(function(e){
         e.preventDefault();
-        $(pageForm).find("input[name='pageNum']").val($(this).attr("href"));
-        $(pageForm).submit();
+        checkSearch();
     });
 
-    $("a.block2-btn").click(function(e){
-        e.preventDefault();
-        location.href = "/product/detail" + paging + "&pno="+$(this).attr('href');
-    });
+    $("input[name='keyword']").keydown(function(e){
+        if(e.keyCode == 13){
+            checkSearch();
+        }
+    })
+
+    let $searchForm = $($searchForm);
+
+    function checkSearch(){
+        // 유효성 검사 (검색기준, 키워드)
+        if(!$searchForm.find("option:selected").val()){
+            alert("검색종류를 선택하세요.");
+            return;
+        }
+        if(!$searchForm.find("input[name='keyword'").val()){
+            alert("검색어를 입력하세요.");
+            return;
+        }
+        searchForm.submit();
+    }
+
+
+
+
 </script>
 </html>
