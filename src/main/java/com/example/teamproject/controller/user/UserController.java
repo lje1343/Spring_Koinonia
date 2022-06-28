@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
@@ -65,13 +66,12 @@ public class UserController {
     }
 
     @GetMapping("/logout")
-    public String logout(HttpSession session){
+    public RedirectView logout(HttpSession session){
         log.info("*************");
         log.info("로그아웃");
         log.info("*************");
         session.invalidate(); // 세션 무효화
-        return "/main/main";
-
+        return new RedirectView("/");
     }
 
     @GetMapping("/find_pw")

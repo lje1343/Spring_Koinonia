@@ -53,7 +53,7 @@
         </selectKey>
         INSERT INTO TBL_BOARD
         (BNO, TITLE, CONTENT, NAME)
-        VALUES(SEQ_BOARD.NEXTVAL, #{title}, #{content}, #{name})
+        VALUES(#{bno}, #{title}, #{content}, #{name})
 
     </insert>
 
