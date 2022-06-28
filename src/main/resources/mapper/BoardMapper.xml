@@ -44,7 +44,7 @@
         </selectKey>
         INSERT INTO TBL_BOARD
         (BNO, TITLE, CONTENT, NAME)
-        VALUES(SEQ_BOARD.NEXTVAL, #{title}, #{content}, #{name})
+        VALUES(#{bno}, #{title}, #{content}, #{name})
     </insert>
 
     <select id="get" resultType="boardVO">
@@ -105,14 +105,14 @@
         SELECT
         BNO, TITLE, CONTENT, NAME, REGISTER_DATE , UPDATE_DATE, BCATE
         FROM (
-            SELECT /*+ INDEX_DESC(TBL_BOARD B_UPD) */
+            SELECT
             ROWNUM, BNO, TITLE, CONTENT, NAME, REGISTER_DATE , UPDATE_DATE, BCATE
             FROM TBL_BOARD
         <![CDATA[
             WHERE REGISTER_DATE <= SYSDATE
+            ORDER BY UPDATE_DATE DESC
             )
         WHERE ROWNUM > (#{pageNum}-1) * #{amount} AND ROWNUM <= #{pageNum} * #{amount}
-        ORDER BY UPDATE_DATE DESC
         ]]>
     </select>
 </mapper>

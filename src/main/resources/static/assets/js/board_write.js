@@ -91,73 +91,80 @@ $("#thum").on("change", function(e){
 ///////////////////////////////////////////////////////////////////////////////////////
 // 썸머노트
 
-//이미지 등록처리
-function imageUpload(files, editor) {
-  var status = false;
-  var reg = /(.*?)\.(gif|jpg|png|jpeg)$/; //허용할 확장자
-  var formData = new FormData();
-  var fileArr = Array.prototype.slice.call(files);
-  var filename = "";
-  var noImgCnt = 0;
-  fileArr.forEach(function(f){
-    filename = f.name;
-    if(filename.match(reg)) {
-      formData.append('file[]', f);
-    }
-    else{
-      noImgCnt++;
-    }
-  });
-  // formData.append('tempFolder', $('#tempFolder').val());
-
-  if(noImgCnt > 0) {
-    alert("파일은 gif, png, jpg, jpeg 파일만 등록해 주세요.");
-    return;
-  } else {
-    $.ajax({
-      url : "이미지 업로드 처리할 주소",
-      data:formData,
-      cache:false,
-      contentType:false,
-      processData:false,
-      enctype:'multipart/formDataData',
-      type:'POST',
-      success:function(result) {
-        var data = JSON.parse(result); // result = 업로드하고 난 files의 경로
-        for(x = 0; x < data.length; x++) {
-          var img = $('<img>').attr({src:data[x]});
-          $(editor).summernote('insertNode', img[x]); // 썸머노트 컨텐츠에 파라미터로 받은 문자열 추가
-        }
-      }
-    });
-  }
-}
+// //이미지 등록처리
+// function imageUpload(files, editor) {
+//   var status = false;
+//   var reg = /(.*?)\.(gif|jpg|png|jpeg)$/; //허용할 확장자
+//   var formData = new FormData();
+//   var fileArr = Array.prototype.slice.call(files);
+//   var filename = "";
+//   var noImgCnt = 0;
+//   fileArr.forEach(function(f){
+//     filename = f.name;
+//     if(filename.match(reg)) {
+//       formData.append('file[]', f);
+//     }
+//     else{
+//       noImgCnt++;
+//     }
+//   });
+//   // formData.append('tempFolder', $('#tempFolder').val());
+//
+//   if(noImgCnt > 0) {
+//     alert("파일은 gif, png, jpg, jpeg 파일만 등록해 주세요.");
+//     return;
+//   } else {
+//     $.ajax({
+//       url : "이미지 업로드 처리할 주소",
+//       data:formData,
+//       cache:false,
+//       contentType:false,
+//       processData:false,
+//       enctype:'multipart/formDataData',
+//       type:'POST',
+//       success:function(result) {
+//         var data = JSON.parse(result); // result = 업로드하고 난 files의 경로
+//         for(x = 0; x < data.length; x++) {
+//           var img = $('<img>').attr({src:data[x]});
+//           $(editor).summernote('insertNode', img[x]); // 썸머노트 컨텐츠에 파라미터로 받은 문자열 추가
+//         }
+//       }
+//     });
+//   }
+// }
 
 // test용
-$(document).on('click', '#uploadBtn', function (files, editor) {
-  saveContent();
-});
+// $(document).on('click', '#uploadBtn', function (files, editor) {
+//   saveContent();
+// });
 
 
 $(".optionList").click(function (e) {
   e.preventDefault();
   $("input[name=bcate]").attr('value', $(this).attr('id'));
   console.log($("input[name=bcate]").val());
-})
+});
 
 
-const saveContent = () => {
-  var summernoteContent = $('#summernote').summernote('code'); // 썸머노트 작성내용(html)
-  $("input[name='content']").val(summernoteContent);
-  console.log("summernoteContent : " + summernoteContent);
-  console.log(typeof(summernoteContent));
+// const saveContent = () => {
+//   var summernoteContent = $('#summernote').summernote('code'); // 썸머노트 작성내용(html)
+//   $("input[name='content']").val(summernoteContent);
+//   console.log("summernoteContent : " + summernoteContent);
+//   console.log(typeof(summernoteContent));
 
+  // console.log($(".note-editable img"));
+  //
+  // console.log($(".note-editable img").attr("src").split("=")[1].substr(0, 10));
+  // $("#uploadPath").val($(".note-editable img").attr("src").split("=")[1].substr(0, 10));
+  // console.log("uuid : " + $(".note-editable img").attr("src").split("=")[1].substr(12, 35));
+  // $("#uuid").val($(".note-editable img").attr("src").split("=")[1].substr(12, 35));
+  // console.log($(".note-editable img").attr("src").split("=")[1].substr(48));
+  // $("#fileName").val($(".note-editable img").attr("src").split("=")[1].substr(48));
 
-
-  if(confirm("글을 등록하시겠습니까?")) {
-    $("form#registerForm").submit();
-  }
-}
+  // if(confirm("글을 등록하시겠습니까?")) {
+  //   $("form#registerForm").submit();
+  // }
+// }
 
 
 

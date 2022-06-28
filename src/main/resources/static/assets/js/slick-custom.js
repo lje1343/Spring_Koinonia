@@ -215,7 +215,9 @@ function getList(param, callback, error) {
 }
 
 
+
 // 댓글 불러오기 최신순
+
 function showList(page){
     getList({pno: pno, page: page}, function(total, list){
         pageNum = page;

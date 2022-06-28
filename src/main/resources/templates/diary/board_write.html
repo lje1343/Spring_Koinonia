@@ -58,7 +58,7 @@
         </div>
       </div>
       <div class="mainArea">
-        <form action="/board/register"  name="registerForm" method="post">
+        <form th:action="@{/board/register}"  name="registerForm" id="registerForm" method="post">
           <div class="nationalityArea">
             <div class="selectArea"  style="display: none"`>
               <select name="" id="select" class="selectBcate" hidden>
@@ -117,6 +117,9 @@
           <div class="writeArea">
             <div id="summernote" name="editordata"></div>
             <!-- 에디터 이미지 임시 저장-->
+<!--            <input type="hidden" id="fileName" name="fileName">-->
+<!--            <input type="hidden" id="uuid" name="uuid">-->
+<!--            <input type="hidden" id="uploadPath" name="uploadPath">-->
             <input type="hidden" id="content" name="content">
             <input type="hidden" name="tempFolder" id="tempFolder" value="임시폴더명" />
           </div>
@@ -125,9 +128,7 @@
             <button id="cancleBtn" class="btnM btnStyleC btnStyleC_1" >
               취소
             </button>
-            <button type="submit" class="btnM btnStyleB btnStyleB_1" id="uploadBtn">
-              확인
-            </button>
+            <input type="submit" class="btnM btnStyleB btnStyleB_1" id="uploadBtn">
           </div>
         </form>
       </div>
@@ -142,6 +143,10 @@
   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
   <script>
+    sessionStorage.getItem("user")
+
+    let fileNameList = [];
+
     let count = 1;
     $(document).ready(function() {
       $('#summernote').summernote({
@@ -179,12 +184,23 @@
         contentType: false,
         processData: false,
         success: function(file){
+          // 데이터 추출
           let keys = Object.keys(file[0]);
           let uuid = file[0][keys[1]];
           let uploadPath = file[0][keys[2]];
           let fileName = file[0][keys[3]];
+          // 데이터 저장
+          let stor= "<div class='stor' data-filename='" + fileName + "' data-uuid='" + uuid + "' data-uploadpath='" + uploadPath  + "'>";
+          $("div.writeArea").append(stor);
+          console.log($("div.writeArea > div.stor").eq(0).data("filename"));
+          console.log($("div.writeArea > div.stor").eq(0).data("uuid"));
+          console.log($("div.writeArea > div.stor").eq(0).data("uploadpath"));
+          // 써머노트 이미지 삽입
           let url = "/boardFile/display?fileName=" + uploadPath + "/" + uuid + "_" + fileName;
           $(editor).summernote('insertImage', url);
+
+          // console.log(uuid);
+          // fileNameList.push(uploadPath + "/" + uuid + "_" + fileName);
 
           let imageId = "thumbnail " + count;
           if (count == 1) {
@@ -195,5 +211,46 @@
         }
       });
     }
+
+    // 파일 리스트 submit
+    $("input[type='submit']").on("click", function(e) {
+    // $("#uploadBtn").on("click", function(e) {
+      e.preventDefault();
+      let $form = $("form#registerForm");
+
+      var summernoteContent = $('#summernote').summernote('code'); // 썸머노트 작성내용(html)
+      $("input[name='content']").val(summernoteContent);
+      console.log("summernoteContent : " + summernoteContent);
+      console.log($("input[name='content']").val());
+
+      let k = 0;
+      let str = "";
+      for (let i = 0; i < $("div.writeArea > div").length; i++) { // div가 검색안됨
+        for (let j = 0; j < $(".note-editable img").length; j++) {
+          if ($("div.writeArea > div.stor").eq(i).data("filename") === $(".note-editable img").eq(j).attr("src").split("=")[1].substr(48)) {
+            console.log($("div.writeArea > div.stor").eq(i).data("filename"));
+            console.log($("div.writeArea > div.stor").eq(i).data("uuid"));
+            console.log($("div.writeArea > div.stor").eq(i).data("uploadpath"));
+            str += "<input type='hidden' name='fileList[" + k + "].fileName' value='" + $("div.writeArea > div.stor").eq(i).data("filename") + "'>"
+            str += "<input type='hidden' name='fileList[" + k + "].uuid' value='" + $("div.writeArea > div.stor").eq(i).data("uuid") + "'>"
+            str += "<input type='hidden' name='fileList[" + k + "].uploadPath' value='" + $("div.writeArea > div.stor").eq(i).data("uploadpath") + "'>"
+            // str += "<input type='hidden' name='fileList[" + k + "].image' value='" + $("div.writeArea > div")[i].data("image") + "'>"
+            // str += "<input type='hidden' name='fileList[" + k + "].fileSize' value='" + $("div.writeArea > div")[i].data("filesize") + "'>"
+            k += 1;
+          }
+        }
+      }
+      $form.append(str).submit();
+    })
+
+
+    // fileNameList.forEach(function (fileName, i, list) {
+    //   for(let j=0 ; j<$(".note-editable img").length ; j++){
+    //     if(fileName.substr(48)===$(".note-editable img")[j].attr("src").split("=")[1].substr(48)){
+    //       $("#fileName").val(fileName);
+    //     };
+    //   }
+    // })
+
   </script>
 </html>
