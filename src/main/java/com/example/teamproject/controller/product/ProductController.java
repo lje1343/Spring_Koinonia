@@ -133,13 +133,14 @@ public class ProductController {
         return "/product/modify_product";
     }
 
-    @PostMapping("/modisucces")
+    @PostMapping("/modify")
     public RedirectView modify(ProductVO productVO, Criteria criteria, RedirectAttributes rttr) {
         log.info("*************");
         log.info("상품 수정 완료");
         log.info("*************");
         // 상품 정보 수정
         if (productService.modify(productVO) == 1) {
+            rttr.addAttribute("pno", productVO.getPno());
             rttr.addAttribute("pageNum", criteria.getPageNum());
             rttr.addAttribute("amount", criteria.getAmount());
         };
