@@ -29,6 +29,9 @@
                         <when test="type == 'P'.toString()">
                             (PCATE LIKE '%'||#{keyword}||'%')
                         </when>
+                        <when test="type == 'R'.toString()">
+                            (PRICE LIKE '%'||#{keyword}||'%')
+                        </when>
                     </choose>
                 </trim>
             </foreach>

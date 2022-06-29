@@ -153,11 +153,11 @@
                         </li>
 
                         <li class="nav-item p-b-10" id="change01">
-                            <a class="nav-link active" data-toggle="tab" role="tab" id="btn1" href="#">지역 세부사항</a>
+                            <a class="nav-link active" data-toggle="tab" role="tab" id="btn1" href="#"></a>
                         </li>
 
                         <li class="nav-item p-b-10" id="change02">
-                            <a class="nav-link" data-toggle="tab" role="tab" id="btn2" href="#">제품설명</a>
+                            <a class="nav-link" data-toggle="tab" role="tab" id="btn2" href="#"></a>
                         </li>
 
                         <li class="nav-item p-b-10">
@@ -260,8 +260,8 @@
 <!--===============================================================================================-->
 <script src="/Vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>       <!-- 필요 -->
 <script>
-    let pno = [[${pno}]];
-    let paging = "[[${criteria.listLink}]]";
+     let pno1 = "[[${pno}]]";
+    let paging = [[${criteria.listLink}]];
 
     console.log(paging)
 
@@ -286,8 +286,8 @@
     console.log($("#name").val());
     console.log(sessionStorage.getItem("user")==$("#name").val());
     if(sessionStorage.getItem("user")==$("#name").val()){
-        $("#change01").html(`<a class="nav-link active" href="/product/modify?pno=${pno}">수정</a>`)
-        $("#change02").html(`<a class="nav-link active" href="/product/remove?pno=${pno}">삭제</a>`)
+        $("#change01").html(`<a class="nav-link active" href="/product/modify?pno=${pno1}">수정</a>`)
+        $("#change02").html(`<a class="nav-link active" href="/product/remove?pno=${pno1}">삭제</a>`)
     }
 </script>
 </html>
