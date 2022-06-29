@@ -115,7 +115,7 @@ public class ProductController {
 
 
     @GetMapping("/modify")
-    public String modify(Long pno, Model model) throws JsonProcessingException {
+    public String modify(Long pno, Model model,Criteria criteria) throws JsonProcessingException {
 //    public String modify(Long pno, Criteria criteria, Model model) {
         log.info("*************");
         log.info("다이어리 수정 내용 작성/삭제");
@@ -133,7 +133,7 @@ public class ProductController {
         return "/product/modify_product";
     }
 
-    @PostMapping("/modify")
+    @PostMapping("/modisucces")
     public RedirectView modify(ProductVO productVO, Criteria criteria, RedirectAttributes rttr) {
         log.info("*************");
         log.info("상품 수정 완료");
