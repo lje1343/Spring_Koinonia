@@ -127,21 +127,16 @@
 
 
                     </div>
-<<<<<<< HEAD
-                    <div clss="button" style="margin-top: 550%;">
-                        <button type="submit" class="btn" id="deletebtn" style="color: #fff; background-color: #0b5ed7; border-color: #0a58ca;">
-                            삭제
-                        </button>
-                        <button type="button" class="btn " id="uploadbtn"  style="color: #fff; background-color: #0b5ed7; border-color: #0a58ca;">
-                            수정
-                        </button>
-                    </div>
 
-=======
-<!--                    <button type="submit" class="btnM btnStyleB btnStyleB_1" id="uploadBtn">-->
-<!--                        삭제-->
-<!--                    </button>-->
->>>>>>> master/master
+<!--                    <div clss="button" style="margin-top: 550%;">-->
+<!--                        <button type="submit" class="btn" id="deletebtn" style="color: #fff; background-color: #0b5ed7; border-color: #0a58ca;">-->
+<!--                            삭제-->
+<!--                        </button>-->
+<!--                        <button type="button" class="btn " id="uploadbtn"  style="color: #fff; background-color: #0b5ed7; border-color: #0a58ca;">-->
+<!--                            수정-->
+<!--                        </button>-->
+<!--                    </div>-->
+
                 </div>
 
             </form>
@@ -265,7 +260,7 @@
 <!--===============================================================================================-->
 <script src="/Vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>       <!-- 필요 -->
 <script>
-    // let pno = [[${pno}]];
+
     let paging = "[[${criteria.listLink}]]";
 
     console.log(paging)
@@ -281,9 +276,6 @@
         });
     });
 
-    $("button[type='button']").on("click", function(e){
-            location.href = "/product/modify" + paging + '&pno=' + pno;
-    });
 
     $("a#goList").click(function(e){
         e.preventDefault();

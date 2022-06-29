@@ -118,7 +118,7 @@ public class ProductController {
     public String modify(Long pno, Model model,Criteria criteria) throws JsonProcessingException {
 //    public String modify(Long pno, Criteria criteria, Model model) {
         log.info("*************");
-        log.info("다이어리 수정 내용 작성/삭제");
+        log.info("상품 수정 내용 작성/삭제");
         log.info("*************");
         model.addAttribute("product", productService.read(pno));
         ArrayList files = new ArrayList();
