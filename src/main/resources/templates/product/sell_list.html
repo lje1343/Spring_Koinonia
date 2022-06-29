@@ -13,10 +13,28 @@
         .let{
             margin-top: 1%;
             margin-bottom: 1%;
+<<<<<<< HEAD
             margin-left: 2%;
+=======
+            margin-left: 10px;
+            border-radius: 30px;
+>>>>>>> 90b8267594ead118e1862419567249750dad18a4
             display: block;
 
         }
+
+        .cateWrap > select{width: 100px; padding: .8em .5em;
+                border: 1px solid #999;font-family: inherit;
+                no-repeat :95% 50%;
+                border-radius: 0px;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                border-radius: 30px;
+
+                                   }
+        .cateWrap > select::-ms-expand {display: none;}
+
 
 
     </style>
@@ -53,6 +71,7 @@
 <main class ="plp-page-container" >
     <div class="container__inner">
         <div clas="wrapper">
+<<<<<<< HEAD
             <!-- Product -->
             <div class="container" >
                 <div class ="let" th:object="${pageDTO}">
@@ -72,6 +91,26 @@
                                 </select>
                                 <input type="text" id="result" name="keyword" th:value="*{keyword}"  style="display:none;">
                             </div>
+=======
+
+        <!-- Product -->
+        <div class="container" >
+            <div class ="let" >
+                <form action="/product/list" name="cateForm" th:object="${criteria}">
+                    <div class="fields">
+                        <div id="cateWrap">
+                            <select id = land th:name="type" th:value="*{type}" onchange="categoryChange(this)"  style="border: 1px solid #bdc1c6;">
+                                <option value="">대륙</option>
+                                <option th:value="TCN" th:selected="*{type} == 'TCN'">전체</option>
+                                <option th:value="P" th:selected="*{type} == 'P'">아시아</option>
+                                <option th:value="P" th:selected="*{type} == 'P'">유럽</option>
+                                <option th:value="P" th:selected="*{type} == 'P'">아프리카</option>
+                                <option th:value="P" th:selected="*{type} == 'P'">남아메리카</option>
+                                <option th:value="P" th:selected="*{type} == 'P'">북아메리카</option>
+                                <option th:value="P" th:selected="*{type} == 'P'">오스트레일리아</option>
+                            </select>
+                            <input type="text" id="result" name="keyword" th:value="*{keyword}"  style="display:none;">
+>>>>>>> 90b8267594ead118e1862419567249750dad18a4
                         </div>
                     </form>
                 </div>
@@ -91,13 +130,12 @@
 
                                 <div class="block2-txt flex-w flex-t p-t-14">
                                     <div class="block2-txt-child1 flex-col-l ">
-                                        <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04  p-b-6" >
-                                            <div th:text="${product.pname}"></div>
+                                        <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04  p-b-6 js-name-b2" th:text="${product.pname}">
                                         </a>
 
-                                        <span class="stext-105 cl3 js-name-b2"  >
-                                    <a th:text="${product.price}"></a>
-                                </span>
+                                        <span class="stext-105 cl3 " >
+                                      <a th:text="${product.price}"></a>
+                                      </span>
 
 
                                     </div>
@@ -125,8 +163,43 @@
                     <a class="changePage" th:href="*{criteria.pageNum - 1}" th:if="*{criteria.pageNum > 1}"><code>&lt;</code></a>
                     <code th:text="*{criteria.pageNum}"></code>
                     <a class="changePage" th:href="*{criteria.pageNum + 1}" th:if="*{criteria.pageNum < realEnd}"><code>&gt;</code></a>
+<<<<<<< HEAD
+=======
+
+                </th:block>
+            </div>
+
+            <form action="/product/list" name="searchForm" th:object="${criteria}">
+            <div class="buttons flex">
+                <div class="searchbox py-lg-5" style="border-bottom: solid 1px #cccccc;">
+
+                    <div class="input-group input-group-sm" style="width: 70%; margin:0 auto;">
+
+                        <div class="select-box">
+                            <select class="search-selector" name="type">
+                                <option value="">검색 기준</option>
+                                <option value="TCNP" th:selected="*{type} == 'TCN'">전체</option>
+                                <option value="T" th:selected="*{type} == 'T'">제목</option>
+                                <option value="C" th:selected="*{type} == 'C'">내용</option>
+                                <option value="N" th:selected="*{type} == 'N'">작성자</option>
+                                <option value="P" th:selected="*{type} == 'N'">카테고리</option>
+                                <option value="R" th:selected="*{type} == 'R'">가격</option>
+                                <option value="TC" th:selected="*{type} == 'TC'">제목 또는 내용</option>
+                                <option value="TN" th:selected="*{type} == 'TN'">제목 또는 작성자</option>
+                                <option value="CN" th:selected="*{type} == 'CN'">내용 또는 작성자</option>
+                            </select>
+                        </div>
+                        <input type="text" name="keyword" value="" class="form-control input-search temp-margin" placeholder="검색어" size="10">
+                        <span class="input-group-btn">
+                                <button type="submit" class="btn btn-primary search-btn" title="검색">검색</button>
+                            </span>
+
+                    </div>
+
+>>>>>>> 90b8267594ead118e1862419567249750dad18a4
                 </div>
             </div>
+            </form>
             <form action="/product/list" name="pageForm" th:object="${criteria}">
                 <input type="hidden" th:field="*{pageNum}">
                 <input type="hidden" th:field="*{amount}">
@@ -162,12 +235,9 @@
 <!--===============================================================================================-->
 <script src="/Vendor/sweetalert/sweetalert.min.js"></script>
 <script th:inline="javascript">
+
     let pno = [[${pno}]];
     let paging = [[${criteria.listLink}]];
-
-
-
-
 
 
     if(pno != null){
@@ -204,26 +274,6 @@
     });
 
 
-
-
-    // function showUploadResult(files){
-    //     let str ="";
-    //     $(files).each(function(i, file){
-    //         str += "<li data-filename='" + file.fileName.substring(file.fileName.indexOf("_") + 1) + "' data-uuid='" + file.uuid + "' data-uploadpath='" + file.uploadPath + "' data-image='" + file.image + "'>";
-    //         if(file.image){
-    //             str += "<a href=\"javascript:showImage(\'" + file.uploadPath + "/" + file.uuid + "_" + file.fileName +"\');\"><img src='/productFile/display?fileName=" + file.uploadPath + "/s_" + file.uuid + "_"  + file.fileName + "'></a>";
-    //         }else{
-    //             str += "<a href='/productFile/download?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName + "'><img src='/images/attach.png' width='100'></a>";
-    //         }
-    //         str += "<p>" + file.fileName.substring(file.fileName.indexOf("_") + 1) + "</p>"
-    //         str += "</li>"
-    //     });
-    //     $uploadResult.html(str);
-    // }
-    //
-    // (function(){
-    //     $.getJSON("/productFile/list", {pno: pno}, function(list){showUploadResult(list);})
-    // })();
 
 
 
