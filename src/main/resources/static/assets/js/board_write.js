@@ -224,11 +224,11 @@ const saveContent = () => {
   console.log("summernoteContent : " + summernoteContent);
 =======
 
-$(".optionList").click(function (e) {
-  e.preventDefault();
-  $("input[name=bcate]").attr('value', $(this).attr('id'));
-  console.log($("input[name=bcate]").val());
-});
+// $(".optionList").click(function (e) {
+//   e.preventDefault();
+//   $("input[name=bcate]").attr('value', $(this).attr('id'));
+//   console.log($("input[name=bcate]").val());
+// });
 
 
 // const saveContent = () => {

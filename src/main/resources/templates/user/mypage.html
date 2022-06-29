@@ -421,4 +421,11 @@
 <script src="/assets/js/owl.carousel.min.js"></script>
 <script src="/assets/js/main.js"></script>
 </body>
+<script>
+    // user정보
+    var user = "[[${user}]]";
+    if(!(user==null || user.length<=0)) {
+        sessionStorage.setItem("user", user); // 유저 이름
+    }
+</script>
 </html>
