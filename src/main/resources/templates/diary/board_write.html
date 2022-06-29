@@ -56,95 +56,6 @@
                 소개합니다!
             </p>
         </div>
-<<<<<<< HEAD
-    </div>
-    <div class="mainArea">
-        <form action="/board/register"  name="registerForm" method="post">
-            <div class="nationalityArea">
-                <div class="selectArea"  style="display: none"`>
-                    <select name="" id="select" class="selectBcate" hidden>
-                        <option value="01">유럽</option>
-                        <option value="02">북아메리카</option>
-                        <option value="03">남아메리카</option>
-                        <option value="04">오세아니아</option>
-                        <option value="05">아프리카</option>
-                        <option value="00" selected>아시아</option>
-                    </select>
-                    <button type="button" id="selectBtn" class="select">
-                        여행한 대륙은 어디인가요?
-                    </button>
-                    <div class="option" id="option">
-                        <ul>
-                            <li><a class="optionList" id="00">아시아</a></li>
-                            <li><a class="optionList" id="01">유럽</a></li>
-                            <li><a class="optionList" id="02">북아메리카</a></li>
-                            <li><a class="optionList" id="03">남아메리카</a></li>
-                            <li><a class="optionList" id="04">오세아니아</a></li>
-                            <li><a class="optionList" id="05">아프리카</a></li>
-                            <input type="hidden" name="bcate">
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="thumArea">
-                <input type="file" name="thum" id="thum" hidden />
-
-                <div class="viewthum">
-                    <div class="viewlabel">제목</div>
-                    <input
-                            type="text"
-                            class="viewInput"
-                            id="boardTitle"
-                            name="title"
-                            placeholder="제목을 입력하세요."
-                    />
-                </div>
-
-                <div class="viewthum" style="display: none;">
-                    <div class="viewlabel">썸네일</div>
-                    <input
-                            type="text"
-                            class="viewInput"
-                            id="viewInput"
-                            placeholder="썸네일을 올려주세요"
-                            readonly
-                    />
-                    <label for="thum" class="btnS btnStyleB btnStyleB_1"
-                    >파일선택</label
-                    >
-                </div>
-            </div>
-
-            <div class="writeArea">
-                <div id="summernote" name="editordata"></div>
-                <!-- 에디터 이미지 임시 저장-->
-                <input type="hidden" id="fileName" name="fileName">
-                <input type="hidden" id="content" name="content">
-                <input type="hidden" name="tempFolder" id="tempFolder" value="임시폴더명" />
-            </div>
-
-            <div class="btnArea">
-                <button id="cancleBtn" class="btnM btnStyleC btnStyleC_1" >
-                    취소
-                </button>
-                <button type="submit" class="btnM btnStyleB btnStyleB_1" id="uploadBtn">
-                    확인
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-<!--  footer start  -->
-<div th:replace="~{/footer/footer :: footerFragment}"></div>
-<!--  footer end  -->
-</body>
-<script src="/assets/js/board_write.js"></script>
-<!-- header,footer -->
-<script src="/assets/js/header.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-<script>
-=======
       </div>
       <div class="mainArea">
         <form th:action="@{/board/register}"  name="registerForm" id="registerForm" method="post">
@@ -235,8 +146,6 @@
     sessionStorage.getItem("user")
 
     let fileNameList = [];
-
->>>>>>> af254b25c29f287a02d1cbecb70c44f179885df1
     let count = 1;
     $(document).ready(function() {
         $('#summernote').summernote({
@@ -265,37 +174,6 @@
     });
 
     function sendFile(files, editor, welEditable){
-<<<<<<< HEAD
-        let data = new FormData();
-        data.append("uploadFiles", files[0]);
-        $.ajax({
-            url: "/boardFile/upload",
-            type: "post",
-            data: data,
-            contentType: false,
-            processData: false,
-            success: function(file){
-                let keys = Object.keys(file[0]);
-                let uuid = file[0][keys[1]];
-                let uploadPath = file[0][keys[2]];
-                let fileName = file[0][keys[3]];
-                let url = "/boardFile/display?fileName=" + uploadPath + "/" + uuid + "_" + fileName;
-                $(editor).summernote('insertImage', url);
-
-                let imageId = "thumbnail " + count;
-                if (count == 1) {
-                    $('img[src=url]').attr("id", imageId);
-                    // console.log($("body").filter("li"))
-                }
-                count += 1;
-            }
-        });
-    }
-
-    sessionStorage.getItem("user")
-
-</script>
-=======
       let data = new FormData();
       data.append("uploadFiles", files[0]);
       $.ajax({
@@ -374,5 +252,4 @@
     // })
 
   </script>
->>>>>>> af254b25c29f287a02d1cbecb70c44f179885df1
 </html>
