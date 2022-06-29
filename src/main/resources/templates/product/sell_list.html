@@ -13,12 +13,8 @@
         .let{
             margin-top: 1%;
             margin-bottom: 1%;
-<<<<<<< HEAD
-            margin-left: 2%;
-=======
             margin-left: 10px;
             border-radius: 30px;
->>>>>>> 90b8267594ead118e1862419567249750dad18a4
             display: block;
 
         }
@@ -71,27 +67,6 @@
 <main class ="plp-page-container" >
     <div class="container__inner">
         <div clas="wrapper">
-<<<<<<< HEAD
-            <!-- Product -->
-            <div class="container" >
-                <div class ="let" th:object="${pageDTO}">
-                    <form action="/product/list" name="cateForm" th:object="${criteria}">
-                        <div class="fields">
-                            <div id="searchWrap">
-                                <select id = land name="type" onchange="categoryChange(this)">
-                                    <option value="">대륙</option>
-                                    <option value="TCN" th:selected="*{type} == 'TCN'">전체</option>
-                                    <option value="P" th:selected="*{type} == 'P'">아시아</option>
-                                    <option value="P" th:selected="*{type} == 'P'">유럽</option>
-                                    <option value="P" th:selected="*{type} == 'P'">아프리카</option>
-                                    <option value="P" th:selected="*{type} == 'P'">남아메리카</option>
-                                    <option value="P" th:selected="*{type} == 'P'">남아메리카</option>
-                                    <option value="P" th:selected="*{type} == 'P'">북아메리카</option>
-                                    <option value="P" th:selected="*{type} == 'P'">오스트레일리아</option>
-                                </select>
-                                <input type="text" id="result" name="keyword" th:value="*{keyword}"  style="display:none;">
-                            </div>
-=======
 
         <!-- Product -->
         <div class="container" >
@@ -110,7 +85,7 @@
                                 <option th:value="P" th:selected="*{type} == 'P'">오스트레일리아</option>
                             </select>
                             <input type="text" id="result" name="keyword" th:value="*{keyword}"  style="display:none;">
->>>>>>> 90b8267594ead118e1862419567249750dad18a4
+
                         </div>
                     </form>
                 </div>
@@ -163,8 +138,8 @@
                     <a class="changePage" th:href="*{criteria.pageNum - 1}" th:if="*{criteria.pageNum > 1}"><code>&lt;</code></a>
                     <code th:text="*{criteria.pageNum}"></code>
                     <a class="changePage" th:href="*{criteria.pageNum + 1}" th:if="*{criteria.pageNum < realEnd}"><code>&gt;</code></a>
-<<<<<<< HEAD
-=======
+
+
 
                 </th:block>
             </div>
@@ -196,7 +171,7 @@
 
                     </div>
 
->>>>>>> 90b8267594ead118e1862419567249750dad18a4
+
                 </div>
             </div>
             </form>
@@ -209,6 +184,7 @@
         </div>
     </div>
 </main>
+
 
 
 
