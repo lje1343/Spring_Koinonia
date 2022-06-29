@@ -69,12 +69,7 @@
     </update>
 
     <select id="getTotal" resultType="_int">
-        SELECT COUNT(DNO) FROM TBL_DECLARE
+        SELECT COUNT(DNO) FROM TBL_DECLARE WHERE NAME = #{name}
     </select>
-
-
-
-
-
 
 </mapper>

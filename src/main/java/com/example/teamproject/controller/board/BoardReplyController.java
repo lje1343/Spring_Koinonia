@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Optional;
@@ -23,8 +24,9 @@ public class BoardReplyController {
 
     // 다이어리 댓글 등록
     @PostMapping(value = "/new", consumes = "application/json", produces = "text/plain; charset=utf-8")
-    public ResponseEntity<String> create(@RequestBody BoardReplyVO boardReplyVO) throws UnsupportedEncodingException {
+    public ResponseEntity<String> create(@RequestBody BoardReplyVO boardReplyVO, HttpSession session) throws UnsupportedEncodingException {
         log.info("boardReplyVO : " + boardReplyVO);
+        boardReplyVO.setName(session.getAttribute("name").toString());
         boardReplyService.register(boardReplyVO);
         return new ResponseEntity<>(new String("댓글 등록 성공".getBytes(), "UTF-8") , HttpStatus.OK);
     }
