@@ -9,6 +9,7 @@ import com.example.teamproject.service.declare.DeclareServieceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,16 @@ public class DeclareController {
         return "/declare/declare";
     }
 
+    @GetMapping("/count")
+    public String countDeclaration(String name, Model model){
+        log.info("*************");
+        log.info("해당 유저의 신고당한 횟수 조회");
+        log.info("*************");
+        model.addAttribute("name", name);
+        model.addAttribute("count", declareService.getTotal(name));
+        return "/declare/declare";
+    }
+
     @GetMapping("/register")
     public String register() {
         log.info("*************");
@@ -39,14 +50,12 @@ public class DeclareController {
         return "/declare/board_declare";
     }
 
-
     @PostMapping("/register")
     public String register(DeclareVO declareVO) {
         log.info("*************");
         log.info("신고 작성");
         log.info("*************");
         declareService.register(declareVO);
-
         return "/declare/declare";
     }
 

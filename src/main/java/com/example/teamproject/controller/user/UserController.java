@@ -61,6 +61,9 @@ public class UserController {
             // 로그인 성공
             session.setAttribute("email", email);
             session.setAttribute("name", userService.login(email).getName());
+                //세션정보
+            log.info((String) session.getAttribute("name"));
+            model.addAttribute("user" ,(String) session.getAttribute("name"));
             return "/user/mypage";
 
     }

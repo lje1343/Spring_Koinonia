@@ -20,8 +20,8 @@ public class DeclareDAO {
     };
 
     // 신고 당한 횟수 조회
-    public int getTotal(String email){
-        return declareMapper.getTotal();
+    public int getTotal(String name){
+        return declareMapper.getTotal(name);
     };
 
     // 회원 1명의 신고 목록 조회

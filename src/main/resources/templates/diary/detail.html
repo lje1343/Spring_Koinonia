@@ -39,7 +39,6 @@
                         -moz-background-size: cover;
                         -o-background-size: cover;
                         background-size: cover;
-                        height: 400px;
                         background-image: url('http://linkandleave.com/files/2017/02/23/6e006508201242416d4d62cc6e260ac3143147.jpg');
                     }
 
@@ -87,7 +86,7 @@
                                 </div>
                                 <div class="info">
                                     <div class="common pull-left">
-                                        <i class="glyphicon glyphicon-tint"></i>  <span th:text="${board.name}"></span>
+                                        <i class="glyphicon glyphicon-tint"></i>  <span id="name" th:text="${board.name}"></span>
                                         <span  class="split">|</span>
                                         <i class="glyphicon glyphicon-time"></i> <span th:text="${board.registerDate}"></span>
                                     </div>
@@ -97,36 +96,21 @@
                                 </div>
                             </div>
 
-                            <div id="vContent" class="content" th:utext="${content}">
-                                <a>
-                                    <img src="/images/menton-g64ddb272f_640.jpg">
-                                </a>
 
-                                <p>3년 전 북유럽을 통해 다녀온 적이 있었다.</p>
-                                <p><br></p>
-                                <p>그때 좋은 추억 정말 즐거웠는데.. 이번엔 드디어 꿈에 그리던 남프랑스로 6박8일 여행이 시작되었다.</p>
-                                <p>결론부터 말하자면 너너너 너~~~무 좋았다.</p>
-                                <p><br></p>
-                                <p>출발 전, 꼼꼼한 준비로 당황하지 않고.</p>
-                                <p>프랑스에 15년 살아온 지인의 풍부한 경험과 지식</p>
-                                <p>꼼꼼하면서도 섬세한 일정과 배려로 아쉽지 않은 여행이 되었다.</p>
-                                <br><br>
-
+                            <div id="vContent" class="content" th:utext="${board.content}">
 
                             </div>
                         </div>
                     </div>
 
                     <div class="action clearfix">
-                        <a href="/?r=home&amp;c=help/review" class="btn btn-default btn-sm">목록으로</a>
+                        <a th:href="@{/board/list}" class="btn btn-default btn-sm">목록으로</a>
 
-                        <div class="right_1">
-                            <a href="/?r=home&amp;c=help/review&amp;mod=write&amp;uid=1258"
+                        <div class="right_1" style="display: none" id="userBtn">
+                            <a th:href="@{/board/modify(bno=${board.bno})}"
                                class="btn btn-default btn-sm">수정</a>
-                            <a href="/?r=home&amp;c=help/review&amp;a=delete&amp;uid=1258" target="_action_frame_stbbs"
+                            <a th:href="@{/board/remove(bno=${board.bno})}" target="_action_frame_stbbs"
                                class="btn btn-default btn-sm" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a>
-
-
                         </div>
                     </div>
 
@@ -135,7 +119,7 @@
 
                     <!-- Review -->
                     <div class="area_reply ">
-                        <strong class="tit_reply">댓글
+                        <strong class="tit_reply" id="reply">댓글
                             <div type="button" class="btn_reply">
                                 <span id="commentCount15_0"></span>
                             </div>
@@ -152,7 +136,7 @@
                                 <fieldset class="fld_reply">
                                     <legend class="screen_out">댓글쓰기</legend>
                                     <div class="reply_write ">
-                                        <input type="hidden" name="bno" th:value="*{bno}">
+                                        <input type="hidden" name="bno" id=bno th:value="${board.bno}">
                                         <label for="content" class="lab_write"></label>
                                         <textarea id="content" name="content" class="diary_reply"
                                                   placeholder="여러분의 소중한 댓글을 입력해주세요"
@@ -166,19 +150,12 @@
                             </form>
                         </div>
                     </div>
-
-
-                        <script type="text/javascript">
-
-                        </script>
-
                     </section>
-
-
-
                 </div>
             </div>
         </div>
+    </div>
+</div>
             <!--  footer start  -->
             <div th:replace="~{/footer/footer :: footerFragment}"></div>
             <!--  footer end  -->
@@ -208,12 +185,11 @@
                     mainClass: 'mfp-fade'
                 });
             });
+
+            if(sessionStorage.getItem("user")==$("#name").text()){
+                $("#userBtn").attr("style", "display:block;");
+            }
         </script>
-        <script>
-        $("#vContent").html("[[${board.content}]]");
-    </script>
-    </div>
-</div>
 </body>
 
 </html>

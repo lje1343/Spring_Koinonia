@@ -1,7 +1,6 @@
 package com.example.teamproject.mapper;
 
 
-import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.Criteria;
 import com.example.teamproject.domain.vo.DeclareVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -15,11 +14,5 @@ public interface DeclareMapper {
     public int update(DeclareVO declareVO);
     public DeclareVO get(Long dno);
     public int delete(Long dno);
-    public int getTotal();
-
-
-
-
-
-
+    public int getTotal(String name);
 }

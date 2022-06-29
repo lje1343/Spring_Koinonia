@@ -58,7 +58,7 @@
         </div>
       </div>
       <div class="mainArea">
-        <form th:action="@{/board/modify}" id="registerForm" method="post" th:object="${board}">
+        <form th:action="@{/board/modify}" id="modifyForm" method="post" th:object="${board}">
           <div class="nationalityArea">
             <div class="selectArea">
               <select name="select" id="select" th:field="*{bcate}" hidden>
@@ -96,22 +96,22 @@
               />
             </div>
           </div>
-          <div class="thumArea">
-            <input type="file" name="thum" id="thum" hidden />
-            <div class="viewthum">
-              <div class="viewlabel">썸네일</div>
-              <input
-                type="text"
-                class="viewInput"
-                id="viewInput"
-                placeholder="썸네일을 올려주세요"
-                readonly
-              />
-              <label for="thum" class="btnS btnStyleB btnStyleB_1"
-                >파일선택</label
-              >
-            </div>
-          </div>
+<!--          <div class="thumArea">-->
+<!--            <input type="file" name="thum" id="thum" hidden />-->
+<!--            <div class="viewthum">-->
+<!--              <div class="viewlabel">썸네일</div>-->
+<!--              <input-->
+<!--                type="text"-->
+<!--                class="viewInput"-->
+<!--                id="viewInput"-->
+<!--                placeholder="썸네일을 올려주세요"-->
+<!--                readonly-->
+<!--              />-->
+<!--              <label for="thum" class="btnS btnStyleB btnStyleB_1"-->
+<!--                >파일선택</label-->
+<!--              >-->
+<!--            </div>-->
+<!--          </div>-->
           <div class="writeArea">
             <div id="summernote"></div>
             <!-- 에디터 이미지 임시 저장-->
@@ -120,12 +120,10 @@
             <input type="hidden" name="tempFolder" id="tempFolder" value="임시폴더명" />
           </div>
           <div class="btnArea">
-            <button id="cancleBtn" class="btnM btnStyleC btnStyleC_1">
+            <button th:href="@{/board/list}" id="cancleBtn" class="btnM btnStyleC btnStyleC_1" >
               취소
             </button>
-            <button type="submit" class="btnM btnStyleB btnStyleB_1" id="uploadBtn">
-              수정
-            </button>
+            <input value="수정" type="submit" class="btnM btnStyleB btnStyleB_1" id="uploadBtn">
           </div>
         </form>
       </div>
@@ -139,12 +137,6 @@
   <script src="/assets/js/header.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-  <script>
-    $(document).ready(function(){
-      $("#selectBtn").text($("#select").val());
-      $('#summernote').summernote('code', $("input[name='content']").val());
-    })
-  </script>
   <!-- summernote -->
   <script>
     let count = 1;
@@ -174,6 +166,11 @@
       });
     });
 
+  $(document).ready(function(){
+    $("#selectBtn").text($("#select").val());
+    $('#summernote').summernote('code', $("input[name='content']").val());
+  })
+
     function sendFile(files, editor, welEditable){
       let data = new FormData();
       data.append("uploadFiles", files[0]);
@@ -184,10 +181,18 @@
         contentType: false,
         processData: false,
         success: function(file){
+          // 데이터 추출
           let keys = Object.keys(file[0]);
           let uuid = file[0][keys[1]];
           let uploadPath = file[0][keys[2]];
           let fileName = file[0][keys[3]];
+          // 데이터 저장
+          let stor= "<div class='stor' data-filename='" + fileName + "' data-uuid='" + uuid + "' data-uploadpath='" + uploadPath  + "'>";
+          $("div.writeArea").append(stor);
+          console.log($("div.writeArea > div.stor").eq(0).data("filename"));
+          console.log($("div.writeArea > div.stor").eq(0).data("uuid"));
+          console.log($("div.writeArea > div.stor").eq(0).data("uploadpath"));
+          // 써머노트 이미지 삽입
           let url = "/boardFile/display?fileName=" + uploadPath + "/" + uuid + "_" + fileName;
           $(editor).summernote('insertImage', url);
 
@@ -200,5 +205,35 @@
         }
       });
     }
+
+    // 파일 리스트 submit
+    $("input[type='submit']").on("click", function(e) {
+      // $("#uploadBtn").on("click", function(e) {
+      e.preventDefault();
+      let $form = $("form#modifyForm");
+
+      // db에 썸머노트 컨텐츠 넣기 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      var summernoteContent = $('#summernote').summernote('code'); // 썸머노트 작성내용(html)
+      $("input[name='content']").val(summernoteContent);
+      console.log("summernoteContent : " + summernoteContent);
+      console.log($("input[name='content']").val());
+
+      let k = 0;
+      let str = "";
+      for (let i = 0; i < $("div.writeArea > div").length; i++) { // div가 검색안됨
+        for (let j = 0; j < $(".note-editable img").length; j++) {
+          if ($("div.writeArea > div.stor").eq(i).data("filename") === $(".note-editable img").eq(j).attr("src").split("=")[1].substr(48)) {
+            console.log($("div.writeArea > div.stor").eq(i).data("filename"));
+            console.log($("div.writeArea > div.stor").eq(i).data("uuid"));
+            console.log($("div.writeArea > div.stor").eq(i).data("uploadpath"));
+            str += "<input type='hidden' name='fileList[" + k + "].fileName' value='" + $("div.writeArea > div.stor").eq(i).data("filename") + "'>"
+            str += "<input type='hidden' name='fileList[" + k + "].uuid' value='" + $("div.writeArea > div.stor").eq(i).data("uuid") + "'>"
+            str += "<input type='hidden' name='fileList[" + k + "].uploadPath' value='" + $("div.writeArea > div.stor").eq(i).data("uploadpath") + "'>"
+            k += 1;
+          }
+        }
+      }
+      $form.append(str).submit();
+    })
   </script>
 </html>
