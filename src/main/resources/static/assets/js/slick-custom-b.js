@@ -134,10 +134,10 @@
     });
 
 
-    // $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-    //     var nameTab = $(e.target).attr('href');
-    //     $(nameTab).find('.slick2').slick('reinit');
-    // });
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var nameTab = $(e.target).attr('href');
+        $(nameTab).find('.slick2').slick('reinit');
+    });
 
     /*==================================================================
     [ Slick3 ]*/
