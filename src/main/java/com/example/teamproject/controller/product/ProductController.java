@@ -145,13 +145,8 @@ public class ProductController {
         };
         return new RedirectView("/product/list");
     }
-//        log.info(criteria.toString());
-//        model.addAttribute("product", productService.read(pno));
-//        // 상품 수정
-//        return "/product/product_modify";
-//    }
 
-    // 카테고리별 상품 목록
+
     @GetMapping("/remove")
 
     public RedirectView remove(Long pno, RedirectAttributes rttr) {
@@ -160,41 +155,6 @@ public class ProductController {
 
         rttr.addFlashAttribute("pno", pno);
         return new RedirectView("/product/list");
-    }
-
-
-
-
-
-//    @PostMapping("/modisucces")
-//    public RedirectView modisucces(Long pno, ProductVO productVO, Criteria criteria, RedirectAttributes rttr) {
-//        log.info("*************");
-//        log.info("상품 수정 완료");
-//        log.info("*************");
-//        // 다이어리 수정 완료
-//        productService.modify(productVO);
-//        rttr.addAttribute("pno", productVO.getPno());
-//        rttr.addAttribute("pageNum", criteria.getPageNum());
-//        rttr.addAttribute("amount", criteria.getAmount());
-//
-//        return new RedirectView("/product/sell_detail");
-//}
-
-    ///////////////////////////////////////////////////
-    // ResponsBody
-
-    // 카테고리별 상품 목록
-    @GetMapping("/list/{pcate}")
-    @ResponseBody
-    public List<ProductVO> getList(@PathVariable("pcate") String pcate){
-        return null;
-    }
-
-    // 무한 스크롤
-    @GetMapping("/list/{pcate}/{pageNum}")
-    @ResponseBody
-    public List<ProductVO> getList(@PathVariable("pcate") String pcate, @PathVariable("pageNum") int pageNum){
-        return null;
     }
 
 }
