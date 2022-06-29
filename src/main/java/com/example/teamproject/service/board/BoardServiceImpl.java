@@ -12,6 +12,7 @@ import com.example.teamproject.domain.vo.*;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,9 +29,21 @@ public class BoardServiceImpl {
     }
 
 //    다이어리 수정
+    @Transactional(rollbackFor = Exception.class)
     public int modify(BoardVO boardVO) {
+        // 해당 다이어리의 파일 목록 수정
+        boardFileDAO.remove(boardVO.getBno());
+
+        if(boardVO.getFileList() != null) {
+            boardVO.getFileList().forEach(boardFileVO -> {
+                boardFileVO.setBno(boardVO.getBno());
+                boardFileDAO.register(boardFileVO);
+            });
+        }
+        // 다이어리 수정
         return boardDAO.modify(boardVO);
     }
+
 
 //    다이어리 삭제
     public int remove(Long bno) {

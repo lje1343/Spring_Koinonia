@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Optional;
@@ -24,9 +25,10 @@ public class ProductReplyController {
 
     // 상품 댓글 등록
     @PostMapping(value = "/new", consumes = "application/json", produces = "text/plain; charset=utf-8")
-    public ResponseEntity<String> create(@RequestBody ProductReplyVO productReplyVO) throws UnsupportedEncodingException {
+    public ResponseEntity<String> create(@RequestBody ProductReplyVO productReplyVO, HttpSession session) throws UnsupportedEncodingException {
         log.info("boardReplyVO : " + productReplyVO);
-        productReplyVO.setName("test"); // 기본값 로그인시 세션이용해야 받아함;
+//        productReplyVO.setName("test"); // 기본값 로그인시 세션이용해야 받아함;
+        productReplyVO.setName(session.getAttribute("name").toString());
         productReplyService.register(productReplyVO);
         return new ResponseEntity<>(new String("댓글 등록 성공".getBytes(), "UTF-8") , HttpStatus.OK);
     }

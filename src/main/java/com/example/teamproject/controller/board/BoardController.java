@@ -48,9 +48,6 @@ public class BoardController {
         log.info("*************");
         log.info("다이어리 작성");
         log.info("*************");
-        if(session.getAttribute("name")==null){
-            return "/user/login";
-        }
         return "/diary/board_write";
     }
 
@@ -71,7 +68,7 @@ public class BoardController {
             });
         }
         // 상세 페이지로 이동
-        rttr.addFlashAttribute("bno", boardVO.getBno());
+        rttr.addAttribute("bno", boardVO.getBno());
         return new RedirectView("/board/detail");
     }
 
@@ -97,21 +94,24 @@ public class BoardController {
     }
 
 
-//    @PostMapping("/remove")
-//    public String remove(Long bno, RedirectAttributes rttr){
-//        log.info("*************");
-//        log.info("다이어리 삭제");
-//        log.info("*************");
-//        // 다이어리 삭제
-//        return new RedirectView("/board/list");
-//    }
+    @GetMapping("/remove")
+    public RedirectView remove(Long bno, Criteria criteria, RedirectAttributes rttr){
+        log.info("*************");
+        log.info("다이어리 삭제");
+        log.info("*************");
+        if(boardService.remove(bno)==1){
+            rttr.addAttribute("pageNum", criteria.getPageNum());
+            rttr.addAttribute("amount", criteria.getAmount());
+        };
+        return new RedirectView("/board/list");
+    }
 
     @GetMapping("/detail")
     public String diaryDetail(Long bno, Model model, Criteria criteria) {
         log.info("*************");
         log.info("다이어리 상세");
         log.info("*************");
-//        bno = 22L;
+        log.info(bno.toString());
         log.info(boardService.diaryDetail(bno).toString());
         model.addAttribute("board", boardService.diaryDetail(bno));
         return "/diary/detail";
