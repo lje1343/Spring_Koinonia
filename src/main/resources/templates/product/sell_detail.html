@@ -260,10 +260,15 @@
 <!--===============================================================================================-->
 <script src="/Vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>       <!-- 필요 -->
 <script>
+
+
+    let paging = "[[${criteria.listLink}]]";
+
      let pno1 = "[[${pno}]]";
     let paging = [[${criteria.listLink}]];
 
     console.log(paging)
+
 
     $('.gallery-lb').each(function () { // the containers for all your galleries
         $(this).magnificPopup({
