@@ -4,6 +4,9 @@
 <head>
 
     <style>
+        *{
+            font-family: "Noto IKEA", "Noto Sans", "Roboto", "Open Sans", -apple-system, sans-serif;
+        }
         .flex-c-m{
             visibility: hidden;
         }
@@ -85,7 +88,7 @@
                     <div class="wrap" style="margin-bottom: 40px">
                         <article >
                             <h4 class="mtext-105 cl2 js-name-detail p-b-14" >
-                                <input type="text" readonly th:field="*{title}" style="width: 400px">
+                                <input type="text" readonly th:field="*{title}" style="width: 600px">
                             </h4>
                         </article>
                     </div>
@@ -222,6 +225,12 @@
 <script>
     // let pno = [[${pno}]];
     let paging = "[[${criteria.listLink}]]";
+
+    document.getElementById("goList").style.fontSize = '15px';
+    document.getElementById("story").style.fontSize = '20px';
+    document.getElementById("change01").style.fontSize = '20px';
+    document.getElementById("change02").style.fontSize = '20px';
+
 
     $('.gallery-lb').each(function () { // the containers for all your galleries
         $(this).magnificPopup({
