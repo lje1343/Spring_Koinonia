@@ -106,7 +106,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 =======
 >>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 [ Bootstrap ]*/
-.container {max-width: 1380px;}
+.container {max-width: 1700px;}
 
 @media (max-width: 1600px) {
   .container {max-width: 1200px;}

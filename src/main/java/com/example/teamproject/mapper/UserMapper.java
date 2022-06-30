@@ -1,8 +1,11 @@
 package com.example.teamproject.mapper;
 
+import com.example.teamproject.domain.vo.UserDTO;
 import com.example.teamproject.domain.vo.UserVO;
 import org.apache.catalina.User;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface UserMapper {
@@ -13,6 +16,8 @@ public interface UserMapper {
     public UserVO find(String email);
     public UserVO login(String email);
     public int update(UserVO userVO);
+
+    public List<UserDTO> myproduct(String name);
 
 
     public void updatePw(String newPw, String email);
