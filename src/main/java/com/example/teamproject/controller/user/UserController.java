@@ -136,14 +136,12 @@ public class UserController {
     // 마이페이지
 
     @GetMapping("/mypage")
-    public String goToMypage(Model model){
+    public String goToMypage(Model model, HttpSession session){
         log.info("*************");
         log.info("마이페이지");
         log.info("*************");
-        // 개인정보
-        // 좋아요한 다이어리 목록
-        // 내가 쓴 다이어리 목록
-        // 내가 올린 상품 목록
+
+        
         return "/user/mypage";
     }
 
