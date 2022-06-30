@@ -1,27 +1,37 @@
 
 package com.example.teamproject.controller.user;
 
-import com.example.teamproject.domain.vo.UserVO;
+import com.example.teamproject.domain.vo.*;
+import com.example.teamproject.service.board.BoardFileServiceImpl;
+import com.example.teamproject.service.board.BoardServiceImpl;
+import com.example.teamproject.service.product.ProductFileServiceImpl;
+import com.example.teamproject.service.product.ProductServieceImpl;
 import com.example.teamproject.service.user.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
+
 
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @Slf4j
 @RequestMapping("/user/*")
 @RequiredArgsConstructor
 public class UserController {
+    private final BoardServiceImpl boardService;
     private final UserServiceImpl userService;
+    private final ProductServieceImpl productServiece;
+    private final BoardFileServiceImpl boardFileService;
+    private final ProductFileServiceImpl productFileService;
     // 회원가입/로그인/비밀번호찾기/마이페이지
 
     @GetMapping("/join")
@@ -136,14 +146,33 @@ public class UserController {
     // 마이페이지
 
     @GetMapping("/mypage")
-    public String goToMypage(Model model){
+    public String goToMypage(Model model, HttpSession session){
         log.info("*************");
         log.info("마이페이지");
         log.info("*************");
-        // 개인정보
-        // 좋아요한 다이어리 목록
-        // 내가 쓴 다이어리 목록
-        // 내가 올린 상품 목록
+
+        String name = (String)session.getAttribute("name");
+        log.info("내이름은 " + name.toString());
+        log.info(userService.mysell(name).toString());
+
+        List<String> productThumfileUrlList = new ArrayList<>();
+        String pRequestUrl = "/productFile/display?fileName=";
+        String productThumFileName = "";
+        List<UserDTO> mysell = userService.mysell(name);
+       for(UserDTO u : mysell){
+           List<ProductFileVO> productFileList = productServiece.getList(u.getPno());
+           if (!productFileList.isEmpty()) {
+               productThumFileName = pRequestUrl + productFileList.get(0).getUploadPath() + "/" + productFileList.get(0).getUuid() + "_" + productFileList.get(0).getFileName();
+           } else {
+               productThumFileName = "/images/no_image.gif";
+           }
+           productThumfileUrlList.add(productThumFileName);
+       }
+
+
+        model.addAttribute("productThumfileUrlList", productThumfileUrlList);
+        model.addAttribute("mysell",userService.mysell(name));
+
         return "/user/mypage";
     }
 

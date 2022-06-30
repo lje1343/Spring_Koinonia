@@ -1,5 +1,6 @@
 package com.example.teamproject.domain.dao.user;
 
+import com.example.teamproject.domain.vo.UserDTO;
 import com.example.teamproject.domain.vo.UserVO;
 import com.example.teamproject.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -58,6 +59,8 @@ public class UserDAO {
     public int remove(String email, String pw){
         return userMapper.delete(email,pw);
     };
+
+    public List<UserDTO> mysell(String name){ return userMapper.myproduct(name);}
 
 //    // 회원 리스트
 //    public List<UserVO> getList(){
