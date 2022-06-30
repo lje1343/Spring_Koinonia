@@ -1,7 +1,13 @@
 
 package com.example.teamproject.controller.user;
 
+import com.example.teamproject.domain.vo.ProductFileVO;
+import com.example.teamproject.domain.vo.UserDTO;
 import com.example.teamproject.domain.vo.UserVO;
+import com.example.teamproject.service.board.BoardFileServiceImpl;
+import com.example.teamproject.service.board.BoardServiceImpl;
+import com.example.teamproject.service.product.ProductFileServiceImpl;
+import com.example.teamproject.service.product.ProductServieceImpl;
 import com.example.teamproject.service.user.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,13 +21,19 @@ import org.springframework.web.servlet.view.RedirectView;
 
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @Slf4j
 @RequestMapping("/user/*")
 @RequiredArgsConstructor
 public class UserController {
+    private final BoardServiceImpl boardService;
     private final UserServiceImpl userService;
+    private final ProductServieceImpl productServiece;
+    private final BoardFileServiceImpl boardFileService;
+    private final ProductFileServiceImpl productFileService;
     // 회원가입/로그인/비밀번호찾기/마이페이지
 
     @GetMapping("/join")
@@ -141,7 +153,28 @@ public class UserController {
         log.info("마이페이지");
         log.info("*************");
 
-        
+        String name = (String)session.getAttribute("name");
+        log.info("내이름은 " + name.toString());
+        log.info(userService.mysell(name).toString());
+
+        List<String> productThumfileUrlList = new ArrayList<>();
+        String pRequestUrl = "/productFile/display?fileName=";
+        String productThumFileName = "";
+        List<UserDTO> mysell = userService.mysell(name);
+        for(UserDTO u : mysell){
+            List<ProductFileVO> productFileList = productServiece.getList(u.getPno());
+            if (!productFileList.isEmpty()) {
+                productThumFileName = pRequestUrl + productFileList.get(0).getUploadPath() + "/" + productFileList.get(0).getUuid() + "_" + productFileList.get(0).getFileName();
+            } else {
+                productThumFileName = "/images/no_image.gif";
+            }
+            productThumfileUrlList.add(productThumFileName);
+        }
+
+
+        session.setAttribute("productThumfileUrlList", productThumfileUrlList);
+        session.setAttribute("mysell",userService.mysell(name));
+
         return "/user/mypage";
     }
 

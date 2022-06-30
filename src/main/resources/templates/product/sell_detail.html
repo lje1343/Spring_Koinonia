@@ -21,7 +21,7 @@
 
         }
 
-        .mtext {
+        .wrap {
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
@@ -81,31 +81,24 @@
                         </div>
                     </div>
                 </div>
-                <form action="/product/remove"  name="registerForm" method="get">
-                <div class="col-md-6 col-lg-5 p-b-30">
-                    <div class="p-r-50 p-t-5 p-lr-0-lg">
-                        <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                <form action="/product/remove"  name="registerForm" method="get" style="overflow: visible;" >
+                <div class="wrap" style="margin-bottom: 40px">
+                    <article >
+                        <h4 class="mtext-105 cl2 js-name-detail p-b-14" >
                             <input type="text" readonly th:field="*{title}">
                         </h4>
-                        <input type="hidden" th:field="*{pno}" id="pno"/>
-                        <div class="mtext">
-                            <input type="text" readonly th:field="*{price}">
-                        </div>
-                        <div class="mtext">
-                            <input type="text" readonly th:field="*{content}">
-                        </div>
-                        <div class="mtext">
-                            <input type="text" id="name" readonly th:field="*{name}">
-                        </div>
-
-
-
-                    </div>
-<!--                    <button type="submit" class="btnM btnStyleB btnStyleB_1" id="uploadBtn">-->
-<!--                        삭제-->
-<!--                    </button>-->
+                    </article>
                 </div>
+                    <article style="margin-bottom: 40px">
+                        <h3>
+                        <input type="hidden" th:field="*{pno}" id="pno"/>
+                        <input type="text" readonly th:field="*{price}">
+                        </h3>
+                    </article>
 
+                    <article>
+                        <textarea id="story" name="story" rows="5" cols="33" th:field="*{content}" spellcheck="false" style="width: 600%; height: 719px"></textarea>
+                    </article>
             </form>
             </div>
 
@@ -227,7 +220,8 @@
 <!--===============================================================================================-->
 <script src="/Vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>       <!-- 필요 -->
 <script>
-    // let pno = [[${pno}]];
+    document.getElementById("story").style.fontSize = '20px'
+
     let paging = "[[${criteria.listLink}]]";
 
     $('.gallery-lb').each(function () { // the containers for all your galleries

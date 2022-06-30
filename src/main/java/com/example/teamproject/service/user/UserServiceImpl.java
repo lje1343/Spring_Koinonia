@@ -4,9 +4,12 @@ package com.example.teamproject.service.user;
 import com.example.teamproject.domain.dao.board.BoardDAO;
 import com.example.teamproject.domain.dao.user.UserDAO;
 import com.example.teamproject.domain.vo.BoardVO;
+import com.example.teamproject.domain.vo.UserDTO;
 import com.example.teamproject.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -51,6 +54,7 @@ public class UserServiceImpl {
         return userDAO.remove(email, pw);
     }
 
+    public List<UserDTO> mysell(String name) { return userDAO.mysell(name);}
     ;
 
 

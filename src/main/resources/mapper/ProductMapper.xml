@@ -7,8 +7,7 @@
         SELECT PNO, NAME, PNAME, PCATE, TITLE, CONTENT, PRICE, PSOLD, REGISTER_DATE, UPDATE_DATE
         FROM
         (
---             SELECT /*+ INDEX_DESC(TBL_PRODUCT SYS_C007000) */
-            SELECT /*+ INDEX_DESC(TBL_PRODUCT UPD) */
+           SELECT /*+ INDEX_DESC(TBL_PRODUCT SYS_C007286) */
             ROWNUM RN, PNO, NAME, PNAME, PCATE, TITLE, CONTENT, PRICE, PSOLD, REGISTER_DATE, UPDATE_DATE
             FROM TBL_PRODUCT
             WHERE
@@ -28,6 +27,9 @@
                         </when>
                         <when test="type == 'P'.toString()">
                             (PCATE LIKE '%'||#{keyword}||'%')
+                        </when>
+                        <when test="type == 'R'.toString()">
+                            (PRICE LIKE '%'||#{keyword}||'%')
                         </when>
                     </choose>
                 </trim>

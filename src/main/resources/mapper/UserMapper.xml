@@ -64,31 +64,13 @@
     WHERE TBL_USER.UNUM = #{unum}
    </update>
 
-<!--    <select id="mydiary" resultType="UserDTO">-->
-<!--        SELECT tu.NAME, tb.BNO, tb.TITLE, tb.CONTENT-->
-<!--        FROM TBL_USER tu, TBL_BOARD tb-->
-<!--        WHERE tu.NAME = tb.NAME-->
-<!--        AND tu.NAME = #{name}-->
-<!--    </select>-->
 
 
-
-<!--    <select id="mydiary" resultType="UserDTO">-->
-<!--        SELECT tu.NAME, tb.BNO, tb.TITLE, tb.CONTENT-->
-<!--        FROM TBL_USER tu, TBL_BOARD tb-->
-<!--        WHERE tu.NAME = tb.NAME-->
-<!--        AND tu.NAME = #{name}-->
-<!--    </select>-->
-
-
-
-<!--    <select id="myproduct" resultType="UserDTO">-->
-<!--       SELECT tu.NAME, tp.PNO-->
-<!--       , tp.TITLE, tp.PNAME-->
-<!--       , tp.CONTENT, tp.PRICE-->
-<!--       , tp.PSOLD, tp.REGISTER_DATE-->
-<!--       FROM TBL_USER tu, TBL_PRODUCT tp-->
-<!--       WHERE tu.NAME = tp.NAME-->
-<!--       AND tu.NAME = #{name}-->
-<!--    </select>-->
+    <select id="myproduct" resultType="UserDTO">
+       SELECT tu.NAME, tp.PNO
+             ,tp.PNAME, tp.PRICE
+       FROM TBL_USER tu, TBL_PRODUCT tp
+       WHERE tu.NAME = tp.NAME
+       AND tu.NAME = #{name}
+    </select>
 </mapper>
