@@ -61,8 +61,6 @@ public class UserDAO {
         return userMapper.delete(email,pw);
     };
 
-    public List<UserDTO> mysell(String name){ return userMapper.myproduct(name);}
-
 //    // 회원 리스트
 //    public List<UserVO> getList(){
 //

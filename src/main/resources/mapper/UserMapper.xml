@@ -42,7 +42,7 @@
     </update>
 
 
-    <select id="get" resultType="Long">
+    <select id="get" resultType="long">
         SELECT BNO FROM TBL_BOARD
         WHERE NAME = #{name}
     </select>
@@ -64,29 +64,8 @@
     WHERE TBL_USER.UNUM = #{unum}
    </update>
 
-<<<<<<< HEAD
 
 
-=======
-<!--    <select id="mydiary" resultType="UserDTO">-->
-<!--        SELECT tu.NAME, tb.BNO, tb.TITLE, tb.CONTENT-->
-<!--        FROM TBL_USER tu, TBL_BOARD tb-->
-<!--        WHERE tu.NAME = tb.NAME-->
-<!--        AND tu.NAME = #{email}-->
-<!--    </select>-->
-
-
-
-<!--    <select id="mydiary" resultType="UserDTO">-->
-<!--        SELECT tu.NAME, tb.BNO, tb.TITLE, tb.CONTENT-->
-<!--        FROM TBL_USER tu, TBL_BOARD tb-->
-<!--        WHERE tu.NAME = tb.NAME-->
-<!--        AND tu.NAME = #{name}-->
-<!--    </select>-->
-
-
-
->>>>>>> master/master
     <select id="myproduct" resultType="UserDTO">
        SELECT tu.NAME, tp.PNO
              ,tp.PNAME, tp.PRICE

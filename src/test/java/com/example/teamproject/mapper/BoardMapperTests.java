@@ -41,11 +41,11 @@ private BoardMapper boardMapper;
 //        log.info("반환된 결과값은 : " + boardMapper.update(boardVO));
 //    }
 //
-//    @Test
-//    public void deleteTest() {
-//        Long bno = 4L;
-//        log.info("삭제 번호 : " + boardMapper.delete(bno));
-//    }
+    @Test
+    public void deleteTest() {
+        Long bno = 75L;
+        log.info("삭제 번호 : " + boardMapper.delete(bno));
+    }
 
 //    @Test
 //    public void getTest(){
@@ -64,13 +64,13 @@ private BoardMapper boardMapper;
 //    }
 
 
-    @Test
-    public void getListBySearchTest(){
-        Criteria criteria = new Criteria(1, 10);
-        criteria.setKeyword("2");
-        criteria.setType("title");
-        boardMapper.getListBySearch(criteria).stream().map(BoardDTO::toString).forEach(log::info);
-    }
+//    @Test
+//    public void getListBySearchTest(){
+//        Criteria criteria = new Criteria(1, 10);
+//        criteria.setKeyword("2");
+//        criteria.setType("title");
+//        boardMapper.getListBySearch(criteria).stream().map(BoardDTO::toString).forEach(log::info);
+//    }
 
 
 

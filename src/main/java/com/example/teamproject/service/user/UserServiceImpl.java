@@ -54,13 +54,7 @@ public class UserServiceImpl {
         return userDAO.remove(email, pw);
     }
 
-<<<<<<< HEAD
     public List<UserDTO> mysell(String name) { return userDAO.mysell(name);}
-=======
-     // 나의 상품 조회
-    public List<UserDTO> mysell(String name) { return userDAO.mysell(name);}
-
->>>>>>> master/master
     ;
 
 

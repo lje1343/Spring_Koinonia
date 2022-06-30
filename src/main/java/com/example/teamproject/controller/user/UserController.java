@@ -1,13 +1,9 @@
 
 package com.example.teamproject.controller.user;
 
-<<<<<<< HEAD
 import com.example.teamproject.domain.vo.ProductFileVO;
 import com.example.teamproject.domain.vo.UserDTO;
 import com.example.teamproject.domain.vo.UserVO;
-=======
-import com.example.teamproject.domain.vo.*;
->>>>>>> master/master
 import com.example.teamproject.service.board.BoardFileServiceImpl;
 import com.example.teamproject.service.board.BoardServiceImpl;
 import com.example.teamproject.service.product.ProductFileServiceImpl;
@@ -18,10 +14,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 
 import javax.servlet.http.HttpSession;
@@ -165,7 +161,6 @@ public class UserController {
         String pRequestUrl = "/productFile/display?fileName=";
         String productThumFileName = "";
         List<UserDTO> mysell = userService.mysell(name);
-<<<<<<< HEAD
         for(UserDTO u : mysell){
             List<ProductFileVO> productFileList = productServiece.getList(u.getPno());
             if (!productFileList.isEmpty()) {
@@ -179,21 +174,6 @@ public class UserController {
 
         session.setAttribute("productThumfileUrlList", productThumfileUrlList);
         session.setAttribute("mysell",userService.mysell(name));
-=======
-       for(UserDTO u : mysell){
-           List<ProductFileVO> productFileList = productServiece.getList(u.getPno());
-           if (!productFileList.isEmpty()) {
-               productThumFileName = pRequestUrl + productFileList.get(0).getUploadPath() + "/" + productFileList.get(0).getUuid() + "_" + productFileList.get(0).getFileName();
-           } else {
-               productThumFileName = "/images/no_image.gif";
-           }
-           productThumfileUrlList.add(productThumFileName);
-       }
-
-
-        model.addAttribute("productThumfileUrlList", productThumfileUrlList);
-        model.addAttribute("mysell",userService.mysell(name));
->>>>>>> master/master
 
         return "/user/mypage";
     }
