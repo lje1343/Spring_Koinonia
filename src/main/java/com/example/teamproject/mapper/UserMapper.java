@@ -18,6 +18,11 @@ public interface UserMapper {
     public int update(UserVO userVO);
 
     public List<UserDTO> myproduct(String name);
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> master/master
     public void updatePw(String newPw, String email);
 
     public Long get(String name);

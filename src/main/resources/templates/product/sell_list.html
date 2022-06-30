@@ -30,6 +30,11 @@
 
         }
         .cateWrap > select::-ms-expand {display: none;}
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> master/master
 
     </style>
     <meta charset="UTF-8">
@@ -65,6 +70,7 @@
 <main class ="plp-page-container" >
     <div class="container__inner">
         <div clas="wrapper">
+<<<<<<< HEAD
             <!-- Product -->
             <div class="container" style="max-width: 1409px;" >
                 <div class ="let" th:object="${pageDTO}">
@@ -98,30 +104,129 @@
                                     <a  class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" th:href="${product.pno}">
                                         보러가기
                                     </a>
+=======
+
+                            <!-- Product -->
+                            <div class="container" >
+                                <div class ="let" >
+                                    <form action="/product/list" name="cateForm" th:object="${criteria}">
+                                        <div class="fields">
+                                            <div id="cateWrap">
+                                                <select id = land th:name="type" th:value="*{type}" onchange="categoryChange(this)"  style="border: 1px solid #bdc1c6;">
+                                                    <option value="">대륙</option>
+                                                    <option th:value="TCN" th:selected="*{type} == 'TCN'">전체</option>
+                                                    <option th:value="P" th:selected="*{type} == 'P'">아시아</option>
+                                                    <option th:value="P" th:selected="*{type} == 'P'">유럽</option>
+                                                    <option th:value="P" th:selected="*{type} == 'P'">아프리카</option>
+                                                    <option th:value="P" th:selected="*{type} == 'P'">남아메리카</option>
+                                                    <option th:value="P" th:selected="*{type} == 'P'">북아메리카</option>
+                                                    <option th:value="P" th:selected="*{type} == 'P'">오스트레일리아</option>
+                                                </select>
+                                                <input type="text" id="result" name="keyword" th:value="*{keyword}"  style="display:none;">
+
+
+                                            </div>
+                                    </form>
+>>>>>>> master/master
                                 </div>
 
-                                <div class="block2-txt flex-w flex-t p-t-14">
-                                    <div class="block2-txt-child1 flex-col-l ">
-                                        <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04  p-b-6" >
-                                            <div th:text="${product.pname}"></div>
-                                        </a>
 
-                                        <span class="stext-105 cl3 js-name-b2"  >
-                                    <a th:text="${product.price}"></a>
-                                </span>
+                                <div class="row isotope-grid">
+                                    <th:block th:each="product, i : ${productList}">
+                                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+
+                                            <div class="block2">
+                                                <div class="block2-pic hov-img0" >
+                                                    <img th:src="${productThumfileUrlList[0+i.index]}">
+                                                    <a  class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" th:href="${product.pno}">
+                                                        보러가기
+                                                    </a>
+                                                </div>
+
+                                                <div class="block2-txt flex-w flex-t p-t-14">
+                                                    <div class="block2-txt-child1 flex-col-l ">
+                                                        <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04  p-b-6 js-name-b2" th:text="${product.pname}">
+                                                        </a>
+
+                                                        <span class="stext-105 cl3 " >
+                                      <a th:text="${product.price}"></a>
+                                      </span>
 
 
-                                    </div>
+                                                    </div>
 
-                                    <div class="block2-txt-child2 flex-r p-t-3">
-                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                            <img class="icon-heart1 dis-block trans-04" src="/images/icon-heart-01.png" alt="ICON">
-                                            <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/images/icon-heart-02.png" alt="ICON">
-                                        </a>
-                                    </div>
+                                                    <div class="block2-txt-child2 flex-r p-t-3">
+                                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                                            <img class="icon-heart1 dis-block trans-04" src="/images/icon-heart-01.png" alt="ICON">
+                                                            <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/images/icon-heart-02.png" alt="ICON">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th:block>
                                 </div>
+
+                                <form action="/product/list" name="searchForm" th:object="${criteria}">
+                                    <div class="buttons flex">
+                                        <div class="searchbox py-lg-5" style="border-bottom: solid 1px #cccccc;">
+
+                                            <div class="input-group input-group-sm" style="width: 70%; margin:0 auto;">
+
+                                                <div class="select-box">
+                                                    <select class="search-selector" name="type">
+                                                        <option value="">검색 기준</option>
+                                                        <option value="TCNP" th:selected="*{type} == 'TCN'">전체</option>
+                                                        <option value="T" th:selected="*{type} == 'T'">제목</option>
+                                                        <option value="C" th:selected="*{type} == 'C'">내용</option>
+                                                        <option value="N" th:selected="*{type} == 'N'">작성자</option>
+                                                        <option value="P" th:selected="*{type} == 'N'">카테고리</option>
+                                                        <option value="R" th:selected="*{type} == 'R'">가격</option>
+                                                        <option value="TC" th:selected="*{type} == 'TC'">제목 또는 내용</option>
+                                                        <option value="TN" th:selected="*{type} == 'TN'">제목 또는 작성자</option>
+                                                        <option value="CN" th:selected="*{type} == 'CN'">내용 또는 작성자</option>
+                                                    </select>
+                                                </div>
+                                                <input type="text" name="keyword" value="" class="form-control input-search temp-margin" placeholder="검색어" size="10">
+                                                <span class="input-group-btn">
+                                <button type="submit" class="btn btn-primary search-btn" title="검색">검색</button>
+                            </span>
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <div class="big-width" style="text-align: center">
+                                    <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code>&lt;</code></a>
+                                    <th:block th:each="num:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">
+                                        <code th:if="${num == pageDTO.criteria.pageNum}" th:text="${num}"></code>
+                                        <a class="changePage" th:href="${num}" th:unless="${num == pageDTO.criteria.pageNum}"><code th:text="${num}"></code></a>
+                                    </th:block>
+                                    <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>&gt;</code></a>
+                                </div>
+                                <div class="small-width" style="text-align: center; height: 40px;">
+                                    <a class="changePage" th:href="*{criteria.pageNum - 1}" th:if="*{criteria.pageNum > 1}"><code>&lt;</code></a>
+                                    <code th:text="*{criteria.pageNum}"></code>
+                                    <a class="changePage" th:href="*{criteria.pageNum + 1}" th:if="*{criteria.pageNum < realEnd}"><code>&gt;</code></a>
+
+
+
+                                    </th:block>
+                                </div>
+
+
+                                <form action="/product/list" name="pageForm" th:object="${criteria}">
+                                    <input type="hidden" th:field="*{pageNum}">
+                                    <input type="hidden" th:field="*{amount}">
+                                    <input type="hidden" th:field="*{type}">
+                                    <input type="hidden" th:field="*{keyword}">
+                                </form>
                             </div>
                         </div>
+<<<<<<< HEAD
                     </th:block>
                 </div>
 
@@ -186,7 +291,10 @@
             </form>
         </div>
     </div>
+=======
+>>>>>>> master/master
 </main>
+
 
 
 
@@ -213,16 +321,13 @@
 <!--===============================================================================================-->
 <script src="/Vendor/sweetalert/sweetalert.min.js"></script>
 <script th:inline="javascript">
+
     let pno = [[${pno}]];
     let paging = [[${criteria.listLink}]];
 
 
-
-
-
-
     if(pno != null){
-        alert(pno + "번 게시글이 등록되었습니다.");
+        alert(pno + "번 게시글이 정상처리되었습니다.");
     }
 
 
@@ -255,26 +360,6 @@
     });
 
 
-
-
-    // function showUploadResult(files){
-    //     let str ="";
-    //     $(files).each(function(i, file){
-    //         str += "<li data-filename='" + file.fileName.substring(file.fileName.indexOf("_") + 1) + "' data-uuid='" + file.uuid + "' data-uploadpath='" + file.uploadPath + "' data-image='" + file.image + "'>";
-    //         if(file.image){
-    //             str += "<a href=\"javascript:showImage(\'" + file.uploadPath + "/" + file.uuid + "_" + file.fileName +"\');\"><img src='/productFile/display?fileName=" + file.uploadPath + "/s_" + file.uuid + "_"  + file.fileName + "'></a>";
-    //         }else{
-    //             str += "<a href='/productFile/download?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName + "'><img src='/images/attach.png' width='100'></a>";
-    //         }
-    //         str += "<p>" + file.fileName.substring(file.fileName.indexOf("_") + 1) + "</p>"
-    //         str += "</li>"
-    //     });
-    //     $uploadResult.html(str);
-    // }
-    //
-    // (function(){
-    //     $.getJSON("/productFile/list", {pno: pno}, function(list){showUploadResult(list);})
-    // })();
 
 
 

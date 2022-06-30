@@ -7,7 +7,12 @@
         SELECT PNO, NAME, PNAME, PCATE, TITLE, CONTENT, PRICE, PSOLD, REGISTER_DATE, UPDATE_DATE
         FROM
         (
+<<<<<<< HEAD
            SELECT /*+ INDEX_DESC(TBL_PRODUCT SYS_C007286) */
+=======
+            SELECT /*+ INDEX_DESC(TBL_PRODUCT SYS_C007286) */
+
+>>>>>>> master/master
             ROWNUM RN, PNO, NAME, PNAME, PCATE, TITLE, CONTENT, PRICE, PSOLD, REGISTER_DATE, UPDATE_DATE
             FROM TBL_PRODUCT
             WHERE
@@ -89,7 +94,6 @@
             ORDER BY UPDATE_DATE DESC
              )
         WHERE ROWNUM > (#{pageNum}-1) * #{amount} AND ROWNUM <= #{pageNum} * #{amount}
-
         ]]>
     </select>
 

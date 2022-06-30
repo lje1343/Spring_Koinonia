@@ -81,7 +81,11 @@ private UserMapper userMapper;
 //    }
 
 
-
+//     @Test
+//    public void myprodctTest(){
+//         String name = "테스트임";
+//         log.info(userMapper.myproduct(name).toString());
+//     }
 
     }
 

@@ -10,4 +10,8 @@ public class UserDTO {
     private String pname;
     private String price;
     private Long pno;
+<<<<<<< HEAD
+=======
+
+>>>>>>> master/master
 }

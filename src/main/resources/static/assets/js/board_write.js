@@ -18,8 +18,8 @@ function clickBodyEventNationality(event) {
   if (document.querySelector("#selectBtn").classList.contains("open")) {
     var target = event.target;
     if (
-      !document.querySelector("#selectBtn").contains(target) &&
-      !document.querySelector("#option").contains(target)
+        !document.querySelector("#selectBtn").contains(target) &&
+        !document.querySelector("#option").contains(target)
     ) {
       document.querySelector("#selectBtn").classList.remove("open");
       document.querySelector("#option").classList.remove("openOption");
@@ -254,9 +254,9 @@ const saveContent = () => {
 >>>>>>> 7c63baf3c9cd7749d6fef87933b0335a23abcc37
 }
 =======
-  // if(confirm("글을 등록하시겠습니까?")) {
-  //   $("form#registerForm").submit();
-  // }
+// if(confirm("글을 등록하시겠습니까?")) {
+//   $("form#registerForm").submit();
+// }
 // }
 >>>>>>> af254b25c29f287a02d1cbecb70c44f179885df1
 
