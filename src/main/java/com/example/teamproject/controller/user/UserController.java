@@ -102,23 +102,29 @@ public class UserController {
         session.setAttribute("productThumfileUrlList", productThumfileUrlList);
         session.setAttribute("mysell",userService.mysell(username));
 
-        List<BoardVO> boardList = boardService.getListMain(new Criteria(1, 6));
-        model.addAttribute("boardList", boardList) ;
+
+
 //         다이어리 썸네일 리스트
         String bRequestUrl = "/boardFile/display?fileName=";
         String boardThumFileName = "";
+
         List<String> boardThumfileUrlList = new ArrayList<>();
-        for(BoardVO b : boardList){
+        List<Long> bnumlist = new ArrayList<>();
+        Long bnum = null;
+        List<UserDTOB> mytravel = userService.mytravel(username);
+        for(UserDTOB b : mytravel){
             List<FileVO> boardFileList = boardFileService.getList(b.getBno());
             if(!boardFileList.isEmpty()){
+                bnum = boardFileList.get(0).getBno();
                 boardThumFileName = bRequestUrl + boardFileList.get(0).getUploadPath() + "/"  + boardFileList.get(0).getUuid() + "_" + boardFileList.get(0).getFileName();
             }else{
                 boardThumFileName = "/images/no_image.gif";
             }
+            bnumlist.add(bnum);
             boardThumfileUrlList.add(boardThumFileName);
         }
-        model.addAttribute("boardThumfileUrlList", boardThumfileUrlList);
-
+        session.setAttribute("boardThumfileUrlList", boardThumfileUrlList);
+        session.setAttribute("bnumlist",bnumlist);
             return "/user/mypage";
 
     }

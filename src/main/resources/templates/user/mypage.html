@@ -141,10 +141,10 @@
 
                                             <div class="col-md-12">
                                                 <div class="featured-carousel owl-carousel">
-                                                    <div class="item"  th:each="product, i : ${session.pnumlist}">
+                                                    <div class="item"  th:each="board, i : ${session.bnumlist}">
                                                         <div class="work">
-                                                            <a class="icon d-flex align-items-center justify-content-center" th:href="@{/product/detail(pno = ${session.pnumlist[0+i.index]})}">
-                                                            <img class="img d-flex align-items-center justify-content-center rounded"  th:src="${session.productThumfileUrlList[0+i.index]}">
+                                                            <a class="icon d-flex align-items-center justify-content-center" th:href="@{/diary/detail(bno = ${session.bnumlist[0+i.index]})}">
+                                                            <img class="img d-flex align-items-center justify-content-center rounded"  th:src="${session.boardThumfileUrlList[0+i.index]}">
                                                                     <span class="icon"></span>
                                                                 </a>
                                                             </img>
