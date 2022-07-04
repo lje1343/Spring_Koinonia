@@ -4,7 +4,7 @@
     <typeAliases>
         <typeAlias type="com.example.teamproject.domain.vo.UserVO" alias="UserVO"/>
         <typeAlias type="com.example.teamproject.domain.vo.UserDTO" alias="UserDTO"/>
-        <typeAlias type="com.example.teamproject.domain.vo.UserDTO" alias="UserDTOB"/>
+        <typeAlias type="com.example.teamproject.domain.vo.UserDTOB" alias="UserDTOB"/>
         <typeAlias type="com.example.teamproject.domain.vo.DeclareVO" alias="DeclareVO"/>
         <typeAlias type="com.example.teamproject.domain.vo.BoardVO" alias="BoardVO"/>
         <typeAlias type="com.example.teamproject.domain.vo.BoardReplyVO" alias="ReplyVO"/>

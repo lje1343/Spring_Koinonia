@@ -202,6 +202,7 @@ public class UserController {
         log.info("마이페이지");
         log.info("*************");
 
+
         String name = (String)session.getAttribute("name");
         log.info("내이름은 " + name.toString());
         log.info(userService.mysell(name).toString());
