@@ -187,6 +187,29 @@ public class UserController {
         return "/user/change";
     }
 
+    @GetMapping("/delete")
+    public String Delete(String email, String pw, Model model) {
+        log.info("*************");
+        log.info("회원탈퇴");
+        log.info("*************");
+        return "/user/delete";
+    }
+
+    @PostMapping("/delete")
+    public String goToDelete(HttpSession session,String email, String pw, Model model){
+        log.info("*************");
+        log.info("회원탈퇴");
+        log.info("*************");
+        if(userService.login(email)==null || !(pw.equals(userService.login(email).getPw()))){
+            // 로그인 실패
+            model.addAttribute("msg", "아이디 혹은 비밀번호가 다릅니다.");
+            return "/user/login";
+        }
+        userService.remove(email,pw);
+        model.addAttribute("msg", "탈퇴가 완료되었습니다.");
+        return "/user/login";
+    }
+
 //    @PostMapping("/modify")
 //    public String modify(RedirectAttributes rttr){
 //        log.info("*************");
