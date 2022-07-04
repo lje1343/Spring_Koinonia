@@ -1,6 +1,7 @@
 package com.example.teamproject.domain.dao.user;
 
 import com.example.teamproject.domain.vo.UserDTO;
+import com.example.teamproject.domain.vo.UserDTOB;
 import com.example.teamproject.domain.vo.UserVO;
 import com.example.teamproject.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +47,7 @@ public class UserDAO {
 
 
     public List<UserDTO> mysell(String name){ return userMapper.myproduct(name);}
+    public List<UserDTOB> mytravel(String name){ return userMapper.mydiary(name);}
 
     // 비밀번호 수정
     public void modifyPw(String newPw, String email) {userMapper.updatePw(newPw, email);}

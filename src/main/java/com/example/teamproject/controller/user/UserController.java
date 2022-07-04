@@ -1,9 +1,7 @@
 
 package com.example.teamproject.controller.user;
 
-import com.example.teamproject.domain.vo.ProductFileVO;
-import com.example.teamproject.domain.vo.UserDTO;
-import com.example.teamproject.domain.vo.UserVO;
+import com.example.teamproject.domain.vo.*;
 import com.example.teamproject.service.board.BoardFileServiceImpl;
 import com.example.teamproject.service.board.BoardServiceImpl;
 import com.example.teamproject.service.product.ProductFileServiceImpl;
@@ -73,9 +71,54 @@ public class UserController {
             // 로그인 성공
             session.setAttribute("email", email);
             session.setAttribute("name", userService.login(email).getName());
-                //세션정보
-            log.info((String) session.getAttribute("name"));
-            model.addAttribute("user" ,(String) session.getAttribute("name"));
+
+        String username = (String)userService.login(email).getName();
+
+
+        List<String> productThumfileUrlList = new ArrayList<>();
+        List<Long> pnumlist = new ArrayList<>();
+        String pRequestUrl = "/productFile/display?fileName=";
+        String productThumFileName = "";
+        Long pnum = null;
+        List<UserDTO> mysell = userService.mysell(username);
+        for(UserDTO u : mysell){
+            List<ProductFileVO> productFileList = productServiece.getList(u.getPno());
+            if (!productFileList.isEmpty()) {
+                pnum = productFileList.get(0).getPno();
+                productThumFileName = pRequestUrl + productFileList.get(0).getUploadPath() + "/" + productFileList.get(0).getUuid() + "_" + productFileList.get(0).getFileName();
+            } else {
+                productThumFileName = "/images/no_image.gif";
+            }
+            productThumfileUrlList.add(productThumFileName);
+            pnumlist.add(pnum);
+        }
+
+
+
+        log.info("넘버는" + pnumlist.toString());
+
+
+        session.setAttribute("pnumlist", pnumlist);
+        session.setAttribute("productThumfileUrlList", productThumfileUrlList);
+        session.setAttribute("mysell",userService.mysell(username));
+
+        List<BoardVO> boardList = boardService.getListMain(new Criteria(1, 6));
+        model.addAttribute("boardList", boardList) ;
+//         다이어리 썸네일 리스트
+        String bRequestUrl = "/boardFile/display?fileName=";
+        String boardThumFileName = "";
+        List<String> boardThumfileUrlList = new ArrayList<>();
+        for(BoardVO b : boardList){
+            List<FileVO> boardFileList = boardFileService.getList(b.getBno());
+            if(!boardFileList.isEmpty()){
+                boardThumFileName = bRequestUrl + boardFileList.get(0).getUploadPath() + "/"  + boardFileList.get(0).getUuid() + "_" + boardFileList.get(0).getFileName();
+            }else{
+                boardThumFileName = "/images/no_image.gif";
+            }
+            boardThumfileUrlList.add(boardThumFileName);
+        }
+        model.addAttribute("boardThumfileUrlList", boardThumfileUrlList);
+
             return "/user/mypage";
 
     }
@@ -157,23 +200,7 @@ public class UserController {
         log.info("내이름은 " + name.toString());
         log.info(userService.mysell(name).toString());
 
-        List<String> productThumfileUrlList = new ArrayList<>();
-        String pRequestUrl = "/productFile/display?fileName=";
-        String productThumFileName = "";
-        List<UserDTO> mysell = userService.mysell(name);
-        for(UserDTO u : mysell){
-            List<ProductFileVO> productFileList = productServiece.getList(u.getPno());
-            if (!productFileList.isEmpty()) {
-                productThumFileName = pRequestUrl + productFileList.get(0).getUploadPath() + "/" + productFileList.get(0).getUuid() + "_" + productFileList.get(0).getFileName();
-            } else {
-                productThumFileName = "/images/no_image.gif";
-            }
-            productThumfileUrlList.add(productThumFileName);
-        }
 
-
-        session.setAttribute("productThumfileUrlList", productThumfileUrlList);
-        session.setAttribute("mysell",userService.mysell(name));
 
         return "/user/mypage";
     }
