@@ -134,7 +134,7 @@
                                             <div class="teaser__info-container">
                                                 <div class="teaser__info">
                                                     <h2 class="teaser__title"> 내가 쓴 플래너 게시판</h2>
-                                                    <p class="teaser__description">코이노니아 Family 고객님의 가장 최신글들을 확인하세요</p>
+                                                    <p class="teaser__description">코이노니아 Family 고객님의  다이어리글을 확인하세요</p>
                                                 </div><a role="button" class="btn btn--small btn--secondary teaser__top-button" href="/board/list"><span class="btn__inner"><span class="btn__label">모두 보기</span></span></a></div>
 
 
@@ -143,7 +143,7 @@
                                                 <div class="featured-carousel owl-carousel">
                                                     <div class="item"  th:each="board, i : ${session.bnumlist}">
                                                         <div class="work">
-                                                            <a class="icon d-flex align-items-center justify-content-center" th:href="@{/diary/detail(bno = ${session.bnumlist[0+i.index]})}">
+                                                            <a class="icon d-flex align-items-center justify-content-center" th:href="@{/board/detail(bno = ${session.bnumlist[0+i.index]})}">
                                                             <img class="img d-flex align-items-center justify-content-center rounded"  th:src="${session.boardThumfileUrlList[0+i.index]}">
                                                                     <span class="icon"></span>
                                                                 </a>
@@ -167,7 +167,7 @@
                                             <div class="teaser__info-container">
                                                 <div class="teaser__info">
                                                     <h2 class="teaser__title"> 내가 쓴 거래 게시판</h2>
-                                                    <p class="teaser__description">코이노니아 Family 고객님의 가장 최신글들을 확인하세요</p>
+                                                    <p class="teaser__description">코이노니아 Family 고객님의 거래글을 확인하세요</p>
                                                 </div><a role="button" class="btn btn--small btn--secondary teaser__top-button" href="/product/list"><span class="btn__inner"><span class="btn__label">모두 보기</span></span></a></div>
 
 
@@ -218,14 +218,10 @@
 </body>
 <script>
     // user정보
-    var user = "[[${user}]]";
+    var user = "[[${session.name}]]";
     if(!(user==null || user.length<=0)) {
         sessionStorage.setItem("user", user); // 유저 이름
     }
 
-    $("a.").click(function(e){
-        e.preventDefault();
-        location.href = "/product/detail" + "&pno="+$(this).attr('href');
-    });
 </script>
 </html>

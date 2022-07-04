@@ -100,7 +100,6 @@ public class UserController {
 
         session.setAttribute("pnumlist", pnumlist);
         session.setAttribute("productThumfileUrlList", productThumfileUrlList);
-        session.setAttribute("mysell",userService.mysell(username));
 
 
 
@@ -125,6 +124,7 @@ public class UserController {
         }
         session.setAttribute("boardThumfileUrlList", boardThumfileUrlList);
         session.setAttribute("bnumlist",bnumlist);
+
             return "/user/mypage";
 
     }
@@ -197,7 +197,7 @@ public class UserController {
     // 마이페이지
 
     @GetMapping("/mypage")
-    public String goToMypage(Model model, HttpSession session){
+    public String goToMypage(HttpSession session){
         log.info("*************");
         log.info("마이페이지");
         log.info("*************");
