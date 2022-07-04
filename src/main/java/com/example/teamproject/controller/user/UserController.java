@@ -180,12 +180,13 @@ public class UserController {
 
 
     @GetMapping("/modify")
-    public String modify(Model model){
+    public String modify(HttpSession session){
         log.info("*************");
         log.info("회원정보수정");
         log.info("*************");
-        return "/user/update";
+        return "/user/change";
     }
+
 //    @PostMapping("/modify")
 //    public String modify(RedirectAttributes rttr){
 //        log.info("*************");
