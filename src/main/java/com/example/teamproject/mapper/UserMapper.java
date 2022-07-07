@@ -1,6 +1,7 @@
 package com.example.teamproject.mapper;
 
 import com.example.teamproject.domain.vo.UserDTO;
+import com.example.teamproject.domain.vo.UserDTOB;
 import com.example.teamproject.domain.vo.UserVO;
 import org.apache.catalina.User;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,8 +19,7 @@ public interface UserMapper {
     public int update(UserVO userVO);
 
     public List<UserDTO> myproduct(String name);
-
-
+    public List<UserDTOB> mydiary(String name);
     public void updatePw(String newPw, String email);
 
     public Long get(String name);

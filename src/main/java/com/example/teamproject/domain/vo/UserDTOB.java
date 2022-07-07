@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class UserDTO {
+public class UserDTOB {
     private String name;
-    private String pname;
-    private String price;
-    private Long pno;
+    private String registerdate;
+    private String title;
+    private Long bno;
 }

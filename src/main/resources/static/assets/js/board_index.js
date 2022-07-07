@@ -48,47 +48,47 @@ $(window).scroll(function () {
 
 //리스트 뿌리는 함수(타입, 키워드)
 function getList(type, keyword){
-    boardService.getSearchList({
-        pageNum : pageNum,
-        type : type,
-        keyword : keyword,
-        amount : 9
-    }, function (boardList) {
-        let str = "";
-        let filePath = "";
-        console.log(boardList);
-        if(boardList == null || boardList.length == 0) { console.log("등록된 게시물이 없습니다."); return; }
-        realEnd = Math.ceil(boardList[0].total / 9.0);
-        console.log(realEnd);
-        boardList.forEach((board,i) => {
-            //이미지 경로 썸네일 이름에 s_ 붙인다는 가정하고 만듬
-            filePath = board.uploadPath + "/s_" + board.uuid + "_" + board.fileName;
-            str +=
-                "<div class=\"col-md-4 col-sm-4 col-xs-6 col-xs-v12 col-tiny\">" +
+boardService.getSearchList({
+    pageNum : pageNum,
+    type : type,
+    keyword : keyword,
+    amount : 9
+}, function (boardList) {
+    let str = "";
+    let filePath = "";
+    console.log(boardList);
+    if(boardList == null || boardList.length == 0) { console.log("등록된 게시물이 없습니다."); return; }
+    realEnd = Math.ceil(boardList[0].total / 9.0);
+    console.log(realEnd);
+    boardList.forEach((board,i) => {
+        //이미지 경로 썸네일 이름에 s_ 붙인다는 가정하고 만듬
+        filePath = board.uploadPath + "/s_" + board.uuid + "_" + board.fileName;
+        str +=
+            "<div class=\"col-md-4 col-sm-4 col-xs-6 col-xs-v12 col-tiny\">" +
                 "<div class=\"thumbnail\">" +
-                "<div class=\"image\"" +
-                "style=\"background-image:url('/board/display?fileName=" + filePath + "');\"" +
-                "onclick=\"location.href='/board/detail?bno=" + board.bno + "';\">" +
-                "<div class=\"label-wrap\">" +
+                    "<div class=\"image\"" +
+                    "style=\"background-image:url('/board/display?fileName=" + filePath + "');\"" +
+                    "onclick=\"location.href='/board/detail?bno=" + board.bno + "';\">" +
+                        "<div class=\"label-wrap\">" +
+                        "</div>" +
+                    "</div>" +
+                    "<div class=\"caption\" onclick=\"location.href='/board/detail?bno=" + board.bno + "';\">" +
+                        "<div class=\"title ellipsis st-font1\">" +
+                        board.title +
+                        "</div>" +
+                    "</div>" +
+                    // "<div class=\"desc\">" +
+                    // board.content +
+                    // "</div>" +
+                    "<div class=\"info text-right\">" +
+                        "<i class=\"user_icon\"></i>" + board.name + "&nbsp;&nbsp;&nbsp;<i></i>" + board.updateDate +
+                    "</div>" +
                 "</div>" +
-                "</div>" +
-                "<div class=\"caption\" onclick=\"location.href='/board/detail?bno=" + board.bno + "';\">" +
-                "<div class=\"title ellipsis st-font1\">" +
-                board.title +
-                "</div>" +
-                "</div>" +
-                // "<div class=\"desc\">" +
-                // board.content +
-                // "</div>" +
-                "<div class=\"info text-right\">" +
-                "<i class=\"user_icon\"></i>" + board.name + "&nbsp;&nbsp;&nbsp;<i></i>" + board.updateDate +
-                "</div>" +
-                "</div>" +
-                "</div>"
-        });
-        $resultBox.append(str);
+            "</div>"
     });
-    pageNum++;
+    $resultBox.append(str);
+});
+pageNum++;
 }
 // ============= ajax ======================
 boardService = (function(){

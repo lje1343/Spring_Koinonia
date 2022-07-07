@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .topbar {
+            margin: auto;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>amead </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="/assets/css/header.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/request_detail.css">
+    <link rel="stylesheet" href="/assets/css/footer.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/amead.css">
+</head>
+<body>
+
+<div class="topbar"></div>
+<!--  header start  -->
+<div th:replace="~{/header/header :: headerFragment}"></div>
+<!--  header end  -->
+<div id="profile-frontend" style="padding-top: 1rem">
+    <div class="profile__toast profile__toast" aria-hidden="true" role="alertdialog">
+        <div class="profile__ikea-container">
+            <div class="profile__ikea-row profile__row-center">
+                <div class="profile__ikea-col-lg-9 profile__ikea-col-md-11 profile__ikea-col-sm-11 profile__ikea-col-xs-12 profile__col-no-v-spacing profile__dashboard-header-general">
+                    <div class="profile__dashboard-header-text-wrap">
+                        <h1 id="profile-page-headline" tabindex="0" class="profile__h header__h1 profile__dashboard-header-hi-message">계정 관리</h1>
+                        <span class="profile__text-block profile__text-colour-grey-700">로그아웃을 하고 싶으신가요?
+                  <a class="profile__link profile__link-underline" th:href="@{/user/logout}">로그아웃</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile__ikea-container profile__dashboard-body">
+            <div class="profile__ikea-row profile__row-center">
+                <div class="profile__ikea-col-lg-9 profile__ikea-col-md-11 profile__ikea-col-sm-11 profile__ikea-col-xs-12 profile__col-no-v-spacing">
+                    <div style="margin-bottom: 2.5rem;">
+                        <div class="profile__ikea-row">
+                            <div class="profile__ikea-col-md-4 profile__ikea-col-sm-12 profile__col-no-v-spacing">
+                                <a rel="noopener noreferrer" href="https://www.ikea.com/kr/ko/loyalty-hub/" class="profile__link profile__link-box profile__link">
+                                    <div class="profile__flex-panel profile__link-box-wrap">
+                                        <div class="profile__link-box-content"><span class="profile__text-block profile__link-box-title">나의 코이노니아</span>
+                                            <span class="profile__text-block profile__text-smaller profile__text-colour-grey-700 profile__link-box-text">
+                                    <small>이 곳에서 코이노니아 Family 장점을 모두 확인해보세요.</small></span>
+                                        </div>
+                                        <svg focusable="false" viewBox="0 0 24 24" class="profile__svg-icon profile__link-box-arrow-right" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd"
+                                                                                                                                                                    d="M19.2937 12.7074L20.0008 12.0003L19.2938 11.2932L12.0008 3.99927L10.5865 5.41339L16.1727
+                                        11.0003H4V13.0003H16.1723L10.5855 18.5868L11.9996 20.0011L19.2937 12.7074Z">
+                                        </path>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile__tabs profile__tabs--full-width">
+                        <div role="tablist" class="profile__tabs__list">
+                            <button id="tab-button-account" class="profile__tabs__tab profile__tabs__tab--active" role="tab" aria-selected="true" aria-controls="tab-panel-account">계정</button>
+                        </div>
+                        <div tabindex="-1" class="profile__tabs__panel" id="tab-panel-account" aria-labelledby="tab-button-account" role="tabpanel">
+                                <hr class="profile__divider profile__divider-dashboard">
+                                <div>
+                                    <div class="profile__flex-panel profile__flex-panel-spread profile__dashboard-section-read-title">
+                                        <span class="profile__text-block profile__text-bold profile__text-colour-grey-900">연락처</span>
+                                        <a id="user-login-ciam-edit-link" rel="noopener noreferrer" href="#" class="profile__link profile__link-underline profile__link-bold profile__link-colour-grey-900 profile__link">수정</a></div>
+                                    <div class="profile__flex-panel profile__flex-panel-spread">
+                                        <span class="profile__text-block" th:text="${session.email}"></span>
+                                        <span class="profile__text-block profile__text-bold profile__text-colour-grey-300"></span>
+                                    </div>
+                                </div>
+                                <hr class="profile__divider profile__divider-dashboard">
+                                <div>
+                                    <div class="profile__flex-panel profile__flex-panel-spread profile__dashboard-section-read-title">
+                                        <span class="profile__text-block profile__text-bold profile__text-colour-grey-900">비밀번호</span>
+                                        <a id="password-ciam-edit-link" rel="noopener noreferrer" th:href="@{/user/find_pw}" class="profile__link profile__link-underline profile__link-bold profile__link-colour-grey-900 profile__link">수정</a>
+                                    </div>
+                                    <div class="profile__flex-panel">
+                                        <span class="profile__text-block profile__text-bold profile__text-larger profile__text-colour-grey-500">••••••••</span>
+                                    </div>
+                                </div>
+                                <hr class="profile__divider profile__divider-dashboard">
+                            <div class="profile__ikea-row profile__delete-profile">
+                                <div class="profile__ikea-col-sm-8 profile__col-no-v-spacing">
+                                    <span class="profile__text-block profile__text-bold profile__text-colour-grey-900 profile__text-margin-bottom-xs">회원 탈퇴</span>
+                                    <span class="profile__text-block">코이노니아를 더 이상 이용하지 않는다면 언제든 탈퇴할 수 있습니다. 단, 회원 정보 및 구매 내역이 함께 삭제된다는 점을 참고해주세요.</span>
+                                    <a rel="noopener noreferrer" th:href="@{/user/delete}" class="profile__link profile__link">계정을 삭제하시겠어요?</a>
+                                </div>
+                            </div>
+                            </div>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  footer start  -->
+<div th:replace="~{/footer/footer :: footerFragment}"></div>
+<!--  footer end  -->
+</body>
+<script src="/assets/js/header.js"></script>
+<script>
+    $(".profile__link").click(()=>{
+        sessionStorage.clear();
+        location.href = '/user/logout'
+    })
+
+            (function($) {
+                function eventHandler(e) {
+                    var $eTarget = $(e.currentTarget);
+                    var $targetPanel = $('[aria-labelledby="' + $eTarget.attr('id') + '"]');
+
+
+                    if (e.type === 'click') {
+                        $eTarget
+                            .attr('aria-selected', true)
+                            .addClass('active')
+                            .siblings('[role="tab"]')
+                            .attr('aria-selected', false)
+                            .removeClass('active');
+
+                        $targetPanel
+                            .attr('hidden', false)
+                            .addClass('active')
+                            .siblings('[role="tabpanel"]')
+                            .attr('hidden', true)
+                            .removeClass('active');
+                    } else if (e.type === 'keydown' && e.which === -1) {
+
+                        $(this).click();
+                    }
+                }
+
+
+                $('[role="tab"]').on('click keydown', eventHandler);
+            }(jQuery));
+
+
+        </script>
+
+</html>

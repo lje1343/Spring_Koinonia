@@ -12,10 +12,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 
 import javax.servlet.http.HttpSession;
@@ -71,9 +71,60 @@ public class UserController {
             // 로그인 성공
             session.setAttribute("email", email);
             session.setAttribute("name", userService.login(email).getName());
-                //세션정보
-            log.info((String) session.getAttribute("name"));
-            model.addAttribute("user" ,(String) session.getAttribute("name"));
+
+        String username = (String)userService.login(email).getName();
+
+
+        List<String> productThumfileUrlList = new ArrayList<>();
+        List<Long> pnumlist = new ArrayList<>();
+        String pRequestUrl = "/productFile/display?fileName=";
+        String productThumFileName = "";
+        Long pnum = null;
+        List<UserDTO> mysell = userService.mysell(username);
+        for(UserDTO u : mysell){
+            List<ProductFileVO> productFileList = productServiece.getList(u.getPno());
+            if (!productFileList.isEmpty()) {
+                pnum = productFileList.get(0).getPno();
+                productThumFileName = pRequestUrl + productFileList.get(0).getUploadPath() + "/" + productFileList.get(0).getUuid() + "_" + productFileList.get(0).getFileName();
+            } else {
+                productThumFileName = "/images/no_image.gif";
+            }
+            productThumfileUrlList.add(productThumFileName);
+            pnumlist.add(pnum);
+        }
+
+
+
+        log.info("넘버는" + pnumlist.toString());
+
+
+        session.setAttribute("pnumlist", pnumlist);
+        session.setAttribute("productThumfileUrlList", productThumfileUrlList);
+
+
+
+//         다이어리 썸네일 리스트
+        String bRequestUrl = "/boardFile/display?fileName=";
+        String boardThumFileName = "";
+
+        List<String> boardThumfileUrlList = new ArrayList<>();
+        List<Long> bnumlist = new ArrayList<>();
+        Long bnum = null;
+        List<UserDTOB> mytravel = userService.mytravel(username);
+        for(UserDTOB b : mytravel){
+            List<FileVO> boardFileList = boardFileService.getList(b.getBno());
+            if(!boardFileList.isEmpty()){
+                bnum = boardFileList.get(0).getBno();
+                boardThumFileName = bRequestUrl + boardFileList.get(0).getUploadPath() + "/"  + boardFileList.get(0).getUuid() + "_" + boardFileList.get(0).getFileName();
+            }else{
+                boardThumFileName = "/images/no_image.gif";
+            }
+            bnumlist.add(bnum);
+            boardThumfileUrlList.add(boardThumFileName);
+        }
+        session.setAttribute("boardThumfileUrlList", boardThumfileUrlList);
+        session.setAttribute("bnumlist",bnumlist);
+
             return "/user/mypage";
 
     }
@@ -129,12 +180,36 @@ public class UserController {
 
 
     @GetMapping("/modify")
-    public String modify(Model model){
+    public String modify(HttpSession session){
         log.info("*************");
         log.info("회원정보수정");
         log.info("*************");
-        return "/user/update";
+        return "/user/change";
     }
+
+    @GetMapping("/delete")
+    public String Delete(String email, String pw, Model model) {
+        log.info("*************");
+        log.info("회원탈퇴");
+        log.info("*************");
+        return "/user/delete";
+    }
+
+    @PostMapping("/delete")
+    public String goToDelete(HttpSession session,String email, String pw, Model model){
+        log.info("*************");
+        log.info("회원탈퇴");
+        log.info("*************");
+        if(userService.login(email)==null || !(pw.equals(userService.login(email).getPw()))){
+            // 로그인 실패
+            model.addAttribute("msg", "아이디 혹은 비밀번호가 다릅니다.");
+            return "/user/login";
+        }
+        userService.remove(email,pw);
+        model.addAttribute("msg", "탈퇴가 완료되었습니다.");
+        return "/user/login";
+    }
+
 //    @PostMapping("/modify")
 //    public String modify(RedirectAttributes rttr){
 //        log.info("*************");
@@ -146,32 +221,17 @@ public class UserController {
     // 마이페이지
 
     @GetMapping("/mypage")
-    public String goToMypage(Model model, HttpSession session){
+    public String goToMypage(HttpSession session){
         log.info("*************");
         log.info("마이페이지");
         log.info("*************");
+
 
         String name = (String)session.getAttribute("name");
         log.info("내이름은 " + name.toString());
         log.info(userService.mysell(name).toString());
 
-        List<String> productThumfileUrlList = new ArrayList<>();
-        String pRequestUrl = "/productFile/display?fileName=";
-        String productThumFileName = "";
-        List<UserDTO> mysell = userService.mysell(name);
-       for(UserDTO u : mysell){
-           List<ProductFileVO> productFileList = productServiece.getList(u.getPno());
-           if (!productFileList.isEmpty()) {
-               productThumFileName = pRequestUrl + productFileList.get(0).getUploadPath() + "/" + productFileList.get(0).getUuid() + "_" + productFileList.get(0).getFileName();
-           } else {
-               productThumFileName = "/images/no_image.gif";
-           }
-           productThumfileUrlList.add(productThumFileName);
-       }
 
-
-        model.addAttribute("productThumfileUrlList", productThumfileUrlList);
-        model.addAttribute("mysell",userService.mysell(name));
 
         return "/user/mypage";
     }

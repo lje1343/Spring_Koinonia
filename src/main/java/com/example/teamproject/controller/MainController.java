@@ -67,7 +67,6 @@ import java.util.List;
 public class MainController {
     private final BoardServiceImpl boardService;
     private final ProductServieceImpl productServiece;
-    private final RequestServieceImpl requestServiece;
     private final BoardFileServiceImpl boardFileService;
     private final ProductFileServiceImpl productFileService;
 

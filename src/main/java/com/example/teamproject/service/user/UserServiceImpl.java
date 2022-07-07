@@ -5,6 +5,7 @@ import com.example.teamproject.domain.dao.board.BoardDAO;
 import com.example.teamproject.domain.dao.user.UserDAO;
 import com.example.teamproject.domain.vo.BoardVO;
 import com.example.teamproject.domain.vo.UserDTO;
+import com.example.teamproject.domain.vo.UserDTOB;
 import com.example.teamproject.domain.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -54,10 +55,9 @@ public class UserServiceImpl {
         return userDAO.remove(email, pw);
     }
 
-     // 나의 상품 조회
     public List<UserDTO> mysell(String name) { return userDAO.mysell(name);}
+    public List<UserDTOB> mytravel(String name) { return userDAO.mytravel(name);}
 
-    ;
 
 
 
