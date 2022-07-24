@@ -1,2 +1,3 @@
-# springproject
-4팀 스프링 프로젝트
+# 📝 Spring_Koinonia
+<br>
+✔️ Koinonia 스프링 프로젝트입니다. <br>
